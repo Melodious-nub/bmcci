@@ -1,0 +1,71 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - ENTERPRISE DATA TABLE
+     ========================================================================== -->
+<div class="border border-neutral-border rounded-lg bg-white overflow-hidden w-full shadow-card text-left" id="reusable-data-table">
+  <div class="overflow-x-auto w-full">
+    <table class="w-full border-collapse font-sans text-xs">
+      
+      <!-- Table Header -->
+      <thead class="bg-neutral-bgSecondary border-b border-neutral-border text-[10px] font-bold uppercase tracking-wider text-text-dark shrink-0">
+        <tr>
+          <th class="p-4 md:p-5 font-bold">Member Enterprise</th>
+          <th class="p-4 md:p-5 font-bold">Category</th>
+          <th class="p-4 md:p-5 font-bold">Bilateral Origin</th>
+          <th class="p-4 md:p-5 font-bold">Investment Size</th>
+          <th class="p-4 md:p-5 font-bold text-right">Actions</th>
+        </tr>
+      </thead>
+      
+      <!-- Table Body Rows -->
+      <tbody class="divide-y divide-neutral-border text-text-body font-medium">
+        
+        <!-- Row 1 -->
+        <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+          <td class="p-4 md:p-5 flex items-center gap-3">
+            <div class="w-9 h-9 rounded bg-brand-green/5 border border-brand-green/10 flex items-center justify-center font-extrabold text-brand-green text-[10px]">
+              AP
+            </div>
+            <div class="flex flex-col gap-0.5">
+              <span class="text-text-dark font-bold text-sm">Apex Cargo & Logistics Ltd.</span>
+              <span class="text-[10px] text-text-muted">ID: BMCCI-2026-9031</span>
+            </div>
+          </td>
+          <td class="p-4 md:p-5">Logistics & Supply Chain</td>
+          <td class="p-4 md:p-5">
+            <span class="inline-flex px-2 py-0.5 bg-brand-green/10 text-brand-green rounded-full text-[10px] font-bold border border-brand-green/15">Bangladesh</span>
+          </td>
+          <td class="p-4 md:p-5 font-semibold text-text-dark">$1.8M</td>
+          <td class="p-4 md:p-5 text-right">
+            <button class="px-3.5 py-1.5 border border-neutral-border hover:border-brand-green hover:text-brand-green rounded-btn transition-fast bg-white font-bold" data-modal-open="member-detail-modal">
+              Profile
+            </button>
+          </td>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+          <td class="p-4 md:p-5 flex items-center gap-3">
+            <div class="w-9 h-9 rounded bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center font-extrabold text-brand-blue text-[10px]">
+              AX
+            </div>
+            <div class="flex flex-col gap-0.5">
+              <span class="text-text-dark font-bold text-sm">Axiata Group Berhad</span>
+              <span class="text-[10px] text-text-muted">ID: BMCCI-2026-9042</span>
+            </div>
+          </td>
+          <td class="p-4 md:p-5">Telecommunications & IT</td>
+          <td class="p-4 md:p-5">
+            <span class="inline-flex px-2 py-0.5 bg-brand-blue/10 text-brand-blue rounded-full text-[10px] font-bold border border-brand-blue/15">Malaysia</span>
+          </td>
+          <td class="p-4 md:p-5 font-semibold text-text-dark">$12.4M</td>
+          <td class="p-4 md:p-5 text-right">
+            <button class="px-3.5 py-1.5 border border-neutral-border hover:border-brand-green hover:text-brand-green rounded-btn transition-fast bg-white font-bold" data-modal-open="member-detail-modal">
+              Profile
+            </button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

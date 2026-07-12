@@ -1,0 +1,35 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - TABS
+     ========================================================================== -->
+<div class="w-full flex flex-col gap-6" id="demo-tabs-container">
+  
+  <!-- Tab Buttons Row -->
+  <div class="flex items-center gap-1 border-b border-neutral-border overflow-x-auto">
+    <button class="px-6 py-3 border-b-2 border-brand-green text-brand-green font-semibold text-sm transition-fast whitespace-nowrap active" 
+            data-tab-target="#tab-panel-1">
+      Bangladesh Markets
+    </button>
+    <button class="px-6 py-3 border-b-2 border-transparent text-text-muted hover:text-brand-green font-semibold text-sm transition-fast whitespace-nowrap" 
+            data-tab-target="#tab-panel-2">
+      Malaysia Markets
+    </button>
+  </div>
+  
+  <!-- Tab Contents Box -->
+  <div class="w-full">
+    <!-- Panel 1 (Default Active) -->
+    <div id="tab-panel-1" class="block w-full" data-tab-content>
+      <p class="text-sm text-text-body leading-relaxed">
+        Bangladesh market summaries go here, showing growth profiles, Special Economic Zones inputs, and FDI projects lists.
+      </p>
+    </div>
+    
+    <!-- Panel 2 (Hidden Initially) -->
+    <div id="tab-panel-2" class="hidden w-full" data-tab-content>
+      <p class="text-sm text-text-body leading-relaxed">
+        Malaysia market summaries go here, showing high-tech investment zones, electronics supply lists, and tax relief details.
+      </p>
+    </div>
+  </div>
+
+</div>

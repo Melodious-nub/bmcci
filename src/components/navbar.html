@@ -1,0 +1,395 @@
+<!-- ==========================================================================
+     BMCCI ENTERPRISE GLOBAL HEADER SYSTEM
+     ========================================================================== -->
+
+<header class="fixed top-0 left-0 w-full z-50 transition-premium bg-transparent" id="global-header">
+  
+  <!-- 1. UTILITY BAR (40px, Primary Green, hidden on mobile/tablet) -->
+  <div class="h-10 bg-brand-green text-white text-[13px] font-medium hidden md:flex items-center transition-all duration-300 overflow-hidden" id="utility-bar">
+    <div class="container-shell w-full flex items-center justify-between">
+      <!-- Left side contact details -->
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-2">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-gold"></i>
+          <a href="mailto:info@bmcci.org.bd" class="hover:text-brand-gold transition-fast">info@bmcci.org.bd</a>
+        </span>
+        <span class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-gold"></i>
+          <a href="tel:+8802222283921" class="hover:text-brand-gold transition-fast">+880-222-228-3921</a>
+        </span>
+      </div>
+      <!-- Right side quick actions -->
+      <div class="flex items-center gap-6">
+        <span class="text-white/80 hidden lg:inline">Welcome to BMCCI Digital Gateway</span>
+        
+        <!-- Social Outline Links -->
+        <div class="flex items-center gap-3 border-l border-white/20 pl-6">
+          <a href="#" class="hover:text-brand-gold transition-fast" aria-label="Facebook"><i data-lucide="globe" class="w-3.5 h-3.5"></i></a>
+          <a href="#" class="hover:text-brand-gold transition-fast" aria-label="LinkedIn"><i data-lucide="users" class="w-3.5 h-3.5"></i></a>
+        </div>
+
+        <!-- Language Pill Switcher (EN | BM) -->
+        <div class="flex items-center bg-white/10 rounded-full p-0.5" id="language-toggle">
+          <button class="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold transition-fast bg-white text-brand-green" id="lang-btn-en" data-lang="en">EN</button>
+          <button class="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold transition-fast text-white hover:text-brand-gold" id="lang-btn-bm" data-lang="bm">BM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER (88px, transparent base, slides down white on scroll) -->
+  <div class="h-[88px] flex items-center transition-all duration-300 relative bg-transparent" id="main-navbar">
+    <!-- Overlay backing for scroll blur transitions -->
+    <div class="absolute inset-0 bg-transparent backdrop-blur-0 transition-premium -z-10" id="navbar-backdrop"></div>
+    
+    <div class="container-shell w-full flex items-center justify-between relative">
+      
+      <!-- Logo Left -->
+      <a href="/index.html" class="flex items-center gap-3 group relative z-10 shrink-0">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-tr from-brand-green to-brand-blue flex items-center justify-center text-white font-extrabold text-lg shadow-sm">
+          B
+        </div>
+        <div class="flex flex-col">
+          <span class="text-text-dark font-extrabold text-xl tracking-tight leading-none group-hover:text-brand-green transition-fast">BMCCI</span>
+          <span class="text-[10px] text-text-muted uppercase tracking-widest font-semibold mt-0.5">Digital Gateway</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Center (Relative position boundary for mega menus) -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-5 2xl:gap-7 static">
+        <a href="/index.html" class="nav-link-item text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">Home</a>
+        <a href="/pages/about.html" class="nav-link-item text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">About</a>
+        
+        <!-- MEGA MENU 1: Trade & Investment -->
+        <div class="group static">
+          <button class="nav-link-item flex items-center gap-1 text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">
+            <span>Trade & Investment</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+          </button>
+          
+          <!-- Mega Menu Container -->
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-full max-w-[1000px] bg-white border border-neutral-border rounded-md shadow-floating hidden group-hover:grid grid-cols-4 gap-8 p-8 z-50 transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-premium duration-300 ease-out">
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-green">Trade Channels</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/trade.html#opportunities" class="hover:text-brand-green transition-fast">Market Opportunities</a></li>
+                <li><a href="/pages/trade.html#import-routes" class="hover:text-brand-green transition-fast">Dhaka-Klang Supply Lines</a></li>
+                <li><a href="/pages/trade.html#tariffs" class="hover:text-brand-green transition-fast">Duty Tariff Schedules</a></li>
+                <li><a href="/pages/trade.html#compliance" class="hover:text-brand-green transition-fast">Customs Regulations</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-blue">Foreign Direct Investment</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/trade.html#economic-zones" class="hover:text-brand-green transition-fast">BEZA Economic Zones</a></li>
+                <li><a href="/pages/trade.html#incentives" class="hover:text-brand-green transition-fast">Tax Holidays & Reliefs</a></li>
+                <li><a href="/pages/trade.html#repatriation" class="hover:text-brand-green transition-fast">Capital Repatriation Rules</a></li>
+                <li><a href="/pages/trade.html#setup" class="hover:text-brand-green transition-fast">Joint Venture Setup Guides</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-gold">Policy Advisory</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/trade.html#treaty" class="hover:text-brand-green transition-fast">Avoid Double Taxation Treaty</a></li>
+                <li><a href="/pages/trade.html#licensing" class="hover:text-brand-green transition-fast">Company Incorporation Protocols</a></li>
+                <li><a href="/pages/trade.html#disputes" class="hover:text-brand-green transition-fast">Bilateral Arbitration Services</a></li>
+              </ul>
+            </div>
+            <!-- Featured Card -->
+            <div class="bg-neutral-bgSecondary rounded-md border border-neutral-border p-5 flex flex-col gap-3 justify-between relative overflow-hidden group/featured">
+              <div class="flex flex-col gap-1.5">
+                <span class="inline-flex px-2 py-0.5 bg-brand-gold/15 text-brand-gold rounded text-[10px] font-bold self-start border border-brand-gold/20">Featured FDI Project</span>
+                <h5 class="text-text-dark font-bold text-xs leading-snug">Chittagong Deep-Water Container Terminal Expansion</h5>
+                <p class="text-[11px] text-text-body leading-relaxed">Joint industrial concession open for Malaysian capital investments. Tax holiday concessions applied.</p>
+              </div>
+              <a href="/pages/trade.html#economic-zones" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline">
+                <span>View Details</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/pages/economic-intelligence.html" class="nav-link-item text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">Economy</a>
+        <a href="/pages/events.html" class="nav-link-item text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">Events</a>
+        
+        <!-- MEGA MENU 2: Membership -->
+        <div class="group static">
+          <button class="nav-link-item flex items-center gap-1 text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">
+            <span>Membership</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+          </button>
+          
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-full max-w-[1000px] bg-white border border-neutral-border rounded-md shadow-floating hidden group-hover:grid grid-cols-4 gap-8 p-8 z-50 transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-premium duration-300 ease-out">
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-green">Chamber Access</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/membership.html#benefits" class="hover:text-brand-green transition-fast font-semibold">Membership Benefits</a></li>
+                <li><a href="/pages/membership.html#tiers" class="hover:text-brand-green transition-fast">Category & Fee Schedules</a></li>
+                <li><a href="/pages/membership.html#apply" class="hover:text-brand-green transition-fast">Apply Online Wizard</a></li>
+                <li><a href="/pages/membership.html#faq" class="hover:text-brand-green transition-fast">Frequently Asked Questions</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-blue">Facilitation Services</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/membership.html#visa" class="hover:text-brand-green transition-fast">Visa Recommendation Letters</a></li>
+                <li><a href="/pages/membership.html#b2b" class="hover:text-brand-green transition-fast">B2B Trade Matchmaking</a></li>
+                <li><a href="/pages/membership.html#delegations" class="hover:text-brand-green transition-fast">Bilateral Delegations Hosting</a></li>
+                <li><a href="/pages/membership.html#roundtable" class="hover:text-brand-green transition-fast">Ministerial Roundtables Access</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-gold">Executive Network</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/business-directory.html" class="hover:text-brand-green transition-fast">Chamber Member Directory</a></li>
+                <li><a href="/pages/membership.html#governance" class="hover:text-brand-green transition-fast">Governance & Executive Board</a></li>
+                <li><a href="/pages/membership.html#code" class="hover:text-brand-green transition-fast">Member Code of Ethics</a></li>
+              </ul>
+            </div>
+            <!-- Featured Card -->
+            <div class="bg-brand-green text-white rounded-md p-5 flex flex-col gap-3 justify-between relative overflow-hidden">
+              <div class="flex flex-col gap-1.5 z-10">
+                <span class="inline-flex px-2 py-0.5 bg-white/10 rounded text-[10px] font-bold self-start border border-white/20 text-brand-gold">Global Network</span>
+                <h5 class="font-bold text-xs leading-snug">Become a Patron Member</h5>
+                <p class="text-[11px] text-white/80 leading-relaxed">Access direct diplomatic networks, trade councils representation, and priority delegation access.</p>
+              </div>
+              <a href="/pages/membership.html#apply" class="text-xs text-brand-gold font-bold flex items-center gap-1 hover:underline z-10">
+                <span>Join Now</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+              <!-- Subtle decorative backing -->
+              <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-white/5 rounded-full pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/pages/business-directory.html" class="nav-link-item text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">Directory</a>
+
+        <!-- MEGA MENU 3: Discover -->
+        <div class="group static">
+          <button class="nav-link-item flex items-center gap-1 text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">
+            <span>Discover</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+          </button>
+          
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-full max-w-[1000px] bg-white border border-neutral-border rounded-md shadow-floating hidden group-hover:grid grid-cols-4 gap-8 p-8 z-50 transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-premium duration-300 ease-out">
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-green">Bangladesh Hubs</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/discover.html#dhaka" class="hover:text-brand-green transition-fast">Dhaka Commercial Center</a></li>
+                <li><a href="/pages/discover.html#chittagong" class="hover:text-brand-green transition-fast">Port of Chittagong</a></li>
+                <li><a href="/pages/discover.html#mongla" class="hover:text-brand-green transition-fast">Mongla Port Industrial Zone</a></li>
+                <li><a href="/pages/discover.html#bangladesh-heritage" class="hover:text-brand-green transition-fast">Tourism & Cultural Heritage</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-blue">Malaysia Hubs</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/discover.html#kl" class="hover:text-brand-green transition-fast">Kuala Lumpur TRX</a></li>
+                <li><a href="/pages/discover.html#klang" class="hover:text-brand-green transition-fast">Port Klang Logistics Corridors</a></li>
+                <li><a href="/pages/discover.html#penang" class="hover:text-brand-green transition-fast">Penang Advanced Tech Zones</a></li>
+                <li><a href="/pages/discover.html#malaysia-heritage" class="hover:text-brand-green transition-fast">Tourism & Heritage Sites</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-gold">Business Travel</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/discover.html#hotel-partners" class="hover:text-brand-green transition-fast">Five-Star Hotel Alliances</a></li>
+                <li><a href="/pages/discover.html#lounge" class="hover:text-brand-green transition-fast">Airport Premium Lounges Access</a></li>
+                <li><a href="/pages/discover.html#protocols" class="hover:text-brand-green transition-fast">Corporate Protocol Services</a></li>
+              </ul>
+            </div>
+            <!-- Featured Card -->
+            <div class="bg-neutral-bgSecondary rounded-md border border-neutral-border p-5 flex flex-col gap-3 justify-between relative overflow-hidden group/featured">
+              <div class="flex flex-col gap-1.5">
+                <span class="inline-flex px-2 py-0.5 bg-brand-blue/15 text-brand-blue rounded text-[10px] font-bold self-start border border-brand-blue/20">Executive Guide</span>
+                <h5 class="text-text-dark font-bold text-xs leading-snug">Chamber Tourism Map</h5>
+                <p class="text-[11px] text-text-body leading-relaxed">Official travel guidebook for corporate delegations and business travelers visiting Dhaka or KL.</p>
+              </div>
+              <a href="/pages/discover.html#guidebook" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline">
+                <span>Download Brief</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEGA MENU 4: News -->
+        <div class="group static">
+          <button class="nav-link-item flex items-center gap-1 text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">
+            <span>News</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"></i>
+          </button>
+          
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-full max-w-[1000px] bg-white border border-neutral-border rounded-md shadow-floating hidden group-hover:grid grid-cols-4 gap-8 p-8 z-50 transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-premium duration-300 ease-out">
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-green">Chamber Broadcasts</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/news.html#announcements" class="hover:text-brand-green transition-fast">Official Announcements</a></li>
+                <li><a href="/pages/news.html#circulars" class="hover:text-brand-green transition-fast">Ministerial Trade Circulars</a></li>
+                <li><a href="/pages/news.html#delegation-updates" class="hover:text-brand-green transition-fast">Delegation Journals</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-blue">Publications</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/news.html#journals" class="hover:text-brand-green transition-fast">Bilateral Commerce Journals</a></li>
+                <li><a href="/pages/news.html#economic-briefs" class="hover:text-brand-green transition-fast">Quarterly Trade Reports</a></li>
+                <li><a href="/pages/news.html#halal-studies" class="hover:text-brand-green transition-fast">Halal Industry Policy Briefs</a></li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="text-text-dark font-bold text-xs uppercase tracking-wider text-brand-gold">Media Hub</h4>
+              <ul class="flex flex-col gap-2.5 text-xs text-text-body">
+                <li><a href="/pages/news.html#gallery" class="hover:text-brand-green transition-fast">Summit Video Galleries</a></li>
+                <li><a href="/pages/news.html#press" class="hover:text-brand-green transition-fast">Press Releases</a></li>
+                <li><a href="/pages/news.html#inquiries" class="hover:text-brand-green transition-fast">Media Contact Secrets</a></li>
+              </ul>
+            </div>
+            <!-- Featured Card -->
+            <div class="bg-neutral-bgSecondary rounded-md border border-neutral-border p-5 flex flex-col gap-3 justify-between relative overflow-hidden group/featured">
+              <div class="flex flex-col gap-1.5">
+                <span class="inline-flex px-2 py-0.5 bg-brand-green/15 text-brand-green rounded text-[10px] font-bold self-start border border-brand-green/20">Press Alert</span>
+                <h5 class="text-text-dark font-bold text-xs leading-snug">Double Taxation updates ratified by Ministries</h5>
+                <p class="text-[11px] text-text-body leading-relaxed">Official protocol update ratified to ease cross-border dividends transfers.</p>
+              </div>
+              <a href="/pages/news.html#tax-brief" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline">
+                <span>Read Full Release</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/pages/contact.html" class="nav-link-item text-text-body font-semibold text-sm hover:text-brand-green transition-fast relative py-2">Contact</a>
+      </nav>
+
+      <!-- Navigation Actions Right -->
+      <div class="flex items-center gap-4 relative z-10 shrink-0">
+        
+        <!-- Large Search Button (Triggers global search overlay modal) -->
+        <button class="p-2.5 text-text-body hover:text-brand-green hover:bg-neutral-bgSecondary rounded-full transition-fast hidden sm:flex" aria-label="Search platform databases" data-modal-open="global-search-modal">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+
+        <!-- CTA Apply Button -->
+        <a href="/pages/membership.html" class="hidden md:inline-flex items-center justify-center h-12 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-semibold text-sm rounded-btn shadow-card hover:translate-y-[-2px] transition-premium gap-2">
+          <span>Join BMCCI</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Mobile Drawer Hamburger Toggle Button -->
+        <button class="p-2.5 text-text-body hover:text-brand-green lg:hidden border border-neutral-border rounded-btn bg-white" id="mobile-menu-toggle" aria-label="Toggle mobile drawer" aria-expanded="false">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</header>
+
+<!-- 3. MOBILE NAVIGATION DRAWER -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-white transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col justify-between p-6 pt-[108px]">
+  
+  <div class="flex flex-col gap-6 overflow-y-auto pr-2">
+    <!-- Mobile Search Input Box -->
+    <div class="relative w-full mb-2">
+      <input type="text" placeholder="Search members, policies..." class="w-full h-11 pl-10 pr-4 border border-neutral-border rounded-input text-sm text-text-dark outline-none focus:border-brand-green" />
+      <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted"></i>
+    </div>
+
+    <!-- Main Navigation routes -->
+    <div class="flex flex-col gap-4 font-sans font-bold text-lg text-text-dark">
+      <a href="/index.html" class="hover:text-brand-green transition-fast">Home</a>
+      <a href="/pages/about.html" class="hover:text-brand-green transition-fast">About Chamber</a>
+      <a href="/pages/trade.html" class="hover:text-brand-green transition-fast">Trade & Investment</a>
+      <a href="/pages/economic-intelligence.html" class="hover:text-brand-green transition-fast">Economic Intelligence</a>
+      <a href="/pages/events.html" class="hover:text-brand-green transition-fast">Events & Summits</a>
+      <a href="/pages/membership.html" class="hover:text-brand-green transition-fast">Membership Experience</a>
+      <a href="/pages/business-directory.html" class="hover:text-brand-green transition-fast">Business Directory</a>
+      <a href="/pages/discover.html" class="hover:text-brand-green transition-fast">Discover BD & MY</a>
+      <a href="/pages/news.html" class="hover:text-brand-green transition-fast">News & Bulletins</a>
+      <a href="/pages/contact.html" class="hover:text-brand-green transition-fast">Contact Secretariat</a>
+    </div>
+  </div>
+  
+  <!-- Mobile Drawer footer controls -->
+  <div class="flex flex-col gap-6 border-t border-neutral-border pt-6 mt-4">
+    <!-- CTA Button -->
+    <a href="/pages/membership.html" class="w-full text-center py-3.5 bg-brand-green text-white font-bold rounded-btn shadow-card hover:bg-brand-darkGreen transition-fast text-sm flex items-center justify-center gap-2">
+      <span>Apply for Membership</span>
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+    
+    <div class="flex items-center justify-between">
+      <!-- Mobile Language switcher -->
+      <div class="flex items-center bg-slate-100 rounded-full p-0.5 border border-slate-200" id="language-toggle-mobile">
+        <button class="px-3 py-1 rounded-full text-xs font-bold transition-fast bg-white text-brand-green shadow-sm" data-lang="en">EN</button>
+        <button class="px-3 py-1 rounded-full text-xs font-bold transition-fast text-text-body" data-lang="bm">BM</button>
+      </div>
+      <!-- Social icons outline -->
+      <div class="flex items-center gap-4 text-text-muted">
+        <a href="#" class="hover:text-brand-green transition-fast"><i data-lucide="globe" class="w-5 h-5"></i></a>
+        <a href="#" class="hover:text-brand-green transition-fast"><i data-lucide="users" class="w-5 h-5"></i></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 4. GLOBAL SEARCH OVERLAY MODAL (Accessibility-focused, ESC closeable) -->
+<div id="global-search-modal" class="modal-backdrop fixed inset-0 z-[100] bg-text-dark/45 backdrop-blur-md hidden items-center justify-center p-4">
+  <div class="bg-white rounded-md shadow-floating w-full max-w-2xl overflow-hidden transform scale-95 transition-normal border border-neutral-border animate-fade-up">
+    
+    <!-- Input Header bar -->
+    <div class="p-5 border-b border-neutral-border flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 flex-1">
+        <i data-lucide="search" class="w-5 h-5 text-brand-green"></i>
+        <input type="text" placeholder="Type key phrases (e.g. 'tax relief', 'BEZA', 'tradeshow')..." 
+               class="w-full outline-none text-text-dark text-base bg-transparent font-sans" id="modal-search-input" autofocus />
+      </div>
+      <button class="p-2 hover:bg-neutral-bgSecondary rounded-full text-text-muted hover:text-text-dark transition-fast" data-modal-close aria-label="Close search overlay">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    
+    <!-- Suggestions body panels -->
+    <div class="p-6 max-h-[350px] overflow-y-auto flex flex-col gap-6 font-sans">
+      
+      <!-- Section 1: Recent searches -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-text-muted">Popular Search Queries</span>
+        <div class="flex flex-wrap gap-2 text-xs text-text-body mt-1">
+          <a href="/pages/trade.html#tariffs" class="px-3 py-1.5 bg-neutral-bgSecondary border border-neutral-border rounded-full hover:border-brand-green hover:text-brand-green transition-fast">Custom Tariffs Schedules</a>
+          <a href="/pages/trade.html#economic-zones" class="px-3 py-1.5 bg-neutral-bgSecondary border border-neutral-border rounded-full hover:border-brand-green hover:text-brand-green transition-fast">BEZA Economic Zone Locations</a>
+          <a href="/pages/economic-intelligence.html" class="px-3 py-1.5 bg-neutral-bgSecondary border border-neutral-border rounded-full hover:border-brand-green hover:text-brand-green transition-fast">Q2 Economic Report Outlook</a>
+          <a href="/pages/membership.html#visa" class="px-3 py-1.5 bg-neutral-bgSecondary border border-neutral-border rounded-full hover:border-brand-green hover:text-brand-green transition-fast">Visa Recommendation Letters</a>
+        </div>
+      </div>
+
+      <!-- Section 2: Quick Links mappings -->
+      <div class="flex flex-col gap-3">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-text-muted">Primary Suggested Links</span>
+        <div class="flex flex-col gap-2 text-sm text-text-body">
+          <a href="/pages/membership.html#apply" class="flex items-center justify-between p-2.5 rounded-md hover:bg-neutral-bgSecondary text-text-dark hover:text-brand-green transition-fast border border-transparent hover:border-neutral-border">
+            <span class="flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-brand-green"></i>
+              <span>Become a member & submit applications</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-text-muted"></i>
+          </a>
+          <a href="/pages/events.html" class="flex items-center justify-between p-2.5 rounded-md hover:bg-neutral-bgSecondary text-text-dark hover:text-brand-green transition-fast border border-transparent hover:border-neutral-border">
+            <span class="flex items-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-brand-blue"></i>
+              <span>Register for the Malaysia-Bangladesh Showcase 2026</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-text-muted"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

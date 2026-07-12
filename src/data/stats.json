@@ -1,0 +1,38 @@
+[
+  {
+    "id": "bilateral-trade",
+    "value": 3.8,
+    "suffix": "B",
+    "prefix": "$",
+    "decimals": 1,
+    "title": "Bilateral Trade Volume",
+    "description": "Total combined import and export trade value between Bangladesh and Malaysia in 2025."
+  },
+  {
+    "id": "malaysia-fdi",
+    "value": 412,
+    "suffix": "M",
+    "prefix": "$",
+    "decimals": 0,
+    "title": "Malaysian Direct FDI",
+    "description": "Direct Malaysian investment in Bangladesh's infrastructure and technology sectors."
+  },
+  {
+    "id": "chamber-members",
+    "value": 650,
+    "suffix": "+",
+    "prefix": "",
+    "decimals": 0,
+    "title": "Active Chamber Members",
+    "description": "Corporate executives, industries, and trade leaders connected via BMCCI."
+  },
+  {
+    "id": "joint-ventures",
+    "value": 120,
+    "suffix": "+",
+    "prefix": "",
+    "decimals": 0,
+    "title": "Joint Ventures Established",
+    "description": "Successful cross-border industrial partnerships facilitated by the chamber."
+  }
+]

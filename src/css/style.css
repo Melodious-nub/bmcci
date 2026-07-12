@@ -1,0 +1,347 @@
+/* ==========================================================================
+   BMCCI DIGITAL GATEWAY - GLOBAL DESIGN SYSTEM CUSTOM STYLES
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Design Tokens from README_02_DESIGN_SYSTEM.md & PLAN */
+  --brand-green: #006A4E;
+  --brand-green-dark: #004D39;
+  --brand-blue: #0033A0;
+  --brand-red: #D62828;
+  --brand-gold: #D4AF37;
+
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-dashboard: #F1F5F9;
+  --border-color: #E2E8F0;
+
+  --text-dark: #0F172A;
+  --text-body: #475569;
+  --text-muted: #94A3B8;
+
+  /* Font Fallbacks */
+  --font-primary: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-secondary: "Inter", system-ui, sans-serif;
+}
+
+/* Base Styles & Inertial Scroll Support */
+html {
+  font-family: var(--font-primary);
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar for Premium Feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-body);
+}
+
+/* Typography Base Styles */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* Premium Typography System Classes */
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem); /* 72px equivalent */
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.page-title {
+  font-size: clamp(2rem, 4vw, 3.5rem); /* 56px equivalent */
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.625rem); /* 42px equivalent */
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.card-title {
+  font-size: 1.5rem; /* 24px equivalent */
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Lenis smooth scroll active classes */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   UI UTILITIES & DESIGN BLOCKS
+   ========================================================================== */
+
+/* Subtle Glassmorphism Card Style */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.dark-glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Standard Premium Transitions */
+.transition-premium {
+  transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transition-normal {
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transition-fast {
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover Micro-Interactions */
+.hover-lift {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0px 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* Spacing System & Grid Settings from TASK_02 */
+.container-shell {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .container-shell {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-shell {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* Reusable Spacings */
+.section-hero {
+  padding-top: clamp(6rem, 12vw, 10rem); /* 160px on desktop */
+  padding-bottom: clamp(4rem, 8vw, 6rem); /* 96px on desktop */
+}
+
+.section-large {
+  padding-top: clamp(4rem, 8vw, 7.5rem); /* 120px on desktop */
+  padding-bottom: clamp(4rem, 8vw, 7.5rem);
+}
+
+.section-standard {
+  padding-top: clamp(3rem, 6vw, 5rem); /* 80px on desktop */
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.section-compact {
+  padding-top: clamp(1.5rem, 3vw, 3rem); /* 48px on desktop */
+  padding-bottom: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Background utilities */
+.bg-subtle-gradient {
+  background: radial-gradient(circle at 10% 20%, rgba(0, 106, 78, 0.02) 0%, rgba(0, 51, 160, 0.01) 90%);
+}
+
+.bg-accent-dark {
+  background-color: var(--text-dark);
+}
+
+/* Divider rules */
+.divider-subtle {
+  border-color: var(--border-color);
+  border-width: 0px 0px 1px 0px;
+}
+
+/* Scroll progress indicator and Back to top */
+#scroll-progress {
+  transform-origin: left;
+  transition: transform 100ms linear;
+}
+
+.back-to-top-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.back-to-top-hidden {
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  pointer-events: none;
+}
+
+/* Custom Keyframes for Entrances */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ECharts Custom Sizing Helper */
+.chart-container {
+  width: 100%;
+  height: 400px;
+}
+
+/* ==========================================================================
+   GLOBAL HEADER & MEGA MENUS STYLE OVERRIDES
+   ========================================================================== */
+
+/* Utility bar slide-up transition */
+#global-header.header-scrolled #utility-bar {
+  height: 0px !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#global-header.header-scrolled #main-navbar {
+  height: 80px !important;
+}
+
+#global-header.header-scrolled #navbar-backdrop {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.04);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Hover and Active Underline System */
+.nav-link-item {
+  white-space: nowrap;
+}
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--brand-green);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-item:hover::after,
+.nav-link-item.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Base state for absolute mega-menus */
+#main-navbar div[class*="absolute"][class*="group-hover:grid"] {
+  display: grid !important; /* Force layout as grid in DOM */
+  opacity: 0;
+  transform: translate(-50%, 12px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover trigger for absolute mega-menus */
+.group:hover > div[class*="absolute"][class*="group-hover:grid"] {
+  opacity: 1 !important;
+  transform: translate(-50%, 0px) scale(1) !important;
+  pointer-events: auto !important;
+}
+
+/* Accessibility Focus States for Nav Items */
+.nav-link-item:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Grayscale Strategic Partner Logos */
+.partner-logo {
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: filter 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.partner-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  border-color: var(--brand-green);
+}

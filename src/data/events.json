@@ -1,0 +1,59 @@
+[
+  {
+    "id": "event-showcase-2026",
+    "title": "Malaysia-Bangladesh Trade Showcase 2026",
+    "category": "Trade Summit",
+    "date": "September 14-16, 2026",
+    "location": "Pan Pacific Sonargaon, Dhaka",
+    "image": "/assets/images/events/trade-showcase.jpg",
+    "description": "The landmark annual trade expo hosting over 150 exhibitors displaying tech, machinery, commodities, and luxury goods from both nations.",
+    "agenda": [
+      "Day 1: Inauguration & Ministerial Keynote Panel",
+      "Day 2: B2B Business Matchmaking Forums & Networking Lunch",
+      "Day 3: Sectoral Panels & Memorandum Signings"
+    ],
+    "speakers": [
+      "Syed Almas Kabir (President, BMCCI)",
+      "Hon. Minister of Commerce (Bangladesh)",
+      "High Commissioner of Malaysia to Bangladesh"
+    ]
+  },
+  {
+    "id": "investment-conclave",
+    "title": "Bilateral Investment Conclave",
+    "category": "Investment Forum",
+    "date": "November 22, 2026",
+    "location": "Shangri-La Hotel, Kuala Lumpur",
+    "image": "/assets/images/events/investment-conclave.jpg",
+    "description": "Exclusive closed-door summit presenting high-value investment profiles in EPZs, manufacturing, infrastructure, and green technology.",
+    "agenda": [
+      "09:30 AM: Investment Opportunities in Special Economic Zones",
+      "11:00 AM: Cross-Border Capital Flows & Regulatory Guidelines",
+      "02:00 PM: Joint Venture Case Studies & Interactive Panel"
+    ],
+    "speakers": [
+      "Executive Chairman (Bangladesh Economic Zones Authority)",
+      "Director General (Malaysian Investment Development Authority)",
+      "Chief Financial Officer (Axiata Group)"
+    ]
+  },
+  {
+    "id": "networking-dinner",
+    "title": "BMCCI Corporate Networking Dinner",
+    "category": "Business Networking",
+    "date": "December 05, 2026",
+    "location": "The Westin, Dhaka",
+    "image": "/assets/images/events/networking-dinner.jpg",
+    "description": "Premium annual gala dinner for chamber members, diplomats, and international trade delegations to establish connections.",
+    "agenda": [
+      "07:00 PM: Welcome Reception & Cocktail Hour",
+      "08:15 PM: Presidential Address & Excellence Awards Ceremony",
+      "09:00 PM: Fine Dining & Professional Networking Session"
+    ],
+    "speakers": [
+      "Chairman (FBCCI)",
+      "Distinguished Corporate Members",
+      "Economic Attache (Malaysian High Commission)"
+    ]
+  }
+]

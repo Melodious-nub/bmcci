@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News & Insights Hub | BMCCI Digital Gateway</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="Read bilateral trade announcements, policy briefs, tax amendments, and executive updates.">
+  
+  <!-- Style Sheets Links -->
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-neutral-bg font-sans antialiased text-text-body"
+      data-page-title="Knowledge Hub"
+      data-page-subtitle="Stay informed with business insights, trade updates, and economic developments from Bangladesh and Malaysia.">
+
+  <!-- Global Loader Overlay -->
+  <!-- include components/loader.html -->
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-green z-[9999] w-full origin-left scale-x-0"></div>
+
+  <!-- Build-Time Navbar Injection -->
+  <!-- include components/navbar.html -->
+
+  <!-- Main Portal Layout -->
+  <main class="w-full min-h-screen pt-[128px]" id="main-content">
+    
+    <!-- Subpage Header -->
+    <!-- include components/ui/page-header.html -->
+
+    <!-- ==========================================================================
+         SECTION 02 — CONTENT SEARCH BAR
+         ========================================================================== -->
+    <section class="section-compact bg-white border-b border-neutral-border" id="search-section">
+      <div class="container-shell max-w-4xl py-6">
+        <!-- Reusable Search bar and filters include -->
+        <div class="flex flex-col gap-4">
+          <!-- include components/ui/search-bar.html -->
+          <!-- include components/ui/filter-bar.html -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 03 — FEATURED STORY (60/40 Split card)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="featured-story-sec">
+      <div class="container-shell">
+        
+        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg overflow-hidden shadow-floating grid grid-cols-1 lg:grid-cols-12 text-left relative group">
+          <!-- Top Border Accent -->
+          <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue"></div>
+          
+          <!-- Banner Image (Span 7) -->
+          <div class="lg:col-span-7 relative min-h-[280px] lg:min-h-full overflow-hidden">
+            <img src="/assets/images/events/investment-conclave.jpg" alt="Bilateral Investment Conclave showcase panel scene" 
+                 class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" />
+            <span class="absolute top-6 left-6 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full shadow-card z-10">
+              Featured Insight
+            </span>
+          </div>
+
+          <!-- Content Details (Span 5) -->
+          <div class="lg:col-span-5 p-8 md:p-10 flex flex-col justify-between gap-6">
+            <div class="flex flex-col gap-4">
+              <!-- Date & Author -->
+              <div class="flex items-center gap-3 text-xs font-semibold text-text-muted">
+                <span>July 12, 2026</span>
+                <span class="h-3 w-px bg-neutral-border"></span>
+                <span>By Secretariats Board</span>
+              </div>
+              
+              <h3 class="text-text-dark font-extrabold text-xl md:text-2xl group-hover:text-brand-green transition-fast">
+                Bilateral Trade Treaty Agreement Ratified by Ministers
+              </h3>
+              
+              <p class="text-text-body text-xs md:text-sm leading-relaxed">
+                State ministries in charge of trade policy have ratified the double taxation exemption treaties, paving channels for high-value logistics concessions.
+              </p>
+            </div>
+
+            <!-- Read Action Button -->
+            <button class="w-full py-3 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card hover:translate-y-[-2px] transition-premium flex items-center justify-center gap-1.5 mt-2" 
+                    data-modal-open="news-detail-modal">
+              <span>Read Full Article</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 05 — CATEGORY NAVIGATION (Tabs)
+         ========================================================================== -->
+    <section class="section-compact bg-neutral-bgSecondary border-b border-neutral-border" id="category-tabs-sec">
+      <div class="container-shell py-4 flex items-center justify-center overflow-x-auto">
+        <div class="flex items-center gap-6 text-xs font-bold text-text-muted shrink-0">
+          <button class="text-brand-green border-b-2 border-brand-green pb-1" data-news-tab="all">All Content</button>
+          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="news">Chamber News</button>
+          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="press">Press Releases</button>
+          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="reports">Reports</button>
+          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="insights">Insights</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 04 — LATEST NEWS (Grid)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="latest-news-grid">
+      <div class="container-shell">
+        
+        <!-- Grid list of cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Card 1 -->
+          <!-- include components/ui/news-card.html -->
+
+          <!-- Card 2 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left" data-news-item="press">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="/assets/images/events/investment-conclave.jpg" alt="Press release details banner" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Press Release</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[10px] text-text-muted font-semibold">June 24, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Chittagong Deep-Water Berths MoU Approved</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">The ministries of shipping have cleared MoU plans allowing Malaysian logistics groups prioritized docking rights.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-white border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read More</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left" data-news-item="insights">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="/assets/images/events/networking-dinner.jpg" alt="Trade delegation meeting" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-gold text-text-dark text-[10px] font-bold uppercase rounded-full shadow-card">Insight</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[10px] text-text-muted font-semibold">May 18, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Malaysian Tech Delegation Arrives in Dhaka</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">A high-tech semiconductor testing delegation meets local chamber delegates to evaluate software JV setups.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-white border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read More</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 08 — PUBLICATIONS & REPORTS
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="publications-reports-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Official Library</span>
+          <h2 class="section-title text-text-dark">Official Publications & Reports</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Download PDF copies of economic outlook reports and investment guides.
+          </p>
+        </div>
+
+        <!-- Grid of report cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+          
+          <!-- Report 1 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
+                <span class="font-bold text-brand-green uppercase tracking-wider">Annual Outlook</span>
+                <span>4.8 MB</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Economic Report 2026</h3>
+              <p class="text-text-body text-xs leading-relaxed font-medium">A macro study outlining trade expansion metrics, GDP trends, and FDI sectors analysis.</p>
+            </div>
+            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download PDF</span>
+            </a>
+          </div>
+
+          <!-- Report 2 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
+                <span class="font-bold text-brand-blue uppercase tracking-wider">Compliance Guide</span>
+                <span>2.4 MB</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Customs Compliance Handbook</h3>
+              <p class="text-text-body text-xs leading-relaxed font-medium">Clear guide detailing import-export HS codes, shipping registries, and port customs clearance rules.</p>
+            </div>
+            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download PDF</span>
+            </a>
+          </div>
+
+          <!-- Report 3 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
+                <span class="font-bold text-brand-gold uppercase tracking-wider">FDI Booklet</span>
+                <span>1.8 MB</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Special Economic Zones Directory</h3>
+              <p class="text-text-body text-xs leading-relaxed font-medium">Lists geographical sites, tax holiday durations, and zoning permissions for foreign investors.</p>
+            </div>
+            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download PDF</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 09 — ECONOMIC INSIGHTS (ECharts mini graphs)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="economic-insights-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Bilateral curves</span>
+          <h2 class="section-title text-text-dark">Bilateral Economic Indicators Insights</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Market statistics summaries tracked inside ECharts widgets.
+          </p>
+        </div>
+
+        <!-- 3 Columns Insights with canvases -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Insight 1: Market Trends -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+            <span class="text-xs font-bold text-text-dark uppercase tracking-widest border-b border-neutral-border pb-3 block">Bilateral Market Index Trends</span>
+            <div id="trends-mini-chart" class="h-[220px] w-full"></div>
+            <h4 class="font-extrabold text-sm text-text-dark">Expanding Industrial Operations</h4>
+            <p class="text-text-body text-xs leading-relaxed">Bilateral indexes monitor steady corporate expansion volumes due to streamlined customs clearance rules.</p>
+          </div>
+
+          <!-- Insight 2: Inflation Forecasts -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+            <span class="text-xs font-bold text-text-dark uppercase tracking-widest border-b border-neutral-border pb-3 block">Average Inflation Index Comparisons</span>
+            <div id="inflation-mini-chart" class="h-[220px] w-full"></div>
+            <h4 class="font-extrabold text-sm text-text-dark">Stable Consumer Tariffs</h4>
+            <p class="text-text-body text-xs leading-relaxed">Policy alignments and double taxation exemptions help stabilize commodity trading margins.</p>
+          </div>
+
+          <!-- Insight 3: Trade Balance -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+            <span class="text-xs font-bold text-text-dark uppercase tracking-widest border-b border-neutral-border pb-3 block">Net Bilateral Trade Volume ($ Billion)</span>
+            <div id="balance-mini-chart" class="h-[220px] w-full"></div>
+            <h4 class="font-extrabold text-sm text-text-dark">Consolidated FDI Channels Growth</h4>
+            <p class="text-text-body text-xs leading-relaxed font-medium">Bilateral FDI inflows expand, driven by special economic zones allotments and software concessions.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 10 — MEDIA GALLERY
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="gallery-sec">
+      <div class="container-shell text-center">
+        
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Press Coverage</span>
+          <h2 class="section-title text-text-dark">Bilateral Media Coverage Gallery</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Browse through official press meet pictures and conference setups.
+          </p>
+        </div>
+
+        <!-- Reusable photo grid include -->
+        <!-- include components/ui/gallery.html -->
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 11 — NEWSLETTER SIGNUP
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="newsletter-sec">
+      <div class="container-shell max-w-2xl">
+        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-8 md:p-10 shadow-card text-center flex flex-col gap-5 items-center">
+          <div class="w-12 h-12 rounded-full bg-brand-green/5 border border-brand-green/10 flex items-center justify-center text-brand-green"><i data-lucide="mail" class="w-6 h-6"></i></div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="text-text-dark font-extrabold text-lg md:text-xl">Stay Connected With BMCCI</h3>
+            <p class="text-text-body text-xs md:text-sm">Receive updates on bilateral trade concessions, policy briefs, and upcoming summits.</p>
+          </div>
+          <form class="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-2">
+            <input type="email" placeholder="enter your email address..." required class="w-full h-11 px-4 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+            <button type="submit" class="h-11 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card shrink-0 transition-fast">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 12 — CALL TO ACTION (Reusable Include)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary">
+      <div class="container-shell">
+        <!-- Inject Reusable CTA Banner component -->
+        <!-- include components/ui/cta-banner.html -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       ARTICLE DETAIL MODAL (Details View)
+       ========================================================================== -->
+  <div id="news-detail-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-2xl w-full max-h-[85vh] overflow-y-auto relative text-left" data-modal-content>
+      <!-- Close button -->
+      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast z-10" data-modal-close>
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Banner -->
+      <div class="relative w-full h-[220px] overflow-hidden">
+        <img src="/assets/images/events/investment-conclave.jpg" alt="Investment Conclave scene details" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-text-dark/60 to-transparent"></div>
+        <h3 id="modal-news-title" class="absolute bottom-6 left-6 text-white font-extrabold text-lg md:text-xl tracking-tight leading-tight pr-8">
+          Bilateral Trade Treaty Agreement Ratified by Ministers
+        </h3>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 md:p-8 flex flex-col gap-6">
+        <div class="grid grid-cols-2 gap-4 text-xs font-semibold text-text-body border-b border-neutral-border pb-4">
+          <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-brand-green"></i><span>July 12, 2026</span></span>
+          <span class="flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4 text-brand-green"></i><span>Published by Secretariats</span></span>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-brand-green">Executive Summary</h4>
+          <p id="modal-news-desc" class="text-text-body text-xs md:text-sm leading-relaxed">
+            State ministries in charge of trade policy have ratified the double taxation exemption treaties, paving channels for high-value logistics concessions.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2.5 border-t border-neutral-border pt-4 text-xs text-text-body">
+          <span class="font-bold text-text-dark">Key Highlights:</span>
+          <ul class="flex flex-col gap-2 list-disc pl-4">
+            <li>100% withholding tax exemptions cleared on software JVs.</li>
+            <li>Customs clearance procedures unified under a single-window cargo manifest.</li>
+            <li>Direct deep-water route berthing concessions cleared for Port Klang and Chittagong.</li>
+          </ul>
+        </div>
+
+        <!-- Actions -->
+        <div class="border-t border-neutral-border pt-6 mt-2 flex items-center justify-end gap-3">
+          <button class="px-5 py-2.5 border border-neutral-border rounded-btn text-xs font-semibold hover:border-brand-green transition-fast" data-modal-close>Close</button>
+          <a href="#" class="px-5 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Download Brief PDF</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Build-Time Footer Injection -->
+  <!-- include components/footer.html -->
+
+  <!-- Back To Top Floating Action Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full border border-neutral-border bg-white text-text-dark flex items-center justify-center shadow-floating back-to-top-hidden hover:border-brand-green hover:text-brand-green transition-premium z-40" aria-label="Scroll back to top">
+    <i data-lucide="arrow-right" class="w-5 h-5 -rotate-90"></i>
+  </button>
+
+  <!-- Global Javascript Core Bundle -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

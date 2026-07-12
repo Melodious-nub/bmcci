@@ -1,0 +1,32 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - FORM INPUTS
+     ========================================================================== -->
+
+<!-- Text Input Field -->
+<div class="flex flex-col gap-2 w-full">
+  <label class="text-xs font-semibold text-text-dark uppercase tracking-wider">Company Name</label>
+  <input type="text" placeholder="e.g. Apex Cargo & Logistics Ltd." required 
+         class="w-full h-[52px] px-4 border border-neutral-border rounded-input text-sm text-text-dark bg-white focus:outline-none focus:border-brand-green transition-fast" />
+</div>
+
+<!-- Select Options Dropdown -->
+<div class="flex flex-col gap-2 w-full">
+  <label class="text-xs font-semibold text-text-dark uppercase tracking-wider">Business Division</label>
+  <div class="relative">
+    <select class="w-full h-[52px] px-4 pr-10 border border-neutral-border rounded-input text-sm text-text-dark bg-white appearance-none focus:outline-none focus:border-brand-green transition-fast">
+      <option value="">Select Division</option>
+      <option value="tech">Technology & IT</option>
+      <option value="logistics">Logistics & Supply Chain</option>
+      <option value="manufacturing">Textiles & Manufacturing</option>
+      <option value="energy">Energy & Lubricants</option>
+    </select>
+    <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none"></i>
+  </div>
+</div>
+
+<!-- Textarea Message Box -->
+<div class="flex flex-col gap-2 w-full">
+  <label class="text-xs font-semibold text-text-dark uppercase tracking-wider">Bilateral Inquiry Description</label>
+  <textarea placeholder="Outline your joint partnership interest or economic expansion query..." rows="5" required 
+            class="w-full p-4 border border-neutral-border rounded-input text-sm text-text-dark bg-white focus:outline-none focus:border-brand-green transition-fast resize-none"></textarea>
+</div>

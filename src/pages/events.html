@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Business Summits | BMCCI Digital Gateway</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="View upcoming bilateral summits, trade showcases, business networking dinners, and register to connect.">
+  
+  <!-- Style Sheets Links -->
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-neutral-bg font-sans antialiased text-text-body"
+      data-page-title="Events & Business Summits"
+      data-page-subtitle="Discover networking events, business forums, investment summits, and trade missions connecting Bangladesh and Malaysia.">
+
+  <!-- Global Loader Overlay -->
+  <!-- include components/loader.html -->
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-green z-[9999] w-full origin-left scale-x-0"></div>
+
+  <!-- Build-Time Navbar Injection -->
+  <!-- include components/navbar.html -->
+
+  <!-- Main Portal Layout -->
+  <main class="w-full min-h-screen pt-[128px]" id="main-content">
+    
+    <!-- Subpage Header -->
+    <!-- include components/ui/page-header.html -->
+
+    <!-- ==========================================================================
+         SECTION 02 — FEATURED EVENT (Large Horizontal Card)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="featured-event-sec">
+      <div class="container-shell">
+        
+        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg overflow-hidden shadow-floating grid grid-cols-1 lg:grid-cols-12 text-left relative group">
+          <!-- Top Border Accent -->
+          <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue"></div>
+          
+          <!-- Banner Image (Span 5) -->
+          <div class="lg:col-span-5 relative min-h-[250px] lg:min-h-full overflow-hidden">
+            <img src="/assets/images/events/trade-showcase.jpg" alt="Featured trade showcase summit scene" 
+                 class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" />
+            <span class="absolute top-6 left-6 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full shadow-card z-10">
+              Flagship Summit
+            </span>
+          </div>
+
+          <!-- Content Details (Span 7) -->
+          <div class="lg:col-span-7 p-8 md:p-10 flex flex-col justify-between gap-6">
+            <div class="flex flex-col gap-3.5">
+              <!-- Date & Countdown -->
+              <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-brand-green">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="calendar" class="w-4 h-4 text-brand-green"></i>
+                  <span>September 14-16, 2026</span>
+                </span>
+                <span class="h-4 w-px bg-neutral-border hidden sm:block"></span>
+                <span class="flex items-center gap-1.5 text-brand-blue">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>Starts in: 62 Days</span>
+                </span>
+              </div>
+              
+              <h3 class="text-text-dark font-extrabold text-2xl group-hover:text-brand-green transition-fast">
+                Malaysia-Bangladesh Trade Showcase 2026
+              </h3>
+              
+              <p class="text-text-body text-xs md:text-sm leading-relaxed">
+                The landmark annual bilateral showcase hosting over 150 exhibitors, presenting advanced textile machinery concessions, electronics setups, and palm oil JVs. Connect directly with trade ministers.
+              </p>
+
+              <!-- Featured Speakers thumbnails row -->
+              <div class="flex flex-col gap-2 mt-2">
+                <span class="text-[9px] font-bold text-text-muted uppercase tracking-wider">Keynote Speakers include:</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full overflow-hidden border border-neutral-border" title="Syed Almas Kabir">
+                    <img src="/assets/images/members/president.jpg" alt="Syed Almas Kabir" class="w-full h-full object-cover" />
+                  </div>
+                  <div class="w-7 h-7 rounded-full overflow-hidden border border-neutral-border" title="Hazlina Halim">
+                    <img src="/assets/images/members/testimonial-3.jpg" alt="Hazlina Halim" class="w-full h-full object-cover" />
+                  </div>
+                  <span class="text-[10px] text-text-body font-semibold">+ 12 Regional Planners</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex flex-wrap items-center gap-4 border-t border-neutral-border pt-6 mt-2">
+              <button class="w-full sm:w-auto inline-flex items-center justify-center h-11 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-semibold text-xs rounded-btn shadow-card hover:translate-y-[-2px] transition-premium gap-1.5" 
+                      data-modal-open="registration-modal">
+                <i data-lucide="check" class="w-4 h-4"></i>
+                <span>Register Seats</span>
+              </button>
+              <button class="w-full sm:w-auto inline-flex items-center justify-center h-11 px-6 border border-neutral-border text-text-dark hover:border-brand-green hover:text-brand-green bg-white font-semibold text-xs rounded-btn hover:translate-y-[-2px] transition-premium gap-1.5" 
+                      data-modal-open="event-details-modal">
+                <span>View Event Details</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 03 — UPCOMING EVENTS (Responsive Grid)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="upcoming-events-grid-sec">
+      <div class="container-shell">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Bilateral Agenda</span>
+          <h2 class="section-title text-text-dark">Upcoming Chamber Events</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Reserve credentials for trade conclaves, corporate assemblies, and business delegations.
+          </p>
+        </div>
+
+        <!-- 3 Columns grid of cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Event 1 -->
+          <!-- include components/ui/event-card.html -->
+
+          <!-- Event 2 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="/assets/images/events/investment-conclave.jpg" alt="Capital Conclave Scene" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Investment Forum</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <div class="flex items-center gap-2 text-xs font-semibold text-brand-blue">
+                  <i data-lucide="calendar" class="w-4 h-4 text-brand-blue shrink-0"></i>
+                  <span>November 22, 2026</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Bilateral Investment Conclave</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">Closed-door business presentation highlighting infrastructure investments opportunities inside Special Economic Zones.</p>
+              </div>
+              <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
+                <div class="flex flex-col gap-2 text-xs text-text-body">
+                  <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">Shangri-La Hotel, Kuala Lumpur</span></span>
+                  <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>09:30 AM - 04:00 PM</span></span>
+                </div>
+                <button class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1" 
+                        data-modal-open="registration-modal">
+                  <span>Register Seat</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 3 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="/assets/images/events/networking-dinner.jpg" alt="Networking Banquet" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-gold text-text-dark text-[10px] font-bold uppercase rounded-full shadow-card">Networking Dinner</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <div class="flex items-center gap-2 text-xs font-semibold text-brand-gold">
+                  <i data-lucide="calendar" class="w-4 h-4 text-brand-gold shrink-0"></i>
+                  <span>December 05, 2026</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">BMCCI Corporate Networking Dinner</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">Exclusives annual dinner hosting accredited members, regional diplomats, and trade delegation heads.</p>
+              </div>
+              <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
+                <div class="flex flex-col gap-2 text-xs text-text-body">
+                  <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">The Westin Hotel, Dhaka</span></span>
+                  <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>07:00 PM - 10:30 PM</span></span>
+                </div>
+                <button class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1" 
+                        data-modal-open="registration-modal">
+                  <span>Register Seat</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 04 — EVENT CATEGORIES (Icon Selection Bar)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="categories-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-12 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Target Segments</span>
+          <h2 class="section-title text-text-dark">Explore by Category</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Sort upcoming programs by business matchmaking focus or informational scopes.
+          </p>
+        </div>
+
+        <!-- Categories Pill-grids -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
+          
+          <button class="bg-neutral-bgSecondary border border-brand-green rounded-md p-5 flex items-center gap-4 text-brand-green shadow-sm text-sm font-bold transition-fast">
+            <i data-lucide="calendar" class="w-5 h-5 shrink-0"></i>
+            <span>All Categories</span>
+          </button>
+          
+          <button class="bg-white border border-neutral-border hover:border-brand-green rounded-md p-5 flex items-center gap-4 text-text-body hover:text-brand-green text-sm font-semibold transition-fast">
+            <i data-lucide="building-2" class="w-5 h-5 shrink-0"></i>
+            <span>Business Summits</span>
+          </button>
+
+          <button class="bg-white border border-neutral-border hover:border-brand-green rounded-md p-5 flex items-center gap-4 text-text-body hover:text-brand-green text-sm font-semibold transition-fast">
+            <i data-lucide="users" class="w-5 h-5 shrink-0"></i>
+            <span>B2B Networkings</span>
+          </button>
+
+          <button class="bg-white border border-neutral-border hover:border-brand-green rounded-md p-5 flex items-center gap-4 text-text-body hover:text-brand-green text-sm font-semibold transition-fast">
+            <i data-lucide="globe" class="w-5 h-5 shrink-0"></i>
+            <span>Trade Delegations</span>
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 05 — BUSINESS CALENDAR (Monthly grid)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="calendar-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left: Calendar Details (Span 4) -->
+          <div class="lg:col-span-4 flex flex-col gap-6 text-left animate-reveal">
+            <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10 self-start">Annual Schedule</span>
+            <h2 class="section-title text-text-dark">Calendar Overview</h2>
+            <p class="text-text-body text-sm leading-relaxed">
+              Plan trade mission delegations trips and reserve tickets early using our updated chamber database schedules.
+            </p>
+            <div class="flex flex-col gap-3.5 text-xs text-text-body font-medium">
+              <span class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-brand-green"></span>
+                <span>Flagship trade showcase matches</span>
+              </span>
+              <span class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-brand-blue"></span>
+                <span>Closed investment forums</span>
+              </span>
+              <span class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-brand-gold"></span>
+                <span>Corporate dinners & galas</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Right: Calendar grid (Span 8) -->
+          <div class="lg:col-span-8 bg-white border border-neutral-border rounded-lg p-6 shadow-card text-left flex flex-col gap-4">
+            <!-- Calendar Header -->
+            <div class="flex items-center justify-between border-b border-neutral-border pb-4">
+              <h3 class="font-extrabold text-sm text-text-dark">September 2026</h3>
+              <div class="flex items-center gap-1.5 text-xs text-text-muted">
+                <button class="p-1.5 border border-neutral-border rounded hover:border-brand-green transition-fast"><i data-lucide="chevron-right" class="w-3.5 h-3.5 rotate-180"></i></button>
+                <button class="p-1.5 border border-neutral-border rounded hover:border-brand-green transition-fast"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></button>
+              </div>
+            </div>
+            
+            <!-- Calendar Calendar grids -->
+            <div class="grid grid-cols-7 gap-2.5 text-center text-xs font-semibold text-text-dark border-b border-neutral-border pb-2.5">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="grid grid-cols-7 gap-2.5 text-center text-xs text-text-muted font-medium">
+              <span>30</span><span>31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+              <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+              <!-- Highlighted Event Date 14 -->
+              <span class="w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center font-bold cursor-pointer mx-auto shadow-sm" title="Malaysia-Bangladesh Trade Showcase">14</span>
+              <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+              <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
+              <span>28</span><span>29</span><span>30</span><span>1</span><span>2</span><span>3</span><span>4</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 06 — PAST EVENTS GALLERY (Masonry images grids)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="past-gallery-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Event Archives</span>
+          <h2 class="section-title text-text-dark">Past summits gallery</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Browse through photographs of bilateral delegations, MoU signups, and summits.
+          </p>
+        </div>
+
+        <!-- Reusable Gallery component -->
+        <!-- include components/ui/gallery.html -->
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 07 — FEATURED SPEAKERS (profile rows)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="speakers-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Keynotes</span>
+          <h2 class="section-title text-text-dark">Featured Speakers</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Listen to regulatory policymakers, central bank heads, and corporate executives during showcase panel debates.
+          </p>
+        </div>
+
+        <!-- 3 Columns profiles grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+          
+          <!-- Speaker 1 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full overflow-hidden border border-neutral-border shrink-0">
+                <img src="/assets/images/members/president.jpg" alt="Syed Almas Kabir portrait" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <h3 class="text-text-dark font-extrabold text-sm leading-tight">Syed Almas Kabir</h3>
+                <span class="text-xs text-brand-green font-semibold mt-0.5">Director, MetroNet Bangladesh</span>
+                <span class="text-[9px] text-text-muted uppercase">Ex-President, BMCCI</span>
+              </div>
+            </div>
+            <p class="text-text-body text-xs leading-relaxed">Presenting strategies targeting bilateral 5G infrastructure integrations and digital outsourcing routes.</p>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">
+              <span>View LinkedIn Profile</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Speaker 2 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full overflow-hidden border border-neutral-border shrink-0">
+                <img src="/assets/images/members/testimonial-3.jpg" alt="Hazlina Halim portrait" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <h3 class="text-text-dark font-extrabold text-sm leading-tight">Hazlina Abdul Halim</h3>
+                <span class="text-xs text-brand-blue font-semibold mt-0.5">CEO, Malay-Bangla consulting</span>
+                <span class="text-[9px] text-text-muted uppercase">Consulting Specialist</span>
+              </div>
+            </div>
+            <p class="text-text-body text-xs leading-relaxed">Advising corporate groups on corporate compliance rules, trade registries licensing, and duty structures.</p>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">
+              <span>View LinkedIn Profile</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Speaker 3 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full overflow-hidden border border-neutral-border shrink-0">
+                <img src="/assets/images/members/vice-president.jpg" alt="VP Subramaniam portrait" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <h3 class="text-text-dark font-extrabold text-sm leading-tight">Dato' Goonahlam Subramaniam</h3>
+                <span class="text-xs text-brand-gold font-semibold mt-0.5">ED, Klang Port Logistics</span>
+                <span class="text-[9px] text-text-muted uppercase">Vice President, BMCCI</span>
+              </div>
+            </div>
+            <p class="text-text-body text-xs leading-relaxed">Focusing on deep-water shipping route concessions and prioritized cargo handling updates.</p>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">
+              <span>View LinkedIn Profile</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 08 — REGISTRATION BENEFITS (Split Layout)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="benefits-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left: Image (Span 5) -->
+          <div class="lg:col-span-5 relative w-full flex items-center justify-center animate-reveal">
+            <div class="relative w-full aspect-[4/3] rounded-hero overflow-hidden shadow-floating image-reveal-wrapper">
+              <img src="/assets/images/events/networking-dinner.jpg" alt="Networking dinner delegates discussion" 
+                   class="w-full h-full object-cover transition-premium duration-[1.6s] hover:scale-105" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Right: highlights, content (Span 7) -->
+          <div class="lg:col-span-7 flex flex-col gap-6 text-left animate-reveal">
+            <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10 self-start">Attendee Benefits</span>
+            <h2 class="section-title text-text-dark">Summit Registration Benefits</h2>
+            <p class="text-text-body text-sm leading-relaxed max-w-xl">
+              BMCCI forums connect trade delegations directly, opening channels to pitch projects and negotiate MoU terms.
+            </p>
+            
+            <div class="flex flex-col gap-3.5 max-w-lg mt-2 text-xs font-semibold text-text-body">
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Guaranteed B2B Matchmaking panel seating.</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Direct dialogues networking with state planners.</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Verified directories profile listings.</span></span>
+            </div>
+            
+            <a href="/pages/membership.html" class="inline-flex items-center justify-center h-12 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-semibold text-xs rounded-btn shadow-card hover:translate-y-[-2px] transition-premium gap-2 self-start mt-4">
+              <span>Become a Member</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 09 — SPONSORS & PARTNERS (Logo lists)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="sponsors-sec">
+      <div class="container-shell text-center">
+        <div class="max-w-2xl mx-auto mb-12 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Alliances</span>
+          <h2 class="section-title text-text-dark">Event Sponsors & Partners</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Collaborating with leading ministries, banking networks, and corporate members.
+          </p>
+        </div>
+
+        <!-- Reusable partner logo grid -->
+        <!-- include components/ui/partner-grid.html -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 10 — FAQ (Accordions)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="faq-accordions-sec">
+      <div class="container-shell">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Visitor FAQ</span>
+          <h2 class="section-title text-text-dark">Frequently Asked Questions</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Answers to common queries regarding registration fees, travel recommendation requests, and delegate tickets.
+          </p>
+        </div>
+
+        <!-- Accordions -->
+        <div class="max-w-3xl mx-auto flex flex-col divide-y divide-neutral-border border-y border-neutral-border text-left" data-accordion-group>
+          
+          <!-- Accordion 1 -->
+          <div class="py-4">
+            <button class="w-full flex items-center justify-between py-2 text-left text-text-dark font-extrabold text-sm md:text-base focus:outline-none" data-accordion-trigger>
+              <span>Can non-members register for BMCCI events?</span>
+              <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-muted transition-transform duration-300"></i>
+            </button>
+            <div class="hidden mt-3 text-xs md:text-sm text-text-body leading-relaxed animate-fade-in">
+              Yes, non-members and foreign delegates can register to attend our trade showcases and summits by purchasing visitor tickets. Accredited chamber members receive priority seating and complimentary entries.
+            </div>
+          </div>
+
+          <!-- Accordion 2 -->
+          <span></span>
+
+          <!-- Accordion 3 -->
+          <div class="py-4">
+            <button class="w-full flex items-center justify-between py-2 text-left text-text-dark font-extrabold text-sm md:text-base focus:outline-none" data-accordion-trigger>
+              <span>Are visa recommendation letters issued for summit attendees?</span>
+              <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-muted transition-transform duration-300"></i>
+            </button>
+            <div class="hidden mt-3 text-xs md:text-sm text-text-body leading-relaxed animate-fade-in">
+              Yes, registered foreign delegates requesting business visa clearances to participate in our flagship trade summits can submit request files online. Secretariats issue official invitation backing letters within 3 days.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 11 — CALL TO ACTION (Reusable Include)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary" id="register">
+      <div class="container-shell">
+        <!-- Inject Reusable CTA Banner component -->
+        <!-- include components/ui/cta-banner.html -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL 1: EVENT DETAILS MODAL (Details View)
+       ========================================================================== -->
+  <div id="event-details-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-2xl w-full max-h-[85vh] overflow-y-auto relative text-left" data-modal-content>
+      <!-- Close button -->
+      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast" data-modal-close>
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Banner -->
+      <div class="relative w-full h-[200px] overflow-hidden">
+        <img src="/assets/images/events/trade-showcase.jpg" alt="Trade showcase event" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-text-dark/60 to-transparent"></div>
+        <h3 class="absolute bottom-6 left-6 text-white font-extrabold text-xl md:text-2xl tracking-tight leading-tight">
+          Malaysia-Bangladesh Trade Showcase 2026
+        </h3>
+      </div>
+
+      <!-- Details Content -->
+      <div class="p-6 md:p-8 flex flex-col gap-6">
+        <div class="grid grid-cols-2 gap-4 text-xs font-semibold text-text-dark border-b border-neutral-border pb-4">
+          <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-brand-green"></i><span>September 14-16, 2026</span></span>
+          <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-4 h-4 text-brand-green"></i><span>Pan Pacific Sonargaon, Dhaka</span></span>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-brand-green">Summit Agenda</h4>
+          <p class="text-text-body text-xs leading-relaxed">
+            The landmark bilateral showcase hosting over 150 exhibitors displaying tech, machinery, apparel, and cargo logistics solutions. Designed to secure JVs agreements.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 border-t border-neutral-border pt-4">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-brand-blue">Keynote Speakers</h4>
+          <ul class="flex flex-col gap-2 text-xs font-semibold text-text-dark">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+              <span>Syed Almas Kabir (Director, MetroNet Bangladesh)</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+              <span>Hazlina Abdul Halim (Consulting Specialist)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Actions -->
+        <div class="border-t border-neutral-border pt-6 mt-2 flex items-center justify-end gap-3">
+          <button class="px-5 py-2.5 border border-neutral-border rounded-btn text-xs font-semibold hover:border-brand-green transition-fast" data-modal-close>Close</button>
+          <button class="px-5 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast" 
+                  data-modal-open="registration-modal" data-modal-close-target="#event-details-modal">
+            Register for Summit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: MULTI-STEP REGISTRATION FORM (Popup)
+       ========================================================================== -->
+  <div id="registration-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-md w-full relative text-left" data-modal-content>
+      <!-- Close button -->
+      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast z-10" data-modal-close>
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="p-6 md:p-8">
+        
+        <!-- Multi-Step progress indicator -->
+        <div class="flex flex-col gap-3.5 mb-8 text-center items-center">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-wider">Summit Registration</span>
+          <div class="flex items-center gap-3 relative w-full max-w-[200px] justify-between">
+            <!-- Background bar -->
+            <div class="absolute top-1/2 left-0 w-full h-[2px] bg-neutral-border -translate-y-1/2 -z-10"></div>
+            <!-- Progress Line -->
+            <div id="register-progress-line" class="absolute top-1/2 left-0 w-0 h-[2px] bg-brand-green -translate-y-1/2 -z-10 transition-all duration-300"></div>
+            
+            <div class="step-indicator w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold transition-all duration-300 select-none shadow-sm">1</div>
+            <div class="step-indicator w-7 h-7 rounded-full bg-neutral-border text-text-muted flex items-center justify-center text-xs font-bold transition-all duration-300 select-none shadow-sm">2</div>
+            <div class="step-indicator w-7 h-7 rounded-full bg-neutral-border text-text-muted flex items-center justify-center text-xs font-bold transition-all duration-300 select-none shadow-sm">3</div>
+          </div>
+        </div>
+
+        <form class="flex flex-col gap-5">
+          
+          <!-- Step 1: Corporate Profile -->
+          <div data-register-step="1" class="flex flex-col gap-4">
+            <h4 class="font-extrabold text-sm text-text-dark border-b border-neutral-border pb-2">Step 1: Contact Information</h4>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Full Name</label>
+              <input type="text" placeholder="Anisur Rahman" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Corporate Email</label>
+              <input type="email" placeholder="executive@company.com" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Contact Number</label>
+              <input type="tel" placeholder="+880 1712-345678" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+            </div>
+          </div>
+
+          <!-- Step 2: Company Details -->
+          <div data-register-step="2" class="hidden flex flex-col gap-4">
+            <h4 class="font-extrabold text-sm text-text-dark border-b border-neutral-border pb-2">Step 2: Company Profile</h4>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Company Name</label>
+              <input type="text" placeholder="Bengal Spinners Consortium" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Designation</label>
+              <input type="text" placeholder="Managing Director" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Business Division</label>
+              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast bg-white">
+                <option value="textiles">Textiles & Manufacturing</option>
+                <option value="telecom">Telecommunications & IT</option>
+                <option value="logistics">Logistics & Cargo Shipping</option>
+                <option value="energy">Renewable Energy JVs</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Step 3: Terms & preferences -->
+          <div data-register-step="3" class="hidden flex flex-col gap-4">
+            <h4 class="font-extrabold text-sm text-text-dark border-b border-neutral-border pb-2">Step 3: Membership Status</h4>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Chamber Membership</label>
+              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast bg-white">
+                <option value="member">Active BMCCI Chamber Member</option>
+                <option value="non-member">Public Visitor (Non-Member)</option>
+                <option value="delegate">International Delegate (Malaysia/Others)</option>
+              </select>
+            </div>
+            
+            <div class="flex items-start gap-2.5 mt-2">
+              <input type="checkbox" required id="register-terms" class="mt-1 w-3.5 h-3.5 border-neutral-border focus:ring-0 rounded" />
+              <label for="register-terms" class="text-[10px] text-text-body leading-tight">I agree that secretariats verify company license credentials to issue summit entries badges.</label>
+            </div>
+          </div>
+
+          <!-- Step 4: Success confirmation screen -->
+          <div data-register-step="4" class="hidden flex flex-col items-center text-center gap-4 py-6">
+            <div class="w-14 h-14 rounded-full bg-brand-green/10 border border-brand-green/20 flex items-center justify-center text-brand-green">
+              <i data-lucide="check" class="w-8 h-8"></i>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <h4 class="font-extrabold text-base text-text-dark">Summit Registration Saved</h4>
+              <p class="text-text-body text-xs leading-relaxed max-w-[280px] mx-auto">BMCCI secretariats will review company parameters to email entry passes and visa recommendations codes.</p>
+            </div>
+          </div>
+
+          <!-- Footer Navigation Buttons -->
+          <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+            <button type="button" id="btn-register-prev" class="h-10 px-4 border border-neutral-border rounded-btn text-xs font-semibold hover:border-brand-green hover:text-brand-green bg-white transition-fast invisible">
+              Back
+            </button>
+            
+            <div class="flex gap-2">
+              <button type="button" id="btn-register-next" class="h-10 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast">
+                Continue
+              </button>
+              <button type="submit" id="btn-register-submit" class="h-10 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast hidden">
+                Complete Registration
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Build-Time Footer Injection -->
+  <!-- include components/footer.html -->
+
+  <!-- Back To Top Floating Action Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full border border-neutral-border bg-white text-text-dark flex items-center justify-center shadow-floating back-to-top-hidden hover:border-brand-green hover:text-brand-green transition-premium z-40" aria-label="Scroll back to top">
+    <i data-lucide="arrow-right" class="w-5 h-5 -rotate-90"></i>
+  </button>
+
+  <!-- Global Javascript Core Bundle -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

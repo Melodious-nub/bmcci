@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | BMCCI Digital Gateway</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="The page you are looking for does not exist or has been relocated.">
+  
+  <!-- Style Sheets Links -->
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-neutral-bg font-sans antialiased text-text-body"
+      data-page-title="Error 404"
+      data-page-subtitle="The page you are looking for does not exist or has been relocated.">
+
+  <!-- Global Loader Overlay -->
+  <!-- include components/loader.html -->
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-green z-[9999] w-full origin-left scale-x-0"></div>
+
+  <!-- Build-Time Navbar Injection -->
+  <!-- include components/navbar.html -->
+
+  <!-- Main Portal Layout -->
+  <main class="w-full min-h-screen pt-[128px] flex flex-col items-center justify-center text-center py-20" id="main-content">
+    
+    <!-- Hero Header Details -->
+    <div class="container-shell max-w-xl flex flex-col items-center gap-6">
+      
+      <!-- Logo/Illustration Branded -->
+      <div class="w-20 h-20 rounded-full bg-brand-green/10 border border-brand-green/20 flex items-center justify-center text-brand-green">
+        <i data-lucide="alert-triangle" class="w-10 h-10"></i>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h1 class="text-6xl font-black text-text-dark tracking-tighter">404</h1>
+        <h2 class="text-lg font-bold text-text-dark uppercase tracking-wider">Page Not Found</h2>
+        <p class="text-text-body text-xs md:text-sm leading-relaxed max-w-sm mx-auto">
+          The requested page might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+      </div>
+
+      <!-- Action buttons redirecting home -->
+      <div class="flex items-center gap-3.5 mt-2 w-full justify-center">
+        <a href="/index.html" class="px-6 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white text-xs font-bold uppercase rounded-btn shadow-card transition-fast">
+          Return Home
+        </a>
+        <a href="/pages/contact.html" class="px-6 py-2.5 bg-white border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark text-xs font-bold uppercase rounded-btn transition-fast">
+          Contact Support
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Build-Time Footer Injection -->
+  <!-- include components/footer.html -->
+
+  <!-- Global Javascript Core Bundle -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

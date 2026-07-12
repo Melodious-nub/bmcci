@@ -1,0 +1,28 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - DROPDOWNS
+     ========================================================================== -->
+<div class="relative inline-block text-left" id="demo-dropdown-container">
+  <!-- Trigger Button -->
+  <button class="inline-flex items-center justify-between gap-2 px-4 py-2.5 border border-neutral-border rounded-btn bg-white text-sm font-semibold text-text-body hover:border-brand-green transition-fast shadow-card" 
+          data-dropdown-trigger>
+    <span>Select Division</span>
+    <i data-lucide="chevron-down" class="w-4 h-4 text-text-muted"></i>
+  </button>
+  
+  <!-- Dropdown Menu List -->
+  <div class="absolute left-0 mt-2 w-56 bg-white border border-neutral-border rounded-md shadow-floating hidden z-50 py-1 font-secondary text-sm">
+    <button class="w-full text-left px-4 py-2.5 text-text-dark font-medium hover:bg-neutral-bgSecondary hover:text-brand-green transition-fast">
+      Technology & IT
+    </button>
+    <button class="w-full text-left px-4 py-2.5 text-text-body hover:bg-neutral-bgSecondary hover:text-brand-green transition-fast">
+      Manufacturing & Garments
+    </button>
+    <button class="w-full text-left px-4 py-2.5 text-text-body hover:bg-neutral-bgSecondary hover:text-brand-green transition-fast">
+      Logistics & Cargo Channels
+    </button>
+    <div class="h-px bg-neutral-border my-1"></div>
+    <button class="w-full text-left px-4 py-2.5 text-brand-red hover:bg-brand-red/5 transition-fast">
+      Clear Selection
+    </button>
+  </div>
+</div>

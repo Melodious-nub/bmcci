@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Economic Intelligence | BMCCI Digital Gateway</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="Explore macro economic indicators, market intelligence briefs, and direct investment statistics for Bangladesh and Malaysia.">
+  
+  <!-- Style Sheets Links -->
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-neutral-bg font-sans antialiased text-text-body"
+      data-page-title="Economic Intelligence"
+      data-page-subtitle="Explore economic indicators, investment insights, and market trends shaping Bangladesh and Malaysia.">
+
+  <!-- Global Loader Overlay -->
+  <!-- include components/loader.html -->
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-green z-[9999] w-full origin-left scale-x-0"></div>
+
+  <!-- Build-Time Navbar Injection -->
+  <!-- include components/navbar.html -->
+
+  <!-- Main Portal Layout -->
+  <main class="w-full min-h-screen pt-[128px]" id="main-content">
+    
+    <!-- Subpage Header -->
+    <!-- include components/ui/page-header.html -->
+
+    <!-- ==========================================================================
+         SECTION 02 — ECONOMIC SNAPSHOT (4 KPI Cards)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="snapshot-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- GDP Card -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-2.5 text-left hover-lift">
+            <span class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Bilateral Trade Volume</span>
+            <span class="text-3xl font-extrabold text-text-dark" data-counter-target="3.8" data-counter-prefix="$" data-counter-suffix="B" data-counter-decimals="1">$0.0B</span>
+            <span class="text-[11px] text-brand-green font-semibold flex items-center gap-1">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+              <span>+12.4% YoY Expansion</span>
+            </span>
+          </div>
+
+          <!-- Inflation Card -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-2.5 text-left hover-lift">
+            <span class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Combined GDP Value</span>
+            <span class="text-3xl font-extrabold text-text-dark" data-counter-target="860" data-counter-prefix="$" data-counter-suffix="B">0</span>
+            <span class="text-[11px] text-brand-blue font-semibold flex items-center gap-1">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              <span>Strong Emerging Growth</span>
+            </span>
+          </div>
+
+          <!-- Export Card -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-2.5 text-left hover-lift">
+            <span class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Malaysian FDI Inflow</span>
+            <span class="text-3xl font-extrabold text-text-dark" data-counter-target="412" data-counter-prefix="$" data-counter-suffix="M">$0</span>
+            <span class="text-[11px] text-brand-gold font-semibold flex items-center gap-1">
+              <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+              <span>Infrastructure & Telecom</span>
+            </span>
+          </div>
+
+          <!-- Import Card -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-2.5 text-left hover-lift">
+            <span class="text-[10px] font-bold text-text-muted uppercase tracking-wider">Average Inflation Index</span>
+            <span class="text-3xl font-extrabold text-text-dark" data-counter-target="4.0" data-counter-suffix="%" data-counter-decimals="1">0.0%</span>
+            <span class="text-[11px] text-brand-green font-semibold flex items-center gap-1">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              <span>Stable Policy Environment</span>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 03 — INTERACTIVE DASHBOARD (ECharts GDP trend + summary widgets)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="dashboard-trend-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- Left: GDP Growth multi-line chart (Span 8) -->
+          <div class="lg:col-span-8 bg-white border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+            <span class="text-xs font-bold text-text-dark uppercase tracking-wider border-b border-neutral-border pb-3 block">Bilateral GDP Growth Trends (2020 - 2026)</span>
+            <div id="gdp-trend-chart" class="chart-container"></div>
+          </div>
+
+          <!-- Right: Summary widgets (Span 4) -->
+          <div class="lg:col-span-4 flex flex-col gap-6 text-left">
+            
+            <div class="bg-white border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 flex-1">
+              <h3 class="text-text-dark font-extrabold text-xs uppercase tracking-wider border-b border-neutral-border pb-3">Economic Scorecard</h3>
+              
+              <!-- Indicator 1 -->
+              <div class="flex items-center justify-between border-b border-neutral-border pb-3 text-xs">
+                <span class="text-text-body font-medium">Bilateral Ease of Trade Score</span>
+                <span class="font-extrabold text-brand-green">92 / 100</span>
+              </div>
+              
+              <!-- Indicator 2 -->
+              <div class="flex items-center justify-between border-b border-neutral-border pb-3 text-xs">
+                <span class="text-text-body font-medium">Currency Exchange Rate</span>
+                <span class="font-extrabold text-text-dark">1 BDT = 0.041 MYR</span>
+              </div>
+
+              <!-- Indicator 3 -->
+              <div class="flex items-center justify-between border-b border-neutral-border pb-3 text-xs">
+                <span class="text-text-body font-medium">Business Confidence Index</span>
+                <span class="font-extrabold text-brand-blue">+14.2% (Premium)</span>
+              </div>
+
+              <!-- Indicator 4 -->
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-text-body font-medium">Bilateral FDI Synergy Index</span>
+                <span class="font-extrabold text-brand-gold">+8.5% Growth</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 04 — BANGLADESH ECONOMY (split + details)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="bd-economy-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left: Content (Span 7) -->
+          <div class="lg:col-span-7 flex flex-col gap-6 text-left animate-reveal">
+            <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10 self-start">South Asian Powerhouse</span>
+            <h2 class="section-title text-text-dark">Bangladesh Macro Economy</h2>
+            <p class="text-text-body text-sm leading-relaxed">
+              Bangladesh represents one of the fastest-expanding consumer markets globally, powered by high RMG export demands, substantial remittance reserves, and major infrastructure deployments.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium text-text-body mt-2">
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>6.8% Average Annual GDP Growth</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>97 Special Economic Zones Allotted</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Demographic Dividend: 65% Youth Workforce</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Favorable FDI Capital Repatriation Terms</span></span>
+            </div>
+
+            <a href="/pages/discover.html#bangladesh" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:text-brand-darkGreen transition-fast mt-4 uppercase tracking-wider group">
+              <span>Access Bangladesh Profile</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
+            </a>
+          </div>
+
+          <!-- Right: Image (Span 5) -->
+          <div class="lg:col-span-5 relative w-full flex items-center justify-center animate-reveal">
+            <div class="relative w-full aspect-[4/3] rounded-hero overflow-hidden shadow-floating image-reveal-wrapper">
+              <img src="/assets/images/tourism/dhaka-center.jpg" alt="Dhaka Motijheel Skyline district" 
+                   class="w-full h-full object-cover transition-premium duration-[1.6s] hover:scale-105" loading="lazy" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 05 — MALAYSIA ECONOMY (Mirror)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="my-economy-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left: Image (Span 5) -->
+          <div class="lg:col-span-5 relative w-full flex items-center justify-center animate-reveal">
+            <div class="relative w-full aspect-[4/3] rounded-hero overflow-hidden shadow-floating image-reveal-wrapper">
+              <img src="/assets/images/tourism/kl-district.jpg" alt="Kuala Lumpur financial center TRX" 
+                   class="w-full h-full object-cover transition-premium duration-[1.6s] hover:scale-105" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Right: Content (Span 7) -->
+          <div class="lg:col-span-7 flex flex-col gap-6 text-left animate-reveal">
+            <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10 self-start">ASEAN Commercial Coordinate</span>
+            <h2 class="section-title text-text-dark">Malaysia Macro Economy</h2>
+            <p class="text-text-body text-sm leading-relaxed">
+              Malaysia represents a highly advanced industrial economy leading global semiconductor testing packaging, container port logistics efficiency, and Islamic digital financing networks.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium text-text-body mt-2">
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>4.2% Stable Annual GDP Growth</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>World-class Port Klang Freight Efficiency</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>Advanced Wafer Fabrication & Silicon Island</span></span>
+              <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>TRX Financial Center Concessions</span></span>
+            </div>
+
+            <a href="/pages/discover.html#kl" class="inline-flex items-center gap-1.5 text-xs text-brand-blue font-bold hover:text-brand-green transition-fast mt-4 uppercase tracking-wider group">
+              <span>Access Malaysia Profile</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 06 — TRADE COMPARISON (Horizontal Table)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="comparison-table-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Indicator Comparison</span>
+          <h2 class="section-title text-text-dark">Bilateral Economy Indicators</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Side-by-side indicator audit of macro metrics comparing Bangladesh and Malaysia.
+          </p>
+        </div>
+
+        <!-- Comparison Table (Responsive scroll container) -->
+        <div class="border border-neutral-border rounded-lg bg-white overflow-hidden max-w-4xl mx-auto shadow-card text-left">
+          <div class="overflow-x-auto w-full">
+            <table class="w-full border-collapse font-sans text-xs">
+              
+              <!-- Header -->
+              <thead class="bg-neutral-bgSecondary border-b border-neutral-border text-[10px] font-bold uppercase tracking-wider text-text-dark">
+                <tr>
+                  <th class="p-4 font-bold">Macro Indicator</th>
+                  <th class="p-4 font-bold">Bangladesh</th>
+                  <th class="p-4 font-bold">Malaysia</th>
+                </tr>
+              </thead>
+              
+              <!-- Body -->
+              <tbody class="divide-y divide-neutral-border text-text-body font-medium">
+                
+                <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+                  <td class="p-4 font-bold text-text-dark">Annual GDP Size</td>
+                  <td class="p-4">$450 Billion</td>
+                  <td class="p-4">$412 Billion</td>
+                </tr>
+
+                <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+                  <td class="p-4 font-bold text-text-dark">Annual GDP Growth Rate</td>
+                  <td class="p-4 text-brand-green font-bold">+6.8%</td>
+                  <td class="p-4 text-brand-blue font-bold">+4.2%</td>
+                </tr>
+
+                <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+                  <td class="p-4 font-bold text-text-dark">Demographics (Population)</td>
+                  <td class="p-4">170 Million</td>
+                  <td class="p-4">34 Million</td>
+                </tr>
+
+                <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+                  <td class="p-4 font-bold text-text-dark">Bilateral Exports Share</td>
+                  <td class="p-4">$1.1 Billion (RM-apparel, Seafood)</td>
+                  <td class="p-4">$2.7 Billion (Petroleum, Chips)</td>
+                </tr>
+
+                <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+                  <td class="p-4 font-bold text-text-dark">Official Currency Code</td>
+                  <td class="p-4">BDT (Taka)</td>
+                  <td class="p-4">MYR (Ringgit)</td>
+                </tr>
+
+                <tr class="hover:bg-neutral-bgSecondary/45 transition-fast">
+                  <td class="p-4 font-bold text-text-dark">Average Corporate Tax Concessions</td>
+                  <td class="p-4">5 - 7 Years Exemption in EZs</td>
+                  <td class="p-4">100% Tax Repatriation in MSCs</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 07 — INDUSTRY PERFORMANCE (Grid with trend tags)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="industry-perf-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Sector Audits</span>
+          <h2 class="section-title text-text-dark">Industry Growth Performance</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Operational review tracking bilateral industry growth metrics and strategic investment trends.
+          </p>
+        </div>
+
+        <!-- 3 Column grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Industry 1 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-full bg-brand-green/5 border border-brand-green/10 flex items-center justify-center text-brand-green">
+                <i data-lucide="check" class="w-5 h-5"></i>
+              </div>
+              <span class="inline-flex px-2 py-0.5 bg-brand-green/10 text-brand-green rounded text-[10px] font-bold border border-brand-green/15">High Growth</span>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-base">Textile & Raw Yarn</h3>
+            <p class="text-text-body text-xs leading-relaxed">High demand for advanced spinning machinery joint ventures. Growth remains robust due to global apparel exports volumes.</p>
+          </div>
+
+          <!-- Industry 2 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center text-brand-blue">
+                <i data-lucide="globe" class="w-5 h-5"></i>
+              </div>
+              <span class="inline-flex px-2 py-0.5 bg-brand-blue/10 text-brand-blue rounded text-[10px] font-bold border border-brand-blue/15">Emerging</span>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-base">Semiconductors & Software</h3>
+            <p class="text-text-body text-xs leading-relaxed">Collaborations involving wafer assembly licensing, chip packaging consultancies, and digital infrastructure developments.</p>
+          </div>
+
+          <!-- Industry 3 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-full bg-brand-gold/5 border border-brand-gold/10 flex items-center justify-center text-brand-gold">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>
+              </div>
+              <span class="inline-flex px-2 py-0.5 bg-brand-green/10 text-brand-green rounded text-[10px] font-bold border border-brand-green/15">Stable</span>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-base">Logistics & Cold Storage</h3>
+            <p class="text-text-body text-xs leading-relaxed">Prioritized port berthing concessions, container terminals modernizations, and supply chain shipping networks.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 08 — FOREIGN DIRECT INVESTMENT (Split + mini chart)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="fdi-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- Left: Area Chart Container (Span 8) -->
+          <div class="lg:col-span-8 bg-white border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+            <span class="text-xs font-bold text-text-dark uppercase tracking-wider border-b border-neutral-border pb-3 block">Malaysian FDI Capital Inflow Trends ($ Millions)</span>
+            <div id="fdi-trend-chart" class="chart-container"></div>
+          </div>
+
+          <!-- Right: Summary details (Span 4) -->
+          <div class="lg:col-span-4 p-8 bg-neutral-bgSecondary border border-neutral-border rounded-lg shadow-card text-left flex flex-col justify-between gap-6">
+            <div class="flex flex-col gap-6">
+              <div class="flex flex-col gap-1">
+                <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Capital Inflows</span>
+                <h3 class="text-text-dark font-extrabold text-xl">FDI Capital Channels</h3>
+              </div>
+              
+              <div class="flex flex-col gap-4 text-xs text-text-body font-medium">
+                <div class="flex gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i>
+                  <span>Top FDI target: Telecom tower infrastructures & networks.</span>
+                </div>
+                <div class="flex gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i>
+                  <span>Expanding JVs: Solar grid farm concessions Johor & Dhaka.</span>
+                </div>
+                <div class="flex gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i>
+                  <span>Exemptions: 100% withholding tax concessions on digital services.</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="/pages/trade.html#downloads" class="w-full py-3 bg-white hover:bg-neutral-bgSecondary text-text-dark font-bold text-xs rounded-btn border border-neutral-border shadow-card transition-fast flex items-center justify-center gap-1.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download FDI Guidelines Booklet</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 09 — ECONOMIC REPORTS (Grid)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="economic-reports-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Publications</span>
+          <h2 class="section-title text-text-dark">Official Economic Reports</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Download verified trade booklets, compliance guides, and bilateral economic reports.
+          </p>
+        </div>
+
+        <!-- Grid of report cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+          
+          <!-- Report 1 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
+                <span class="font-bold text-brand-green uppercase tracking-wider">PDF Report</span>
+                <span>June 2026</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Q2 Economic brief</h3>
+              <p class="text-text-body text-xs leading-relaxed">Macro GDP indices reviews, inflation statistics curves, and cargo imports updates compiled for Q2.</p>
+            </div>
+            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download Report</span>
+            </a>
+          </div>
+
+          <!-- Report 2 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
+                <span class="font-bold text-brand-blue uppercase tracking-wider">PDF Report</span>
+                <span>May 2026</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Trade Handbook</h3>
+              <p class="text-text-body text-xs leading-relaxed">A complete compliance guide to tariff codes, customs clearance structures, and port handling rules.</p>
+            </div>
+            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download Report</span>
+            </a>
+          </div>
+
+          <!-- Report 3 -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
+                <span class="font-bold text-brand-gold uppercase tracking-wider">PDF report</span>
+                <span>April 2026</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Investment Incentives Brochure</h3>
+              <p class="text-text-body text-xs leading-relaxed">Tax holidays parameters, SEZs concessions lists, and government incentives rules summarized for members.</p>
+            </div>
+            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download Report</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 10 — ECONOMIC TIMELINE
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="timeline-sec">
+      <div class="container-shell">
+        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Bilateral Legacy</span>
+          <h2 class="section-title text-text-dark">Historical Milestones</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            BMCCI has spearheaded bilateral events, policy updates, and shipping channel coordination over more than two decades.
+          </p>
+        </div>
+
+        <!-- Inject Reusable Timeline component -->
+        <!-- include components/ui/timeline.html -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 11 — FAQ (Accordions)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="faq-accordions-sec">
+      <div class="container-shell">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Research Support FAQ</span>
+          <h2 class="section-title text-text-dark">Frequently Asked Questions</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Answers to common queries regarding intelligence datasets, reports access, and compliance updates.
+          </p>
+        </div>
+
+        <!-- Accordions -->
+        <div class="max-w-3xl mx-auto flex flex-col divide-y divide-neutral-border border-y border-neutral-border text-left" data-accordion-group>
+          
+          <!-- Item 1 -->
+          <div class="py-4">
+            <button class="w-full flex items-center justify-between py-2 text-left text-text-dark font-extrabold text-sm md:text-base focus:outline-none" data-accordion-trigger>
+              <span>Where does BMCCI source its trade data?</span>
+              <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-muted transition-transform duration-300"></i>
+            </button>
+            <div class="hidden mt-3 text-xs md:text-sm text-text-body leading-relaxed animate-fade-in">
+              All statistical indicators, GDP values, and import-export charts are compiled from official customs declarations registries, central bank updates, and ministries datasets (such as BIDA, BEZA, MIDA, and MATRADE).
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="py-4">
+            <button class="w-full flex items-center justify-between py-2 text-left text-text-dark font-extrabold text-sm md:text-base focus:outline-none" data-accordion-trigger>
+              <span>How often are the intelligence indices updated?</span>
+              <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-muted transition-transform duration-300"></i>
+            </button>
+            <div class="hidden mt-3 text-xs md:text-sm text-text-body leading-relaxed animate-fade-in">
+              Indices tracking total trade volume and investment inflows are revised quarterly. Policy briefs regarding double taxation compliance changes are updated immediately following state committee ratifications.
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="py-4">
+            <button class="w-full flex items-center justify-between py-2 text-left text-text-dark font-extrabold text-sm md:text-base focus:outline-none" data-accordion-trigger>
+              <span>Can non-members download the market handbooks?</span>
+              <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-muted transition-transform duration-300"></i>
+            </button>
+            <div class="hidden mt-3 text-xs md:text-sm text-text-body leading-relaxed animate-fade-in">
+              Quarterly summaries are accessible to public visitors. Standard investment guides, specific customs handbooks, and direct B2B directory search keys are reserved exclusively for registered chamber members.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 12 — CALL TO ACTION (Reusable Include)
+         ========================================================================== -->
+    <section class="section-large bg-white">
+      <div class="container-shell">
+        <!-- Inject Reusable CTA Banner component -->
+        <!-- include components/ui/cta-banner.html -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Build-Time Footer Injection -->
+  <!-- include components/footer.html -->
+
+  <!-- Back To Top Floating Action Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full border border-neutral-border bg-white text-text-dark flex items-center justify-center shadow-floating back-to-top-hidden hover:border-brand-green hover:text-brand-green transition-premium z-40" aria-label="Scroll back to top">
+    <i data-lucide="arrow-right" class="w-5 h-5 -rotate-90"></i>
+  </button>
+
+  <!-- Global Javascript Core Bundle -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

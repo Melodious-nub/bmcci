@@ -1,0 +1,46 @@
+[
+  {
+    "id": "apex-logistics",
+    "name": "Apex Cargo & Logistics Ltd.",
+    "category": "Logistics & Supply Chain",
+    "logo": "/assets/logos/apex-logistics.svg",
+    "origin": "Bangladesh",
+    "description": "Leading shipping, container terminal operation, and clearing agency specializing in Dhaka-Port Klang logistics routes.",
+    "founded": 2012,
+    "employees": "450+",
+    "services": ["Ocean Freight", "Customs Brokerage", "Warehouse Distribution", "Cross-Border Trucking"]
+  },
+  {
+    "id": "malaysia-telecom",
+    "name": "Axiata Group Berhad",
+    "category": "Telecommunications & Technology",
+    "logo": "/assets/logos/axiata.svg",
+    "origin": "Malaysia",
+    "description": "Multinational telecommunications conglomerate driving digital connectivity and enterprise solutions across South Asia.",
+    "founded": 1992,
+    "employees": "12,000+",
+    "services": ["Mobile Network Operations", "Digital Infrastructure", "Cloud Computing", "Fintech Solutions"]
+  },
+  {
+    "id": "dhaka-textiles",
+    "name": "Bengal Weaving & Apparel Ltd.",
+    "category": "Textiles & Manufacturing",
+    "logo": "/assets/logos/bengal-weaving.svg",
+    "origin": "Bangladesh",
+    "description": "Premium garment manufacturing exporter supplying luxury brands in Southeast Asia and Europe, utilizing sustainable machinery.",
+    "founded": 2005,
+    "employees": "3,200+",
+    "services": ["Yarn Spinning", "Apparel Design", "Fabric Sourcing", "Garment Exporting"]
+  },
+  {
+    "id": "petronas-lube",
+    "name": "Petronas Lubricants International",
+    "category": "Energy & Resources",
+    "logo": "/assets/logos/petronas.svg",
+    "origin": "Malaysia",
+    "description": "Global petroleum lubricant leader supplying premium automotive, industrial, and heavy machinery oils across South Asian markets.",
+    "founded": 2008,
+    "employees": "2,400+",
+    "services": ["Automotive Lubricants", "Industrial Fluids", "Energy Consultancy", "Marine Engine Oils"]
+  }
+]

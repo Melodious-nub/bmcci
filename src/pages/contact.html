@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Support | BMCCI Digital Gateway</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="Get in touch with the Bangladesh Malaysia Chamber of Commerce & Industry offices in Dhaka and Kuala Lumpur for trade inquiries.">
+  
+  <!-- Style Sheets Links -->
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-neutral-bg font-sans antialiased text-text-body"
+      data-page-title="Let's Connect"
+      data-page-subtitle="Whether you are looking for business opportunities, partnerships, or membership support, BMCCI is here to connect you.">
+
+  <!-- Global Loader Overlay -->
+  <!-- include components/loader.html -->
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-green z-[9999] w-full origin-left scale-x-0"></div>
+
+  <!-- Build-Time Navbar Injection -->
+  <!-- include components/navbar.html -->
+
+  <!-- Main Portal Layout -->
+  <main class="w-full min-h-screen pt-[128px]" id="main-content">
+    
+    <!-- Subpage Header -->
+    <!-- include components/ui/page-header.html -->
+
+    <!-- ==========================================================================
+         SECTION 02 — CONTACT OPTIONS (4 Cards)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="contact-options-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Option 1 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="w-10 h-10 rounded-full bg-brand-green/5 border border-brand-green/10 flex items-center justify-center text-brand-green transition-premium group-hover:bg-brand-green group-hover:text-white">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-base">Membership Inquiry</h3>
+            <p class="text-text-body text-xs leading-relaxed">Join the leading network, apply for credentials reviews, and download travel recommendation letters.</p>
+            <a href="#inquiry-form-sec" class="text-xs text-brand-green font-bold hover:underline mt-1">Submit Request</a>
+          </div>
+
+          <!-- Option 2 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="w-10 h-10 rounded-full bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center text-brand-blue transition-premium group-hover:bg-brand-blue group-hover:text-white">
+              <i data-lucide="trending-up" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-base">Trade & Investment</h3>
+            <p class="text-text-body text-xs leading-relaxed">Establish joint ventures, pitch concessions, and request customs compliance checklists.</p>
+            <a href="#inquiry-form-sec" class="text-xs text-brand-green font-bold hover:underline mt-1">Submit Request</a>
+          </div>
+
+          <!-- Option 3 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="w-10 h-10 rounded-full bg-brand-gold/5 border border-brand-gold/10 flex items-center justify-center text-brand-gold transition-premium group-hover:bg-brand-gold group-hover:text-white">
+              <i data-lucide="calendar" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-base">Event Support</h3>
+            <p class="text-text-body text-xs leading-relaxed">Inquire regarding showcase visitor ticket passes, delegate booths, and keynote invites.</p>
+            <a href="#inquiry-form-sec" class="text-xs text-brand-green font-bold hover:underline mt-1">Register Query</a>
+          </div>
+
+          <!-- Option 4 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="w-10 h-10 rounded-full bg-brand-green/5 border border-brand-green/10 flex items-center justify-center text-brand-green transition-premium group-hover:bg-brand-green group-hover:text-white">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-base">General Information</h3>
+            <p class="text-text-body text-xs leading-relaxed">Reach out for general secretariat concerns, media briefings, and administrative questions.</p>
+            <a href="#inquiry-form-sec" class="text-xs text-brand-green font-bold hover:underline mt-1">Contact Us</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 03 — BUSINESS INQUIRY SYSTEM (Stepper Form)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="inquiry-form-sec">
+      <div class="container-shell max-w-xl">
+        
+        <div class="bg-white border border-neutral-border rounded-lg shadow-floating p-8 md:p-10 relative">
+          <!-- Top Accent Border Bar -->
+          <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue"></div>
+          
+          <!-- Stepper header -->
+          <div class="flex flex-col gap-4 text-center items-center mb-8">
+            <h3 class="font-extrabold text-lg text-text-dark leading-tight">Business Inquiry System</h3>
+            
+            <div class="flex items-center gap-3 relative w-full max-w-[200px] justify-between z-10">
+              <!-- Background Bar -->
+              <div class="absolute top-1/2 left-0 w-full h-[2px] bg-neutral-border -translate-y-1/2 -z-10"></div>
+              <!-- Progress Line -->
+              <div id="contact-progress-line" class="absolute top-1/2 left-0 w-0 h-[2px] bg-brand-green -translate-y-1/2 -z-10 transition-all duration-300"></div>
+              
+              <div class="contact-step-indicator w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold transition-all duration-300 shadow-sm select-none">1</div>
+              <div class="contact-step-indicator w-7 h-7 rounded-full bg-neutral-border text-text-muted flex items-center justify-center text-xs font-bold transition-all duration-300 shadow-sm select-none">2</div>
+              <div class="contact-step-indicator w-7 h-7 rounded-full bg-neutral-border text-text-muted flex items-center justify-center text-xs font-bold transition-all duration-300 shadow-sm select-none">3</div>
+            </div>
+          </div>
+
+          <form class="flex flex-col gap-5 text-left">
+            
+            <!-- Step 1: Inquiry Category -->
+            <div data-contact-step="1" class="flex flex-col gap-4">
+              <h4 class="font-extrabold text-sm text-text-dark border-b border-neutral-border pb-2">Step 1: Inquiry Type</h4>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Select Request Type</label>
+                <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast bg-white">
+                  <option value="membership">Chamber Membership Questions</option>
+                  <option value="investment">Bilateral Investment Concessions</option>
+                  <option value="trade">Trade Opportunities Matching</option>
+                  <option value="partnership">Institutional Partnership Proposals</option>
+                  <option value="event">Summit Registrations Support</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Step 2: Contact Details -->
+            <div data-contact-step="2" class="hidden flex flex-col gap-4">
+              <h4 class="font-extrabold text-sm text-text-dark border-b border-neutral-border pb-2">Step 2: Profile Info</h4>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Full Name</label>
+                <input type="text" placeholder="Anisur Rahman" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Corporate Email</label>
+                <input type="email" placeholder="executive@company.com" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Company Name</label>
+                <input type="text" placeholder="Bengal Spinners Consortium" required class="w-full h-10 px-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
+              </div>
+            </div>
+
+            <!-- Step 3: Message Brief -->
+            <div data-contact-step="3" class="hidden flex flex-col gap-4">
+              <h4 class="font-extrabold text-sm text-text-dark border-b border-neutral-border pb-2">Step 3: Message Details</h4>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Describe Inquiry</label>
+                <textarea rows="4" placeholder="Briefly detail your business expansion goals or trade requests..." required class="w-full p-3 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast resize-none"></textarea>
+              </div>
+              <div class="flex items-start gap-2.5 mt-2">
+                <input type="checkbox" required id="contact-terms" class="mt-1 w-3.5 h-3.5 border-neutral-border focus:ring-0 rounded" />
+                <label for="contact-terms" class="text-[10px] text-text-body leading-tight">I agree that BMCCI secretariats direct my inquiries to the appropriate department.</label>
+              </div>
+            </div>
+
+            <!-- Step 4: Success confirm screen -->
+            <div data-contact-step="4" class="hidden flex flex-col items-center text-center gap-4 py-6">
+              <div class="w-14 h-14 rounded-full bg-brand-green/10 border border-brand-green/20 flex items-center justify-center text-brand-green">
+                <i data-lucide="check" class="w-8 h-8"></i>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <h4 class="font-extrabold text-base text-text-dark">Inquiry Submitted</h4>
+                <p class="text-text-body text-xs leading-relaxed max-w-[280px] mx-auto">Chamber secretariats will review parameters and reply within 1 business day.</p>
+              </div>
+            </div>
+
+            <!-- Footer Navigation Buttons -->
+            <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2" id="contact-stepper-footer">
+              <button type="button" id="btn-contact-prev" class="h-10 px-4 border border-neutral-border rounded-btn text-xs font-semibold hover:border-brand-green hover:text-brand-green bg-white transition-fast invisible">
+                Back
+              </button>
+              
+              <div class="flex gap-2">
+                <button type="button" id="btn-contact-next" class="h-10 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast">
+                  Continue
+                </button>
+                <button type="submit" id="btn-contact-submit" class="h-10 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast hidden">
+                  Send Message
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 04 — OFFICE INFORMATION (Two Secretariat Offices)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="office-info-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          
+          <!-- Head Office Dhaka -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift">
+            <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Secretariat Headquarters</span>
+            <h3 class="text-text-dark font-extrabold text-lg leading-tight">Dhaka Office, Bangladesh</h3>
+            <div class="flex flex-col gap-2.5 text-xs text-text-body font-semibold mt-2">
+              <span class="flex gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span>House 22, Road 14, Gulshan-1, Dhaka 1212, Bangladesh</span></span>
+              <span class="flex gap-2"><i data-lucide="phone" class="w-4 h-4 text-text-muted shrink-0"></i><span>+880 2-222281432</span></span>
+              <span class="flex gap-2"><i data-lucide="mail" class="w-4 h-4 text-text-muted shrink-0"></i><span>info@bmcci.org.bd</span></span>
+            </div>
+          </div>
+
+          <!-- Representative Office KL -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift">
+            <span class="text-[10px] font-bold text-brand-blue uppercase tracking-wider">Representative Secretariat</span>
+            <h3 class="text-text-dark font-extrabold text-lg leading-tight">Kuala Lumpur, Malaysia</h3>
+            <div class="flex flex-col gap-2.5 text-xs text-text-body font-semibold mt-2">
+              <span class="flex gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span>Suite 12.02, Menara TRX, Jalan Tun Razak, Kuala Lumpur, Malaysia</span></span>
+              <span class="flex gap-2"><i data-lucide="phone" class="w-4 h-4 text-text-muted shrink-0"></i><span>+60 3-21143210</span></span>
+              <span class="flex gap-2"><i data-lucide="mail" class="w-4 h-4 text-text-muted shrink-0"></i><span>kl@bmcci.org.bd</span></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 05 — INTERACTIVE MAP (Rounded location card)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="map-sec">
+      <div class="container-shell">
+        <!-- include components/ui/map-section.html -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 06 — DEPARTMENT CONTACTS (Team Cards)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="departments-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Secretariats</span>
+          <h2 class="section-title text-text-dark">Chamber Departments</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Reach out directly to specialized divisions.
+          </p>
+        </div>
+
+        <!-- 4 Columns Departments -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          
+          <!-- Dept 1 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-6 flex flex-col justify-between gap-5 hover-lift group">
+            <div class="flex flex-col gap-3">
+              <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Growth Division</span>
+              <h4 class="font-extrabold text-sm text-text-dark">Chamber Membership</h4>
+              <p class="text-text-body text-xs leading-relaxed">Assists with double taxation exemption portfolios setups and onboarding approvals.</p>
+            </div>
+            <div class="flex flex-col gap-2.5 border-t border-neutral-border pt-4 text-xs">
+              <span class="font-semibold text-text-muted">membership@bmcci.org.bd</span>
+              <a href="mailto:membership@bmcci.org.bd" class="text-brand-green font-bold hover:underline">Email Division</a>
+            </div>
+          </div>
+
+          <!-- Dept 2 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-6 flex flex-col justify-between gap-5 hover-lift group">
+            <div class="flex flex-col gap-3">
+              <span class="text-[10px] font-bold text-brand-blue uppercase tracking-wider">Advisory Division</span>
+              <h4 class="font-extrabold text-sm text-text-dark">Trade & Investment</h4>
+              <p class="text-text-body text-xs leading-relaxed">Facilitates SEZs allocations, custom clearance assistance, and tariff briefs.</p>
+            </div>
+            <div class="flex flex-col gap-2.5 border-t border-neutral-border pt-4 text-xs">
+              <span class="font-semibold text-text-muted">trade@bmcci.org.bd</span>
+              <a href="mailto:trade@bmcci.org.bd" class="text-brand-green font-bold hover:underline">Email Division</a>
+            </div>
+          </div>
+
+          <!-- Dept 3 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-6 flex flex-col justify-between gap-5 hover-lift group">
+            <div class="flex flex-col gap-3">
+              <span class="text-[10px] font-bold text-brand-gold uppercase tracking-wider">Forums Division</span>
+              <h4 class="font-extrabold text-sm text-text-dark">Events & summits</h4>
+              <p class="text-text-body text-xs leading-relaxed">Manages showcase booth registrations, delegates credentials, and dinner tables.</p>
+            </div>
+            <div class="flex flex-col gap-2.5 border-t border-neutral-border pt-4 text-xs">
+              <span class="font-semibold text-text-muted">events@bmcci.org.bd</span>
+              <a href="mailto:events@bmcci.org.bd" class="text-brand-green font-bold hover:underline">Email Division</a>
+            </div>
+          </div>
+
+          <!-- Dept 4 -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-6 flex flex-col justify-between gap-5 hover-lift group">
+            <div class="flex flex-col gap-3">
+              <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Public Relations</span>
+              <h4 class="font-extrabold text-sm text-text-dark">Media & publications</h4>
+              <p class="text-text-body text-xs leading-relaxed">Handles press releases distributions, media passes, and newsletters briefings.</p>
+            </div>
+            <div class="flex flex-col gap-2.5 border-t border-neutral-border pt-4 text-xs">
+              <span class="font-semibold text-text-muted">media@bmcci.org.bd</span>
+              <a href="mailto:media@bmcci.org.bd" class="text-brand-green font-bold hover:underline">Email Division</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 07 — GLOBAL BUSINESS CONNECT (SVG Animated Connection)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="svg-connect-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Bilateral flow</span>
+          <h2 class="section-title text-text-dark">Bilateral Trade Connection Corridor</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Connecting commerce nodes across Bangladesh and Malaysia.
+          </p>
+        </div>
+
+        <!-- SVG Map Container with connection animations -->
+        <div class="bg-white border border-neutral-border rounded-lg p-8 max-w-3xl mx-auto shadow-card relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+          <!-- Subtle watermarks text -->
+          <div class="absolute inset-0 bg-neutral-bgSecondary/20 opacity-50 pointer-events-none"></div>
+          
+          <svg viewBox="0 0 800 300" class="w-full max-w-[650px] relative z-10">
+            <!-- Bangladesh node (Dhaka) -->
+            <circle cx="200" cy="80" r="7" fill="#006a4e" />
+            <circle cx="200" cy="80" r="16" fill="#006a4e" opacity="0.25" class="animate-ping" />
+            <text x="180" y="55" fill="#1e293b" font-weight="bold" font-size="12">Dhaka, Bangladesh</text>
+            
+            <!-- Malaysia node (Kuala Lumpur) -->
+            <circle cx="600" cy="240" r="7" fill="#0033a0" />
+            <circle cx="600" cy="240" r="16" fill="#0033a0" opacity="0.25" class="animate-ping" />
+            <text x="530" y="275" fill="#1e293b" font-weight="bold" font-size="12">Kuala Lumpur, Malaysia</text>
+            
+            <!-- Connection Line Path -->
+            <path d="M 200 80 Q 400 120 600 240" 
+                  fill="none" 
+                  stroke="#d4af37" 
+                  stroke-width="3" 
+                  stroke-dasharray="8 6" 
+                  class="animate-dash" />
+          </svg>
+
+          <!-- CSS Keyframes inline inject (for stroke animations) -->
+          <style>
+            @keyframes dash {
+              to {
+                stroke-dashoffset: -40;
+              }
+            }
+            .animate-dash {
+              animation: dash 3.5s linear infinite;
+            }
+          </style>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 08 — SOCIAL CHANNELS
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="socials-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Social feeds</span>
+          <h2 class="section-title text-text-dark">Follow Our Communities</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Stay synced with press briefings, photo streams, and summits broadcasts.
+          </p>
+        </div>
+
+        <!-- 4 Columns socials -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto text-left">
+          
+          <!-- LinkedIn -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-5 flex flex-col gap-3.5 hover-lift group">
+            <span class="text-brand-blue font-bold text-[10px] uppercase tracking-wider">Professional</span>
+            <h4 class="font-extrabold text-sm text-text-dark group-hover:text-brand-green transition-fast">LinkedIn Network</h4>
+            <span class="text-xs text-text-muted">14K Followers</span>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">Follow Page<i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+          </div>
+
+          <!-- Facebook -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-5 flex flex-col gap-3.5 hover-lift group">
+            <span class="text-brand-blue font-bold text-[10px] uppercase tracking-wider">Community</span>
+            <h4 class="font-extrabold text-sm text-text-dark group-hover:text-brand-green transition-fast">Facebook Portal</h4>
+            <span class="text-xs text-text-muted">45K Members</span>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">Follow Page<i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+          </div>
+
+          <!-- YouTube -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-5 flex flex-col gap-3.5 hover-lift group">
+            <span class="text-brand-gold font-bold text-[10px] uppercase tracking-wider">Broadcasts</span>
+            <h4 class="font-extrabold text-sm text-text-dark group-hover:text-brand-green transition-fast">YouTube Channel</h4>
+            <span class="text-xs text-text-muted">12K Subscribers</span>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">Follow Page<i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+          </div>
+
+          <!-- Instagram -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-5 flex flex-col gap-3.5 hover-lift group">
+            <span class="text-brand-green font-bold text-[10px] uppercase tracking-wider">Gallery</span>
+            <h4 class="font-extrabold text-sm text-text-dark group-hover:text-brand-green transition-fast">Instagram Stream</h4>
+            <span class="text-xs text-text-muted">8K Followers</span>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">Follow Page<i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 09 — FAQ (Accordions)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="faq-accordions-sec">
+      <div class="container-shell">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Inquiry FAQ</span>
+          <h2 class="section-title text-text-dark">Frequently Asked Questions</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Answers to common queries regarding response turnarounds, matching procedures, and visitor permissions.
+          </p>
+        </div>
+
+        <!-- Accordions -->
+        <div class="max-w-3xl mx-auto flex flex-col divide-y divide-neutral-border border-y border-neutral-border text-left" data-accordion-group>
+          
+          <!-- Accordion 1 -->
+          <div class="py-4">
+            <button class="w-full flex items-center justify-between py-2 text-left text-text-dark font-extrabold text-sm md:text-base focus:outline-none" data-accordion-trigger>
+              <span>What is the standard response time for online inquiries?</span>
+              <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-muted transition-transform duration-300"></i>
+            </button>
+            <div class="hidden mt-3 text-xs md:text-sm text-text-body leading-relaxed animate-fade-in">
+              BMCCI secretariats direct inquiries files to appropriate departments immediately. The standard response turnaround time for business matchmaking, visa request clearances, and corporate questions is 1 business day.
+            </div>
+          </div>
+
+          <!-- Accordion 2 -->
+          <div class="py-4">
+            <button class="w-full flex items-center justify-between py-2 text-left text-text-dark font-extrabold text-sm md:text-base focus:outline-none" data-accordion-trigger>
+              <span>How can my company request B2B matchmaking panels?</span>
+              <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 text-text-muted transition-transform duration-300"></i>
+            </button>
+            <div class="hidden mt-3 text-xs md:text-sm text-text-body leading-relaxed animate-fade-in">
+              Under the Business Inquiry stepper form, select 'Trade Opportunities Matching' as the request category. Detail your manufacturing output scales or cargo import demands, and our advisory team will list matches.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 10 — CALL TO ACTION (Reusable Include)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary" id="cta-sec">
+      <div class="container-shell">
+        <!-- Inject Reusable CTA Banner component -->
+        <!-- include components/ui/cta-banner.html -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Build-Time Footer Injection -->
+  <!-- include components/footer.html -->
+
+  <!-- Back To Top Floating Action Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full border border-neutral-border bg-white text-text-dark flex items-center justify-center shadow-floating back-to-top-hidden hover:border-brand-green hover:text-brand-green transition-premium z-40" aria-label="Scroll back to top">
+    <i data-lucide="arrow-right" class="w-5 h-5 -rotate-90"></i>
+  </button>
+
+  <!-- Global Javascript Core Bundle -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "member-01",
+    "name": "Syed Almas Kabir",
+    "designation": "President",
+    "company": "BMCCI Executive Committee",
+    "avatar": "/assets/images/members/president.jpg",
+    "profile": "Prominent Bangladeshi technology entrepreneur and CEO, leading the trade council to build robust bilateral relationships.",
+    "email": "president@bmcci.org.bd"
+  },
+  {
+    "id": "member-02",
+    "name": "Dato' Goonahran Subramaniam",
+    "designation": "Vice President",
+    "company": "Pinnacle Holdings Berhad",
+    "avatar": "/assets/images/members/vice-president.jpg",
+    "profile": "Malaysian infrastructure and investment expert, guiding key joint development initiatives in economic zones.",
+    "email": "dato.goonahran@bmcci.org.bd"
+  },
+  {
+    "id": "member-03",
+    "name": "Mahbubul Alam",
+    "designation": "Honorary Secretary General",
+    "company": "Alam Shipping & Ports Ltd.",
+    "avatar": "/assets/images/members/secretary-general.jpg",
+    "profile": "Logistics veteran steering customs facilitation and shipping corridors between Chittagong and Port Klang.",
+    "email": "sec.gen@bmcci.org.bd"
+  },
+  {
+    "id": "member-04",
+    "name": "Hazlina Abdul Halim",
+    "designation": "Executive Director",
+    "company": "Malay-Bangla Consultancy Group",
+    "avatar": "/assets/images/members/director.jpg",
+    "profile": "Bilateral trade advisory specialist facilitating corporate establishment, visa clearances, and market entries.",
+    "email": "h.halim@bmcci.org.bd"
+  }
+]

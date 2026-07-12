@@ -1,0 +1,68 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - FILTER BAR
+     ========================================================================== -->
+<div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-5 flex flex-col gap-5 w-full text-left" id="reusable-filter-bar">
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    
+    <!-- Country Filter Dropdown -->
+    <div class="flex flex-col gap-2">
+      <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Country Origin</label>
+      <div class="relative">
+        <select class="w-full h-11 px-3 border border-neutral-border rounded-input text-xs text-text-dark bg-white appearance-none focus:outline-none focus:border-brand-green transition-fast">
+          <option value="">All Countries</option>
+          <option value="bd">Bangladesh</option>
+          <option value="my">Malaysia</option>
+        </select>
+        <i data-lucide="chevron-down" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none"></i>
+      </div>
+    </div>
+
+    <!-- Industry Filter Dropdown -->
+    <div class="flex flex-col gap-2">
+      <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Business Division</label>
+      <div class="relative">
+        <select class="w-full h-11 px-3 border border-neutral-border rounded-input text-xs text-text-dark bg-white appearance-none focus:outline-none focus:border-brand-green transition-fast">
+          <option value="">All Divisions</option>
+          <option value="tech">Technology & Telecom</option>
+          <option value="logistics">Logistics & Shipping</option>
+          <option value="manufacturing">Textiles & Manufacturing</option>
+          <option value="energy">Energy & Lubricants</option>
+        </select>
+        <i data-lucide="chevron-down" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none"></i>
+      </div>
+    </div>
+
+    <!-- Category Sort Dropdown -->
+    <div class="flex flex-col gap-2">
+      <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Sort Results By</label>
+      <div class="relative">
+        <select class="w-full h-11 px-3 border border-neutral-border rounded-input text-xs text-text-dark bg-white appearance-none focus:outline-none focus:border-brand-green transition-fast">
+          <option value="alpha">Alphabetical (A-Z)</option>
+          <option value="new">Newly Registered</option>
+          <option value="premium">Premium Patron Tiers</option>
+        </select>
+        <i data-lucide="chevron-down" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Filter Actions -->
+  <div class="border-t border-neutral-border pt-4 flex items-center justify-between gap-4">
+    <button class="text-xs text-text-body font-semibold hover:text-brand-green flex items-center gap-1.5 transition-fast" onclick="window.location.reload();">
+      <i data-lucide="x" class="w-4 h-4"></i>
+      <span>Reset Filters</span>
+    </button>
+    
+    <div class="flex items-center gap-3">
+      <button class="px-5 py-2 h-10 border border-neutral-border text-text-body font-semibold text-xs rounded-btn bg-white hover:bg-neutral-bgSecondary transition-fast">
+        Cancel
+      </button>
+      <button class="px-5 py-2 h-10 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast">
+        Apply Filters
+      </button>
+    </div>
+  </div>
+
+</div>

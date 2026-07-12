@@ -1,0 +1,38 @@
+[
+  {
+    "id": "dest-dhaka",
+    "name": "Dhaka Commercial Center",
+    "country": "Bangladesh",
+    "category": "Commercial Hub",
+    "image": "/assets/images/tourism/dhaka-center.jpg",
+    "highlights": ["Motijheel Financial District", "Kawran Bazar Tech Zones", "Gulshan Diplomatic Quarter"],
+    "description": "The economic heartbeat of Bangladesh, driving the apparel export sector, telecom headquarters, and international commerce hubs."
+  },
+  {
+    "id": "dest-kl",
+    "name": "Kuala Lumpur Financial District",
+    "country": "Malaysia",
+    "category": "Commercial Hub",
+    "image": "/assets/images/tourism/kl-district.jpg",
+    "highlights": ["Petronas Twin Towers", "Tun Razak Exchange (TRX)", "Bukit Bintang Corporate Hub"],
+    "description": "Global financial center containing key multinational institutions, advanced fintech ventures, and premium real estate assets."
+  },
+  {
+    "id": "dest-chittagong",
+    "name": "Port of Chittagong",
+    "country": "Bangladesh",
+    "category": "Logistics Gateway",
+    "image": "/assets/images/tourism/port-chittagong.jpg",
+    "highlights": ["Deep Water Container Terminal", "EPZ Industrial Corridor", "Bay Terminal Development"],
+    "description": "Handling over 90% of Bangladesh's international maritime trade, Chittagong acts as the primary shipping connector to Port Klang."
+  },
+  {
+    "id": "dest-penang",
+    "name": "Penang High-Tech Hub",
+    "country": "Malaysia",
+    "category": "Industrial Zone",
+    "image": "/assets/images/tourism/penang-tech.jpg",
+    "highlights": ["Bayan Lepas Free Industrial Zone", "Semiconductor Assembly", "Silicon Island Development"],
+    "description": "Commonly known as the 'Silicon Valley of the East', Penang leads Malaysia's advanced electronics, wafer fabrication, and packaging sectors."
+  }
+]

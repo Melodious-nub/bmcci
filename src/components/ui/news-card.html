@@ -1,0 +1,40 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - NEWS CARD
+     ========================================================================== -->
+<div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+  
+  <!-- Thumbnail -->
+  <div class="relative w-full aspect-[16/10] overflow-hidden shrink-0">
+    <img src="/assets/images/news/news-default.jpg" alt="Chamber updates" 
+         class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-105" loading="lazy" />
+  </div>
+
+  <!-- Body Content -->
+  <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+    <div class="flex flex-col gap-2.5">
+      <!-- Category & Date Row -->
+      <div class="flex items-center justify-between text-xs">
+        <span class="font-bold text-brand-blue uppercase tracking-wider">Policy Update</span>
+        <span class="text-text-muted">June 18, 2026</span>
+      </div>
+      
+      <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">
+        Chamber Advocates for Double Taxation Avoidance Treaty Update
+      </h3>
+      
+      <p class="text-text-body text-xs leading-relaxed line-clamp-3">
+        BMCCI has submitted a comprehensive policy brief to ministries advocating for updates to avoid taxation blocks and ease cross-border capital flows.
+      </p>
+    </div>
+
+    <!-- Read More CTA -->
+    <div class="border-t border-neutral-border pt-4 mt-2 flex items-center justify-between">
+      <span class="text-[10px] text-text-muted font-medium">Read Time: 3 mins</span>
+      <a href="/pages/news.html#tax-brief" class="text-brand-green font-bold text-xs flex items-center gap-1 hover:underline group/read">
+        <span>Read Release</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/read:translate-x-0.5"></i>
+      </a>
+    </div>
+  </div>
+
+</div>

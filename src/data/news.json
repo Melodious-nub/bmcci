@@ -1,0 +1,29 @@
+[
+  {
+    "id": "news-01",
+    "title": "BMCCI Delegation Meets Malaysian Minister of International Trade",
+    "category": "Trade Relations",
+    "date": "July 02, 2026",
+    "summary": "An executive BMCCI delegation held bilateral discussions with Malaysia's Minister of International Trade and Industry in Kuala Lumpur to reduce tariffs.",
+    "content": "KUALA LUMPUR — A high-level delegation from the Bangladesh Malaysia Chamber of Commerce and Industry (BMCCI), led by the President, visited Kuala Lumpur to discuss bilateral trade optimization. The discussions focused on reducing non-tariff barriers, expanding investment in Bangladesh's economic zones, and streamlining business visas.",
+    "image": "/assets/images/news/delegation-meeting.jpg"
+  },
+  {
+    "id": "news-02",
+    "title": "Chamber Advocates for Double Taxation Avoidance Treaty Update",
+    "category": "Policy & Advocacy",
+    "date": "June 18, 2026",
+    "summary": "BMCCI submits policy brief to ministries advocating for upgrades to the double taxation treaty to facilitate smoother cross-border FDI flows.",
+    "content": "DHAKA — BMCCI has officially submitted a comprehensive policy proposal to the National Board of Revenue (NBR) in Bangladesh and its Malaysian counterpart. The proposal highlights critical areas where double taxation avoidance protocols require modernization to accommodate digital services and joint manufacturing operations.",
+    "image": "/assets/images/news/tax-treaty.jpg"
+  },
+  {
+    "id": "news-03",
+    "title": "Bilateral Trade Value Reaches Record High in Q2 2026",
+    "category": "Economic Update",
+    "date": "May 29, 2026",
+    "summary": "Export indices show a 12% rise in electronic component exports from Malaysia and apparel exports from Bangladesh, signaling strong economic recovery.",
+    "content": "SINGAPORE/DHAKA — Economic data compiled by BMCCI's Economic Intelligence Unit shows bilateral trade volumes between Bangladesh and Malaysia hitting a record $1.1 billion in the second quarter of 2026. This reflects a surge in electronic assembly lines and textile raw material sourcing.",
+    "image": "/assets/images/news/trade-records.jpg"
+  }
+]

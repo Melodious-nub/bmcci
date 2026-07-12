@@ -1,0 +1,26 @@
+[
+  {
+    "id": "test-01",
+    "quote": "BMCCI has been instrumental in facilitating our market entry into Bangladesh. Their networking forums connected us directly with prime logistics partners, reducing setup time by months.",
+    "author": "Tan Sri Dato' Seri Lim",
+    "role": "Managing Director",
+    "company": "Klang Port Infrastructure Group",
+    "avatar": "/assets/images/members/testimonial-1.jpg"
+  },
+  {
+    "id": "test-02",
+    "quote": "Establishing joint ventures in textile machinery wouldn't have been possible without the advocacy and legal consultations provided by BMCCI. Their economic briefings are executive-grade.",
+    "author": "Anisur Rahman",
+    "role": "Chairman",
+    "company": "Bengal Spinners Consortium",
+    "avatar": "/assets/images/members/testimonial-2.jpg"
+  },
+  {
+    "id": "test-03",
+    "quote": "The bilateral trade summits hosted by the chamber act as a vital bridge for policy updates. It is the premier platform for government-to-business dialogues between our nations.",
+    "author": "Hazlina Abdul Halim",
+    "role": "Executive Director",
+    "company": "Malay-Bangla Consultancy Group",
+    "avatar": "/assets/images/members/testimonial-3.jpg"
+  }
+]

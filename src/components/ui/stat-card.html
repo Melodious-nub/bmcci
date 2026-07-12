@@ -1,0 +1,26 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - ECONOMIC WIDGET / STAT CARD
+     ========================================================================== -->
+<div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col gap-3 relative overflow-hidden group">
+  <!-- Accent Line -->
+  <div class="absolute top-0 left-0 w-full h-[4px] bg-brand-green group-hover:bg-brand-gold transition-fast"></div>
+  
+  <div class="flex items-center justify-between text-text-muted">
+    <span class="text-xs font-semibold uppercase tracking-wider">Macro Indicator</span>
+    <i data-lucide="trending-up" class="w-5 h-5 text-brand-green"></i>
+  </div>
+  
+  <!-- Counter display -->
+  <div class="text-4xl lg:text-5xl font-extrabold text-text-dark tracking-tight" 
+       data-counter-target="3.8" 
+       data-counter-suffix="B" 
+       data-counter-prefix="$" 
+       data-counter-decimals="1">
+    $0.0B
+  </div>
+  
+  <h3 class="text-text-dark font-semibold text-sm">Bilateral Trade Volume</h3>
+  <p class="text-xs text-text-body leading-relaxed">
+    Total combined import and export trade value between Bangladesh and Malaysia in 2025.
+  </p>
+</div>

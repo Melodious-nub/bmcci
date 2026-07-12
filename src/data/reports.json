@@ -1,0 +1,32 @@
+[
+  {
+    "id": "report-outlook-2026",
+    "title": "Bilateral Economic Outlook 2026-2027",
+    "category": "Economic intelligence",
+    "date": "June 2026",
+    "pages": "48 Pages",
+    "size": "4.2 MB",
+    "image": "/assets/images/news/report-outlook.jpg",
+    "summary": "Comprehensive macroeconomic study detailing import-export trends, tariff schedules, consumer demographics, and major joint venture investment projects."
+  },
+  {
+    "id": "report-invest-guide",
+    "title": "Investor's Guide to Bangladesh Special Economic Zones",
+    "category": "Investment Guide",
+    "date": "April 2026",
+    "pages": "32 Pages",
+    "size": "2.8 MB",
+    "image": "/assets/images/news/report-invest.jpg",
+    "summary": "Step-by-step handbook covering legal setup protocols, tax incentives, land acquisition processes, and utility integrations within BEZA economic zones."
+  },
+  {
+    "id": "report-halal-trade",
+    "title": "Bilateral Halal Trade & Logistics Framework",
+    "category": "Market Analysis",
+    "date": "January 2026",
+    "pages": "24 Pages",
+    "size": "1.9 MB",
+    "image": "/assets/images/news/report-halal.jpg",
+    "summary": "Specialized assessment of the halal food, cosmetics, and pharmaceuticals market, analyzing certification standards (JAKIM vs. BSTI) and logistics routes."
+  }
+]

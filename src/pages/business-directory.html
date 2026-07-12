@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Directory | BMCCI Digital Gateway</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="Browse and search the network of accredited chamber business members and partners across Bangladesh and Malaysia.">
+  
+  <!-- Style Sheets Links -->
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-neutral-bg font-sans antialiased text-text-body"
+      data-page-title="Business Directory"
+      data-page-subtitle="Discover trusted companies, industry leaders and business partners across Bangladesh and Malaysia.">
+
+  <!-- Global Loader Overlay -->
+  <!-- include components/loader.html -->
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-green z-[9999] w-full origin-left scale-x-0"></div>
+
+  <!-- Build-Time Navbar Injection -->
+  <!-- include components/navbar.html -->
+
+  <!-- Main Portal Layout -->
+  <main class="w-full min-h-screen pt-[128px]" id="main-content">
+    
+    <!-- Subpage Header -->
+    <!-- include components/ui/page-header.html -->
+
+    <!-- ==========================================================================
+         SECTION 02 — SMART SEARCH SYSTEM
+         ========================================================================== -->
+    <section class="section-compact bg-white border-b border-neutral-border" id="search-section">
+      <div class="container-shell max-w-4xl py-6">
+        <!-- Reusable Search bar and filters include -->
+        <div class="flex flex-col gap-4">
+          <!-- include components/ui/search-bar.html -->
+          <!-- include components/ui/filter-bar.html -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 03 — FEATURED MEMBERS (Row)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="featured-members-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-12 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Patrons</span>
+          <h2 class="section-title text-text-dark">Featured Patrons & Corporate Members</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Highlighting premium chamber members driving bilateral investments.
+          </p>
+        </div>
+
+        <!-- Cards Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          
+          <!-- Card 1 -->
+          <!-- include components/ui/directory-card.html -->
+
+          <!-- Card 2 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
+            <div class="flex flex-col gap-3.5">
+              <div class="flex items-start justify-between gap-4">
+                <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">
+                  AX
+                </div>
+                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">
+                  Malaysia
+                </span>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Telecommunications</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">
+                  Axiata Group Berhad
+                </h3>
+              </div>
+              <p class="text-text-body text-xs leading-relaxed line-clamp-3">
+                Regional telecommunications powerhouse providing core mobile infrastructure solutions and digital services in Southeast Asia and Bangladesh.
+              </p>
+            </div>
+            <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+              <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2008</span>
+              <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                <span>View Profile</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
+            <div class="flex flex-col gap-3.5">
+              <div class="flex items-start justify-between gap-4">
+                <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">
+                  BS
+                </div>
+                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">
+                  Bangladesh
+                </span>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Manufacturing</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">
+                  Bakar Spinners Consortium Ltd.
+                </h3>
+              </div>
+              <p class="text-text-body text-xs leading-relaxed line-clamp-3">
+                Leading raw textile exporter producing premium combed and carded cotton yarns for regional apparel manufacturers.
+              </p>
+            </div>
+            <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+              <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2015</span>
+              <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                <span>View Profile</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 04 — INDUSTRY EXPLORER (Category list grids)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="industry-explorer-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3 animate-reveal">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Bilateral Fields</span>
+          <h2 class="section-title text-text-dark">Explore by Industry Division</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Sort and narrow directory listings by core business divisions.
+          </p>
+        </div>
+
+        <!-- Grid layout -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto text-left">
+          
+          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
+            <i data-lucide="check" class="w-5 h-5 text-brand-green shrink-0"></i>
+            <span class="block">Manufacturing</span>
+            <span class="text-[10px] text-text-muted font-semibold">120 Companies</span>
+          </button>
+
+          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
+            <i data-lucide="globe" class="w-5 h-5 text-brand-blue shrink-0"></i>
+            <span class="block">Technology</span>
+            <span class="text-[10px] text-text-muted font-semibold">84 Companies</span>
+          </button>
+
+          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
+            <i data-lucide="check" class="w-5 h-5 text-brand-green shrink-0"></i>
+            <span class="block">Textile RMG</span>
+            <span class="text-[10px] text-text-muted font-semibold">150 Companies</span>
+          </button>
+
+          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
+            <i data-lucide="users" class="w-5 h-5 text-brand-gold shrink-0"></i>
+            <span class="block">Logistics Cargo</span>
+            <span class="text-[10px] text-text-muted font-semibold">45 Companies</span>
+          </button>
+
+          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
+            <i data-lucide="building-2" class="w-5 h-5 text-brand-green shrink-0"></i>
+            <span class="block">Energy & JV</span>
+            <span class="text-[10px] text-text-muted font-semibold">32 Companies</span>
+          </button>
+
+          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
+            <i data-lucide="file-text" class="w-5 h-5 text-brand-blue shrink-0"></i>
+            <span class="block">Consultancy</span>
+            <span class="text-[10px] text-text-muted font-semibold">64 Companies</span>
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 05 — COMPANY DIRECTORY (Sidebar + Main Grid)
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="main-directory-sec">
+      <div class="container-shell">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- Sticky Filter Sidebar (Span 3) -->
+          <div class="lg:col-span-3 lg:sticky lg:top-28 self-start bg-white border border-neutral-border rounded-lg p-5 shadow-card text-left flex flex-col gap-5">
+            <h3 class="font-extrabold text-xs uppercase tracking-wider text-text-dark border-b border-neutral-border pb-3">Refine Directories</h3>
+            
+            <!-- Industry filter selects -->
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Business Division</label>
+              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
+                <option value="">All Divisions</option>
+                <option value="textiles">Textiles & Manufacturing</option>
+                <option value="logistics">Logistics & Supply Chain</option>
+                <option value="telecom">Telecommunications & IT</option>
+              </select>
+            </div>
+
+            <!-- Country Origin filter selects -->
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Country Origin</label>
+              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
+                <option value="">All Countries</option>
+                <option value="bd">Bangladesh</option>
+                <option value="my">Malaysia</option>
+              </select>
+            </div>
+
+            <!-- Membership tier filter selects -->
+            <div class="flex flex-col gap-1.5">
+              <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Membership Level</label>
+              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
+                <option value="">All Levels</option>
+                <option value="patron">Patron Tiers</option>
+                <option value="general">General Members</option>
+                <option value="associate">Associate Tiers</option>
+              </select>
+            </div>
+
+            <!-- Action buttons -->
+            <button class="w-full h-11 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast mt-2">
+              Apply Filters
+            </button>
+            <button class="w-full text-center text-xs text-text-body font-semibold hover:text-brand-green transition-fast" onclick="window.location.reload();">
+              Reset Filters
+            </button>
+          </div>
+
+          <!-- Directory Cards Grid (Span 9) -->
+          <div class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <!-- Company Card 1 -->
+            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
+              <div class="flex flex-col gap-3.5">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">AP</div>
+                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">Bangladesh</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Logistics & Cargo</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Apex Cargo & Logistics Ltd.</h3>
+                </div>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Premier clearing agency and logistics provider specializing in container shipping cargo solutions connecting Chittagong seaport with Port Klang channels.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2012</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Company Card 2 -->
+            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
+              <div class="flex flex-col gap-3.5">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">AX</div>
+                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">Malaysia</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Telecommunications</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Axiata Group Berhad</h3>
+                </div>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Regional telecommunications powerhouse providing core mobile infrastructure solutions and digital services in Southeast Asia and Bangladesh.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2008</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Company Card 3 -->
+            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
+              <div class="flex flex-col gap-3.5">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">BS</div>
+                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">Bangladesh</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Manufacturing</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bakar Spinners Consortium Ltd.</h3>
+                </div>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Leading raw textile exporter producing premium combed and carded cotton yarns for regional apparel manufacturers.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2015</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Company Card 4 -->
+            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
+              <div class="flex flex-col gap-3.5">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">KL</div>
+                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">Malaysia</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Logistics & Supply</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Klang Port Infrastructure Berhad</h3>
+                </div>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Managing deep-water terminal ports facilities and logistics distribution chains connecting trade routes.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2011</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 09 — BUSINESS MATCHING FEATURE (Request Match)
+         ========================================================================== -->
+    <section class="section-large bg-white divider-subtle" id="matching-sec">
+      <div class="container-shell">
+        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-8 md:p-12 shadow-floating text-left flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-r from-brand-green/5 via-transparent to-brand-blue/5 opacity-55 pointer-events-none"></div>
+          <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue"></div>
+
+          <!-- Left content -->
+          <div class="flex flex-col gap-3 relative z-10 max-w-xl">
+            <span class="text-xs font-bold text-brand-green uppercase tracking-widest">Premium Matching</span>
+            <h3 class="text-text-dark font-extrabold text-2xl tracking-tight leading-tight">Find Your Business Partner</h3>
+            <p class="text-text-body text-xs md:text-sm leading-relaxed">
+              Synthesize and match your import cargo demands or investment setups with verified chamber associates and patrons across Bangladesh and Malaysia.
+            </p>
+          </div>
+
+          <!-- Action CTA link -->
+          <a href="/pages/contact.html#matching" class="w-full lg:w-auto inline-flex items-center justify-center h-12 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-semibold text-xs rounded-btn shadow-card hover:translate-y-[-2px] transition-premium gap-2 shrink-0 relative z-10">
+            <span>Request Business Match</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 10 — DIRECTORY STATISTICS
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="directory-stats-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Verification Database</span>
+          <h2 class="section-title text-text-dark">Directory Registry Statistics</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Monitored indicators of verified listings and networks.
+          </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          
+          <div class="bg-white border border-neutral-border rounded-md p-5 flex flex-col gap-1 shadow-card hover-lift">
+            <span class="text-2xl md:text-3xl font-extrabold text-brand-green" data-counter-target="650" data-counter-suffix="+">0</span>
+            <span class="text-[10px] uppercase font-bold text-text-muted tracking-wider">Registered Companies</span>
+          </div>
+
+          <div class="bg-white border border-neutral-border rounded-md p-5 flex flex-col gap-1 shadow-card hover-lift">
+            <span class="text-2xl md:text-3xl font-extrabold text-brand-blue" data-counter-target="12" data-counter-suffix="+">0</span>
+            <span class="text-[10px] uppercase font-bold text-text-muted tracking-wider">Industry Sectors</span>
+          </div>
+
+          <div class="bg-white border border-neutral-border rounded-md p-5 flex flex-col gap-1 shadow-card hover-lift">
+            <span class="text-2xl md:text-3xl font-extrabold text-brand-gold" data-counter-target="120" data-counter-suffix="+">0</span>
+            <span class="text-[10px] uppercase font-bold text-text-muted tracking-wider">Joint Ventures</span>
+          </div>
+
+          <div class="bg-white border border-neutral-border rounded-md p-5 flex flex-col gap-1 shadow-card hover-lift">
+            <span class="text-2xl md:text-3xl font-extrabold text-text-dark" data-counter-target="1500" data-counter-suffix="+">0</span>
+            <span class="text-[10px] uppercase font-bold text-text-muted tracking-wider">Business Connections</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 11 — CALL TO ACTION (Reusable Include)
+         ========================================================================== -->
+    <section class="section-large bg-white">
+      <div class="container-shell">
+        <!-- Inject Reusable CTA Banner component -->
+        <!-- include components/ui/cta-banner.html -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       COMPANY DETAILS MODAL (Details View)
+       ========================================================================== -->
+  <div id="member-detail-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-xl w-full max-h-[85vh] overflow-y-auto relative text-left" data-modal-content>
+      <!-- Close button -->
+      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast z-10" data-modal-close>
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="p-6 md:p-8 flex flex-col gap-6">
+        
+        <!-- Header Profile information -->
+        <div class="flex items-start gap-4 border-b border-neutral-border pb-5">
+          <!-- Company Logo Box -->
+          <div id="modal-company-logo" class="w-14 h-14 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-base tracking-wider shrink-0 uppercase">
+            CO
+          </div>
+          <div class="flex flex-col gap-1.5 text-left">
+            <div class="flex items-center gap-2">
+              <h3 id="modal-company-title" class="text-text-dark font-extrabold text-lg leading-none">Apex Cargo & Logistics Ltd.</h3>
+              <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-brand-green/10 text-brand-green text-[8px] font-bold" title="Verified Member">&#10003;</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-xs text-text-body font-semibold">
+              <span id="modal-company-industry" class="text-brand-blue uppercase tracking-wider">Logistics & Supply</span>
+              <span class="h-3 w-px bg-neutral-border"></span>
+              <span id="modal-company-country" class="text-brand-green">Bangladesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Description -->
+        <div class="flex flex-col gap-2">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-brand-green">Corporate Brief</h4>
+          <p id="modal-company-desc" class="text-text-body text-xs leading-relaxed">
+            Details outlining operational scopes, export capacities, import requirements, and verified chamber statistics will load dynamically.
+          </p>
+        </div>
+
+        <!-- Profile Metadata grid -->
+        <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs text-text-body font-medium">
+          <div class="flex flex-col gap-0.5">
+            <span class="text-text-muted font-semibold">Membership Tier</span>
+            <span class="text-text-dark font-extrabold">Patron Member</span>
+          </div>
+          <div class="flex flex-col gap-0.5">
+            <span class="text-text-muted font-semibold">Business Classification</span>
+            <span class="text-text-dark font-extrabold">Joint Venture (JV) Authorized</span>
+          </div>
+          <div class="flex flex-col gap-0.5">
+            <span class="text-text-muted font-semibold">Diplomatic Origin</span>
+            <span class="text-text-dark font-extrabold">Bilateral Exporter</span>
+          </div>
+          <div class="flex flex-col gap-0.5">
+            <span class="text-text-muted font-semibold">Verified Contacts</span>
+            <span class="text-text-dark font-extrabold">info@company.com</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end gap-3 pt-2">
+          <button class="px-5 py-2.5 border border-neutral-border rounded-btn text-xs font-semibold hover:border-brand-green transition-fast" data-modal-close>Close</button>
+          <a href="/pages/contact.html#inquire" class="px-5 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>Send Bilateral Inquiry</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Build-Time Footer Injection -->
+  <!-- include components/footer.html -->
+
+  <!-- Back To Top Floating Action Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full border border-neutral-border bg-white text-text-dark flex items-center justify-center shadow-floating back-to-top-hidden hover:border-brand-green hover:text-brand-green transition-premium z-40" aria-label="Scroll back to top">
+    <i data-lucide="arrow-right" class="w-5 h-5 -rotate-90"></i>
+  </button>
+
+  <!-- Global Javascript Core Bundle -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

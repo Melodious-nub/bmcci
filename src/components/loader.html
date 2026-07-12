@@ -1,0 +1,27 @@
+<!-- ==========================================================================
+     BMCCI UI MODULE - GLOBAL LOADER OVERLAY
+     ========================================================================== -->
+<div id="global-loader" class="fixed inset-0 bg-white flex flex-col items-center justify-center z-[9999] transition-opacity duration-700 ease-out">
+  <div class="flex flex-col items-center gap-6">
+    <!-- Animated Logo Mark -->
+    <div class="w-16 h-16 rounded-md bg-gradient-to-tr from-brand-green to-brand-blue flex items-center justify-center text-white font-extrabold text-2xl shadow-floating animate-pulse">
+      B
+    </div>
+    <!-- Title indicator -->
+    <div class="flex flex-col items-center text-center gap-1">
+      <span class="text-text-dark font-extrabold text-xl tracking-tight leading-none">BMCCI</span>
+      <span class="text-[9px] text-text-muted uppercase tracking-widest font-semibold mt-1">Digital Gateway</span>
+    </div>
+    <!-- Loading spinner line -->
+    <div class="w-24 h-0.5 bg-neutral-border rounded-full overflow-hidden relative mt-2">
+      <div class="absolute top-0 left-0 h-full w-12 bg-brand-green rounded-full animate-[loadingLine_1s_infinite_ease-in-out]"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes loadingLine {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+</style>

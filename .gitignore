@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+
+# Vite build outputs
+/dist/
+/tmp/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables (keep these out of version control)
+.env
+.env.*
