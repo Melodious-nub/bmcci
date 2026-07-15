@@ -78,6 +78,9 @@ export function initSmoothScroll() {
     infinite: false,
   });
 
+  // Expose to window for global components (like back-to-top)
+  window.lenis = lenisInstance;
+
   // Sync scroll triggers with Lenis
   lenisInstance.on('scroll', ScrollTrigger.update);
 

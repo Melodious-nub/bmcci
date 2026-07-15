@@ -13,7 +13,9 @@ export function initNavigation() {
   const globalHeader = document.getElementById('global-header');
   const handleScroll = () => {
     if (!globalHeader) return;
-    if (window.scrollY > 20) {
+    const isMobileMenuOpen = mobileMenu && mobileMenu.classList.contains('translate-x-0');
+    
+    if (isMobileMenuOpen || window.scrollY > 20) {
       globalHeader.classList.add('header-scrolled');
     } else {
       globalHeader.classList.remove('header-scrolled');
@@ -40,6 +42,7 @@ export function initNavigation() {
         mobileMenuToggle.setAttribute('aria-expanded', 'true');
         document.body.classList.add('overflow-hidden');
       }
+      handleScroll(); // Update top bar visibility
     });
 
     // Close menu when clicking outside it or on links
@@ -49,26 +52,50 @@ export function initNavigation() {
         mobileMenu.classList.remove('translate-x-0');
         mobileMenuToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('overflow-hidden');
+        handleScroll(); // Update top bar visibility
+      }
+    });
+
+    // Reset mobile menu state if window is resized to desktop width
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && mobileMenu.classList.contains('translate-x-0')) {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('overflow-hidden');
+        handleScroll(); // Reset top bar visibility
       }
     });
   }
 
   // 3. Highlight Active Navigation Links
   const currentPath = window.location.pathname;
-  const navLinks = document.querySelectorAll('nav a');
+  const navLinks = document.querySelectorAll('#desktop-nav a, #desktop-nav button, #mobile-menu a');
 
   navLinks.forEach(link => {
+    // Check if it is a Mega Menu button
+    if (link.tagName === 'BUTTON') {
+      const spanText = link.querySelector('span')?.textContent?.trim().toLowerCase();
+      if ((spanText === 'membership' && currentPath.includes('membership')) || 
+          (spanText === 'discover' && currentPath.includes('discover')) ||
+          (spanText === 'news' && currentPath.includes('news'))) {
+        link.classList.add('text-brand-green', 'font-bold', 'active');
+        link.classList.remove('text-text-body', 'font-semibold');
+      }
+      return;
+    }
+
     const href = link.getAttribute('href');
-    if (href) {
+    if (href && !href.startsWith('#')) {
       const isHome = currentPath === '/' || currentPath.endsWith('index.html');
       const linkIsHome = href === '/' || href.endsWith('index.html');
 
       if (isHome && linkIsHome) {
-        link.classList.add('text-brand-green', 'font-semibold');
-      } else if (!linkIsHome && currentPath.includes(href.replace('../', ''))) {
-        link.classList.add('text-brand-green', 'font-semibold');
-      } else {
-        link.classList.remove('text-brand-green', 'font-semibold');
+        link.classList.add('text-brand-green', 'font-bold', 'active');
+        link.classList.remove('text-text-body', 'font-semibold');
+      } else if (!linkIsHome && currentPath.includes(href.split('#')[0].replace('../', ''))) {
+        link.classList.add('text-brand-green', 'font-bold', 'active');
+        link.classList.remove('text-text-body', 'font-semibold');
       }
     }
   });
@@ -87,62 +114,15 @@ export function initNavigation() {
     });
 
     backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.lenis) {
+        window.lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   }
 
-  // 5. Language Switcher State Sync & Storage
-  const initLanguageToggle = () => {
-    const desktopToggleEn = document.getElementById('lang-btn-en');
-    const desktopToggleBm = document.getElementById('lang-btn-bm');
-    const mobileToggleBtns = document.querySelectorAll('#language-toggle-mobile button');
-
-    const setActiveLanguage = (lang) => {
-      sessionStorage.setItem('bmcci_lang', lang);
-      
-      // Update desktop pill layout
-      if (lang === 'en') {
-        desktopToggleEn?.classList.add('bg-white', 'text-brand-green');
-        desktopToggleEn?.classList.remove('text-white', 'hover:text-brand-gold');
-        desktopToggleBm?.classList.remove('bg-white', 'text-brand-green');
-        desktopToggleBm?.classList.add('text-white', 'hover:text-brand-gold');
-      } else {
-        desktopToggleBm?.classList.add('bg-white', 'text-brand-green');
-        desktopToggleBm?.classList.remove('text-white', 'hover:text-brand-gold');
-        desktopToggleEn?.classList.remove('bg-white', 'text-brand-green');
-        desktopToggleEn?.classList.add('text-white', 'hover:text-brand-gold');
-      }
-
-      // Update mobile pill layout
-      mobileToggleBtns.forEach(btn => {
-        const btnLang = btn.getAttribute('data-lang');
-        if (btnLang === lang) {
-          btn.classList.add('bg-white', 'text-brand-green', 'shadow-sm');
-          btn.classList.remove('text-text-body');
-        } else {
-          btn.classList.remove('bg-white', 'text-brand-green', 'shadow-sm');
-          btn.classList.add('text-text-body');
-        }
-      });
-    };
-
-    // Load active language or default to 'en'
-    const activeLang = sessionStorage.getItem('bmcci_lang') || 'en';
-    setActiveLanguage(activeLang);
-
-    // Desktop click triggers
-    desktopToggleEn?.addEventListener('click', () => setActiveLanguage('en'));
-    desktopToggleBm?.addEventListener('click', () => setActiveLanguage('bm'));
-
-    // Mobile click triggers
-    mobileToggleBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.getAttribute('data-lang');
-        if (lang) setActiveLanguage(lang);
-      });
-    });
-  };
-  initLanguageToggle();
+  // 5. Language Switcher Removed
 
   // 6. Keyboard Escape Key Down search close (Accessibility standard)
   window.addEventListener('keydown', (e) => {
