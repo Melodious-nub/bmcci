@@ -196,14 +196,16 @@ function initDropdowns() {
 function initPageHeader() {
   const pageTitleEl = document.getElementById('page-header-title');
   const pageSubtitleEl = document.getElementById('page-header-subtitle');
+  const breadcrumbEl = document.getElementById('breadcrumb-current-page');
+  
   if (pageTitleEl && pageSubtitleEl) {
     const overrideTitle = document.body.getAttribute('data-page-title');
     const overrideSubtitle = document.body.getAttribute('data-page-subtitle');
     
-    if (overrideTitle) {
-      pageTitleEl.textContent = overrideTitle;
-    } else {
-      pageTitleEl.textContent = document.title.split('|')[0].trim();
+    const finalTitle = overrideTitle || document.title.split('|')[0].trim();
+    pageTitleEl.textContent = finalTitle;
+    if (breadcrumbEl) {
+      breadcrumbEl.textContent = finalTitle;
     }
     
     if (overrideSubtitle) {
