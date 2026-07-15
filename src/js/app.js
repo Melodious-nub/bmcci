@@ -37,7 +37,8 @@ import {
   Phone,
   Clock,
   Download,
-  AlertCircle
+  AlertCircle,
+  Briefcase
 } from 'lucide';
 
 // Initialize core features on DOM content load
@@ -73,7 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Phone,
       Clock,
       Download,
-      AlertCircle
+      AlertCircle,
+      Briefcase
     }
   });
 
