@@ -8,12 +8,15 @@ import { initUIComponents } from './components.js';
 
 // Import Swiper components & CSS for event sliders
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 // Import ECharts library
 import * as echarts from 'echarts';
+
+// Import SweetAlert2
+import Swal from 'sweetalert2';
 
 import { 
   createIcons, 
@@ -38,7 +41,17 @@ import {
   Clock,
   Download,
   AlertCircle,
-  Briefcase
+  Briefcase,
+  TrendingDown,
+  Activity,
+  Target,
+  Settings,
+  Sun,
+  Map,
+  Anchor,
+  Cpu,
+  Package,
+  Microscope
 } from 'lucide';
 
 // Initialize core features on DOM content load
@@ -50,6 +63,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Load UI component listeners (Modals, Tabs, Dropdowns)
   initUIComponents();
+
+  // 2.5 Newsletter Subscription Handler
+  const newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      Swal.fire({
+        title: 'Subscribed Successfully!',
+        text: 'Thank you for subscribing to BMCCI Insights. You will receive chamber news directly.',
+        icon: 'success',
+        confirmButtonColor: '#1d8f5b',
+        confirmButtonText: 'Great!',
+        background: '#ffffff',
+        customClass: {
+          popup: 'rounded-2xl shadow-xl',
+          title: 'text-lg font-bold text-slate-800',
+          htmlContainer: 'text-sm text-slate-600',
+          confirmButton: 'rounded-btn font-semibold px-6'
+        }
+      }).then(() => {
+        newsletterForm.reset();
+      });
+    });
+  }
 
   // 3. Initialize dynamic Lucide Outline Icons globally
   createIcons({
@@ -75,7 +112,17 @@ document.addEventListener('DOMContentLoaded', () => {
       Clock,
       Download,
       AlertCircle,
-      Briefcase
+      Briefcase,
+      TrendingDown,
+      Activity,
+      Target,
+      Settings,
+      Sun,
+      Map,
+      Anchor,
+      Cpu,
+      Package,
+      Microscope
     }
   });
 
@@ -116,6 +163,29 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('[BMCCI Gateway] Swiper initialization failed: ', err);
   }
 
+  // 5.5 Initialize Partner Swiper (Marquee)
+  try {
+    const partnerSwiperEl = document.getElementById('partner-swiper');
+    if (partnerSwiperEl) {
+      new Swiper('#partner-swiper', {
+        modules: [Autoplay],
+        slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 24,
+        loop: true,
+        speed: 800,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        allowTouchMove: true
+      });
+    }
+  } catch (err) {
+    console.warn('[BMCCI Gateway] Partner swiper failed to initialize: ', err);
+  }
+
   // 6. Initialize ECharts Bilateral Trade Charts (Import & Export share)
   try {
     const exportChartEl = document.getElementById('export-chart');
@@ -124,23 +194,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exportChartEl) {
       const exportChart = echarts.init(exportChartEl);
       exportChart.setOption({
-        tooltip: { trigger: 'item' },
-        legend: { bottom: '0%', left: 'center', textStyle: { color: '#64748b', fontSize: 10 } },
+        tooltip: { trigger: 'item', backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: '#e2e8f0', textStyle: { color: '#0f172a' }, extraCssText: 'box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-radius: 8px;' },
+        legend: { bottom: '0%', left: 'center', textStyle: { color: '#64748b', fontSize: 11, fontWeight: '500' }, itemGap: 15 },
         series: [
           {
             name: 'Export Share',
             type: 'pie',
-            radius: ['45%', '70%'],
+            radius: ['45%', '65%'],
+            center: ['50%', '42%'],
             avoidLabelOverlap: false,
-            itemStyle: { borderRadius: 8, borderColor: '#fff', borderWidth: 2 },
+            itemStyle: { 
+              borderRadius: 10, 
+              borderColor: '#fff', 
+              borderWidth: 3,
+              shadowBlur: 15,
+              shadowColor: 'rgba(0, 0, 0, 0.08)'
+            },
             label: { show: false, position: 'center' },
             emphasis: {
-              label: { show: true, fontSize: 13, fontWeight: 'bold' }
+              label: { show: true, fontSize: 16, fontWeight: '900', color: '#0f172a' },
+              itemStyle: { shadowBlur: 20, shadowColor: 'rgba(0, 0, 0, 0.15)' }
             },
             labelLine: { show: false },
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDuration: 1800,
+            animationDelay: function (idx) { return Math.random() * 200; },
             data: [
               { value: 84, name: 'Ready-Made Garments', itemStyle: { color: '#006a4e' } },
-              { value: 6, name: 'Agricultural Crops', itemStyle: { color: '#0033a0' } },
+              { value: 6, name: 'Agricultural Crops', itemStyle: { color: '#0ea5e9' } },
               { value: 4, name: 'Leather Goods', itemStyle: { color: '#d4af37' } },
               { value: 3, name: 'Frozen Seafood', itemStyle: { color: '#64748b' } },
               { value: 3, name: 'Others', itemStyle: { color: '#cbd5e1' } }
@@ -154,25 +236,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (importChartEl) {
       const importChart = echarts.init(importChartEl);
       importChart.setOption({
-        tooltip: { trigger: 'item' },
-        legend: { bottom: '0%', left: 'center', textStyle: { color: '#64748b', fontSize: 10 } },
+        tooltip: { trigger: 'item', backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: '#e2e8f0', textStyle: { color: '#0f172a' }, extraCssText: 'box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-radius: 8px;' },
+        legend: { bottom: '0%', left: 'center', textStyle: { color: '#64748b', fontSize: 11, fontWeight: '500' }, itemGap: 15 },
         series: [
           {
             name: 'Import Share',
             type: 'pie',
-            radius: ['45%', '70%'],
+            radius: ['45%', '65%'],
+            center: ['50%', '42%'],
             avoidLabelOverlap: false,
-            itemStyle: { borderRadius: 8, borderColor: '#fff', borderWidth: 2 },
+            itemStyle: { 
+              borderRadius: 10, 
+              borderColor: '#fff', 
+              borderWidth: 3,
+              shadowBlur: 15,
+              shadowColor: 'rgba(0, 0, 0, 0.08)'
+            },
             label: { show: false, position: 'center' },
             emphasis: {
-              label: { show: true, fontSize: 13, fontWeight: 'bold' }
+              label: { show: true, fontSize: 16, fontWeight: '900', color: '#0f172a' },
+              itemStyle: { shadowBlur: 20, shadowColor: 'rgba(0, 0, 0, 0.15)' }
             },
             labelLine: { show: false },
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDuration: 1800,
+            animationDelay: function (idx) { return Math.random() * 200; },
             data: [
-              { value: 34, name: 'Refined Petroleum', itemStyle: { color: '#0033a0' } },
+              { value: 34, name: 'Refined Petroleum', itemStyle: { color: '#0ea5e9' } },
               { value: 24, name: 'Electronics & Chips', itemStyle: { color: '#006a4e' } },
               { value: 18, name: 'Palm Oil Cargo', itemStyle: { color: '#d4af37' } },
-              { value: 14, name: 'Heavy Machinery', itemStyle: { color: '#64748b' } },
+              { value: 14, name: 'Heavy Machinery', itemStyle: { color: '#8b5cf6' } },
               { value: 10, name: 'Raw Chemicals', itemStyle: { color: '#cbd5e1' } }
             ]
           }
@@ -181,14 +275,157 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', () => importChart.resize());
     }
 
+    // New: FDI Bar Chart Configuration
+    const fdiChartEl = document.getElementById('fdi-bar-chart');
+    if (fdiChartEl) {
+      const fdiChart = echarts.init(fdiChartEl);
+      fdiChart.setOption({
+        tooltip: { 
+          trigger: 'axis', 
+          axisPointer: { type: 'shadow' },
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          borderColor: '#e2e8f0',
+          textStyle: { color: '#0f172a' },
+          extraCssText: 'box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-radius: 8px;'
+        },
+        grid: { left: '3%', right: '6%', bottom: '3%', top: '5%', containLabel: true },
+        xAxis: { type: 'value', boundaryGap: [0, 0.01], splitLine: { lineStyle: { type: 'dashed', color: '#f1f5f9' } }, axisLabel: { color: '#94a3b8' } },
+        yAxis: { 
+          type: 'category', 
+          data: ['Tech & SaaS', 'Renewable Energy', 'Logistics', 'Real Estate', 'Telecom', 'Agro-Processing', 'Textile/RMG'],
+          axisLine: { show: false },
+          axisTick: { show: false },
+          axisLabel: { fontWeight: '700', color: '#475569', fontSize: 11, margin: 16 }
+        },
+        series: [
+          {
+            name: 'FDI Inflow ($M)',
+            type: 'bar',
+            barWidth: '45%',
+            showBackground: true,
+            backgroundStyle: { color: '#f8fafc', borderRadius: [0, 8, 8, 0] },
+            itemStyle: {
+              borderRadius: [0, 8, 8, 0],
+              shadowBlur: 10,
+              shadowColor: 'rgba(14, 165, 233, 0.2)',
+              color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                { offset: 0, color: '#0284c7' },
+                { offset: 1, color: '#38bdf8' }
+              ])
+            },
+            label: { 
+              show: true, 
+              position: 'insideRight', 
+              color: '#ffffff', 
+              fontWeight: 'bold',
+              formatter: '${c}M',
+              padding: [0, 8, 0, 0]
+            },
+            data: [35, 45, 65, 85, 125, 210, 430],
+            animationEasing: 'cubicOut',
+            animationDuration: 2000,
+            animationDelay: function (idx) { return idx * 100; }
+          }
+        ]
+      });
+      window.addEventListener('resize', () => fdiChart.resize());
+    }
+
+    // 6.5 Initialize Bilateral Trade Chart (Trade & Investment Page)
+    const bilateralChartEl = document.getElementById('bilateral-trade-chart');
+    if (bilateralChartEl) {
+      const bilateralChart = echarts.init(bilateralChartEl);
+      bilateralChart.setOption({
+        backgroundColor: 'transparent',
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'cross', label: { backgroundColor: '#1d8f5b' } },
+          backgroundColor: 'rgba(15, 23, 42, 0.9)',
+          borderColor: '#334155',
+          textStyle: { color: '#f8fafc' }
+        },
+        legend: {
+          data: ['Trade Volume ($B)', 'FDI Inflows ($M)'],
+          textStyle: { color: '#94a3b8' },
+          top: 0
+        },
+        grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+        xAxis: [
+          {
+            type: 'category',
+            boundaryGap: true,
+            data: ['2020', '2021', '2022', '2023', '2024', '2025', '2026 (Est)', '2027 (FTA)'],
+            axisLabel: { color: '#94a3b8' },
+            axisLine: { lineStyle: { color: '#334155' } }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            name: 'Trade Vol ($B)',
+            position: 'left',
+            nameTextStyle: { color: '#94a3b8' },
+            axisLabel: { color: '#94a3b8', formatter: '${value}B' },
+            splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }
+          },
+          {
+            type: 'value',
+            name: 'FDI ($M)',
+            position: 'right',
+            nameTextStyle: { color: '#94a3b8' },
+            axisLabel: { color: '#94a3b8', formatter: '${value}M' },
+            splitLine: { show: false }
+          }
+        ],
+        series: [
+          {
+            name: 'Trade Volume ($B)',
+            type: 'bar',
+            barWidth: '30%',
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: '#1d8f5b' },
+                { offset: 1, color: '#006a4e' }
+              ]),
+              borderRadius: [4, 4, 0, 0]
+            },
+            data: [2.1, 2.4, 2.7, 3.1, 3.4, 3.6, 3.8, 4.5]
+          },
+          {
+            name: 'FDI Inflows ($M)',
+            type: 'line',
+            yAxisIndex: 1,
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 8,
+            itemStyle: { color: '#d4af37' },
+            lineStyle: { width: 3, shadowColor: 'rgba(212, 175, 55, 0.4)', shadowBlur: 10 },
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: 'rgba(212, 175, 55, 0.3)' },
+                { offset: 1, color: 'rgba(212, 175, 55, 0)' }
+              ])
+            },
+            data: [150, 180, 210, 260, 310, 370, 412, 550]
+          }
+        ]
+      });
+      window.addEventListener('resize', () => bilateralChart.resize());
+    }
+
     // 7. Initialize GDP Growth trends line chart
     const gdpTrendEl = document.getElementById('gdp-trend-chart');
     if (gdpTrendEl) {
       const gdpChart = echarts.init(gdpTrendEl);
       gdpChart.setOption({
         tooltip: { trigger: 'axis' },
-        legend: { data: ['Bangladesh', 'Malaysia'], textStyle: { color: '#64748b' } },
-        grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+        legend: { 
+          data: ['Bangladesh', 'Malaysia'], 
+          textStyle: { color: '#64748b' },
+          bottom: 0,
+          icon: 'circle'
+        },
+        grid: { left: '3%', right: '4%', bottom: '12%', top: '5%', containLabel: true },
         xAxis: {
           type: 'category',
           boundaryGap: false,
@@ -426,8 +663,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNext = section.querySelector('#btn-member-next');
     const btnPrev = section.querySelector('#btn-member-prev');
     const btnSubmit = section.querySelector('#btn-member-submit');
-    const form = section.querySelector('form');
+    const btnReset = section.querySelector('#btn-member-reset');
+    const form = section.querySelector('#member-form');
     const footer = section.querySelector('#member-stepper-footer');
+    const fileUpload = section.querySelector('#member-file-upload');
+    const fileText = section.querySelector('#file-upload-text');
     
     let currentStep = 1;
     
@@ -445,15 +685,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Update progress indicators
       stepIndicators.forEach((ind, idx) => {
-        if (idx + 1 <= currentStep && currentStep < 5) {
-          ind.classList.add('bg-brand-green', 'text-white');
-          ind.classList.remove('bg-neutral-border', 'text-text-muted');
-        } else if (currentStep === 5) {
-          ind.classList.add('bg-brand-green', 'text-white');
-          ind.classList.remove('bg-neutral-border', 'text-text-muted');
+        if (idx + 1 <= currentStep) {
+          ind.classList.add('bg-brand-green', 'text-white', 'border-brand-green');
+          ind.classList.remove('bg-neutral-bgSecondary', 'text-text-muted', 'border-neutral-border');
         } else {
-          ind.classList.remove('bg-brand-green', 'text-white');
-          ind.classList.add('bg-neutral-border', 'text-text-muted');
+          ind.classList.remove('bg-brand-green', 'text-white', 'border-brand-green');
+          ind.classList.add('bg-neutral-bgSecondary', 'text-text-muted', 'border-neutral-border');
         }
       });
 
@@ -482,8 +719,21 @@ document.addEventListener('DOMContentLoaded', () => {
         btnPrev?.classList.remove('hidden');
         btnNext?.classList.remove('hidden');
         btnSubmit?.classList.add('hidden');
+        if (footer) footer.classList.remove('hidden');
       }
     };
+
+    if (fileUpload && fileText) {
+      fileUpload.addEventListener('change', (e) => {
+        if(e.target.files.length > 0) {
+          fileText.textContent = e.target.files[0].name;
+          fileText.classList.add('text-brand-green');
+        } else {
+          fileText.textContent = 'Click to upload file';
+          fileText.classList.remove('text-brand-green');
+        }
+      });
+    }
 
     btnNext?.addEventListener('click', () => {
       const activeInputs = section.querySelector(`[data-member-step="${currentStep}"]`).querySelectorAll('input, select');
@@ -506,6 +756,16 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStep--;
         updateStepView();
       }
+    });
+
+    btnReset?.addEventListener('click', () => {
+      if (form) form.reset();
+      currentStep = 1;
+      if (fileText) {
+        fileText.textContent = 'Click to upload file';
+        fileText.classList.remove('text-brand-green');
+      }
+      updateStepView();
     });
 
     form?.addEventListener('submit', (e) => {

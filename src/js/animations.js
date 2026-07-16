@@ -68,12 +68,12 @@ export function initSmoothScroll() {
   if (lenisInstance) return lenisInstance;
 
   lenisInstance = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    duration: 1.5,
+    easing: (t) => 1 - Math.pow(1 - t, 4),
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: true,
-    wheelMultiplier: 1,
+    wheelMultiplier: 1.1,
     touchMultiplier: 2,
     infinite: false,
   });
@@ -105,14 +105,14 @@ export function initEntranceAnimations() {
   gsap.fromTo(revealElements, 
     { 
       opacity: 0, 
-      y: 30 
+      y: 50 
     },
     { 
       opacity: 1, 
       y: 0, 
-      duration: 0.8, 
-      stagger: 0.15, 
-      ease: 'power3.out',
+      duration: 1.2, 
+      stagger: 0.2, 
+      ease: 'power4.out',
       clearProps: 'transform,opacity'
     }
   );
@@ -126,16 +126,16 @@ export function initScrollReveal() {
 
   scrollElements.forEach((el) => {
     const delay = el.getAttribute('data-reveal-delay') || 0;
-    const duration = el.getAttribute('data-reveal-duration') || 0.8;
+    const duration = el.getAttribute('data-reveal-duration') || 1.2;
     const direction = el.getAttribute('data-reveal-direction') || 'up';
     
     let initialX = 0;
     let initialY = 0;
 
-    if (direction === 'up') initialY = 40;
-    else if (direction === 'down') initialY = -40;
-    else if (direction === 'left') initialX = 40;
-    else if (direction === 'right') initialX = -40;
+    if (direction === 'up') initialY = 50;
+    else if (direction === 'down') initialY = -50;
+    else if (direction === 'left') initialX = 50;
+    else if (direction === 'right') initialX = -50;
 
     gsap.from(el, {
       scrollTrigger: {
@@ -148,7 +148,7 @@ export function initScrollReveal() {
       y: initialY,
       duration: parseFloat(duration),
       delay: parseFloat(delay),
-      ease: 'power3.out',
+      ease: 'expo.out',
       clearProps: 'transform,opacity'
     });
   });

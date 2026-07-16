@@ -181,8 +181,11 @@
          SECTION 02 — TRUSTED PARTNERS (Auto-scrolling logos marquee)
          ========================================================================== -->
     <section class="section-compact bg-neutral-bgSecondary divider-subtle">
-      <div class="container-shell w-full text-center flex flex-col gap-6">
-        <span class="text-[10px] font-bold text-text-muted uppercase tracking-widest">Institutional Government & Enterprise Partners</span>
+      <div class="container-shell w-full text-center flex flex-col gap-8">
+        <div class="flex flex-col gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-[0.2em]">Global Strategic Partners</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-text-dark tracking-tight">Our Trusted Network</h2>
+        </div>
         <!-- Infinite scroll marquee layout -->
         <div class="relative w-full overflow-hidden py-2">
           <!-- Inject Reusable Partner Grid -->
@@ -430,7 +433,7 @@
             </div>
             <h3 class="text-text-dark font-bold text-base group-hover:text-brand-green transition-fast">Bilateral Forums</h3>
             <p class="text-text-body text-xs leading-relaxed">Organizing annual trade showcases, economic conclaves, and ministerial councils across Dhaka and KL.</p>
-            <a href="/pages/events.html" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline mt-2">
+            <a href="/pages/events.html#upcoming-events-grid-sec" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline mt-2">
               <span>Learn Details</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
@@ -443,9 +446,9 @@
             </div>
             <h3 class="text-text-dark font-bold text-base group-hover:text-brand-green transition-fast">Market Bulletins</h3>
             <p class="text-text-body text-xs leading-relaxed">Publishing quarterly trade booklets, compliance guides, and bilateral economic indices indicators.</p>
-            <a href="/pages/economic-intelligence.html#downloads" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline mt-2">
-              <span>Learn Details</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <a href="/src/assets/files/dummy.pdf" download="Market_Publications.pdf" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline mt-2">
+              <span>Download Publications</span>
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
             </a>
           </div>
 
@@ -455,7 +458,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 06 — UPCOMING EVENTS (Swiper Horizontal Slider)
+         SECTION 06 — UPCOMING EVENTS (Editorial Layout)
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="upcoming-events-sec">
       <div class="container-shell">
@@ -469,82 +472,110 @@
               Book corporate credentials for our upcoming expos, summits, and award dinners to network with policy planners.
             </p>
           </div>
-          <!-- Custom Slider Navigation Arrows -->
-          <div class="flex items-center gap-3 shrink-0">
-            <button id="event-slider-prev" class="w-10 h-10 border border-neutral-border rounded-btn bg-white hover:border-brand-green hover:text-brand-green text-text-muted transition-fast flex items-center justify-center shadow-card" aria-label="Previous event slide">
-              <i data-lucide="chevron-right" class="w-4 h-4 rotate-180"></i>
-            </button>
-            <button id="event-slider-next" class="w-10 h-10 border border-neutral-border rounded-btn bg-white hover:border-brand-green hover:text-brand-green text-text-muted transition-fast flex items-center justify-center shadow-card" aria-label="Next event slide">
-              <i data-lucide="chevron-right" class="w-4 h-4"></i>
-            </button>
+          <!-- View All Button -->
+          <div class="flex items-center shrink-0">
+            <a href="/pages/events.html" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark text-xs font-extrabold rounded-btn shadow-sm transition-all border border-neutral-border group">
+              <span>View All Events</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Horizontal Swiper Container -->
-        <div class="swiper-container w-full overflow-hidden" id="event-swiper">
-          <div class="swiper-wrapper flex gap-8">
+        <!-- Editorial Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- FEATURED EVENT (Span 7) -->
+          <div class="lg:col-span-7 relative group rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-500 ease-out h-[450px] lg:h-[600px] flex flex-col justify-end isolate cursor-pointer border border-neutral-border" onclick="window.location.href='/pages/events.html#register'">
+            <!-- Background Image -->
+            <img src="/assets/images/events/showcase-default.jpg" alt="Trade Showcase" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 z-0" loading="lazy" />
             
-            <!-- Event Card 1 -->
-            <div class="swiper-slide w-[340px] md:w-[380px] shrink-0">
-              <!-- include components/ui/event-card.html -->
+            <!-- Elegant Dark Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
+            
+            <!-- Floating Category Pill -->
+            <span class="absolute top-6 left-6 z-20 inline-flex px-4 py-1.5 bg-brand-green/90 backdrop-blur-md text-white text-[10px] font-extrabold uppercase tracking-widest rounded-full shadow-lg border border-brand-green/30">
+              Trade Summit
+            </span>
+
+            <!-- Content Container -->
+            <div class="relative z-20 p-8 md:p-10 flex flex-col gap-4 transform transition-transform duration-500 group-hover:-translate-y-2">
+              <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-brand-gold">
+                <span class="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10 shadow-sm">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  September 14-16, 2026
+                </span>
+                <span class="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/10 text-white shadow-sm">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-slate-300"></i>
+                  Pan Pacific Sonargaon, Dhaka
+                </span>
+              </div>
+              
+              <h3 class="text-white font-extrabold text-3xl md:text-4xl leading-tight drop-shadow-md">
+                Malaysia-Bangladesh Trade Showcase 2026
+              </h3>
+              
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-md drop-shadow-sm">
+                The landmark annual trade expo hosting over 150 exhibitors displaying tech, machinery, and commodities from both nations.
+              </p>
+
+              <div class="mt-4 flex items-center gap-2 text-brand-green font-extrabold text-sm uppercase tracking-wider group-hover:text-brand-gold transition-colors">
+                <span>Reserve Booth / Register</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-2"></i>
+              </div>
             </div>
+          </div>
+
+          <!-- LIST STACK (Span 5) -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
             
-            <!-- Event Card 2 -->
-            <div class="swiper-slide w-[340px] md:w-[380px] shrink-0">
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
-                <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/investment-conclave.jpg" alt="Capital Conclave Scene" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Investment Forum</span>
+            <!-- List Event 1 -->
+            <div class="group flex flex-col sm:flex-row gap-5 bg-white border border-neutral-border rounded-2xl p-5 shadow-sm hover:shadow-card hover:border-brand-blue/30 transition-all cursor-pointer h-full" onclick="window.location.href='/pages/events.html#register'">
+              <div class="w-full sm:w-36 aspect-[4/3] sm:aspect-square shrink-0 rounded-xl overflow-hidden relative">
+                <img src="/assets/images/events/investment-conclave.jpg" alt="Conclave" class="w-full h-full object-cover transition-transform duration-[1s] group-hover:scale-110" loading="lazy" />
+                <div class="absolute inset-0 bg-brand-blue/10 group-hover:bg-transparent transition-colors"></div>
+              </div>
+              <div class="flex flex-col justify-between py-1 flex-1">
+                <div class="flex flex-col gap-2">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-[10px] font-extrabold text-brand-blue uppercase tracking-wider bg-brand-blue/5 px-2.5 py-1 rounded-full border border-brand-blue/10">Investment Forum</span>
+                    <span class="text-xs font-semibold text-text-muted flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Nov 22</span>
+                  </div>
+                  <h3 class="text-text-dark font-extrabold text-lg leading-snug group-hover:text-brand-blue transition-fast mt-1">
+                    Bilateral Investment Conclave
+                  </h3>
+                  <p class="text-text-body text-[13px] leading-relaxed line-clamp-2 mt-1">
+                    Exclusive closed-door summit presenting high-value investment profiles in EPZs and green tech.
+                  </p>
                 </div>
-                <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
-                  <div class="flex flex-col gap-2.5">
-                    <div class="flex items-center gap-2 text-xs font-semibold text-brand-blue">
-                      <i data-lucide="calendar" class="w-4 h-4 text-brand-blue shrink-0"></i>
-                      <span>November 22, 2026</span>
-                    </div>
-                    <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Bilateral Investment Conclave</h3>
-                    <p class="text-text-body text-xs leading-relaxed line-clamp-2">Exclusive closed-door summit presenting high-value investment profiles in EPZs, infrastructure, and green technology.</p>
-                  </div>
-                  <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
-                    <div class="flex flex-col gap-2 text-xs text-text-body">
-                      <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">Shangri-La Hotel, Kuala Lumpur</span></span>
-                      <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>09:30 AM - 04:00 PM</span></span>
-                    </div>
-                    <a href="/pages/events.html#register" class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1">
-                      <span>Register Seat</span>
-                      <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                    </a>
-                  </div>
+                <div class="flex items-center gap-4 text-xs font-semibold text-text-muted mt-5 border-t border-neutral-border pt-4">
+                  <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> KL, Malaysia</span>
+                  <span class="flex items-center gap-1.5 text-brand-blue font-bold group-hover:translate-x-1 transition-transform ml-auto">Register <i data-lucide="chevron-right" class="w-3 h-3"></i></span>
                 </div>
               </div>
             </div>
 
-            <!-- Event Card 3 -->
-            <div class="swiper-slide w-[340px] md:w-[380px] shrink-0">
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
-                <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/networking-dinner.jpg" alt="Networking Banquet" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-gold text-text-dark text-[10px] font-bold uppercase rounded-full shadow-card">Networking Dinner</span>
+            <!-- List Event 2 -->
+            <div class="group flex flex-col sm:flex-row gap-5 bg-white border border-neutral-border rounded-2xl p-5 shadow-sm hover:shadow-card hover:border-brand-gold/30 transition-all cursor-pointer h-full" onclick="window.location.href='/pages/events.html#register'">
+              <div class="w-full sm:w-36 aspect-[4/3] sm:aspect-square shrink-0 rounded-xl overflow-hidden relative">
+                <img src="/assets/images/events/networking-dinner.jpg" alt="Dinner" class="w-full h-full object-cover transition-transform duration-[1s] group-hover:scale-110" loading="lazy" />
+                <div class="absolute inset-0 bg-brand-gold/10 group-hover:bg-transparent transition-colors"></div>
+              </div>
+              <div class="flex flex-col justify-between py-1 flex-1">
+                <div class="flex flex-col gap-2">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-[10px] font-extrabold text-yellow-700 uppercase tracking-wider bg-brand-gold/10 px-2.5 py-1 rounded-full border border-brand-gold/20">Networking Dinner</span>
+                    <span class="text-xs font-semibold text-text-muted flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Dec 05</span>
+                  </div>
+                  <h3 class="text-text-dark font-extrabold text-lg leading-snug group-hover:text-brand-gold transition-fast mt-1">
+                    BMCCI Corporate Networking
+                  </h3>
+                  <p class="text-text-body text-[13px] leading-relaxed line-clamp-2 mt-1">
+                    Premium annual gala dinner hosting chamber members, regional diplomats, and delegations.
+                  </p>
                 </div>
-                <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
-                  <div class="flex flex-col gap-2.5">
-                    <div class="flex items-center gap-2 text-xs font-semibold text-brand-gold">
-                      <i data-lucide="calendar" class="w-4 h-4 text-brand-gold shrink-0"></i>
-                      <span>December 05, 2026</span>
-                    </div>
-                    <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">BMCCI Corporate Networking Dinner</h3>
-                    <p class="text-text-body text-xs leading-relaxed line-clamp-2">Premium annual gala dinner hosting chamber members, regional diplomats, and trade delegations.</p>
-                  </div>
-                  <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
-                    <div class="flex flex-col gap-2 text-xs text-text-body">
-                      <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">The Westin Hotel, Dhaka</span></span>
-                      <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>07:00 PM - 10:30 PM</span></span>
-                    </div>
-                    <a href="/pages/events.html#register" class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1">
-                      <span>Register Seat</span>
-                      <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                    </a>
-                  </div>
+                <div class="flex items-center gap-4 text-xs font-semibold text-text-muted mt-5 border-t border-neutral-border pt-4">
+                  <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> The Westin, Dhaka</span>
+                  <span class="flex items-center gap-1.5 text-brand-gold font-bold group-hover:translate-x-1 transition-transform ml-auto">Register <i data-lucide="chevron-right" class="w-3 h-3"></i></span>
                 </div>
               </div>
             </div>
@@ -668,54 +699,175 @@
         </div>
 
         <!-- Testimonials 3 Columns Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           
           <!-- Testimonial 1 -->
-          <!-- include components/ui/testimonial.html -->
-
-          <!-- Testimonial 2 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift">
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift">
             <div class="text-brand-gold text-5xl leading-none absolute top-4 right-6 select-none opacity-20 pointer-events-none">&ldquo;</div>
             <div class="flex flex-col gap-4">
               <div class="flex items-center gap-1 text-brand-gold"><span class="text-sm font-bold">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-              <p class="text-text-dark font-medium text-xs leading-relaxed italic relative z-10">
+              <p class="text-text-dark font-medium text-sm md:text-base leading-relaxed italic relative z-10">
+                "Establishing joint ventures in textile manufacturing wouldn't have been possible without the strategic advocacy and legal consultancies provided by BMCCI."
+              </p>
+            </div>
+            <div class="flex items-center gap-4 border-t border-neutral-border pt-5">
+              <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-neutral-border">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Anisur Rahman" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <span class="text-sm font-extrabold text-text-dark">Anisur Rahman</span>
+                <span class="text-xs text-text-muted">Chairman, Bengal Spinners</span>
+                <span class="text-[10px] text-brand-green font-bold uppercase mt-0.5">Bangladesh</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift">
+            <div class="text-brand-gold text-5xl leading-none absolute top-4 right-6 select-none opacity-20 pointer-events-none">&ldquo;</div>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-1 text-brand-gold"><span class="text-sm font-bold">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+              <p class="text-text-dark font-medium text-sm md:text-base leading-relaxed italic relative z-10">
                 "BMCCI was highly instrumental in facilitating our corporate market entry into Bangladesh. Their B2B matchings connected us directly with logistics channels."
               </p>
             </div>
             <div class="flex items-center gap-4 border-t border-neutral-border pt-5">
-              <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-neutral-border">
-                <img src="/assets/images/members/testimonial-1.jpg" alt="Dato Seri Lim" class="w-full h-full object-cover" />
+              <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-neutral-border">
+                <img src="https://i.pravatar.cc/150?img=68" alt="Dato Seri Lim" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col text-left">
-                <span class="text-xs font-extrabold text-text-dark">Dato' Seri Lim</span>
-                <span class="text-[10px] text-text-muted">MD, Klang Port Infrastructure</span>
-                <span class="text-[9px] text-brand-blue font-bold uppercase mt-0.5">Malaysia</span>
+                <span class="text-sm font-extrabold text-text-dark">Dato' Seri Lim</span>
+                <span class="text-xs text-text-muted">MD, Klang Port Infrastructure</span>
+                <span class="text-[10px] text-brand-blue font-bold uppercase mt-0.5">Malaysia</span>
               </div>
             </div>
           </div>
 
           <!-- Testimonial 3 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift">
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift">
             <div class="text-brand-gold text-5xl leading-none absolute top-4 right-6 select-none opacity-20 pointer-events-none">&ldquo;</div>
             <div class="flex flex-col gap-4">
               <div class="flex items-center gap-1 text-brand-gold"><span class="text-sm font-bold">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-              <p class="text-text-dark font-medium text-xs leading-relaxed italic relative z-10">
+              <p class="text-text-dark font-medium text-sm md:text-base leading-relaxed italic relative z-10">
                 "The bilateral summits hosted by the chamber act as a vital bridge for regulatory policy updates. It remains the premier platform for trade dialogues."
               </p>
             </div>
             <div class="flex items-center gap-4 border-t border-neutral-border pt-5">
-              <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-neutral-border">
-                <img src="/assets/images/members/testimonial-3.jpg" alt="Hazlina Halim" class="w-full h-full object-cover" />
+              <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-neutral-border">
+                <img src="https://i.pravatar.cc/150?img=47" alt="Hazlina Halim" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col text-left">
-                <span class="text-xs font-extrabold text-text-dark">Hazlina Abdul Halim</span>
-                <span class="text-[10px] text-text-muted">ED, Malay-Bangla Consulting</span>
-                <span class="text-[9px] text-brand-blue font-bold uppercase mt-0.5">Malaysia</span>
+                <span class="text-sm font-extrabold text-text-dark">Hazlina Abdul Halim</span>
+                <span class="text-xs text-text-muted">ED, Malay-Bangla Consulting</span>
+                <span class="text-[10px] text-brand-blue font-bold uppercase mt-0.5">Malaysia</span>
               </div>
             </div>
           </div>
-
         </div>
+
+        <!-- Skeleton Loaders Container -->
+        <div id="testi-skeleton-grid" class="hidden grid-cols-1 md:grid-cols-3 gap-8 w-full mt-8">
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 h-[280px] skeleton-box"></div>
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 h-[280px] skeleton-box"></div>
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 h-[280px] skeleton-box"></div>
+        </div>
+
+        <!-- Additional Loaded Items -->
+        <div id="testi-more-grid" class="hidden grid-cols-1 md:grid-cols-3 gap-8 w-full mt-8">
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift opacity-0 translate-y-4 transition-all duration-700 delay-100 testi-fade-item">
+            <div class="text-brand-gold text-5xl leading-none absolute top-4 right-6 select-none opacity-20 pointer-events-none">&ldquo;</div>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-1 text-brand-gold"><span class="text-sm font-bold">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+              <p class="text-text-dark font-medium text-sm md:text-base leading-relaxed italic relative z-10">
+                "The FDI setup concierge helped us navigate licensing approvals flawlessly. Their direct line to investment boards is an invaluable asset."
+              </p>
+            </div>
+            <div class="flex items-center gap-4 border-t border-neutral-border pt-5">
+              <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-neutral-border">
+                <img src="https://i.pravatar.cc/150?img=33" alt="Tariq Khan" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <span class="text-sm font-extrabold text-text-dark">Tariq Khan</span>
+                <span class="text-xs text-text-muted">CEO, Innovate Tech Ltd</span>
+                <span class="text-[10px] text-brand-green font-bold uppercase mt-0.5">Bangladesh</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift opacity-0 translate-y-4 transition-all duration-700 delay-200 testi-fade-item">
+            <div class="text-brand-gold text-5xl leading-none absolute top-4 right-6 select-none opacity-20 pointer-events-none">&ldquo;</div>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-1 text-brand-gold"><span class="text-sm font-bold">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+              <p class="text-text-dark font-medium text-sm md:text-base leading-relaxed italic relative z-10">
+                "Double-taxation consultations through BMCCI saved us months of legal overhead. Highly recommend their corporate patron tier."
+              </p>
+            </div>
+            <div class="flex items-center gap-4 border-t border-neutral-border pt-5">
+              <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-neutral-border">
+                <img src="https://i.pravatar.cc/150?img=12" alt="Aisha Rahman" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <span class="text-sm font-extrabold text-text-dark">Aisha Rahman</span>
+                <span class="text-xs text-text-muted">Director, Green Energy Corp</span>
+                <span class="text-[10px] text-brand-blue font-bold uppercase mt-0.5">Malaysia</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 md:p-8 flex flex-col gap-6 justify-between text-left relative overflow-hidden group hover-lift opacity-0 translate-y-4 transition-all duration-700 delay-300 testi-fade-item">
+            <div class="text-brand-gold text-5xl leading-none absolute top-4 right-6 select-none opacity-20 pointer-events-none">&ldquo;</div>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-1 text-brand-gold"><span class="text-sm font-bold">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+              <p class="text-text-dark font-medium text-sm md:text-base leading-relaxed italic relative z-10">
+                "We gained exclusive priority visibility across regional sectors, establishing trusted partnerships instantly through their matchmakings."
+              </p>
+            </div>
+            <div class="flex items-center gap-4 border-t border-neutral-border pt-5">
+              <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-neutral-border">
+                <img src="https://i.pravatar.cc/150?img=53" alt="Johnathan Lee" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <span class="text-sm font-extrabold text-text-dark">Johnathan Lee</span>
+                <span class="text-xs text-text-muted">Partner, TradeBridge Law</span>
+                <span class="text-[10px] text-brand-blue font-bold uppercase mt-0.5">Malaysia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 flex justify-center">
+          <button id="testi-load-more-btn" class="inline-flex items-center justify-center h-12 px-8 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white border border-neutral-border text-text-dark font-extrabold text-xs rounded-full shadow-sm hover:shadow-md transition-all duration-300 gap-2">
+            <span>View More Endorsements</span>
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('testi-load-more-btn');
+            const skeleton = document.getElementById('testi-skeleton-grid');
+            const moreGrid = document.getElementById('testi-more-grid');
+            
+            if (btn && skeleton && moreGrid) {
+              btn.addEventListener('click', () => {
+                btn.style.display = 'none';
+                skeleton.classList.remove('hidden');
+                skeleton.classList.add('grid');
+                
+                setTimeout(() => {
+                  skeleton.classList.add('hidden');
+                  skeleton.classList.remove('grid');
+                  moreGrid.classList.remove('hidden');
+                  moreGrid.classList.add('grid');
+                  
+                  setTimeout(() => {
+                    moreGrid.querySelectorAll('.testi-fade-item').forEach(item => {
+                      item.classList.remove('opacity-0', 'translate-y-4');
+                    });
+                  }, 50);
+                }, 1200);
+              });
+            }
+          });
+        </script>
 
       </div>
     </section>

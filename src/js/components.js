@@ -11,6 +11,7 @@ export function initUIComponents() {
   initModals();
   initDropdowns();
   initPageHeader();
+  initTradeFilters();
 }
 
 /**
@@ -119,15 +120,29 @@ function initModals() {
       if (targetModal) {
         targetModal.classList.remove('hidden');
         targetModal.classList.add('flex');
+        // Force reflow for smooth animation
+        void targetModal.offsetWidth;
+        targetModal.classList.add('modal-open');
         document.body.classList.add('overflow-hidden');
+        if (window.lenis) {
+          window.lenis.stop();
+        }
       }
     });
   });
 
   const closeModal = (modal) => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
+    modal.classList.remove('modal-open');
+    if (window.lenis) {
+      window.lenis.start();
+    }
     document.body.classList.remove('overflow-hidden');
+    setTimeout(() => {
+      if (!modal.classList.contains('modal-open')) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }, 400);
   };
 
   closeButtons.forEach(btn => {
@@ -215,5 +230,50 @@ function initPageHeader() {
       pageSubtitleEl.textContent = metaDesc || '';
     }
   }
+}
+
+/**
+ * Trade Page Opportunity Filters
+ */
+function initTradeFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const oppCards = document.querySelectorAll('.opp-card');
+
+  if (filterBtns.length === 0 || oppCards.length === 0) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active state on buttons
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-brand-green', 'text-white', 'shadow-md', 'active', 'font-extrabold');
+        b.classList.add('text-text-muted', 'hover:text-text-dark', 'font-bold');
+      });
+      btn.classList.remove('text-text-muted', 'hover:text-text-dark', 'font-bold');
+      btn.classList.add('bg-brand-green', 'text-white', 'shadow-md', 'active', 'font-extrabold');
+
+      const filter = btn.getAttribute('data-filter');
+
+      // Filter cards
+      oppCards.forEach(card => {
+        const market = card.getAttribute('data-market');
+        
+        if (filter === 'all' || filter === market) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+          }, 10);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            if (card.style.opacity === '0') {
+              card.style.display = 'none';
+            }
+          }, 300); // Matches CSS transition duration
+        }
+      });
+    });
+  });
 }
 

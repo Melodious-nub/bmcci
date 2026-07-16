@@ -1,44 +1,76 @@
 <!-- ==========================================================================
      BMCCI UI MODULE - PARTNER LOGOS GRID
      ========================================================================== -->
-<div class="w-full py-8 text-left" id="strategic-partner-grid">
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+<style>
+  #partner-swiper {
+    overflow: visible; /* Let edge slides peek if needed, or hidden depending on layout. Hidden is safer */
+    overflow: hidden;
+    padding: 20px 0;
+  }
+  #partner-swiper .swiper-slide {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.4;
+    transform: scale(0.85);
+    filter: grayscale(100%);
+  }
+  #partner-swiper .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+</style>
+<div class="w-full swiper" id="partner-swiper" dir="ltr">
+  <div class="swiper-wrapper flex items-center">
     
     <!-- Partner 1 -->
-    <a href="https://www.beza.gov.bd" target="_blank" rel="noopener" 
-       class="partner-logo flex items-center justify-center p-4 border border-neutral-border rounded bg-white cursor-pointer shadow-card">
-      <span class="font-extrabold tracking-widest text-text-dark text-xs">BEZA BD</span>
-    </a>
-    
+    <div class="swiper-slide">
+      <a href="https://www.beza.gov.bd" target="_blank" rel="noopener" title="BEZA BD"
+         class="flex items-center justify-center p-6 h-32 border border-[#8bc3a3] rounded-xl bg-[#a8d5ba] transition-premium group">
+        <img src="/assets/images/partners/bezaLogo.png" alt="BEZA" class="max-h-20 w-full object-contain shrink-0" onerror="this.style.display='none'">
+      </a>
+    </div>
+
     <!-- Partner 2 -->
-    <a href="https://www.mida.gov.my" target="_blank" rel="noopener" 
-       class="partner-logo flex items-center justify-center p-4 border border-neutral-border rounded bg-white cursor-pointer shadow-card">
-      <span class="font-extrabold tracking-widest text-text-dark text-xs">MIDA MY</span>
-    </a>
-    
+    <div class="swiper-slide">
+      <a href="https://www.mida.gov.my" target="_blank" rel="noopener" title="MIDA MY"
+         class="flex items-center justify-center p-6 h-32 border border-[#8bc3a3] rounded-xl bg-[#a8d5ba] transition-premium group">
+        <img src="/assets/images/partners/MIDALogo.png" alt="MIDA" class="max-h-20 w-full object-contain shrink-0" onerror="this.style.display='none'">
+      </a>
+    </div>
+
     <!-- Partner 3 -->
-    <a href="http://www.fbcci.org" target="_blank" rel="noopener" 
-       class="partner-logo flex items-center justify-center p-4 border border-neutral-border rounded bg-white cursor-pointer shadow-card">
-      <span class="font-extrabold tracking-widest text-text-dark text-xs">FBCCI BD</span>
-    </a>
-    
+    <div class="swiper-slide">
+      <a href="http://www.fbcci.org" target="_blank" rel="noopener" title="FBCCI BD"
+         class="flex items-center justify-center p-6 h-32 border border-[#8bc3a3] rounded-xl bg-[#a8d5ba] transition-premium group">
+        <img src="/assets/images/partners/fbccilogo.png" alt="FBCCI" class="max-h-20 w-full object-contain shrink-0" onerror="this.style.display='none'">
+      </a>
+    </div>
+
     <!-- Partner 4 -->
-    <a href="https://www.matrade.gov.my" target="_blank" rel="noopener" 
-       class="partner-logo flex items-center justify-center p-4 border border-neutral-border rounded bg-white cursor-pointer shadow-card">
-      <span class="font-extrabold tracking-widest text-text-dark text-xs">MATRADE MY</span>
-    </a>
-    
+    <div class="swiper-slide">
+      <a href="https://www.matrade.gov.my" target="_blank" rel="noopener" title="MATRADE MY"
+         class="flex items-center justify-center p-6 h-32 border border-[#8bc3a3] rounded-xl bg-[#a8d5ba] transition-premium group">
+        <img src="/assets/images/partners/MatradeLogo.png" alt="MATRADE" class="max-h-20 w-full object-contain shrink-0" onerror="this.style.display='none'">
+      </a>
+    </div>
+
     <!-- Partner 5 -->
-    <a href="https://bida.gov.bd" target="_blank" rel="noopener" 
-       class="partner-logo flex items-center justify-center p-4 border border-neutral-border rounded bg-white cursor-pointer shadow-card">
-      <span class="font-extrabold tracking-widest text-text-dark text-xs">BIDA BD</span>
-    </a>
-    
+    <div class="swiper-slide">
+      <a href="https://www.bida.gov.bd" target="_blank" rel="noopener" title="BIDA BD"
+         class="flex items-center justify-center p-6 h-32 border border-[#8bc3a3] rounded-xl bg-[#a8d5ba] transition-premium group">
+        <img src="/assets/images/partners/bidaLogo.svg" alt="BIDA" class="max-h-20 w-full object-contain shrink-0" onerror="this.style.display='none'">
+      </a>
+    </div>
+
     <!-- Partner 6 -->
-    <a href="https://www.nccim.org.my" target="_blank" rel="noopener" 
-       class="partner-logo flex items-center justify-center p-4 border border-neutral-border rounded bg-white cursor-pointer shadow-card">
-      <span class="font-extrabold tracking-widest text-text-dark text-xs">NCCIM MY</span>
-    </a>
+    <div class="swiper-slide">
+      <a href="https://www.nccim.org.my" target="_blank" rel="noopener" title="NCCIM MY"
+         class="flex items-center justify-center p-6 h-32 border border-[#8bc3a3] rounded-xl bg-[#a8d5ba] transition-premium group">
+        <img src="/assets/images/partners/nccimLogo.png" alt="NCCIM" class="max-h-20 w-full object-contain shrink-0" onerror="this.style.display='none'">
+      </a>
+    </div>
 
   </div>
 </div>

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Economic Intelligence | BMCCI Digital Gateway</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://bmcci.org.bd/public/storage/upload/conf/250128092904-7229favicon (1).png">
   
   <!-- Primary SEO Meta Tags -->
   <meta name="description" content="Explore macro economic indicators, market intelligence briefs, and direct investment statistics for Bangladesh and Malaysia.">
@@ -32,7 +34,7 @@
     <!-- include components/ui/page-header.html -->
 
     <!-- ==========================================================================
-         SECTION 02 — ECONOMIC SNAPSHOT (4 KPI Cards)
+         SECTION 02 â€” ECONOMIC SNAPSHOT (4 KPI Cards)
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="snapshot-sec">
       <div class="container-shell">
@@ -83,7 +85,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 03 — INTERACTIVE DASHBOARD (ECharts GDP trend + summary widgets)
+         SECTION 03 â€” INTERACTIVE DASHBOARD (ECharts GDP trend + summary widgets)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="dashboard-trend-sec">
       <div class="container-shell">
@@ -133,6 +135,323 @@
     </section>
 
     <!-- ==========================================================================
+         SECTION 03.5 — STRATEGIC ECONOMIC ZONES ANALYSIS
+         ========================================================================== -->
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="economic-zones-sec">
+      <div class="container-shell text-center">
+        
+        <!-- Header -->
+        <div class="max-w-3xl mx-auto mb-10 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Investment Corridors</span>
+          <h2 class="section-title text-text-dark">Strategic Economic Zones Analysis</h2>
+          <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
+          <p class="text-text-body text-sm leading-relaxed">
+            Detailed breakdown of premier Special Economic Zones (SEZs) and Free Trade Zones in both nations, highlighting industrial capacity, FDI opportunities, and bilateral synergies.
+          </p>
+        </div>
+
+        <!-- Premium Segmented Market Filter -->
+        <div class="flex justify-center mb-12">
+          <div class="inline-flex bg-white border border-neutral-border p-1.5 rounded-full shadow-sm" id="zones-filters">
+            <button class="zone-filter-btn active px-8 py-3 rounded-full text-xs font-extrabold transition-all bg-brand-green text-white shadow-md" data-filter="all">All Zones</button>
+            <button class="zone-filter-btn px-8 py-3 rounded-full text-xs font-bold transition-all text-text-muted hover:text-text-dark" data-filter="bangladesh">Bangladesh Zones</button>
+            <button class="zone-filter-btn px-8 py-3 rounded-full text-xs font-bold transition-all text-text-muted hover:text-text-dark" data-filter="malaysia">Malaysian Zones</button>
+          </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left" id="zones-grid">
+          
+          <!-- BANGLADESH CARDS -->
+          
+          <!-- Card 1: Mirsarai SEZ -->
+          <div class="zone-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group transition-all duration-500 ease-in-out" data-market="bangladesh">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-green uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Chittagong</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full border border-green-200">
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Bangladesh
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-green transition-fast">
+                Mirsarai Economic Zone
+              </h3>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="map" class="w-3 h-3"></i> Total Area</span>
+                <span class="text-[15px] font-extrabold text-text-dark">30,000 Acres</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="briefcase" class="w-3 h-3"></i> Targeted FDI</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$15 Billion</span>
+              </div>
+            </div>
+            
+            <p class="text-text-body text-[13px] leading-relaxed">
+              <strong class="text-text-dark">Focus Analysis:</strong> Positioned as the largest industrial city in Bangladesh, Mirsarai offers unprecedented scale for Malaysian heavy industries, automotive assembly, and chemical processing joints. The zone features deep-sea port connectivity via Matarbari.
+            </p>
+            
+            <div class="flex flex-col gap-4 mt-2 border-t border-neutral-border pt-4">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Heavy Machinery</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Automotive</span>
+                <span class="px-2.5 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-md">10yr Tax Holiday</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Moheshkhali SEZ -->
+          <div class="zone-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group transition-all duration-500 ease-in-out" data-market="bangladesh">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-green uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Cox's Bazar</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full border border-green-200">
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Bangladesh
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-green transition-fast">
+                Moheshkhali SEZ
+              </h3>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3"></i> Core Sector</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Energy & Power</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="anchor" class="w-3 h-3"></i> Infrastructure</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Deep Sea Port</span>
+              </div>
+            </div>
+            
+            <p class="text-text-body text-[13px] leading-relaxed">
+              <strong class="text-text-dark">Focus Analysis:</strong> Designed as an energy and power hub. Malaysian oil and gas giants have strategic alignment here for LNG terminal expansions and energy logistics bridging Southeast Asia.
+            </p>
+            
+            <div class="flex flex-col gap-4 mt-2 border-t border-neutral-border pt-4">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">LNG Terminals</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Petrochemicals</span>
+                <span class="px-2.5 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-md">Zero Import Duty</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Bangabandhu Hi-Tech City -->
+          <div class="zone-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group transition-all duration-500 ease-in-out" data-market="bangladesh">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-green uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Gazipur</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full border border-green-200">
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Bangladesh
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-green transition-fast">
+                Bangabandhu Hi-Tech City
+              </h3>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="cpu" class="w-3 h-3"></i> Core Sector</span>
+                <span class="text-[15px] font-extrabold text-text-dark">IT & Electronics</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="briefcase" class="w-3 h-3"></i> Global Output</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$1.2 Billion/yr</span>
+              </div>
+            </div>
+            
+            <p class="text-text-body text-[13px] leading-relaxed">
+              <strong class="text-text-dark">Focus Analysis:</strong> The epicenter of Bangladesh's digital manufacturing. Highly attractive for Malaysian tech-hardware firms seeking lower assembly costs while maintaining direct access to domestic telecom markets.
+            </p>
+            
+            <div class="flex flex-col gap-4 mt-2 border-t border-neutral-border pt-4">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Semiconductors</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Data Centers</span>
+                <span class="px-2.5 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-md">100% Repatriation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MALAYSIA CARDS -->
+
+          <!-- Card 4: Port Klang Free Zone -->
+          <div class="zone-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group transition-all duration-500 ease-in-out" data-market="malaysia">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-blue uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Selangor</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full border border-blue-200">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Malaysia
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-blue transition-fast">
+                Port Klang Free Zone (PKFZ)
+              </h3>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="map" class="w-3 h-3"></i> Total Area</span>
+                <span class="text-[15px] font-extrabold text-text-dark">1,000 Acres</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="package" class="w-3 h-3"></i> Core Function</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Logistics Hub</span>
+              </div>
+            </div>
+            
+            <p class="text-text-body text-[13px] leading-relaxed">
+              <strong class="text-text-dark">Focus Analysis:</strong> An integrated regional distribution hub offering seamless connectivity to global shipping lanes. Crucial for Bangladeshi exporters (apparel, jute) as a transshipment and warehousing center for the broader ASEAN market.
+            </p>
+            
+            <div class="flex flex-col gap-4 mt-2 border-t border-neutral-border pt-4">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Transshipment</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Warehousing</span>
+                <span class="px-2.5 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-md">Free Trade Setup</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Penang Free Industrial Zone -->
+          <div class="zone-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group transition-all duration-500 ease-in-out" data-market="malaysia">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-blue uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Penang</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full border border-blue-200">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Malaysia
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-blue transition-fast">
+                Bayan Lepas FIZ
+              </h3>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="cpu" class="w-3 h-3"></i> Core Sector</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Semiconductors</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> Export Value</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$85 Billion/yr</span>
+              </div>
+            </div>
+            
+            <p class="text-text-body text-[13px] leading-relaxed">
+              <strong class="text-text-dark">Focus Analysis:</strong> Known as the "Silicon Valley of the East". Bangladeshi IT enterprises and tech startups can leverage this zone for hardware partnerships, advanced microchip sourcing, and R&D joint ventures.
+            </p>
+            
+            <div class="flex flex-col gap-4 mt-2 border-t border-neutral-border pt-4">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Electronics</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">R & D</span>
+                <span class="px-2.5 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-md">Pioneer Status</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Kulim Hi-Tech Park -->
+          <div class="zone-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group transition-all duration-500 ease-in-out" data-market="malaysia">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-blue uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Kedah</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full border border-blue-200">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Malaysia
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-blue transition-fast">
+                Kulim Hi-Tech Park (KHTP)
+              </h3>
+            </div>
+            
+            <!-- Data Grid -->
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="microscope" class="w-3 h-3"></i> Core Focus</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Clean Tech & Med</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium flex items-center gap-1"><i data-lucide="briefcase" class="w-3 h-3"></i> Direct FDI</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$30 Billion+</span>
+              </div>
+            </div>
+            
+            <p class="text-text-body text-[13px] leading-relaxed">
+              <strong class="text-text-dark">Focus Analysis:</strong> Malaysia’s first fully integrated high-tech park. Offers vast potential for Bangladeshi pharmaceutical giants and renewable energy firms aiming to establish a footprint in the ASEAN advanced manufacturing ecosystem.
+            </p>
+            
+            <div class="flex flex-col gap-4 mt-2 border-t border-neutral-border pt-4">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Medical Tech</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Clean Energy</span>
+                <span class="px-2.5 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-md">ITA Allowance</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript logic for Zone Filtering (Inline for immediate execution) -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.zone-filter-btn');
+        const cards = document.querySelectorAll('.zone-card');
+        const grid = document.getElementById('zones-grid');
+
+        if(filterBtns.length > 0 && cards.length > 0) {
+          filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              // Remove active styles from all
+              filterBtns.forEach(b => {
+                b.classList.remove('active', 'bg-brand-green', 'text-white', 'shadow-md');
+                b.classList.add('text-text-muted', 'hover:text-text-dark');
+              });
+
+              // Add active styles to clicked
+              const targetBtn = e.target;
+              targetBtn.classList.remove('text-text-muted', 'hover:text-text-dark');
+              targetBtn.classList.add('active', 'bg-brand-green', 'text-white', 'shadow-md');
+
+              const filterValue = targetBtn.getAttribute('data-filter');
+
+              // Filter cards with smooth opacity transition
+              cards.forEach(card => {
+                // Fade out rapidly
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                  if(filterValue === 'all' || card.getAttribute('data-market') === filterValue) {
+                    card.style.display = 'flex';
+                    // Trigger reflow
+                    void card.offsetWidth;
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                  } else {
+                    card.style.display = 'none';
+                  }
+                }, 300); // 300ms matches transition duration usually
+              });
+            });
+          });
+        }
+      });
+    </script>
+
+    <!-- ==========================================================================
          SECTION 04 — BANGLADESH ECONOMY (split + details)
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="bd-economy-sec">
@@ -173,7 +492,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 05 — MALAYSIA ECONOMY (Mirror)
+         SECTION 05 â€” MALAYSIA ECONOMY (Mirror)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="my-economy-sec">
       <div class="container-shell">
@@ -213,7 +532,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 06 — TRADE COMPARISON (Horizontal Table)
+         SECTION 06 â€” TRADE COMPARISON (Horizontal Table)
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="comparison-table-sec">
       <div class="container-shell text-center">
@@ -290,7 +609,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 07 — INDUSTRY PERFORMANCE (Grid with trend tags)
+         SECTION 07 â€” INDUSTRY PERFORMANCE (Grid with trend tags)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="industry-perf-sec">
       <div class="container-shell text-center">
@@ -350,7 +669,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 08 — FOREIGN DIRECT INVESTMENT (Split + mini chart)
+         SECTION 08 â€” FOREIGN DIRECT INVESTMENT (Split + mini chart)
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="fdi-sec">
       <div class="container-shell">
@@ -386,7 +705,7 @@
               </div>
             </div>
 
-            <a href="/pages/trade.html#downloads" class="w-full py-3 bg-white hover:bg-neutral-bgSecondary text-text-dark font-bold text-xs rounded-btn border border-neutral-border shadow-card transition-fast flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="FDI_Guidelines_Booklet.pdf" class="w-full py-3 bg-white hover:bg-neutral-bgSecondary text-text-dark font-bold text-xs rounded-btn border border-neutral-border shadow-card transition-fast flex items-center justify-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download FDI Guidelines Booklet</span>
             </a>
@@ -397,7 +716,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 09 — ECONOMIC REPORTS (Grid)
+         SECTION 09 â€” ECONOMIC REPORTS (Grid)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="economic-reports-sec">
       <div class="container-shell text-center">
@@ -425,7 +744,7 @@
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Q2 Economic brief</h3>
               <p class="text-text-body text-xs leading-relaxed">Macro GDP indices reviews, inflation statistics curves, and cargo imports updates compiled for Q2.</p>
             </div>
-            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Bilateral_Q2_Economic_brief.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download Report</span>
             </a>
@@ -441,7 +760,7 @@
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Trade Handbook</h3>
               <p class="text-text-body text-xs leading-relaxed">A complete compliance guide to tariff codes, customs clearance structures, and port handling rules.</p>
             </div>
-            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Bilateral_Trade_Handbook.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download Report</span>
             </a>
@@ -457,7 +776,7 @@
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Investment Incentives Brochure</h3>
               <p class="text-text-body text-xs leading-relaxed">Tax holidays parameters, SEZs concessions lists, and government incentives rules summarized for members.</p>
             </div>
-            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Bilateral_Investment_Incentives.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download Report</span>
             </a>
@@ -469,7 +788,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 10 — ECONOMIC TIMELINE
+         SECTION 10 â€” ECONOMIC TIMELINE
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="timeline-sec">
       <div class="container-shell">
@@ -488,7 +807,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 11 — FAQ (Accordions)
+         SECTION 11 â€” FAQ (Accordions)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="faq-accordions-sec">
       <div class="container-shell">
@@ -545,7 +864,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 12 — CALL TO ACTION (Reusable Include)
+         SECTION 12 â€” CALL TO ACTION (Reusable Include)
          ========================================================================== -->
     <section class="section-large bg-white">
       <div class="container-shell">
@@ -568,3 +887,4 @@
   <script type="module" src="/js/app.js"></script>
 </body>
 </html>
+

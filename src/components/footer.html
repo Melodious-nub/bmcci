@@ -41,12 +41,9 @@
       
       <!-- Col 01: BMCCI Mission & Socials -->
       <div class="flex flex-col gap-6">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-md bg-gradient-to-tr from-brand-green to-brand-blue flex items-center justify-center text-white font-bold text-sm shadow-sm">
-            B
-          </div>
-          <span class="text-white font-extrabold text-lg tracking-tight">BMCCI</span>
-        </div>
+        <a href="/index.html" class="inline-block bg-white p-2.5 rounded-md shadow-sm border border-neutral-border/20 self-start">
+          <img src="https://bmcci.org.bd/public/images/logo.png" alt="BMCCI Logo" width="140" />
+        </a>
         <p class="text-xs text-slate-400 leading-relaxed">
           Driving bilateral trade, direct investments, economic synergy, and joint commercial networks between Bangladesh and Malaysia business leaders.
         </p>
@@ -130,7 +127,7 @@
         <p class="text-xs text-slate-400">Receive chamber news, trade opportunities, and upcoming event announcements directly.</p>
       </div>
       
-      <form class="flex w-full md:w-auto items-center gap-2 max-w-md flex-1 md:flex-none" onsubmit="event.preventDefault(); alert('Newsletter subscribed successfully!');">
+      <form id="newsletter-form" class="flex w-full md:w-auto items-center gap-2 max-w-md flex-1 md:flex-none">
         <input type="email" placeholder="executive@company.com" required 
                class="w-full md:w-[260px] h-11 px-4 bg-slate-800 border border-slate-700 text-white rounded-btn text-xs focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-fast" />
         <button type="submit" class="h-11 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-semibold text-xs rounded-btn transition-fast flex items-center justify-center gap-2 whitespace-nowrap">
