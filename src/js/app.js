@@ -8,7 +8,7 @@ import { initUIComponents } from './components.js';
 
 // Import Swiper components & CSS for event sliders
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -114,6 +114,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   } catch (err) {
     console.warn('[BMCCI Gateway] Swiper initialization failed: ', err);
+  }
+
+  // 5.5 Initialize Partner Swiper (Marquee)
+  try {
+    const partnerSwiperEl = document.getElementById('partner-swiper');
+    if (partnerSwiperEl) {
+      new Swiper('#partner-swiper', {
+        modules: [Autoplay],
+        slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 24,
+        loop: true,
+        speed: 800,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        allowTouchMove: true
+      });
+    }
+  } catch (err) {
+    console.warn('[BMCCI Gateway] Partner swiper failed to initialize: ', err);
   }
 
   // 6. Initialize ECharts Bilateral Trade Charts (Import & Export share)
