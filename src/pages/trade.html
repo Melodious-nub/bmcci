@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -102,106 +102,317 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 03 â€” FEATURED INVESTMENT OPPORTUNITIES
+         SECTION 02.5 — BILATERAL DATA VISUALIZATION
+         ========================================================================== -->
+    <section class="section-large bg-slate-900 border-y border-slate-800 text-white relative overflow-hidden">
+      <!-- Glow effect -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-green/10 rounded-full blur-[100px] pointer-events-none"></div>
+      
+      <div class="container-shell relative z-10">
+        <div class="flex flex-col items-center text-center gap-3 mb-12">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Data Intelligence</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Bilateral Trade & Investment Trajectory</h2>
+          <p class="text-slate-400 text-sm max-w-2xl mt-2">Interactive analysis of import/export growth and strategic foreign direct investment (FDI) inflows accelerating towards the 2027 MBFTA milestone.</p>
+        </div>
+
+        <div class="w-full bg-slate-800/40 backdrop-blur-md border border-slate-700/50 rounded-2xl p-4 md:p-8 shadow-2xl">
+          <!-- ECharts Container -->
+          <div id="bilateral-trade-chart" class="w-full h-[400px] md:h-[500px]"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 03 — EXPLORE BILATERAL OPPORTUNITIES
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="featured-investment-sec">
       <div class="container-shell text-center">
         
         <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">High-Value Projects</span>
-          <h2 class="section-title text-text-dark">Featured Investment Channels</h2>
+        <div class="max-w-3xl mx-auto mb-10 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Bilateral Network</span>
+          <h2 class="section-title text-text-dark">Explore Bilateral Opportunities</h2>
           <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
           <p class="text-text-body text-sm leading-relaxed">
-            Acquire stakes in accredited infrastructure, renewable energy, and manufacturing concessions backed by ministries and SEZs.
+            Search active Joint Venture agreements, factory concessions, and distribution tenders across the Bangladesh-Malaysia economic corridor.
           </p>
+        </div>
+
+        <!-- Premium Segmented Market Filter -->
+        <div class="flex justify-center mb-12">
+          <div class="inline-flex bg-white border border-neutral-border p-1.5 rounded-full shadow-sm" id="trade-filters">
+            <button class="filter-btn active px-8 py-3 rounded-full text-xs font-extrabold transition-all bg-brand-green text-white shadow-md" data-filter="all">All Opportunities</button>
+            <button class="filter-btn px-8 py-3 rounded-full text-xs font-bold transition-all text-text-muted hover:text-text-dark" data-filter="bangladesh">Bangladesh Market</button>
+            <button class="filter-btn px-8 py-3 rounded-full text-xs font-bold transition-all text-text-muted hover:text-text-dark" data-filter="malaysia">Malaysian Market</button>
+          </div>
         </div>
 
         <!-- Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
-          <!-- Card 1 -->
-          <!-- include components/ui/trade-card.html -->
+          <!-- BANGLADESH CARDS -->
 
-          <!-- Card 2 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-            <div class="flex flex-col gap-2.5">
+          <!-- Card 1: BD Factory Concession -->
+          <div class="opp-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left transition-all duration-500 ease-in-out" data-market="bangladesh">
+            <div class="flex flex-col gap-3">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-brand-blue uppercase tracking-wider">Renewable Energy</span>
-                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">Malaysia</span>
+                <span class="text-xs font-extrabold text-brand-green uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="building-2" class="w-3.5 h-3.5"></i> Factory Concession</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full border border-green-200">
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Bangladesh
+                </span>
               </div>
-              <h3 class="text-text-dark font-extrabold text-lg leading-snug group-hover:text-brand-green transition-fast">
-                45MW Solar PV Grid Farm Development
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-green transition-fast">
+                Textile Machinery Assembly Plant
               </h3>
             </div>
-            <div class="grid grid-cols-2 gap-4 py-3 border-y border-neutral-border text-xs">
-              <div class="flex flex-col gap-1">
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
                 <span class="text-text-muted font-medium">Investment Size</span>
-                <span class="text-sm font-extrabold text-text-dark">$45.0M Value</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$1.2M - $2.5M</span>
               </div>
-              <div class="flex flex-col gap-1">
+              <div class="flex flex-col gap-1.5">
                 <span class="text-text-muted font-medium">Location</span>
-                <span class="text-sm font-extrabold text-text-dark">Johor State</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Mirsarai SEZ</span>
               </div>
             </div>
-            <p class="text-text-body text-xs leading-relaxed">
-              Bilateral private consortium building utility-scale photovoltaic solar infrastructure. High dividend capital repatriation allowances apply.
+            <p class="text-text-body text-[13px] leading-relaxed">
+              Seeking Malaysian machinery manufacturers for a joint venture to assemble high-tech spinning units within Bangladesh's Special Economic Zone.
             </p>
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-wrap gap-1.5 text-[9px] font-bold text-text-body uppercase">
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">FDI Approved</span>
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">Consortium</span>
+            <div class="flex flex-col gap-5 mt-2">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">10-Year Tax Holiday</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Equity Stake</span>
               </div>
-              <div class="flex items-center justify-between text-xs text-text-muted border-t border-neutral-border pt-4 mt-1">
-                <span class="flex items-center gap-1 font-medium">
-                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-text-muted"></i>
-                  <span>Ends: Nov 2026</span>
+              <div class="flex items-center justify-between text-xs border-t border-neutral-border pt-4">
+                <span class="flex items-center gap-1.5 font-medium text-slate-500">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>Tender Ends: Oct 2026</span>
                 </span>
-                <a href="#setup" class="text-brand-green font-bold flex items-center gap-1 hover:underline group/cta">
-                  <span>Inquire Projects</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-0.5"></i>
+                <a href="#inquire" class="text-brand-green font-extrabold flex items-center gap-1.5 hover:underline group/cta">
+                  <span>View Tender</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-1"></i>
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-            <div class="flex flex-col gap-2.5">
+          <!-- Card 2: BD Distribution Tender -->
+          <div class="opp-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left transition-all duration-500 ease-in-out" data-market="bangladesh">
+            <div class="flex flex-col gap-3">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-brand-gold uppercase tracking-wider">Logistics & Ports</span>
-                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">Bangladesh</span>
+                <span class="text-xs font-extrabold text-brand-gold uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> Distribution Tender</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full border border-green-200">
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Bangladesh
+                </span>
               </div>
-              <h3 class="text-text-dark font-extrabold text-lg leading-snug group-hover:text-brand-green transition-fast">
-                Container Terminal Cold Storage Storage Hub
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-gold transition-fast">
+                National FMCG Distribution License
               </h3>
             </div>
-            <div class="grid grid-cols-2 gap-4 py-3 border-y border-neutral-border text-xs">
-              <div class="flex flex-col gap-1">
-                <span class="text-text-muted font-medium">Investment Size</span>
-                <span class="text-sm font-extrabold text-text-dark">$6.5M Budget</span>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Expected Volume</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$5.0M Annually</span>
               </div>
-              <div class="flex flex-col gap-1">
-                <span class="text-text-muted font-medium">Location</span>
-                <span class="text-sm font-extrabold text-text-dark">Chittagong Bay</span>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Coverage</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Pan-Bangladesh</span>
               </div>
             </div>
-            <p class="text-text-body text-xs leading-relaxed">
+            <p class="text-text-body text-[13px] leading-relaxed">
+              Exclusive distribution tender for Malaysian FMCG and Halal-certified food products across major superstore chains in Dhaka and Chittagong.
+            </p>
+            <div class="flex flex-col gap-5 mt-2">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Halal Certified Only</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">3-Year Contract</span>
+              </div>
+              <div class="flex items-center justify-between text-xs border-t border-neutral-border pt-4">
+                <span class="flex items-center gap-1.5 font-medium text-slate-500">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>Tender Ends: Aug 2026</span>
+                </span>
+                <a href="#inquire" class="text-brand-gold font-extrabold flex items-center gap-1.5 hover:underline group/cta">
+                  <span>View Tender</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: BD Logistics JV -->
+          <div class="opp-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left transition-all duration-500 ease-in-out" data-market="bangladesh">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-blue uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5"></i> Joint Venture</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-[10px] font-bold rounded-full border border-green-200">
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Bangladesh
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-blue transition-fast">
+                Cold Storage & Port Logistics Hub
+              </h3>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Investment Size</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$6.5M Budget</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Location</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Chittagong Bay</span>
+              </div>
+            </div>
+            <p class="text-text-body text-[13px] leading-relaxed">
               Developing integrated refrigerated warehouse units. Prioritized clearance customs status established for partner shipping fleets.
             </p>
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-wrap gap-1.5 text-[9px] font-bold text-text-body uppercase">
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">Logistics Hub</span>
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">Fast-Track Customs</span>
+            <div class="flex flex-col gap-5 mt-2">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Logistics Hub</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Fast-Track Customs</span>
               </div>
-              <div class="flex items-center justify-between text-xs text-text-muted border-t border-neutral-border pt-4 mt-1">
-                <span class="flex items-center gap-1 font-medium">
-                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-text-muted"></i>
-                  <span>Ends: Dec 2026</span>
+              <div class="flex items-center justify-between text-xs border-t border-neutral-border pt-4">
+                <span class="flex items-center gap-1.5 font-medium text-slate-500">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>Tender Ends: Dec 2026</span>
                 </span>
-                <a href="#setup" class="text-brand-green font-bold flex items-center gap-1 hover:underline group/cta">
-                  <span>Inquire Projects</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-0.5"></i>
+                <a href="#inquire" class="text-brand-blue font-extrabold flex items-center gap-1.5 hover:underline group/cta">
+                  <span>View JV Profile</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- MALAYSIA CARDS -->
+
+          <!-- Card 4: MY Tech JV -->
+          <div class="opp-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left transition-all duration-500 ease-in-out" data-market="malaysia">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-[#0ea5e9] uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5"></i> Joint Venture</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full border border-blue-200">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Malaysia
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-[#0ea5e9] transition-fast">
+                Fintech Software Outsourcing Dev Center
+              </h3>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Investment Size</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Series A (TBD)</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Location</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Kuala Lumpur</span>
+              </div>
+            </div>
+            <p class="text-text-body text-[13px] leading-relaxed">
+              Malaysian Fintech group seeking Bangladeshi software engineering firm for a Joint Venture to establish an offshore development center.
+            </p>
+            <div class="flex flex-col gap-5 mt-2">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Tech Subsidies</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">B2B SaaS</span>
+              </div>
+              <div class="flex items-center justify-between text-xs border-t border-neutral-border pt-4">
+                <span class="flex items-center gap-1.5 font-medium text-slate-500">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>Tender Ends: Sep 2026</span>
+                </span>
+                <a href="#inquire" class="text-[#0ea5e9] font-extrabold flex items-center gap-1.5 hover:underline group/cta">
+                  <span>View JV Profile</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: MY Distribution Tender -->
+          <div class="opp-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left transition-all duration-500 ease-in-out" data-market="malaysia">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-brand-green uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> Distribution Tender</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full border border-blue-200">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Malaysia
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-brand-green transition-fast">
+                RMG & Leather Goods Retail Distribution
+              </h3>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Expected Volume</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$8.5M Annually</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Location</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Selangor / KL</span>
+              </div>
+            </div>
+            <p class="text-text-body text-[13px] leading-relaxed">
+              Seeking established Bangladeshi RMG and leather manufacturers for direct-to-retail supply chain integration with Malaysian department stores.
+            </p>
+            <div class="flex flex-col gap-5 mt-2">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Retail License</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">5-Year Term</span>
+              </div>
+              <div class="flex items-center justify-between text-xs border-t border-neutral-border pt-4">
+                <span class="flex items-center gap-1.5 font-medium text-slate-500">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>Tender Ends: Nov 2026</span>
+                </span>
+                <a href="#inquire" class="text-brand-green font-extrabold flex items-center gap-1.5 hover:underline group/cta">
+                  <span>View Tender</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: MY Energy Concession -->
+          <div class="opp-card bg-white border border-neutral-border rounded-xl shadow-card hover:-translate-y-1.5 hover:shadow-xl p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left transition-all duration-500 ease-in-out" data-market="malaysia">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-orange-500 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="building-2" class="w-3.5 h-3.5"></i> Energy Concession</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded-full border border-blue-200">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Malaysia
+                </span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-xl leading-snug group-hover:text-orange-500 transition-fast">
+                45MW Solar PV Grid Farm Development
+              </h3>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs">
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Investment Size</span>
+                <span class="text-[15px] font-extrabold text-text-dark">$45.0M Value</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-text-muted font-medium">Location</span>
+                <span class="text-[15px] font-extrabold text-text-dark">Johor State</span>
+              </div>
+            </div>
+            <p class="text-text-body text-[13px] leading-relaxed">
+              Bilateral private consortium building utility-scale photovoltaic solar infrastructure. High dividend capital repatriation allowances apply.
+            </p>
+            <div class="flex flex-col gap-5 mt-2">
+              <div class="flex flex-wrap gap-2 text-[10px] font-bold text-text-body uppercase">
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">FDI Approved</span>
+                <span class="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-md">Consortium</span>
+              </div>
+              <div class="flex items-center justify-between text-xs border-t border-neutral-border pt-4">
+                <span class="flex items-center gap-1.5 font-medium text-slate-500">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>Tender Ends: Dec 2026</span>
+                </span>
+                <a href="#inquire" class="text-orange-500 font-extrabold flex items-center gap-1.5 hover:underline group/cta">
+                  <span>View Concession</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-1"></i>
                 </a>
               </div>
             </div>
@@ -290,14 +501,14 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SECTION 05 â€” IMPORT & EXPORT INSIGHTS (ECharts Dashboard Grid)
+      <!-- ==========================================================================
+         SECTION 05 — IMPORT & EXPORT INSIGHTS (ECharts Dashboard Grid)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="charts-dashboard-sec">
       <div class="container-shell">
         
         <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3">
+        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3 animate-reveal">
           <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Market Share Dashboard</span>
           <h2 class="section-title text-text-dark">Bilateral Trade Insights</h2>
           <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
@@ -307,64 +518,112 @@
         </div>
 
         <!-- Dashboard Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div class="flex flex-col gap-8">
           
-          <!-- Left: ECharts Containers (Span 8) -->
-          <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white border border-neutral-border rounded-lg p-6 shadow-card">
+          <!-- TOP TIER: Macro Metric Cards -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 animate-reveal" style="animation-delay: 100ms;">
             
-            <!-- Export Chart -->
-            <div class="flex flex-col gap-4">
-              <span class="text-xs font-bold text-text-dark uppercase tracking-wider text-left border-b border-neutral-border pb-2.5 block">Bangladesh Export Shares (To MY)</span>
-              <div id="export-chart" class="chart-container"></div>
+            <div class="bg-white border border-neutral-border rounded-xl p-5 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all flex flex-col gap-3 group">
+              <div class="w-10 h-10 rounded-full bg-brand-green/10 text-brand-green flex items-center justify-center group-hover:scale-110 transition-transform"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+              <div>
+                <div class="text-text-muted text-[11px] font-bold uppercase tracking-wider mb-1">Total Export (BD to MY)</div>
+                <div class="text-2xl font-extrabold text-text-dark">$1.24B</div>
+              </div>
             </div>
-            
-            <!-- Import Chart -->
-            <div class="flex flex-col gap-4">
-              <span class="text-xs font-bold text-text-dark uppercase tracking-wider text-left border-b border-neutral-border pb-2.5 block">Bangladesh Import Shares (From MY)</span>
-              <div id="import-chart" class="chart-container"></div>
+
+            <div class="bg-white border border-neutral-border rounded-xl p-5 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all flex flex-col gap-3 group">
+              <div class="w-10 h-10 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center group-hover:scale-110 transition-transform"><i data-lucide="trending-down" class="w-5 h-5"></i></div>
+              <div>
+                <div class="text-text-muted text-[11px] font-bold uppercase tracking-wider mb-1">Total Import (MY to BD)</div>
+                <div class="text-2xl font-extrabold text-text-dark">$3.41B</div>
+              </div>
+            </div>
+
+            <div class="bg-white border border-neutral-border rounded-xl p-5 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all flex flex-col gap-3 group">
+              <div class="w-10 h-10 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center group-hover:scale-110 transition-transform"><i data-lucide="activity" class="w-5 h-5"></i></div>
+              <div>
+                <div class="text-text-muted text-[11px] font-bold uppercase tracking-wider mb-1">Annual Growth (YoY)</div>
+                <div class="text-2xl font-extrabold text-text-dark">+12.4%</div>
+              </div>
+            </div>
+
+            <div class="bg-white border border-neutral-border rounded-xl p-5 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all flex flex-col gap-3 group">
+              <div class="w-10 h-10 rounded-full bg-purple-500/10 text-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform"><i data-lucide="target" class="w-5 h-5"></i></div>
+              <div>
+                <div class="text-text-muted text-[11px] font-bold uppercase tracking-wider mb-1">FDI Target 2027</div>
+                <div class="text-2xl font-extrabold text-text-dark">$1.20B</div>
+              </div>
             </div>
 
           </div>
 
-          <!-- Right: Summary Cards (Span 4) -->
-          <div class="lg:col-span-4 flex flex-col gap-6 text-left">
+          <!-- MIDDLE TIER: Donut Charts & Summary -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch animate-reveal" style="animation-delay: 200ms;">
             
-            <div class="bg-white border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 flex-1">
-              <h3 class="text-text-dark font-extrabold text-sm uppercase tracking-wider border-b border-neutral-border pb-3">Commodity Indices Summaries</h3>
+            <!-- Left: ECharts Containers (Span 8) -->
+            <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white border border-neutral-border rounded-xl p-6 shadow-card">
+              <!-- Export Chart -->
+              <div class="flex flex-col gap-4">
+                <span class="text-xs font-bold text-text-dark uppercase tracking-wider text-left border-b border-neutral-border pb-2.5 block">Bangladesh Export Shares (To MY)</span>
+                <div id="export-chart" class="w-full h-[380px]"></div>
+              </div>
               
-              <!-- Item 1 -->
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded bg-brand-green/5 flex items-center justify-center text-brand-green shrink-0"><i data-lucide="trending-up" class="w-4 h-4"></i></div>
-                <div class="flex flex-col gap-0.5">
-                  <span class="text-xs font-bold text-text-dark">Ready-Made Garments (RMG)</span>
-                  <span class="text-[11px] text-text-body leading-normal">Represents 84% of BD exports to Malaysia. Valuation: $924M.</span>
-                </div>
+              <!-- Import Chart -->
+              <div class="flex flex-col gap-4">
+                <span class="text-xs font-bold text-text-dark uppercase tracking-wider text-left border-b border-neutral-border pb-2.5 block">Bangladesh Import Shares (From MY)</span>
+                <div id="import-chart" class="w-full h-[380px]"></div>
               </div>
+            </div>
 
-              <!-- Item 2 -->
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded bg-brand-blue/5 flex items-center justify-center text-brand-blue shrink-0"><i data-lucide="building-2" class="w-4 h-4"></i></div>
-                <div class="flex flex-col gap-0.5">
-                  <span class="text-xs font-bold text-text-dark">Petroleum & Heavy Machinery</span>
-                  <span class="text-[11px] text-text-body leading-normal">Top imports from Malaysia. Combined valuations pass $1.8B.</span>
+            <!-- Right: Summary Cards (Span 4) -->
+            <div class="lg:col-span-4 flex flex-col gap-6 text-left">
+              <div class="bg-white border border-neutral-border rounded-xl p-6 shadow-card flex flex-col gap-5 flex-1">
+                <h3 class="text-text-dark font-extrabold text-sm uppercase tracking-wider border-b border-neutral-border pb-3">Commodity Indices Summaries</h3>
+                
+                <!-- Item 1 -->
+                <div class="flex gap-4 group">
+                  <div class="w-10 h-10 rounded-lg bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0 group-hover:bg-brand-green group-hover:text-white transition-colors"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-sm font-bold text-text-dark">Ready-Made Garments (RMG)</span>
+                    <span class="text-xs text-text-body leading-relaxed">Represents 84% of BD exports to Malaysia. Valuation: $924M.</span>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Item 3 -->
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded bg-brand-gold/5 flex items-center justify-center text-brand-gold shrink-0"><i data-lucide="users" class="w-4 h-4"></i></div>
-                <div class="flex flex-col gap-0.5">
-                  <span class="text-xs font-bold text-text-dark">Halal Agri-Products Demand</span>
-                  <span class="text-[11px] text-text-body leading-normal">Halal-processed crops show an average of 15% annual demand growth.</span>
+                <!-- Item 2 -->
+                <div class="flex gap-4 group">
+                  <div class="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center text-brand-blue shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors"><i data-lucide="settings" class="w-5 h-5"></i></div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-sm font-bold text-text-dark">Petroleum & Heavy Machinery</span>
+                    <span class="text-xs text-text-body leading-relaxed">Top imports from Malaysia. Combined valuations pass $1.8B.</span>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex gap-4 group">
+                  <div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0 group-hover:bg-brand-gold group-hover:text-white transition-colors"><i data-lucide="sun" class="w-5 h-5"></i></div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-sm font-bold text-text-dark">Halal Agri-Products Demand</span>
+                    <span class="text-xs text-text-body leading-relaxed">Halal-processed crops show an average of 15% annual demand growth.</span>
+                  </div>
                 </div>
               </div>
             </div>
 
+          </div>
+
+          <!-- BOTTOM TIER: FDI Sector Chart -->
+          <div class="bg-white border border-neutral-border rounded-xl p-6 shadow-card flex flex-col gap-4 animate-reveal" style="animation-delay: 300ms;">
+            <div class="flex flex-col gap-1 border-b border-neutral-border pb-3">
+              <span class="text-xs font-bold text-brand-blue uppercase tracking-wider text-left">Sector-Wise Foreign Direct Investment</span>
+              <h3 class="text-text-dark font-extrabold text-base">Inflow Capital Distribution (Millions USD)</h3>
+            </div>
+            <div id="fdi-bar-chart" class="w-full h-[350px]"></div>
           </div>
 
         </div>
 
       </div>
+    </section>
     </section>
 
     <!-- ==========================================================================
@@ -387,7 +646,17 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
           <!-- Card 1 -->
-          <!-- include components/ui/service-card.html -->
+          <div class="bg-white border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
+            <div class="w-11 h-11 rounded-full bg-brand-green/5 border border-brand-green/10 flex items-center justify-center text-brand-green shrink-0 transition-premium group-hover:bg-brand-green group-hover:text-white group-hover:scale-105">
+              <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-text-dark font-bold text-base group-hover:text-brand-green transition-fast">Investment Advisory</h3>
+            <p class="text-text-body text-xs leading-relaxed">End-to-end consulting for market entry, joint venture structuring, and regulatory compliance across borders.</p>
+            <a href="#advisory" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline mt-2">
+              <span>Book Consultation</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
 
           <!-- Card 2 -->
           <div class="bg-white border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
@@ -396,7 +665,7 @@
             </div>
             <h3 class="text-text-dark font-bold text-base group-hover:text-brand-green transition-fast">Trade Handbooks</h3>
             <p class="text-text-body text-xs leading-relaxed">Exhaustive guidebooks detailing customs rules, duty codes, import licenses, and SEZs tax concessions structures.</p>
-            <a href="#downloads" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline mt-2">
+            <a href="/src/assets/files/dummy.pdf" download="Trade_Handbook.pdf" class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline mt-2">
               <span>View Publications</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
@@ -456,120 +725,7 @@
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 07 â€” BUSINESS OPPORTUNITIES (List with Filter Bar)
-         ========================================================================== -->
-    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="business-opportunities-sec">
-      <div class="container-shell">
-        
-        <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-12 text-center flex flex-col items-center gap-3 animate-reveal">
-          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Trade Projects</span>
-          <h2 class="section-title text-text-dark">Explore Bilateral Opportunities</h2>
-          <p class="text-text-body text-sm leading-relaxed">
-            Search active Joint Venture agreements, factory concessions, and distribution tenders.
-          </p>
-        </div>
-
-        <!-- Filter bar component include -->
-        <div class="mb-10 max-w-5xl mx-auto">
-          <!-- include components/ui/filter-bar.html -->
-        </div>
-
-        <!-- Opportunities cards list (3 columns layout) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          
-          <!-- Opportunity 1 -->
-          <!-- include components/ui/trade-card.html -->
-
-          <!-- Opportunity 2 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-brand-blue uppercase tracking-wider">Telecommunications</span>
-                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">Malaysia</span>
-              </div>
-              <h3 class="text-text-dark font-extrabold text-lg leading-snug group-hover:text-brand-green transition-fast">
-                Bilateral 5G Core Network Hardware Contract
-              </h3>
-            </div>
-            <div class="grid grid-cols-2 gap-4 py-3 border-y border-neutral-border text-xs">
-              <div class="flex flex-col gap-1">
-                <span class="text-text-muted font-medium">Investment Size</span>
-                <span class="text-sm font-extrabold text-text-dark">$12.4M value</span>
-              </div>
-              <div class="flex flex-col gap-1">
-                <span class="text-text-muted font-medium">Location</span>
-                <span class="text-sm font-extrabold text-text-dark">TRX KL & Dhaka</span>
-              </div>
-            </div>
-            <p class="text-text-body text-xs leading-relaxed">
-              Consortium setup to roll out core hardware switches and server towers in collaboration with leading Malaysian telecom exporters.
-            </p>
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-wrap gap-1.5 text-[9px] font-bold text-text-body uppercase">
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">5G Hardware</span>
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">Telecom JV</span>
-              </div>
-              <div class="flex items-center justify-between text-xs text-text-muted border-t border-neutral-border pt-4 mt-1">
-                <span class="flex items-center gap-1 font-medium">
-                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-text-muted"></i>
-                  <span>Ends: Oct 29, 2026</span>
-                </span>
-                <a href="#setup" class="text-brand-green font-bold flex items-center gap-1 hover:underline group/cta">
-                  <span>Inquire Projects</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-0.5"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Opportunity 3 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-brand-gold uppercase tracking-wider">Agro-Processing</span>
-                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">Bangladesh</span>
-              </div>
-              <h3 class="text-text-dark font-extrabold text-lg leading-snug group-hover:text-brand-green transition-fast">
-                Halal Food Packaging Factory Allotment
-              </h3>
-            </div>
-            <div class="grid grid-cols-2 gap-4 py-3 border-y border-neutral-border text-xs">
-              <div class="flex flex-col gap-1">
-                <span class="text-text-muted font-medium">Investment Size</span>
-                <span class="text-sm font-extrabold text-text-dark">$3.2M Budget</span>
-              </div>
-              <div class="flex flex-col gap-1">
-                <span class="text-text-muted font-medium">Location</span>
-                <span class="text-sm font-extrabold text-text-dark">Cumilla EPZ</span>
-              </div>
-            </div>
-            <p class="text-text-body text-xs leading-relaxed">
-              Industrial land plot concession for processed seafood and spice packaging units. Outputs target export distribution inside Malaysia and ASEAN.
-            </p>
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-wrap gap-1.5 text-[9px] font-bold text-text-body uppercase">
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">Halal Certified</span>
-                <span class="px-2 py-0.5 bg-neutral-bgSecondary border border-neutral-border rounded">Land Concession</span>
-              </div>
-              <div class="flex items-center justify-between text-xs text-text-muted border-t border-neutral-border pt-4 mt-1">
-                <span class="flex items-center gap-1 font-medium">
-                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-text-muted"></i>
-                  <span>Ends: Oct 18, 2026</span>
-                </span>
-                <a href="#setup" class="text-brand-green font-bold flex items-center gap-1 hover:underline group/cta">
-                  <span>Inquire Projects</span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/cta:translate-x-0.5"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
+         <!-- Removed duplicate Section 07 (Business Opportunities) as it was replaced by Section 03 -->
 
       </div>
     </section>
@@ -679,7 +835,7 @@
               </div>
               <div class="border-t border-neutral-border pt-4 mt-2 flex items-center justify-between">
                 <span class="text-[10px] text-text-muted font-medium">Size: 4.8MB</span>
-                <a href="#downloads" class="text-brand-green font-bold text-xs flex items-center gap-1 hover:underline group/read">
+                <a href="/src/assets/files/dummy.pdf" download="SEZs_Guide.pdf" class="text-brand-green font-bold text-xs flex items-center gap-1 hover:underline group/read">
                   <span>Download PDF</span>
                   <i data-lucide="download" class="w-3.5 h-3.5"></i>
                 </a>
@@ -703,7 +859,7 @@
               </div>
               <div class="border-t border-neutral-border pt-4 mt-2 flex items-center justify-between">
                 <span class="text-[10px] text-text-muted font-medium">Size: 3.2MB</span>
-                <a href="#downloads" class="text-brand-green font-bold text-xs flex items-center gap-1 hover:underline group/read">
+                <a href="/src/assets/files/dummy.pdf" download="Tax_Treaty_Guide.pdf" class="text-brand-green font-bold text-xs flex items-center gap-1 hover:underline group/read">
                   <span>Download PDF</span>
                   <i data-lucide="download" class="w-3.5 h-3.5"></i>
                 </a>
@@ -814,7 +970,7 @@
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Investment Guide</h3>
               <p class="text-text-body text-xs leading-relaxed">Detailed guidelines outlining land allocations, registration licensing steps, and SEZs duty exemptions.</p>
             </div>
-            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Bilateral_Investment_Guide.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download Resource</span>
             </a>
@@ -830,7 +986,7 @@
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Export & Customs Handbook</h3>
               <p class="text-text-body text-xs leading-relaxed">A complete compliance guide to tariff codes, customs clearance structures, and port handling rules.</p>
             </div>
-            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Export_Customs_Handbook.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download Resource</span>
             </a>
@@ -846,7 +1002,7 @@
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Business Registration Guide</h3>
               <p class="text-text-body text-xs leading-relaxed">Step-by-step checklist to acquire active company licenses and trade registration inside Dhaka and KL.</p>
             </div>
-            <a href="#" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Business_Registration_Guide.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download Resource</span>
             </a>
