@@ -120,15 +120,29 @@ function initModals() {
       if (targetModal) {
         targetModal.classList.remove('hidden');
         targetModal.classList.add('flex');
+        // Force reflow for smooth animation
+        void targetModal.offsetWidth;
+        targetModal.classList.add('modal-open');
         document.body.classList.add('overflow-hidden');
+        if (window.lenis) {
+          window.lenis.stop();
+        }
       }
     });
   });
 
   const closeModal = (modal) => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
+    modal.classList.remove('modal-open');
+    if (window.lenis) {
+      window.lenis.start();
+    }
     document.body.classList.remove('overflow-hidden');
+    setTimeout(() => {
+      if (!modal.classList.contains('modal-open')) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }, 400);
   };
 
   closeButtons.forEach(btn => {

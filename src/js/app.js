@@ -46,7 +46,12 @@ import {
   Activity,
   Target,
   Settings,
-  Sun
+  Sun,
+  Map,
+  Anchor,
+  Cpu,
+  Package,
+  Microscope
 } from 'lucide';
 
 // Initialize core features on DOM content load
@@ -112,7 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
       Activity,
       Target,
       Settings,
-      Sun
+      Sun,
+      Map,
+      Anchor,
+      Cpu,
+      Package,
+      Microscope
     }
   });
 
@@ -409,8 +419,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const gdpChart = echarts.init(gdpTrendEl);
       gdpChart.setOption({
         tooltip: { trigger: 'axis' },
-        legend: { data: ['Bangladesh', 'Malaysia'], textStyle: { color: '#64748b' } },
-        grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+        legend: { 
+          data: ['Bangladesh', 'Malaysia'], 
+          textStyle: { color: '#64748b' },
+          bottom: 0,
+          icon: 'circle'
+        },
+        grid: { left: '3%', right: '4%', bottom: '12%', top: '5%', containLabel: true },
         xAxis: {
           type: 'category',
           boundaryGap: false,
@@ -648,8 +663,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNext = section.querySelector('#btn-member-next');
     const btnPrev = section.querySelector('#btn-member-prev');
     const btnSubmit = section.querySelector('#btn-member-submit');
-    const form = section.querySelector('form');
+    const btnReset = section.querySelector('#btn-member-reset');
+    const form = section.querySelector('#member-form');
     const footer = section.querySelector('#member-stepper-footer');
+    const fileUpload = section.querySelector('#member-file-upload');
+    const fileText = section.querySelector('#file-upload-text');
     
     let currentStep = 1;
     
@@ -667,15 +685,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Update progress indicators
       stepIndicators.forEach((ind, idx) => {
-        if (idx + 1 <= currentStep && currentStep < 5) {
-          ind.classList.add('bg-brand-green', 'text-white');
-          ind.classList.remove('bg-neutral-border', 'text-text-muted');
-        } else if (currentStep === 5) {
-          ind.classList.add('bg-brand-green', 'text-white');
-          ind.classList.remove('bg-neutral-border', 'text-text-muted');
+        if (idx + 1 <= currentStep) {
+          ind.classList.add('bg-brand-green', 'text-white', 'border-brand-green');
+          ind.classList.remove('bg-neutral-bgSecondary', 'text-text-muted', 'border-neutral-border');
         } else {
-          ind.classList.remove('bg-brand-green', 'text-white');
-          ind.classList.add('bg-neutral-border', 'text-text-muted');
+          ind.classList.remove('bg-brand-green', 'text-white', 'border-brand-green');
+          ind.classList.add('bg-neutral-bgSecondary', 'text-text-muted', 'border-neutral-border');
         }
       });
 
@@ -704,8 +719,21 @@ document.addEventListener('DOMContentLoaded', () => {
         btnPrev?.classList.remove('hidden');
         btnNext?.classList.remove('hidden');
         btnSubmit?.classList.add('hidden');
+        if (footer) footer.classList.remove('hidden');
       }
     };
+
+    if (fileUpload && fileText) {
+      fileUpload.addEventListener('change', (e) => {
+        if(e.target.files.length > 0) {
+          fileText.textContent = e.target.files[0].name;
+          fileText.classList.add('text-brand-green');
+        } else {
+          fileText.textContent = 'Click to upload file';
+          fileText.classList.remove('text-brand-green');
+        }
+      });
+    }
 
     btnNext?.addEventListener('click', () => {
       const activeInputs = section.querySelector(`[data-member-step="${currentStep}"]`).querySelectorAll('input, select');
@@ -728,6 +756,16 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStep--;
         updateStepView();
       }
+    });
+
+    btnReset?.addEventListener('click', () => {
+      if (form) form.reset();
+      currentStep = 1;
+      if (fileText) {
+        fileText.textContent = 'Click to upload file';
+        fileText.classList.remove('text-brand-green');
+      }
+      updateStepView();
     });
 
     form?.addEventListener('submit', (e) => {

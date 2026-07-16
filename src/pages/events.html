@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -112,13 +112,13 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 03 â€” UPCOMING EVENTS (Responsive Grid)
+         SECTION 03 — UPCOMING EVENTS (Interactive Filterable Grid)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="upcoming-events-grid-sec">
       <div class="container-shell">
         
         <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3">
+        <div class="max-w-2xl mx-auto mb-10 text-center flex flex-col items-center gap-3">
           <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Bilateral Agenda</span>
           <h2 class="section-title text-text-dark">Upcoming Chamber Events</h2>
           <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
@@ -127,14 +127,62 @@
           </p>
         </div>
 
-        <!-- 3 Columns grid of cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <!-- Event 1 -->
-          <!-- include components/ui/event-card.html -->
+        <!-- Filter Pill Tabs -->
+        <div class="flex justify-center mb-12">
+          <div class="inline-flex flex-wrap justify-center bg-white border border-neutral-border p-1.5 rounded-full shadow-sm gap-1" id="event-category-filters">
+            <button class="event-cat-btn active px-6 py-2.5 rounded-full text-xs font-extrabold transition-all bg-brand-green text-white shadow-md flex items-center gap-2" data-cat="all">
+              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+              <span>All Events</span>
+            </button>
+            <button class="event-cat-btn px-6 py-2.5 rounded-full text-xs font-bold transition-all text-text-muted hover:text-text-dark flex items-center gap-2" data-cat="summits">
+              <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+              <span>Business Summits</span>
+            </button>
+            <button class="event-cat-btn px-6 py-2.5 rounded-full text-xs font-bold transition-all text-text-muted hover:text-text-dark flex items-center gap-2" data-cat="networking">
+              <i data-lucide="users" class="w-3.5 h-3.5"></i>
+              <span>B2B Networkings</span>
+            </button>
+            <button class="event-cat-btn px-6 py-2.5 rounded-full text-xs font-bold transition-all text-text-muted hover:text-text-dark flex items-center gap-2" data-cat="delegations">
+              <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+              <span>Trade Delegations</span>
+            </button>
+          </div>
+        </div>
 
-          <!-- Event 2 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+        <!-- 3 Columns Grid of 6 Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left" id="events-grid-container">
+          
+          <!-- Event 1 (Summits) -->
+          <div class="event-card-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group transition-all duration-300" data-category="summits" data-scroll-reveal="true" data-reveal-delay="0.1">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="/assets/images/events/trade-showcase.jpg" alt="Trade Showcase Scene" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full shadow-card">Trade Summit</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <div class="flex items-center gap-2 text-xs font-semibold text-brand-green">
+                  <i data-lucide="calendar" class="w-4 h-4 text-brand-green shrink-0"></i>
+                  <span>September 14-16, 2026</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Malaysia-Bangladesh Trade Showcase</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">Landmark bilateral showcase hosting over 150 exhibitors displaying tech, machinery, and agricultural JVs.</p>
+              </div>
+              <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
+                <div class="flex flex-col gap-2 text-xs text-text-body">
+                  <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">Pan Pacific Sonargaon, Dhaka</span></span>
+                  <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>09:00 AM - 06:00 PM</span></span>
+                </div>
+                <button class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1" 
+                        data-modal-open="registration-modal">
+                  <span>Register Seat</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 2 (Summits) -->
+          <div class="event-card-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group transition-all duration-300" data-category="summits" data-scroll-reveal="true" data-reveal-delay="0.2">
             <div class="relative w-full aspect-video overflow-hidden shrink-0">
               <img src="/assets/images/events/investment-conclave.jpg" alt="Capital Conclave Scene" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
               <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Investment Forum</span>
@@ -162,8 +210,8 @@
             </div>
           </div>
 
-          <!-- Event 3 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+          <!-- Event 3 (Networking) -->
+          <div class="event-card-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group transition-all duration-300" data-category="networking" data-scroll-reveal="true" data-reveal-delay="0.3">
             <div class="relative w-full aspect-video overflow-hidden shrink-0">
               <img src="/assets/images/events/networking-dinner.jpg" alt="Networking Banquet" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
               <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-gold text-text-dark text-[10px] font-bold uppercase rounded-full shadow-card">Networking Dinner</span>
@@ -174,8 +222,8 @@
                   <i data-lucide="calendar" class="w-4 h-4 text-brand-gold shrink-0"></i>
                   <span>December 05, 2026</span>
                 </div>
-                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">BMCCI Corporate Networking Dinner</h3>
-                <p class="text-text-body text-xs leading-relaxed line-clamp-2">Exclusives annual dinner hosting accredited members, regional diplomats, and trade delegation heads.</p>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">BMCCI Corporate Networking Gala</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">Exclusive annual dinner hosting accredited members, regional diplomats, and trade delegation heads.</p>
               </div>
               <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
                 <div class="flex flex-col gap-2 text-xs text-text-body">
@@ -191,107 +239,217 @@
             </div>
           </div>
 
+          <!-- Event 4 (Networking) -->
+          <div class="event-card-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group transition-all duration-300" data-category="networking" data-scroll-reveal="true" data-reveal-delay="0.1">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600&auto=format&fit=crop" alt="B2B Matchmaking Forum" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-gold text-text-dark text-[10px] font-bold uppercase rounded-full shadow-card">B2B Matchmaking</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <div class="flex items-center gap-2 text-xs font-semibold text-brand-gold">
+                  <i data-lucide="calendar" class="w-4 h-4 text-brand-gold shrink-0"></i>
+                  <span>October 18, 2026</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">B2B Matchmaking & Partnership Forum</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">Direct face-to-face dealmaking sessions for importers, exporters, and logistics managers.</p>
+              </div>
+              <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
+                <div class="flex flex-col gap-2 text-xs text-text-body">
+                  <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">InterContinental Dhaka</span></span>
+                  <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>10:00 AM - 05:00 PM</span></span>
+                </div>
+                <button class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1" 
+                        data-modal-open="registration-modal">
+                  <span>Register Seat</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 5 (Delegations) -->
+          <div class="event-card-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group transition-all duration-300" data-category="delegations" data-scroll-reveal="true" data-reveal-delay="0.2">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop" alt="Trade Mission Scene" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Trade Mission</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <div class="flex items-center gap-2 text-xs font-semibold text-brand-blue">
+                  <i data-lucide="calendar" class="w-4 h-4 text-brand-blue shrink-0"></i>
+                  <span>October 29, 2026</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Trade Mission to Port Klang Free Zone</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">High-level executive delegation exploring port infrastructure, transshipment hubs, and warehouse leasing.</p>
+              </div>
+              <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
+                <div class="flex flex-col gap-2 text-xs text-text-body">
+                  <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">Port Klang Authority, Selangor</span></span>
+                  <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>09:00 AM - 03:30 PM</span></span>
+                </div>
+                <button class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1" 
+                        data-modal-open="registration-modal">
+                  <span>Register Seat</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 6 (Delegations) -->
+          <div class="event-card-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group transition-all duration-300" data-category="delegations" data-scroll-reveal="true" data-reveal-delay="0.3">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=600&auto=format&fit=crop" alt="ICT Delegation Scene" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Tech Delegation</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <div class="flex items-center gap-2 text-xs font-semibold text-brand-blue">
+                  <i data-lucide="calendar" class="w-4 h-4 text-brand-blue shrink-0"></i>
+                  <span>November 12, 2026</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">ICT & Digital Economy Delegation</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-2">Connecting software leaders and telecom operators across Dhaka and Cyberjaya tech parks.</p>
+              </div>
+              <div class="flex flex-col gap-4 border-t border-neutral-border pt-4 mt-2">
+                <div class="flex flex-col gap-2 text-xs text-text-body">
+                  <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span class="truncate font-sans">Petronas Towers, Kuala Lumpur</span></span>
+                  <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span>10:30 AM - 04:30 PM</span></span>
+                </div>
+                <button class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-1" 
+                        data-modal-open="registration-modal">
+                  <span>Register Seat</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
     </section>
 
+    <!-- Inline Filter Logic for Category Pills -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.event-cat-btn');
+        const cards = document.querySelectorAll('.event-card-item');
+
+        if (filterBtns.length > 0 && cards.length > 0) {
+          filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const targetBtn = e.currentTarget;
+
+              filterBtns.forEach(b => {
+                b.classList.remove('active', 'bg-brand-green', 'text-white', 'shadow-md');
+                b.classList.add('text-text-muted', 'hover:text-text-dark');
+              });
+
+              targetBtn.classList.remove('text-text-muted', 'hover:text-text-dark');
+              targetBtn.classList.add('active', 'bg-brand-green', 'text-white', 'shadow-md');
+
+              const cat = targetBtn.getAttribute('data-cat');
+
+              cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                  if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.style.display = 'flex';
+                    void card.offsetWidth;
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                  } else {
+                    card.style.display = 'none';
+                  }
+                }, 250);
+              });
+            });
+          });
+        }
+      });
+    </script>
+
     <!-- ==========================================================================
-         SECTION 04 â€” EVENT CATEGORIES (Icon Selection Bar)
-         ========================================================================== -->
-    <section class="section-large bg-white divider-subtle" id="categories-sec">
-      <div class="container-shell text-center">
-        
-        <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-12 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Target Segments</span>
-          <h2 class="section-title text-text-dark">Explore by Category</h2>
-          <p class="text-text-body text-sm leading-relaxed">
-            Sort upcoming programs by business matchmaking focus or informational scopes.
-          </p>
-        </div>
-
-        <!-- Categories Pill-grids -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-          
-          <button class="bg-neutral-bgSecondary border border-brand-green rounded-md p-5 flex items-center gap-4 text-brand-green shadow-sm text-sm font-bold transition-fast">
-            <i data-lucide="calendar" class="w-5 h-5 shrink-0"></i>
-            <span>All Categories</span>
-          </button>
-          
-          <button class="bg-white border border-neutral-border hover:border-brand-green rounded-md p-5 flex items-center gap-4 text-text-body hover:text-brand-green text-sm font-semibold transition-fast">
-            <i data-lucide="building-2" class="w-5 h-5 shrink-0"></i>
-            <span>Business Summits</span>
-          </button>
-
-          <button class="bg-white border border-neutral-border hover:border-brand-green rounded-md p-5 flex items-center gap-4 text-text-body hover:text-brand-green text-sm font-semibold transition-fast">
-            <i data-lucide="users" class="w-5 h-5 shrink-0"></i>
-            <span>B2B Networkings</span>
-          </button>
-
-          <button class="bg-white border border-neutral-border hover:border-brand-green rounded-md p-5 flex items-center gap-4 text-text-body hover:text-brand-green text-sm font-semibold transition-fast">
-            <i data-lucide="globe" class="w-5 h-5 shrink-0"></i>
-            <span>Trade Delegations</span>
-          </button>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 05 â€” BUSINESS CALENDAR (Monthly grid)
+         SECTION 05 — BUSINESS CALENDAR (Interactive Monthly Grid)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="calendar-sec">
       <div class="container-shell">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          <!-- Left: Calendar Details (Span 4) -->
-          <div class="lg:col-span-4 flex flex-col gap-6 text-left animate-reveal">
+          <!-- Left: Calendar Overview & Selected Event Details (Span 5) -->
+          <div class="lg:col-span-5 flex flex-col gap-6 text-left animate-reveal">
             <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10 self-start">Annual Schedule</span>
             <h2 class="section-title text-text-dark">Calendar Overview</h2>
             <p class="text-text-body text-sm leading-relaxed">
-              Plan trade mission delegations trips and reserve tickets early using our updated chamber database schedules.
+              Click on highlighted event dates on the calendar to inspect program schedules and reserve credentials.
             </p>
-            <div class="flex flex-col gap-3.5 text-xs text-text-body font-medium">
+            
+            <div class="flex flex-wrap gap-4 text-xs text-text-body font-medium">
               <span class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-brand-green"></span>
-                <span>Flagship trade showcase matches</span>
+                <span>Flagship Trade Summits</span>
               </span>
               <span class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-brand-blue"></span>
-                <span>Closed investment forums</span>
+                <span>Investment & Delegations</span>
               </span>
               <span class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-brand-gold"></span>
-                <span>Corporate dinners & galas</span>
+                <span>Networking Galas</span>
               </span>
             </div>
+
+            <!-- Dynamic Selected Event Card -->
+            <div id="cal-selected-card" class="bg-white border border-neutral-border rounded-xl p-6 shadow-card flex flex-col gap-4 mt-2 transition-all duration-300">
+              <div class="flex items-center justify-between">
+                <span id="cal-card-badge" class="inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full">Trade Summit</span>
+                <span id="cal-card-date" class="text-xs font-semibold text-brand-green flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Sept 14, 2026</span>
+              </div>
+              <h3 id="cal-card-title" class="text-text-dark font-extrabold text-lg leading-snug">Malaysia-Bangladesh Trade Showcase 2026</h3>
+              <p id="cal-card-desc" class="text-text-body text-xs leading-relaxed">Landmark annual trade expo hosting over 150 exhibitors displaying tech, machinery, and agricultural JVs.</p>
+              <div class="flex flex-col gap-2 border-t border-neutral-border pt-4 text-xs text-text-body">
+                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-text-muted shrink-0"></i><span id="cal-card-loc">Pan Pacific Sonargaon, Dhaka</span></span>
+                <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-text-muted shrink-0"></i><span id="cal-card-time">09:00 AM - 06:00 PM</span></span>
+              </div>
+              <button class="w-full text-center py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-2" data-modal-open="registration-modal">
+                <span>Register for Event</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
           </div>
 
-          <!-- Right: Calendar grid (Span 8) -->
-          <div class="lg:col-span-8 bg-white border border-neutral-border rounded-lg p-6 shadow-card text-left flex flex-col gap-4">
+          <!-- Right: Interactive Dynamic Calendar Grid (Span 7) -->
+          <div class="lg:col-span-7 bg-white border border-neutral-border rounded-xl p-6 md:p-8 shadow-card text-left flex flex-col gap-6">
             <!-- Calendar Header -->
             <div class="flex items-center justify-between border-b border-neutral-border pb-4">
-              <h3 class="font-extrabold text-sm text-text-dark">September 2026</h3>
-              <div class="flex items-center gap-1.5 text-xs text-text-muted">
-                <button class="p-1.5 border border-neutral-border rounded hover:border-brand-green transition-fast"><i data-lucide="chevron-right" class="w-3.5 h-3.5 rotate-180"></i></button>
-                <button class="p-1.5 border border-neutral-border rounded hover:border-brand-green transition-fast"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></button>
+              <h3 id="cal-month-title" class="font-extrabold text-base text-text-dark">September 2026</h3>
+              <div class="flex items-center gap-2 text-xs text-text-muted">
+                <button id="cal-prev-btn" class="w-8 h-8 flex items-center justify-center border border-neutral-border rounded-md hover:border-brand-green hover:text-brand-green transition-fast shadow-sm bg-white" aria-label="Previous Month">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button id="cal-next-btn" class="w-8 h-8 flex items-center justify-center border border-neutral-border rounded-md hover:border-brand-green hover:text-brand-green transition-fast shadow-sm bg-white" aria-label="Next Month">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
               </div>
             </div>
             
-            <!-- Calendar Calendar grids -->
-            <div class="grid grid-cols-7 gap-2.5 text-center text-xs font-semibold text-text-dark border-b border-neutral-border pb-2.5">
+            <!-- Calendar Days Header -->
+            <div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-text-dark border-b border-neutral-border pb-3 uppercase tracking-wider">
               <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
             </div>
-            <div class="grid grid-cols-7 gap-2.5 text-center text-xs text-text-muted font-medium">
-              <span>30</span><span>31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-              <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
-              <!-- Highlighted Event Date 14 -->
-              <span class="w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center font-bold cursor-pointer mx-auto shadow-sm" title="Malaysia-Bangladesh Trade Showcase">14</span>
-              <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-              <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
-              <span>28</span><span>29</span><span>30</span><span>1</span><span>2</span><span>3</span><span>4</span>
+            
+            <!-- Calendar Grid Container -->
+            <div id="cal-days-grid" class="grid grid-cols-7 gap-3 text-center text-xs text-text-muted font-medium items-center min-h-[260px]">
+              <!-- Dynamically populated via JS -->
             </div>
           </div>
 
@@ -299,8 +457,117 @@
       </div>
     </section>
 
+    <!-- Inline Script for Interactive Dynamic Calendar -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const events = [
+          { year: 2026, month: 8, day: 14, title: "Malaysia-Bangladesh Trade Showcase 2026", type: "Trade Summit", color: "bg-brand-green", badgeColor: "bg-brand-green", dateStr: "Sept 14-16, 2026", time: "09:00 AM - 06:00 PM", loc: "Pan Pacific Sonargaon, Dhaka", desc: "Landmark annual trade expo hosting over 150 exhibitors displaying tech, machinery, and agricultural JVs." },
+          { year: 2026, month: 9, day: 18, title: "B2B Matchmaking & Partnership Forum", type: "Networking Forum", color: "bg-brand-gold", badgeColor: "bg-brand-gold text-text-dark", dateStr: "Oct 18, 2026", time: "10:00 AM - 05:00 PM", loc: "InterContinental Dhaka", desc: "Direct face-to-face dealmaking sessions for importers, exporters, and logistics managers." },
+          { year: 2026, month: 9, day: 29, title: "Trade Mission to Port Klang Free Zone", type: "Trade Delegation", color: "bg-brand-blue", badgeColor: "bg-brand-blue", dateStr: "Oct 29, 2026", time: "09:00 AM - 03:30 PM", loc: "Port Klang Authority, Selangor", desc: "High-level executive delegation exploring port infrastructure, transshipment hubs, and warehouse leasing." },
+          { year: 2026, month: 10, day: 12, title: "ICT & Digital Economy Delegation", type: "Tech Delegation", color: "bg-brand-blue", badgeColor: "bg-brand-blue", dateStr: "Nov 12, 2026", time: "10:30 AM - 04:30 PM", loc: "Petronas Towers, Kuala Lumpur", desc: "Connecting software leaders and telecom operators across Dhaka and Cyberjaya tech parks." },
+          { year: 2026, month: 10, day: 22, title: "Bilateral Investment Conclave", type: "Investment Forum", color: "bg-brand-blue", badgeColor: "bg-brand-blue", dateStr: "Nov 22, 2026", time: "09:30 AM - 04:00 PM", loc: "Shangri-La Hotel, Kuala Lumpur", desc: "Closed-door business presentation highlighting infrastructure investments opportunities inside SEZs." },
+          { year: 2026, month: 11, day: 5, title: "BMCCI Corporate Networking Gala", type: "Networking Dinner", color: "bg-brand-gold", badgeColor: "bg-brand-gold text-text-dark", dateStr: "Dec 05, 2026", time: "07:00 PM - 10:30 PM", loc: "The Westin Hotel, Dhaka", desc: "Exclusive annual dinner hosting accredited members, regional diplomats, and trade delegation heads." }
+        ];
+
+        let currYear = 2026;
+        let currMonth = 8; // September 2026
+
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        const monthTitle = document.getElementById('cal-month-title');
+        const daysGrid = document.getElementById('cal-days-grid');
+        const prevBtn = document.getElementById('cal-prev-btn');
+        const nextBtn = document.getElementById('cal-next-btn');
+
+        const cardBadge = document.getElementById('cal-card-badge');
+        const cardDate = document.getElementById('cal-card-date');
+        const cardTitle = document.getElementById('cal-card-title');
+        const cardDesc = document.getElementById('cal-card-desc');
+        const cardLoc = document.getElementById('cal-card-loc');
+        const cardTime = document.getElementById('cal-card-time');
+
+        function updateEventCard(ev) {
+          if (!ev) return;
+          cardBadge.textContent = ev.type;
+          cardBadge.className = `inline-flex px-3 py-1 text-white text-[10px] font-bold uppercase rounded-full ${ev.badgeColor}`;
+          cardDate.innerHTML = `<i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${ev.dateStr}`;
+          cardTitle.textContent = ev.title;
+          cardDesc.textContent = ev.desc;
+          cardLoc.textContent = ev.loc;
+          cardTime.textContent = ev.time;
+          if (window.lucide) window.lucide.createIcons();
+        }
+
+        function renderCalendar() {
+          monthTitle.textContent = `${monthNames[currMonth]} ${currYear}`;
+          daysGrid.innerHTML = '';
+
+          const firstDay = new Date(currYear, currMonth, 1).getDay();
+          const totalDays = new Date(currYear, currMonth + 1, 0).getDate();
+          const prevMonthDays = new Date(currYear, currMonth, 0).getDate();
+
+          // Previous month leading days
+          for (let i = firstDay - 1; i >= 0; i--) {
+            const daySpan = document.createElement('span');
+            daySpan.className = 'text-slate-300 py-1.5';
+            daySpan.textContent = prevMonthDays - i;
+            daysGrid.appendChild(daySpan);
+          }
+
+          // Current month days
+          for (let d = 1; d <= totalDays; d++) {
+            const matchEv = events.find(e => e.year === currYear && e.month === currMonth && e.day === d);
+
+            if (matchEv) {
+              const btn = document.createElement('button');
+              btn.className = `w-8 h-8 rounded-full ${matchEv.color} text-white flex items-center justify-center font-bold mx-auto shadow-md transition-transform hover:scale-110 focus:ring-2 focus:ring-brand-green`;
+              btn.textContent = d;
+              btn.title = matchEv.title;
+              btn.addEventListener('click', () => updateEventCard(matchEv));
+              daysGrid.appendChild(btn);
+            } else {
+              const daySpan = document.createElement('span');
+              daySpan.className = 'py-1.5 text-text-dark font-medium';
+              daySpan.textContent = d;
+              daysGrid.appendChild(daySpan);
+            }
+          }
+
+          // Next month trailing days
+          const totalCells = firstDay + totalDays;
+          const trailingCells = (7 - (totalCells % 7)) % 7;
+          for (let i = 1; i <= trailingCells; i++) {
+            const daySpan = document.createElement('span');
+            daySpan.className = 'text-slate-300 py-1.5';
+            daySpan.textContent = i;
+            daysGrid.appendChild(daySpan);
+          }
+        }
+
+        prevBtn.addEventListener('click', () => {
+          currMonth--;
+          if (currMonth < 0) {
+            currMonth = 11;
+            currYear--;
+          }
+          renderCalendar();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          currMonth++;
+          if (currMonth > 11) {
+            currMonth = 0;
+            currYear++;
+          }
+          renderCalendar();
+        });
+
+        renderCalendar();
+      });
+    </script>
+
     <!-- ==========================================================================
-         SECTION 06 â€” PAST EVENTS GALLERY (Masonry images grids)
+         SECTION 06 — PAST EVENTS GALLERY (Masonry images grids)
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="past-gallery-sec">
       <div class="container-shell text-center">
@@ -318,18 +585,104 @@
         <!-- Reusable Gallery component -->
         <!-- include components/ui/gallery.html -->
 
+        <!-- Skeleton Loaders Container (Hidden by default) -->
+        <div id="gallery-skeleton-grid" class="hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-6">
+          <div class="rounded-xl overflow-hidden aspect-square skeleton-box border border-neutral-border"></div>
+          <div class="rounded-xl overflow-hidden aspect-square skeleton-box border border-neutral-border"></div>
+          <div class="rounded-xl overflow-hidden aspect-square skeleton-box border border-neutral-border"></div>
+        </div>
+
+        <!-- Additional Loaded Gallery Items (Hidden by default) -->
+        <div id="gallery-more-grid" class="hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-6">
+          <!-- Gallery Item 4 -->
+          <div class="relative group rounded-xl overflow-hidden aspect-square shadow-card cursor-pointer border border-neutral-border bg-slate-900">
+            <img src="https://picsum.photos/seed/summit4/600/600" alt="Bilateral Networking Gala" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300 z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-left z-20 pointer-events-none transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <span class="text-[10px] font-bold text-brand-gold uppercase tracking-wider drop-shadow-sm mb-1">Networking Gala</span>
+              <h4 class="font-extrabold text-lg text-white leading-snug drop-shadow-md">Annual BMCCI Presidential Dinner</h4>
+              <p class="text-xs text-gray-200 mt-2 leading-relaxed drop-shadow-md">High-level networking with diplomats and regional trade ministers.</p>
+            </div>
+          </div>
+          <!-- Gallery Item 5 -->
+          <div class="relative group rounded-xl overflow-hidden aspect-square shadow-card cursor-pointer border border-neutral-border bg-slate-900">
+            <img src="https://picsum.photos/seed/summit5/600/600" alt="Chamber Excellence Awards" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300 z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-left z-20 pointer-events-none transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <span class="text-[10px] font-bold text-brand-blue uppercase tracking-wider drop-shadow-sm mb-1">Excellence Awards</span>
+              <h4 class="font-extrabold text-lg text-white leading-snug drop-shadow-md">Chamber Trade Awards Ceremony</h4>
+              <p class="text-xs text-gray-200 mt-2 leading-relaxed drop-shadow-md">Recognizing outstanding corporate contributors across Bangladesh and Malaysia.</p>
+            </div>
+          </div>
+          <!-- Gallery Item 6 -->
+          <div class="relative group rounded-xl overflow-hidden aspect-square shadow-card cursor-pointer border border-neutral-border bg-slate-900">
+            <img src="https://picsum.photos/seed/summit6/600/600" alt="Digital Economy Roundtable" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300 z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-left z-20 pointer-events-none transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider drop-shadow-sm mb-1">Digital Economy</span>
+              <h4 class="font-extrabold text-lg text-white leading-snug drop-shadow-md">Cyberjaya Trade Roundtable</h4>
+              <p class="text-xs text-gray-200 mt-2 leading-relaxed drop-shadow-md">Expert dialogue on tech outsourcing and cross-border IT trade regulations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- View More Button -->
+        <div class="mt-12 flex justify-center">
+          <button id="gallery-load-more-btn" class="inline-flex items-center justify-center h-12 px-8 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white border border-neutral-border text-text-dark font-extrabold text-xs rounded-full shadow-sm hover:shadow-md transition-all duration-300 gap-2">
+            <span>View More Archives</span>
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </button>
+        </div>
+
       </div>
     </section>
 
+    <!-- Inline Script for Skeleton Loading View More Gallery -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const loadBtn = document.getElementById('gallery-load-more-btn');
+        const skeletonGrid = document.getElementById('gallery-skeleton-grid');
+        const moreGrid = document.getElementById('gallery-more-grid');
+
+        if (loadBtn && skeletonGrid && moreGrid) {
+          loadBtn.addEventListener('click', () => {
+            // Hide button
+            loadBtn.parentElement.style.display = 'none';
+
+            // Show skeleton loader
+            skeletonGrid.classList.remove('hidden');
+            skeletonGrid.classList.add('grid');
+
+            // Simulate network load delay (1.2 seconds)
+            setTimeout(() => {
+              // Hide skeleton
+              skeletonGrid.classList.remove('grid');
+              skeletonGrid.classList.add('hidden');
+
+              // Display loaded items
+              moreGrid.classList.remove('hidden');
+              moreGrid.classList.add('grid');
+              
+              // Smooth fade-in
+              moreGrid.style.opacity = '0';
+              void moreGrid.offsetWidth;
+              moreGrid.style.transition = 'opacity 0.6s ease-out';
+              moreGrid.style.opacity = '1';
+            }, 1200);
+          });
+        }
+      });
+    </script>
+
     <!-- ==========================================================================
-         SECTION 07 â€” FEATURED SPEAKERS (profile rows)
+         SECTION 07 — FEATURED SPEAKERS (profile rows)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary divider-subtle" id="speakers-sec">
       <div class="container-shell text-center">
         
         <!-- Header -->
         <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Keynotes</span>
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Keynotes & Panellists</span>
           <h2 class="section-title text-text-dark">Featured Speakers</h2>
           <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
           <p class="text-text-body text-sm leading-relaxed">
@@ -337,61 +690,118 @@
           </p>
         </div>
 
-        <!-- 3 Columns profiles grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+        <!-- 3 Columns Profiles Grid (6 Speakers) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
           
           <!-- Speaker 1 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group">
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group" data-scroll-reveal="true" data-reveal-delay="0.1">
             <div class="flex items-center gap-4">
-              <div class="w-16 h-16 rounded-full overflow-hidden border border-neutral-border shrink-0">
-                <img src="/assets/images/members/president.jpg" alt="Syed Almas Kabir portrait" class="w-full h-full object-cover" />
+              <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-green shrink-0">
+                <img src="https://i.pravatar.cc/300?img=68" alt="Syed Almas Kabir portrait" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col text-left">
-                <h3 class="text-text-dark font-extrabold text-sm leading-tight">Syed Almas Kabir</h3>
-                <span class="text-xs text-brand-green font-semibold mt-0.5">Director, MetroNet Bangladesh</span>
-                <span class="text-[9px] text-text-muted uppercase">Ex-President, BMCCI</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-tight">Syed Almas Kabir</h3>
+                <span class="text-xs text-brand-green font-bold mt-0.5">Director, MetroNet Bangladesh</span>
+                <span class="text-[10px] text-text-muted uppercase font-semibold mt-0.5">Ex-President, BMCCI</span>
               </div>
             </div>
             <p class="text-text-body text-xs leading-relaxed">Presenting strategies targeting bilateral 5G infrastructure integrations and digital outsourcing routes.</p>
-            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-extrabold hover:underline pt-2 border-t border-neutral-border">
               <span>View LinkedIn Profile</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
 
           <!-- Speaker 2 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group">
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group" data-scroll-reveal="true" data-reveal-delay="0.2">
             <div class="flex items-center gap-4">
-              <div class="w-16 h-16 rounded-full overflow-hidden border border-neutral-border shrink-0">
-                <img src="/assets/images/members/testimonial-3.jpg" alt="Hazlina Halim portrait" class="w-full h-full object-cover" />
+              <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue shrink-0">
+                <img src="https://i.pravatar.cc/300?img=49" alt="Hazlina Halim portrait" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col text-left">
-                <h3 class="text-text-dark font-extrabold text-sm leading-tight">Hazlina Abdul Halim</h3>
-                <span class="text-xs text-brand-blue font-semibold mt-0.5">CEO, Malay-Bangla consulting</span>
-                <span class="text-[9px] text-text-muted uppercase">Consulting Specialist</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-tight">Hazlina Abdul Halim</h3>
+                <span class="text-xs text-brand-blue font-bold mt-0.5">CEO, Malay-Bangla Consulting</span>
+                <span class="text-[10px] text-text-muted uppercase font-semibold mt-0.5">Trade Regulatory Specialist</span>
               </div>
             </div>
-            <p class="text-text-body text-xs leading-relaxed">Advising corporate groups on corporate compliance rules, trade registries licensing, and duty structures.</p>
-            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">
+            <p class="text-text-body text-xs leading-relaxed">Advising corporate groups on compliance frameworks, tariff registries, licensing, and trade duty structures.</p>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-brand-blue font-extrabold hover:underline pt-2 border-t border-neutral-border">
               <span>View LinkedIn Profile</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
 
           <!-- Speaker 3 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group">
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group" data-scroll-reveal="true" data-reveal-delay="0.3">
             <div class="flex items-center gap-4">
-              <div class="w-16 h-16 rounded-full overflow-hidden border border-neutral-border shrink-0">
-                <img src="/assets/images/members/vice-president.jpg" alt="VP Subramaniam portrait" class="w-full h-full object-cover" />
+              <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-gold shrink-0">
+                <img src="https://i.pravatar.cc/300?img=33" alt="VP Subramaniam portrait" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col text-left">
-                <h3 class="text-text-dark font-extrabold text-sm leading-tight">Dato' Goonahlam Subramaniam</h3>
-                <span class="text-xs text-brand-gold font-semibold mt-0.5">ED, Klang Port Logistics</span>
-                <span class="text-[9px] text-text-muted uppercase">Vice President, BMCCI</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-tight">Dato' Goonahlam Subramaniam</h3>
+                <span class="text-xs text-brand-gold font-bold mt-0.5">ED, Klang Port Logistics</span>
+                <span class="text-[10px] text-text-muted uppercase font-semibold mt-0.5">Vice President, BMCCI</span>
               </div>
             </div>
-            <p class="text-text-body text-xs leading-relaxed">Focusing on deep-water shipping route concessions and prioritized cargo handling updates.</p>
-            <a href="#" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">
+            <p class="text-text-body text-xs leading-relaxed">Focusing on deep-water shipping route concessions and prioritized cargo handling updates between Chittagong and Port Klang.</p>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-brand-gold font-extrabold hover:underline pt-2 border-t border-neutral-border">
+              <span>View LinkedIn Profile</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Speaker 4 -->
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group" data-scroll-reveal="true" data-reveal-delay="0.1">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-green shrink-0">
+                <img src="https://i.pravatar.cc/300?img=11" alt="Tan Sri Azman portrait" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <h3 class="text-text-dark font-extrabold text-base leading-tight">Prof. Tan Sri Azman</h3>
+                <span class="text-xs text-brand-green font-bold mt-0.5">Chairman, ASEAN Economic Council</span>
+                <span class="text-[10px] text-text-muted uppercase font-semibold mt-0.5">Keynote Speaker</span>
+              </div>
+            </div>
+            <p class="text-text-body text-xs leading-relaxed">Evaluating regional supply chain resilience and bilateral free trade treaty milestones for 2027.</p>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-extrabold hover:underline pt-2 border-t border-neutral-border">
+              <span>View LinkedIn Profile</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Speaker 5 -->
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group" data-scroll-reveal="true" data-reveal-delay="0.2">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue shrink-0">
+                <img src="https://i.pravatar.cc/300?img=12" alt="Shubhashish Bose portrait" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <h3 class="text-text-dark font-extrabold text-base leading-tight">Shubhashish Bose</h3>
+                <span class="text-xs text-brand-blue font-bold mt-0.5">CEO, BD Trade Promotion</span>
+                <span class="text-[10px] text-text-muted uppercase font-semibold mt-0.5">Special Delegate</span>
+              </div>
+            </div>
+            <p class="text-text-body text-xs leading-relaxed">Presenting Special Economic Zone tax holidays and export diversification incentives in Bangladesh.</p>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-brand-blue font-extrabold hover:underline pt-2 border-t border-neutral-border">
+              <span>View LinkedIn Profile</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Speaker 6 -->
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card p-6 flex flex-col justify-between gap-5 hover-lift group" data-scroll-reveal="true" data-reveal-delay="0.3">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-gold shrink-0">
+                <img src="https://i.pravatar.cc/300?img=38" alt="Fiona Tan portrait" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <h3 class="text-text-dark font-extrabold text-base leading-tight">Fiona Tan</h3>
+                <span class="text-xs text-brand-gold font-bold mt-0.5">Managing Director, MY-BD Ventures</span>
+                <span class="text-[10px] text-text-muted uppercase font-semibold mt-0.5">Venture Specialist</span>
+              </div>
+            </div>
+            <p class="text-text-body text-xs leading-relaxed">Guiding technology startups and green energy joint ventures through bilateral funding channels.</p>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-brand-gold font-extrabold hover:underline pt-2 border-t border-neutral-border">
               <span>View LinkedIn Profile</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -410,7 +820,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           <!-- Left: Image (Span 5) -->
-          <div class="lg:col-span-5 relative w-full flex items-center justify-center animate-reveal">
+          <div class="lg:col-span-5 relative w-full flex items-center justify-center" data-scroll-reveal="true" data-reveal-direction="left">
             <div class="relative w-full aspect-[4/3] rounded-hero overflow-hidden shadow-floating image-reveal-wrapper">
               <img src="/assets/images/events/networking-dinner.jpg" alt="Networking dinner delegates discussion" 
                    class="w-full h-full object-cover transition-premium duration-[1.6s] hover:scale-105" loading="lazy" />
@@ -418,7 +828,7 @@
           </div>
 
           <!-- Right: highlights, content (Span 7) -->
-          <div class="lg:col-span-7 flex flex-col gap-6 text-left animate-reveal">
+          <div class="lg:col-span-7 flex flex-col gap-6 text-left" data-scroll-reveal="true" data-reveal-direction="right" data-reveal-delay="0.2">
             <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10 self-start">Attendee Benefits</span>
             <h2 class="section-title text-text-dark">Summit Registration Benefits</h2>
             <p class="text-text-body text-sm leading-relaxed max-w-xl">
@@ -524,9 +934,9 @@
        MODAL 1: EVENT DETAILS MODAL (Details View)
        ========================================================================== -->
   <div id="event-details-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-2xl w-full max-h-[85vh] overflow-y-auto relative text-left" data-modal-content>
+    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-2xl w-full max-h-[90vh] overflow-y-auto relative text-left" data-modal-content data-lenis-prevent>
       <!-- Close button -->
-      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast" data-modal-close>
+      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast z-10" data-modal-close>
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
@@ -583,7 +993,7 @@
        MODAL 2: MULTI-STEP REGISTRATION FORM (Popup)
        ========================================================================== -->
   <div id="registration-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-md w-full relative text-left" data-modal-content>
+    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-md w-full max-h-[90vh] overflow-y-auto relative text-left" data-modal-content data-lenis-prevent>
       <!-- Close button -->
       <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast z-10" data-modal-close>
         <i data-lucide="x" class="w-5 h-5"></i>
