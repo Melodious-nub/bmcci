@@ -45,10 +45,6 @@ export default defineConfig({
         news: resolve(__dirname, 'src/pages/news.html'),
         contact: resolve(__dirname, 'src/pages/contact.html'),
         notFound: resolve(__dirname, 'src/pages/404.html'),
-        login: resolve(__dirname, 'src/pages/login.html'),
-        superadmin: resolve(__dirname, 'src/pages/admin/superadmin.html'),
-        admin: resolve(__dirname, 'src/pages/admin/admin.html'),
-        member: resolve(__dirname, 'src/pages/admin/member.html'),
       }
     }
   }
