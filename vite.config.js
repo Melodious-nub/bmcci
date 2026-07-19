@@ -28,6 +28,7 @@ function htmlInject() {
 
 export default defineConfig({
   root: 'src',
+  publicDir: resolve(__dirname, 'public'),
   plugins: [htmlInject()],
   build: {
     outDir: '../dist',
