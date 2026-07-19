@@ -15,8 +15,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', sans-serif; background: #f1f5f9; color: #334155; overflow: hidden; height: 100vh; display: flex; }
-    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-    .sidebar { width: 260px; height: 100vh; background: #1e293b; display: flex; flex-direction: column; flex-shrink: 0; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; } ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .sidebar { width: 260px; height: 100vh; background: #1e293b; display: flex; flex-direction: column; flex-shrink: 0; z-index: 90; }
     .sidebar-brand { height: 72px; display: flex; align-items: center; padding: 0 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .sidebar-brand img { height: 38px; filter: brightness(0) invert(1); }
     .sidebar-user { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
@@ -30,14 +30,14 @@
     .sidebar-footer { margin-top: auto; padding: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
     .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; border-radius: 10px; background: rgba(220,38,38,0.1); color: #f87171; font-size: 12px; font-weight: 700; cursor: pointer; border: 1px solid rgba(220,38,38,0.2); transition: all 0.15s; }
     .logout-btn:hover { background: #dc2626; color: white; border-color: #dc2626; }
-    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; width: 100%; }
     .topbar { height: 72px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; flex-shrink: 0; }
     .content-area { flex: 1; overflow-y: auto; padding: 32px; }
     .panel { display: none; }
     .panel.active { display: block; animation: fadeUp 0.3s ease; }
     @keyframes fadeUp { from { opacity:0;transform:translateY(10px); } to { opacity:1;transform:translateY(0); } }
     .stat-card { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; }
-    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 600px; }
     .data-table thead th { padding: 12px 16px; text-align: left; font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.08em; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
     .data-table tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.12s; }
     .data-table tbody tr:hover { background: #f8fafc; }
@@ -63,6 +63,41 @@
     .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; }
     .tab-btn { padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: #94a3b8; transition: all 0.15s; font-family: inherit; }
     .tab-btn.active { background: white; color: #0f172a; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+
+    /* Dropdown CSS */
+    .dropdown-panel { position: absolute; top: calc(100% + 12px); right: 0; width: 320px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.5) inset; z-index: 50; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s cubic-bezier(0.16,1,0.3,1); }
+    .dropdown-panel.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-item { padding: 12px 16px; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.15s; text-decoration: none; border: none; background: transparent; width: 100%; text-align: left; }
+    .dropdown-item:hover { background: #f8fafc; }
+    .dropdown-item:last-child { border-bottom: none; }
+
+    /* Responsive Styles */
+    .mobile-menu-btn { display: none; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 8px; border-radius: 10px; cursor: pointer; color: #334155; align-items: center; justify-content: center; }
+    .sidebar-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.6); backdrop-filter: blur(4px); z-index: 80; opacity: 0; visibility: hidden; transition: all 0.25s ease; }
+    .sidebar-backdrop.show { opacity: 1; visibility: visible; }
+
+    .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    @media (max-width: 1024px) {
+      .sidebar { position: fixed; top: 0; left: 0; transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+      .sidebar.open { transform: translateX(0); }
+      .mobile-menu-btn { display: flex; }
+      .topbar { padding: 0 16px; gap: 12px; }
+      .content-area { padding: 16px; }
+      .overview-grid { grid-template-columns: 1fr !important; }
+    }
+
+    @media (max-width: 640px) {
+      #page-title { font-size: 15px !important; }
+      #page-subtitle { display: none; }
+      .dropdown-panel { right: -40px; width: 280px; }
+      .modal-box { padding: 20px; width: 95%; }
+    }
+
+    /* Toast System */
+    .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 1000; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+    .toast-msg { background: #0f172a; color: white; padding: 12px 18px; border-radius: 12px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); animation: toastIn 0.3s ease forwards; pointer-events: auto; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
@@ -81,12 +116,12 @@
   <nav style="flex:1;overflow-y:auto;padding:8px 0;">
     <div class="nav-section-label">Operations</div>
     <button class="nav-item active" onclick="switchPanel('overview', this)"><i data-lucide="layout-dashboard"></i> Overview</button>
-    <button class="nav-item" onclick="switchPanel('inquiries', this)"><i data-lucide="inbox"></i> Inquiries <span class="nav-badge">12</span></button>
+    <button class="nav-item" onclick="switchPanel('inquiries', this)"><i data-lucide="inbox"></i> Inquiries <span class="nav-badge" id="badge-inquiries">6</span></button>
     <div class="nav-section-label">Content</div>
     <button class="nav-item" onclick="switchPanel('events', this)"><i data-lucide="calendar"></i> Events</button>
     <button class="nav-item" onclick="switchPanel('news', this)"><i data-lucide="newspaper"></i> News & Articles</button>
     <div class="nav-section-label">Members</div>
-    <button class="nav-item" onclick="switchPanel('applications', this)"><i data-lucide="user-check"></i> Applications <span class="nav-badge" style="background:#006a4e;color:white;">4</span></button>
+    <button class="nav-item" onclick="switchPanel('applications', this)"><i data-lucide="user-check"></i> Applications <span class="nav-badge" style="background:#006a4e;color:white;" id="badge-apps">4</span></button>
     <div class="nav-section-label">Website</div>
     <a href="/index.html" target="_blank" class="nav-item" style="text-decoration:none;"><i data-lucide="external-link"></i> View Public Site</a>
   </nav>
@@ -97,19 +132,79 @@
 
 <div class="main">
   <div class="topbar">
-    <div>
-      <div id="page-title" style="font-size:18px;font-weight:900;color:#0f172a;">Operations Overview</div>
-      <div id="page-subtitle" style="font-size:12px;color:#94a3b8;margin-top:2px;">Manage BMCCI chamber activities and content</div>
-    </div>
     <div style="display:flex;align-items:center;gap:12px;">
-      <button class="btn btn-sm" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;">
-        <i data-lucide="bell" style="width:14px;height:14px;"></i>
-        <span style="background:#dc2626;color:white;width:16px;height:16px;border-radius:50%;font-size:9px;display:inline-flex;align-items:center;justify-content:center;margin-left:-2px;">3</span>
+      <button class="mobile-menu-btn" id="btn-mobile-toggle" aria-label="Toggle Navigation">
+        <i data-lucide="menu" style="width:18px;height:18px;"></i>
       </button>
-      <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
-        <img class="auth-user-avatar" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" />
-        <span class="auth-user-name" style="font-size:12px;font-weight:700;color:#0f172a;"></span>
+      <div>
+        <div id="page-title" style="font-size:18px;font-weight:900;color:#0f172a;">Operations Overview</div>
+        <div id="page-subtitle" style="font-size:12px;color:#94a3b8;margin-top:2px;">Manage BMCCI chamber activities and content</div>
       </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px;">
+      
+      <!-- Notifications -->
+      <div style="position:relative;">
+        <button id="btn-notifications" class="btn btn-sm" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:8px;border-radius:10px;position:relative;">
+          <i data-lucide="bell" style="width:16px;height:16px;"></i>
+          <span style="position:absolute;top:-4px;right:-4px;background:#ef4444;color:white;width:16px;height:16px;border-radius:50%;font-size:9px;display:inline-flex;align-items:center;justify-content:center;border:2px solid white;font-weight:bold;">2</span>
+        </button>
+        <!-- Dropdown Panel -->
+        <div id="dropdown-notifications" class="dropdown-panel">
+          <div style="padding:14px 16px;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:12px;font-weight:800;color:#0f172a;">Notifications</div>
+            <button style="font-size:10px;color:#1d4ed8;background:none;border:none;font-weight:700;cursor:pointer;" onclick="showToast('All notifications marked as read')">Mark all read</button>
+          </div>
+          <div style="max-height:300px;overflow-y:auto;display:flex;flex-direction:column;">
+            <button class="dropdown-item" onclick="switchPanel('applications', null)">
+              <div style="width:32px;height:32px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;color:#15803d;flex-shrink:0;"><i data-lucide="user-check" style="width:16px;height:16px;"></i></div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#0f172a;line-height:1.4;">New Application</div>
+                <div style="font-size:11px;color:#64748b;margin-top:2px;">Farid Exports Ltd. applied for Corporate tier.</div>
+                <div style="font-size:10px;color:#94a3b8;margin-top:4px;font-weight:600;">2 mins ago</div>
+              </div>
+            </button>
+            <button class="dropdown-item" onclick="switchPanel('inquiries', null)">
+              <div style="width:32px;height:32px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;color:#1d4ed8;flex-shrink:0;"><i data-lucide="inbox" style="width:16px;height:16px;"></i></div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#0f172a;line-height:1.4;">General Inquiry</div>
+                <div style="font-size:11px;color:#64748b;margin-top:2px;">Received a message regarding upcoming trade expo.</div>
+                <div style="font-size:10px;color:#94a3b8;margin-top:4px;font-weight:600;">1 hr ago</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Options -->
+      <div style="position:relative;">
+        <button id="btn-profile" style="display:flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;background:white;border:1px solid #e2e8f0;border-radius:50px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'">
+          <img class="auth-user-avatar" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid #e2e8f0;" />
+          <div style="text-align:left;">
+            <div class="auth-user-name" style="font-size:12px;font-weight:700;color:#0f172a;"></div>
+            <div style="font-size:10px;color:#64748b;font-weight:600;margin-top:2px;" class="auth-user-role"></div>
+          </div>
+          <i data-lucide="chevron-down" style="width:14px;height:14px;color:#94a3b8;margin-left:4px;"></i>
+        </button>
+        <!-- Dropdown Panel -->
+        <div id="dropdown-profile" class="dropdown-panel" style="width:220px;padding:8px;">
+          <button class="dropdown-item" style="border-radius:10px;padding:10px 12px;align-items:center;" onclick="showToast('Opening Admin Profile settings...')">
+            <i data-lucide="user" style="width:16px;height:16px;color:#64748b;"></i>
+            <span style="font-size:12px;font-weight:600;color:#334155;">My Profile</span>
+          </button>
+          <button class="dropdown-item" style="border-radius:10px;padding:10px 12px;align-items:center;" onclick="showToast('Navigating to system settings...')">
+            <i data-lucide="settings" style="width:16px;height:16px;color:#64748b;"></i>
+            <span style="font-size:12px;font-weight:600;color:#334155;">Account Settings</span>
+          </button>
+          <div style="height:1px;background:#e2e8f0;margin:4px 0;"></div>
+          <button class="dropdown-item auth-logout-btn" style="border-radius:10px;padding:10px 12px;align-items:center;color:#ef4444;">
+            <i data-lucide="log-out" style="width:16px;height:16px;"></i>
+            <span style="font-size:12px;font-weight:600;">Sign Out</span>
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -120,15 +215,15 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px;">
         <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
           <div style="width:48px;height:48px;border-radius:14px;background:#dbeafe;display:flex;align-items:center;justify-content:center;"><i data-lucide="inbox" style="width:22px;height:22px;color:#1d4ed8;"></i></div>
-          <div><div style="font-size:24px;font-weight:900;color:#0f172a;">12</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Pending Inquiries</div></div>
+          <div><div style="font-size:24px;font-weight:900;color:#0f172a;" id="stat-inquiries-count">6</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Pending Inquiries</div></div>
         </div>
         <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
           <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;"><i data-lucide="user-check" style="width:22px;height:22px;color:#006a4e;"></i></div>
-          <div><div style="font-size:24px;font-weight:900;color:#0f172a;">4</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">New Applications</div></div>
+          <div><div style="font-size:24px;font-weight:900;color:#0f172a;" id="stat-apps-count">4</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">New Applications</div></div>
         </div>
         <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
           <div style="width:48px;height:48px;border-radius:14px;background:#fef9c3;display:flex;align-items:center;justify-content:center;"><i data-lucide="calendar" style="width:22px;height:22px;color:#d97706;"></i></div>
-          <div><div style="font-size:24px;font-weight:900;color:#0f172a;">3</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Upcoming Events</div></div>
+          <div><div style="font-size:24px;font-weight:900;color:#0f172a;" id="stat-events-count">3</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Upcoming Events</div></div>
         </div>
         <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
           <div style="width:48px;height:48px;border-radius:14px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;"><i data-lucide="eye" style="width:22px;height:22px;color:#9333ea;"></i></div>
@@ -137,20 +232,22 @@
       </div>
 
       <!-- Recent Inquiries + Quick Events -->
-      <div style="display:grid;grid-template-columns:3fr 2fr;gap:20px;">
+      <div class="overview-grid" style="display:grid;grid-template-columns:3fr 2fr;gap:20px;">
         <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
           <div style="padding:18px 20px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
             <div style="font-size:14px;font-weight:800;color:#0f172a;">Recent Inquiries</div>
             <button class="btn btn-sm btn-secondary" onclick="switchPanel('inquiries', null)">View All</button>
           </div>
-          <table class="data-table">
-            <thead><tr><th>Contact</th><th>Type</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Arif Rahman</div><div style="font-size:11px;color:#94a3b8;">arif@logistics.com</div></td><td><span class="badge badge-amber">Trade Match</span></td><td><span class="badge badge-amber">Pending</span></td></tr>
-              <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Sarah Lim</div><div style="font-size:11px;color:#94a3b8;">sarah@my-tech.my</div></td><td><span class="badge badge-blue">Event</span></td><td><span class="badge badge-green">Responded</span></td></tr>
-              <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Nasrin Ahmed</div><div style="font-size:11px;color:#94a3b8;">nasrin@bdtextile.com</div></td><td><span class="badge badge-green">Membership</span></td><td><span class="badge badge-purple">Processing</span></td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr><th>Contact</th><th>Type</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Arif Rahman</div><div style="font-size:11px;color:#94a3b8;">arif@logistics.com</div></td><td><span class="badge badge-amber">Trade Match</span></td><td><span class="badge badge-amber">Pending</span></td></tr>
+                <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Sarah Lim</div><div style="font-size:11px;color:#94a3b8;">sarah@my-tech.my</div></td><td><span class="badge badge-blue">Event</span></td><td><span class="badge badge-green">Responded</span></td></tr>
+                <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Nasrin Ahmed</div><div style="font-size:11px;color:#94a3b8;">nasrin@bdtextile.com</div></td><td><span class="badge badge-green">Membership</span></td><td><span class="badge badge-amber">Pending</span></td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
           <div style="padding:18px 20px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
@@ -164,21 +261,22 @@
 
     <!-- INQUIRIES -->
     <div id="panel-inquiries" class="panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
         <div style="font-size:14px;font-weight:800;color:#0f172a;">Business Inquiry Management</div>
-        <div style="display:flex;gap:8px;">
-          <button class="btn btn-sm btn-secondary"><i data-lucide="download" style="width:13px;height:13px;"></i> Export</button>
+        <div style="display:flex;gap:8px;width:100%;max-width:320px;">
+          <input type="text" id="inquiry-search" class="form-input" placeholder="Search contact or message..." onkeyup="filterInquiriesSearch()" style="height:36px;font-size:12px;" />
+          <button class="btn btn-sm btn-secondary" onclick="showToast('Exported 6 inquiries to CSV')"><i data-lucide="download" style="width:13px;height:13px;"></i></button>
         </div>
       </div>
       <!-- Filter Tabs -->
-      <div style="background:#f1f5f9;border-radius:10px;padding:4px;display:inline-flex;gap:2px;margin-bottom:16px;">
-        <button class="tab-btn active" onclick="filterInquiries('all', this)">All (12)</button>
-        <button class="tab-btn" onclick="filterInquiries('pending', this)">Pending (7)</button>
-        <button class="tab-btn" onclick="filterInquiries('responded', this)">Responded (4)</button>
-        <button class="tab-btn" onclick="filterInquiries('closed', this)">Closed (1)</button>
+      <div style="background:#f1f5f9;border-radius:10px;padding:4px;display:inline-flex;gap:2px;margin-bottom:16px;flex-wrap:wrap;">
+        <button class="tab-btn active" onclick="filterInquiries('all', this)">All</button>
+        <button class="tab-btn" onclick="filterInquiries('pending', this)">Pending</button>
+        <button class="tab-btn" onclick="filterInquiries('responded', this)">Responded</button>
+        <button class="tab-btn" onclick="filterInquiries('closed', this)">Closed</button>
       </div>
       <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
-        <div style="overflow-x:auto;">
+        <div class="table-container">
           <table class="data-table">
             <thead><tr><th>Contact</th><th>Inquiry Type</th><th>Message</th><th>Date</th><th>Status</th><th style="text-align:right;">Action</th></tr></thead>
             <tbody id="inquiries-tbody"></tbody>
@@ -189,21 +287,21 @@
 
     <!-- EVENTS -->
     <div id="panel-events" class="panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
         <div style="font-size:14px;font-weight:800;color:#0f172a;">Event Management</div>
-        <button class="btn btn-green" onclick="openEventModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Create Event</button>
+        <button class="btn btn-green btn-sm" onclick="openEventModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Create Event</button>
       </div>
       <div style="display:grid;gap:16px;" id="events-grid"></div>
     </div>
 
     <!-- NEWS -->
     <div id="panel-news" class="panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
         <div style="font-size:14px;font-weight:800;color:#0f172a;">News & Publications</div>
-        <button class="btn btn-primary" onclick="openNewsModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Add Article</button>
+        <button class="btn btn-primary btn-sm" onclick="openNewsModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Add Article</button>
       </div>
       <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
-        <div style="overflow-x:auto;">
+        <div class="table-container">
           <table class="data-table">
             <thead><tr><th>Article</th><th>Category</th><th>Date</th><th>Status</th><th style="text-align:right;">Actions</th></tr></thead>
             <tbody id="news-tbody"></tbody>
@@ -218,6 +316,39 @@
       <div style="display:grid;gap:16px;" id="applications-grid"></div>
     </div>
 
+  </div>
+</div>
+
+<!-- Inquiry Reply Modal -->
+<div class="modal-overlay" id="inquiry-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('inquiry-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;" id="inquiry-modal-title">Inquiry Details</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:16px;" id="inquiry-modal-subtitle">From: Sender</div>
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;color:#334155;line-height:1.6;" id="inquiry-modal-body">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+      <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Official Response</label>
+      <textarea id="inquiry-response-text" class="form-textarea" rows="3" placeholder="Type your response to the sender..."></textarea>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn btn-secondary btn-sm" onclick="closeModal('inquiry-modal')">Close</button>
+      <button class="btn btn-green btn-sm" onclick="sendInquiryReply()"><i data-lucide="send" style="width:13px;height:13px;"></i> Send Reply & Mark Responded</button>
+    </div>
+  </div>
+</div>
+
+<!-- Application Detail Modal -->
+<div class="modal-overlay" id="app-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('app-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;" id="app-modal-title">Application Review</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:16px;" id="app-modal-sub">Company Registration Overview</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;" id="app-modal-content"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn btn-danger btn-sm" id="btn-app-reject">Reject</button>
+      <button class="btn btn-green btn-sm" id="btn-app-approve">Approve Membership</button>
+    </div>
   </div>
 </div>
 
@@ -266,23 +397,40 @@
   </div>
 </div>
 
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+<div class="toast-container" id="toast-container"></div>
+
 <script>
-lucide.createIcons();
-authService.populateUserInfo();
+let activeInquiryId = null;
+
+function showToast(msg, icon = 'check-circle') {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+  const toast = document.createElement('div');
+  toast.className = 'toast-msg';
+  toast.innerHTML = `<i data-lucide="${icon}" style="width:16px;height:16px;color:#4ade80;"></i><span>${msg}</span>`;
+  container.appendChild(toast);
+  lucide.createIcons();
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
 
 const INQUIRIES = [
-  { id:1, name:'Arif Rahman', email:'arif@logistics.com', type:'Trade Match', msg:'Seeking textile import opportunities...', date:'Jul 19, 2026', status:'pending' },
-  { id:2, name:'Sarah Lim', email:'sarah@my-tech.my', type:'Event', msg:'Interested in Trade Summit delegate pass...', date:'Jul 18, 2026', status:'responded' },
-  { id:3, name:'Nasrin Ahmed', email:'nasrin@bdtextile.com', type:'Membership', msg:'Would like to apply for Corporate membership...', date:'Jul 18, 2026', status:'pending' },
-  { id:4, name:'David Tan', email:'david@penangbiz.my', type:'Trade Match', msg:'Looking for garment factory partners in BD...', date:'Jul 17, 2026', status:'pending' },
-  { id:5, name:'Rahim Chowdhury', email:'rahim@dhakaventures.com', type:'General', msg:'Inquiry about bilateral investment process...', date:'Jul 16, 2026', status:'responded' },
-  { id:6, name:'Wei Leng Ooi', email:'wlooi@klcorp.my', type:'Trade Match', msg:'Need visa recommendation letter for Dhaka visit...', date:'Jul 15, 2026', status:'closed' },
+  { id:1, name:'Arif Rahman', email:'arif@logistics.com', type:'Trade Match', msg:'Seeking textile import opportunities and customs facilitation details in Chittagong.', date:'Jul 19, 2026', status:'pending' },
+  { id:2, name:'Sarah Lim', email:'sarah@my-tech.my', type:'Event', msg:'Interested in Trade Summit delegate pass and B2B roundtable seat.', date:'Jul 18, 2026', status:'responded' },
+  { id:3, name:'Nasrin Ahmed', email:'nasrin@bdtextile.com', type:'Membership', msg:'Would like to apply for Corporate membership tier for our apparel group.', date:'Jul 18, 2026', status:'pending' },
+  { id:4, name:'David Tan', email:'david@penangbiz.my', type:'Trade Match', msg:'Looking for garment factory partners in BD for OEM manufacturing contracts.', date:'Jul 17, 2026', status:'pending' },
+  { id:5, name:'Rahim Chowdhury', email:'rahim@dhakaventures.com', type:'General', msg:'Inquiry about bilateral investment tax treaty guidelines.', date:'Jul 16, 2026', status:'responded' },
+  { id:6, name:'Wei Leng Ooi', email:'wlooi@klcorp.my', type:'Trade Match', msg:'Need visa recommendation letter backing for Dhaka high commission visit.', date:'Jul 15, 2026', status:'closed' },
 ];
 
 let localEvents = [
-  { id:1, title:'BD-MY Economic Summit 2026', cat:'Summit', date:'2026-08-15', location:'Dhaka, Bangladesh', desc:'Annual bilateral economic summit.', status:'upcoming' },
+  { id:1, title:'BD-MY Economic Summit 2026', cat:'Summit', date:'2026-08-15', location:'Dhaka, Bangladesh', desc:'Annual bilateral economic summit featuring key ministers.', status:'upcoming' },
   { id:2, title:'Penang Industrial Zone Delegation', cat:'Trade Mission', date:'2026-09-08', location:'Penang, Malaysia', desc:'Factory visit delegation to Penang Free Trade Zone.', status:'upcoming' },
-  { id:3, title:'Bilateral Webinar: Green Energy Investment', cat:'Webinar', date:'2026-10-01', location:'Virtual', desc:'Online forum on green energy partnerships.', status:'upcoming' },
+  { id:3, title:'Bilateral Webinar: Green Energy Investment', cat:'Webinar', date:'2026-10-01', location:'Virtual', desc:'Online forum on renewable energy partnerships.', status:'upcoming' },
 ];
 
 let localNews = [
@@ -292,11 +440,11 @@ let localNews = [
   { id:4, title:'BMCCI Welcomes 12 New Corporate Members', cat:'Member News', date:'Jul 5, 2026', status:'draft' },
 ];
 
-const APPLICATIONS = [
-  { name:'Farid Exports Ltd.', email:'farid@exports.com', type:'Corporate', date:'Jul 19, 2026', status:'pending' },
-  { name:'Siti Noor Consulting', email:'siti@consulting.my', type:'Associate', date:'Jul 18, 2026', status:'pending' },
-  { name:'Karim Industries', email:'karim@industries.com', type:'Patron', date:'Jul 17, 2026', status:'reviewing' },
-  { name:'Tech Nexus Malaysia', email:'info@technexus.my', type:'Associate', date:'Jul 16, 2026', status:'approved' },
+let APPLICATIONS = [
+  { id:1, name:'Farid Exports Ltd.', email:'farid@exports.com', type:'Corporate', reg:'BD-REG-99120', date:'Jul 19, 2026', status:'pending' },
+  { id:2, name:'Siti Noor Consulting', email:'siti@consulting.my', type:'Associate', reg:'MY-SSM-88219', date:'Jul 18, 2026', status:'pending' },
+  { id:3, name:'Karim Industries', email:'karim@industries.com', type:'Patron', reg:'BD-REG-10492', date:'Jul 17, 2026', status:'reviewing' },
+  { id:4, name:'Tech Nexus Malaysia', email:'info@technexus.my', type:'Associate', reg:'MY-SSM-55102', date:'Jul 16, 2026', status:'approved' },
 ];
 
 function switchPanel(id, btn) {
@@ -304,7 +452,7 @@ function switchPanel(id, btn) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
   if (btn) btn.classList.add('active');
-  const titles = { overview:['Operations Overview','Manage BMCCI activities'], inquiries:['Inquiry Management','Review and respond to external queries'], events:['Event Management','Plan and manage chamber events'], news:['News & Publications','Manage content and articles'], applications:['Membership Applications','Review and approve membership requests'] };
+  const titles = { overview:['Operations Overview','Manage BMCCI chamber activities and content'], inquiries:['Inquiry Management','Review and respond to external queries'], events:['Event Management','Plan and manage chamber events'], news:['News & Publications','Manage content and articles'], applications:['Membership Applications','Review and approve membership requests'] };
   if (titles[id]) { document.getElementById('page-title').textContent = titles[id][0]; document.getElementById('page-subtitle').textContent = titles[id][1]; }
   if (id==='inquiries') renderInquiries();
   if (id==='events') renderEvents();
@@ -326,8 +474,8 @@ function renderInquiries(list = INQUIRIES) {
       <td style="font-size:12px;color:#94a3b8;">${q.date}</td>
       <td><span class="badge ${statusBadge(q.status)}">${q.status.charAt(0).toUpperCase()+q.status.slice(1)}</span></td>
       <td style="text-align:right;"><div style="display:flex;gap:6px;justify-content:flex-end;">
-        <button class="btn btn-secondary btn-sm">View</button>
-        ${q.status==='pending'?'<button class="btn btn-green btn-sm" onclick="updateInquiryStatus('+q.id+',\'responded\')">Respond</button>':''}
+        <button class="btn btn-secondary btn-sm" onclick="viewInquiry(${q.id})">View</button>
+        ${q.status==='pending'?'<button class="btn btn-green btn-sm" onclick="viewInquiry('+q.id+')">Respond</button>':''}
       </div></td>
     </tr>`).join('');
   lucide.createIcons();
@@ -340,25 +488,47 @@ function filterInquiries(filter, btn) {
   renderInquiries(filtered);
 }
 
-function updateInquiryStatus(id, status) {
-  const item = INQUIRIES.find(i => i.id === id);
-  if (item) item.status = status;
+function filterInquiriesSearch() {
+  const query = document.getElementById('inquiry-search').value.toLowerCase();
+  const filtered = INQUIRIES.filter(i => i.name.toLowerCase().includes(query) || i.msg.toLowerCase().includes(query) || i.email.toLowerCase().includes(query));
+  renderInquiries(filtered);
+}
+
+function viewInquiry(id) {
+  const q = INQUIRIES.find(i => i.id === id);
+  if (!q) return;
+  activeInquiryId = id;
+  document.getElementById('inquiry-modal-title').textContent = q.type + ' Inquiry';
+  document.getElementById('inquiry-modal-subtitle').textContent = `From: ${q.name} (${q.email}) • Received ${q.date}`;
+  document.getElementById('inquiry-modal-body').textContent = `"${q.msg}"`;
+  document.getElementById('inquiry-response-text').value = q.status === 'responded' ? 'Previous Response: Sent official guidelines package via email.' : '';
+  document.getElementById('inquiry-modal').classList.add('open');
+  lucide.createIcons();
+}
+
+function sendInquiryReply() {
+  const text = document.getElementById('inquiry-response-text').value;
+  if (!text) return alert('Please enter a response message.');
+  const q = INQUIRIES.find(i => i.id === activeInquiryId);
+  if (q) q.status = 'responded';
+  closeModal('inquiry-modal');
   renderInquiries();
+  showToast('Reply dispatched & status updated to Responded!');
 }
 
 function renderEvents() {
   const grid = document.getElementById('events-grid');
   const catColors = { Summit:'badge-blue', 'Trade Mission':'badge-green', Delegation:'badge-amber', Webinar:'badge-gray', Gala:'badge-purple' };
   grid.innerHTML = localEvents.map(ev => `
-    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;">
-      <div style="display:flex;align-items:center;gap:16px;flex:1;">
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:240px;">
         <div style="width:56px;height:56px;border-radius:14px;background:#f0fdf9;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
           <div style="font-size:18px;font-weight:900;color:#006a4e;">${new Date(ev.date).getDate()}</div>
           <div style="font-size:9px;font-weight:800;color:#94a3b8;text-transform:uppercase;">${new Date(ev.date).toLocaleDateString('en',{month:'short'})}</div>
         </div>
         <div>
           <div style="font-size:14px;font-weight:800;color:#0f172a;">${ev.title}</div>
-          <div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-top:4px;flex-wrap:wrap;">
             <span class="badge ${catColors[ev.cat]||'badge-gray'}">${ev.cat}</span>
             <span style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:4px;"><i data-lucide="map-pin" style="width:12px;height:12px;"></i>${ev.location}</span>
           </div>
@@ -366,10 +536,11 @@ function renderEvents() {
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-shrink:0;">
-        <button class="btn btn-secondary btn-sm">Edit</button>
+        <button class="btn btn-secondary btn-sm" onclick="showToast('Editing event: ${ev.title}')">Edit</button>
         <button class="btn btn-danger btn-sm" onclick="deleteEvent(${ev.id})"><i data-lucide="trash-2" style="width:13px;height:13px;"></i></button>
       </div>
     </div>`).join('');
+  document.getElementById('stat-events-count').textContent = localEvents.length;
   lucide.createIcons();
 }
 
@@ -403,12 +574,14 @@ function saveEvent() {
   localEvents.push({ id: Date.now(), title, cat: document.getElementById('ev-cat').value, date: document.getElementById('ev-date').value || '2026-12-01', location: document.getElementById('ev-location').value || 'TBD', desc: document.getElementById('ev-desc').value, status: 'upcoming' });
   closeModal('event-modal');
   renderEvents();
+  showToast('New Chamber Event created!');
 }
 
 function deleteEvent(id) {
   if (!confirm('Delete this event?')) return;
   localEvents = localEvents.filter(e => e.id !== id);
   renderEvents();
+  showToast('Event removed.', 'trash-2');
 }
 
 function renderNews() {
@@ -421,12 +594,21 @@ function renderNews() {
       <td><span class="badge ${statusBadge(n.status)}">${n.status.charAt(0).toUpperCase()+n.status.slice(1)}</span></td>
       <td style="text-align:right;">
         <div style="display:flex;justify-content:flex-end;gap:6px;">
-          <button class="btn btn-secondary btn-sm">Edit</button>
+          <button class="btn btn-secondary btn-sm" onclick="toggleNewsStatus(${n.id})">${n.status==='published'?'Unpublish':'Publish'}</button>
           <button class="btn btn-danger btn-sm" onclick="deleteNews(${n.id})"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
         </div>
       </td>
     </tr>`).join('');
   lucide.createIcons();
+}
+
+function toggleNewsStatus(id) {
+  const n = localNews.find(item => item.id === id);
+  if (n) {
+    n.status = n.status === 'published' ? 'draft' : 'published';
+    renderNews();
+    showToast(`Article status updated to ${n.status}`);
+  }
 }
 
 function openNewsModal() { document.getElementById('news-modal').classList.add('open'); lucide.createIcons(); }
@@ -437,35 +619,66 @@ function saveNews() {
   localNews.unshift({ id: Date.now(), title, cat: document.getElementById('news-cat').value, date: new Date().toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}), status: document.getElementById('news-status').value });
   closeModal('news-modal');
   renderNews();
+  showToast('Article published to news feed!');
 }
 
 function deleteNews(id) {
   if (!confirm('Delete this article?')) return;
   localNews = localNews.filter(n => n.id !== id);
   renderNews();
+  showToast('Article deleted', 'trash-2');
 }
 
 function renderApplications() {
   const grid = document.getElementById('applications-grid');
   const typeColors = { Corporate:'badge-blue', Patron:'badge-green', Associate:'badge-amber' };
   grid.innerHTML = APPLICATIONS.map(a => `
-    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
       <div style="display:flex;align-items:center;gap:14px;">
         <div style="width:48px;height:48px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-size:18px;">🏢</div>
         <div>
           <div style="font-size:14px;font-weight:800;color:#0f172a;">${a.name}</div>
-          <div style="font-size:12px;color:#94a3b8;">${a.email} • Applied ${a.date}</div>
+          <div style="font-size:12px;color:#94a3b8;">${a.email} • Reg: ${a.reg}</div>
           <span class="badge ${typeColors[a.type]||'badge-gray'}" style="margin-top:6px;">${a.type} Membership</span>
         </div>
       </div>
-      <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;">
+      <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;flex-wrap:wrap;">
         <span class="badge ${statusBadge(a.status)}">${a.status.charAt(0).toUpperCase()+a.status.slice(1)}</span>
+        <button class="btn btn-secondary btn-sm" onclick="reviewApplication(${a.id})">Review</button>
         ${a.status==='pending'||a.status==='reviewing'?`
-        <button class="btn btn-green btn-sm">Approve</button>
-        <button class="btn btn-danger btn-sm">Reject</button>`:''}
+        <button class="btn btn-green btn-sm" onclick="updateAppStatus(${a.id},'approved')">Approve</button>
+        <button class="btn btn-danger btn-sm" onclick="updateAppStatus(${a.id},'closed')">Reject</button>`:''}
       </div>
     </div>`).join('');
+  document.getElementById('stat-apps-count').textContent = APPLICATIONS.filter(a => a.status === 'pending' || a.status === 'reviewing').length;
   lucide.createIcons();
+}
+
+function reviewApplication(id) {
+  const a = APPLICATIONS.find(item => item.id === id);
+  if (!a) return;
+  document.getElementById('app-modal-title').textContent = a.name;
+  document.getElementById('app-modal-sub').textContent = `Applied on ${a.date} for ${a.type} Membership`;
+  document.getElementById('app-modal-content').innerHTML = `
+    <div style="font-size:13px;color:#334155;line-height:1.6;">
+      <strong>Registration Number:</strong> ${a.reg}<br/>
+      <strong>Primary Contact Email:</strong> ${a.email}<br/>
+      <strong>Uploaded Verification Documents:</strong> Incorporation Cert, Tax Identification, Board Resolution (Verified).
+    </div>
+  `;
+  document.getElementById('btn-app-approve').onclick = () => { updateAppStatus(id, 'approved'); closeModal('app-modal'); };
+  document.getElementById('btn-app-reject').onclick = () => { updateAppStatus(id, 'closed'); closeModal('app-modal'); };
+  document.getElementById('app-modal').classList.add('open');
+  lucide.createIcons();
+}
+
+function updateAppStatus(id, status) {
+  const a = APPLICATIONS.find(item => item.id === id);
+  if (a) {
+    a.status = status;
+    renderApplications();
+    showToast(`Application for ${a.name} marked as ${status.toUpperCase()}!`);
+  }
 }
 
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
@@ -473,7 +686,58 @@ document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('cli
 
 document.addEventListener('DOMContentLoaded', () => {
   renderOverviewEvents();
+  authService.populateUserInfo();
   lucide.createIcons();
+
+  // Mobile Drawer Setup
+  const sidebar = document.querySelector('.sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  const mobileBtn = document.getElementById('btn-mobile-toggle');
+
+  if (mobileBtn && sidebar && backdrop) {
+    mobileBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      backdrop.classList.toggle('show');
+    });
+    backdrop.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('show');
+    });
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          sidebar.classList.remove('open');
+          backdrop.classList.remove('show');
+        }
+      });
+    });
+  }
+
+  // Populate Role
+  const userObj = authService.getCurrentUser();
+  if(userObj) {
+    document.querySelectorAll('.auth-user-role').forEach(el => {
+      el.textContent = userObj.role.charAt(0).toUpperCase() + userObj.role.slice(1) + ' Portal';
+    });
+  }
+
+  // Dropdown Logic
+  function setupDropdown(btnId, dropId) {
+    const btn = document.getElementById(btnId);
+    const drop = document.getElementById(dropId);
+    if(!btn || !drop) return;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.dropdown-panel').forEach(p => { if(p !== drop) p.classList.remove('show'); });
+      drop.classList.toggle('show');
+    });
+    drop.addEventListener('click', (e) => e.stopPropagation());
+  }
+  setupDropdown('btn-notifications', 'dropdown-notifications');
+  setupDropdown('btn-profile', 'dropdown-profile');
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-panel').forEach(p => p.classList.remove('show'));
+  });
 });
 </script>
 </body>

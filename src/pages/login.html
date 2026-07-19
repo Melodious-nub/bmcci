@@ -16,12 +16,13 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
-    html { height: 100%; }
+    html { height: 100%; overflow: hidden; }
     
     body {
       font-family: 'Inter', sans-serif;
       background: #f8fafc;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
     }
 
@@ -61,13 +62,15 @@
     .page-wrap {
       display: flex;
       width: 100%;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
     }
 
     /* ---- LEFT VISUAL PANEL (desktop only) ---- */
     .left-panel {
       display: none; /* hidden on mobile */
       width: 48%;
+      height: 100vh;
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
@@ -104,24 +107,49 @@
     .left-logo { margin-bottom: auto; }
     .left-logo img { height: 38px; filter: brightness(0) invert(1) opacity(0.9); }
 
-    /* Floating stats on left */
-    .stat-float {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 18px 22px;
-      color: white;
+    /* Timeline stats on left */
+    .stats-timeline {
       position: absolute;
+      top: 50%; right: 48px;
+      transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 32px;
       z-index: 3;
     }
-    .sf1 { top: 16%; right: 8%; animation: fl 4s ease-in-out infinite; }
-    .sf2 { top: 42%; left: 6%; animation: fl 4s ease-in-out infinite; animation-delay: -1.5s; }
-    .sf3 { bottom: 22%; right: 10%; animation: fl 4s ease-in-out infinite; animation-delay: -3s; }
-    @keyframes fl { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .timeline-line {
+      position: absolute; right: -16px; top: 20px; bottom: 20px;
+      width: 1px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0.2) 80%, transparent);
+    }
+    .stat-node {
+      position: relative;
+      display: flex; align-items: center; justify-content: flex-end; gap: 24px;
+      animation: fadeRight 0.8s ease-out backwards;
+    }
+    .stat-node:nth-child(2) { animation-delay: 0.1s; }
+    .stat-node:nth-child(3) { animation-delay: 0.2s; }
+    .stat-node:nth-child(4) { animation-delay: 0.3s; }
+    @keyframes fadeRight { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
+
+    .stat-dot {
+      position: absolute; right: -19px; width: 7px; height: 7px;
+      background: #4ade80; border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(74,222,128,0.2);
+    }
+    .stat-node:nth-child(3) .stat-dot { background: #60a5fa; box-shadow: 0 0 0 4px rgba(96,165,250,0.2); }
+    .stat-node:nth-child(4) .stat-dot { background: #fbbf24; box-shadow: 0 0 0 4px rgba(251,191,36,0.2); }
+
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 16px 20px;
+      color: white;
+      text-align: right;
+      width: 200px;
+    }
     .sf-label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
-    .sf-val   { font-size: 26px; font-weight: 900; line-height: 1; }
-    .sf-sub   { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+    .sf-val   { font-size: 24px; font-weight: 900; line-height: 1; }
+    .sf-sub   { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
 
     /* Left panel headline at bottom */
     .left-headline { padding-bottom: 52px; }
@@ -137,18 +165,24 @@
     /* ---- RIGHT FORM PANEL ---- */
     .right-panel {
       flex: 1;
+      height: 100vh;
+      overflow-y: auto;
       background: white;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       padding: 32px 20px;
-      min-height: 100vh;
+    }
+    
+    .right-inner {
+      margin: auto;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
     }
 
     .form-container {
       width: 100%;
-      max-width: 420px;
       animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
     }
     @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
@@ -324,26 +358,38 @@
       <div class="left-orb left-orb-2"></div>
       <div class="left-orb left-orb-3"></div>
 
-      <!-- Floating Stat Cards -->
-      <div class="stat-float sf1">
-        <div class="sf-label">Active Members</div>
-        <div class="sf-val">650<span style="font-size:16px;font-weight:600;color:rgba(255,255,255,0.35);">+</span></div>
-        <div class="sf-sub">
-          <i data-lucide="trending-up" style="width:11px;height:11px;color:#4ade80;"></i>
-          <span style="color:#4ade80;">+18% this year</span>
+      <!-- Connected Stats Timeline -->
+      <div class="stats-timeline">
+        <div class="timeline-line"></div>
+        <div class="stat-node">
+          <div class="stat-card">
+            <div class="sf-label">Active Members</div>
+            <div class="sf-val">650<span style="font-size:16px;font-weight:600;color:rgba(255,255,255,0.35);">+</span></div>
+            <div class="sf-sub">
+              <span style="color:#4ade80;">+18% this year</span>
+              <i data-lucide="trending-up" style="width:11px;height:11px;color:#4ade80;"></i>
+            </div>
+          </div>
+          <div class="stat-dot"></div>
         </div>
-      </div>
+        
+        <div class="stat-node">
+          <div class="stat-card">
+            <div class="sf-label">Bilateral Trade</div>
+            <div class="sf-val" style="color:#60a5fa;">$4.2B</div>
+            <div class="sf-sub">BD–MY Volume <i data-lucide="globe" style="width:11px;height:11px;"></i></div>
+          </div>
+          <div class="stat-dot"></div>
+        </div>
 
-      <div class="stat-float sf2">
-        <div class="sf-label">Bilateral Trade</div>
-        <div class="sf-val" style="color:#60a5fa;">$4.2B</div>
-        <div class="sf-sub"><i data-lucide="globe" style="width:11px;height:11px;"></i> BD–MY Volume</div>
-      </div>
-
-      <div class="stat-float sf3">
-        <div class="sf-label">Events This Year</div>
-        <div class="sf-val" style="color:#fbbf24;">23</div>
-        <div class="sf-sub"><i data-lucide="calendar" style="width:11px;height:11px;"></i> Summits & Missions</div>
+        <div class="stat-node">
+          <div class="stat-card">
+            <div class="sf-label">Events This Year</div>
+            <div class="sf-val" style="color:#fbbf24;">23</div>
+            <div class="sf-sub">Summits & Missions <i data-lucide="calendar" style="width:11px;height:11px;"></i></div>
+          </div>
+          <div class="stat-dot"></div>
+        </div>
       </div>
 
       <div class="left-content">
@@ -363,7 +409,8 @@
 
     <!-- ===== RIGHT FORM PANEL ===== -->
     <div class="right-panel">
-      <div class="form-container" id="form-container">
+      <div class="right-inner">
+        <div class="form-container" id="form-container">
 
         <!-- Mobile Logo -->
         <div class="mobile-logo">
@@ -460,7 +507,6 @@
 
       </div>
     </div>
-
   </div>
 
   <script>
