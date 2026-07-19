@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | BMCCI Operations</title>
+  <link rel="icon" type="image/png" href="https://bmcci.org.bd/public/storage/upload/conf/250128092904-7229favicon (1).png">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    const currentUser = authService.guardPortalRoute('admin');
+    if (!currentUser) throw new Error('Unauthorized');
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f1f5f9; color: #334155; overflow: hidden; height: 100vh; display: flex; }
+    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    .sidebar { width: 260px; height: 100vh; background: #1e293b; display: flex; flex-direction: column; flex-shrink: 0; }
+    .sidebar-brand { height: 72px; display: flex; align-items: center; padding: 0 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .sidebar-brand img { height: 38px; filter: brightness(0) invert(1); }
+    .sidebar-user { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+    .sidebar-user img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1d4ed8; object-fit: cover; }
+    .nav-section-label { font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; padding: 20px 20px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 11px 20px; margin: 2px 10px; border-radius: 10px; color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; text-decoration: none; border: none; background: none; width: calc(100% - 20px); text-align: left; }
+    .nav-item:hover { background: rgba(255,255,255,0.06); color: white; }
+    .nav-item.active { background: rgba(29,78,216,0.25); color: #60a5fa; }
+    .nav-item i { width: 16px; height: 16px; flex-shrink: 0; }
+    .nav-badge { margin-left: auto; background: #f59e0b; color: #0f172a; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 50px; }
+    .sidebar-footer { margin-top: auto; padding: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; border-radius: 10px; background: rgba(220,38,38,0.1); color: #f87171; font-size: 12px; font-weight: 700; cursor: pointer; border: 1px solid rgba(220,38,38,0.2); transition: all 0.15s; }
+    .logout-btn:hover { background: #dc2626; color: white; border-color: #dc2626; }
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar { height: 72px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; flex-shrink: 0; }
+    .content-area { flex: 1; overflow-y: auto; padding: 32px; }
+    .panel { display: none; }
+    .panel.active { display: block; animation: fadeUp 0.3s ease; }
+    @keyframes fadeUp { from { opacity:0;transform:translateY(10px); } to { opacity:1;transform:translateY(0); } }
+    .stat-card { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .data-table thead th { padding: 12px 16px; text-align: left; font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.08em; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+    .data-table tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.12s; }
+    .data-table tbody tr:hover { background: #f8fafc; }
+    .data-table tbody td { padding: 14px 16px; }
+    .badge { display: inline-flex; padding: 3px 10px; border-radius: 50px; font-size: 10px; font-weight: 800; }
+    .badge-green { background: #dcfce7; color: #15803d; } .badge-blue { background: #dbeafe; color: #1d4ed8; }
+    .badge-amber { background: #fef3c7; color: #d97706; } .badge-gray { background: #f1f5f9; color: #475569; }
+    .badge-red { background: #fee2e2; color: #dc2626; } .badge-purple { background: #f3e8ff; color: #9333ea; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; transition: all 0.15s; font-family: inherit; }
+    .btn-primary { background: #1d4ed8; color: white; } .btn-primary:hover { background: #1e40af; }
+    .btn-green { background: #006a4e; color: white; } .btn-green:hover { background: #004d38; }
+    .btn-secondary { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; } .btn-secondary:hover { background: #e2e8f0; }
+    .btn-danger { background: #fee2e2; color: #dc2626; } .btn-danger:hover { background: #dc2626; color: white; }
+    .btn-sm { padding: 7px 14px; font-size: 12px; border-radius: 8px; }
+    .form-input { height: 42px; padding: 0 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; transition: border-color 0.15s; background: #f8fafc; font-family: inherit; width: 100%; }
+    .form-input:focus { border-color: #1d4ed8; background: white; }
+    .form-select { height: 42px; padding: 0 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; background: #f8fafc; font-family: inherit; width: 100%; }
+    .form-textarea { padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; background: #f8fafc; font-family: inherit; width: 100%; resize: vertical; }
+    .form-textarea:focus { border-color: #1d4ed8; background: white; }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: white; border-radius: 20px; padding: 32px; width: 90%; max-width: 540px; max-height: 90vh; overflow-y: auto; position: relative; animation: fadeUp 0.25s ease; }
+    .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; }
+    .tab-btn { padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: #94a3b8; transition: all 0.15s; font-family: inherit; }
+    .tab-btn.active { background: white; color: #0f172a; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <img src="https://bmcci.org.bd/public/images/logo.png" alt="BMCCI" />
+  </div>
+  <div class="sidebar-user">
+    <img src="" alt="Avatar" class="auth-user-avatar" />
+    <div>
+      <div style="font-size:13px;font-weight:700;color:white;" class="auth-user-name">...</div>
+      <div style="font-size:10px;font-weight:800;color:#60a5fa;text-transform:uppercase;letter-spacing:0.08em;">Admin</div>
+    </div>
+  </div>
+  <nav style="flex:1;overflow-y:auto;padding:8px 0;">
+    <div class="nav-section-label">Operations</div>
+    <button class="nav-item active" onclick="switchPanel('overview', this)"><i data-lucide="layout-dashboard"></i> Overview</button>
+    <button class="nav-item" onclick="switchPanel('inquiries', this)"><i data-lucide="inbox"></i> Inquiries <span class="nav-badge">12</span></button>
+    <div class="nav-section-label">Content</div>
+    <button class="nav-item" onclick="switchPanel('events', this)"><i data-lucide="calendar"></i> Events</button>
+    <button class="nav-item" onclick="switchPanel('news', this)"><i data-lucide="newspaper"></i> News & Articles</button>
+    <div class="nav-section-label">Members</div>
+    <button class="nav-item" onclick="switchPanel('applications', this)"><i data-lucide="user-check"></i> Applications <span class="nav-badge" style="background:#006a4e;color:white;">4</span></button>
+    <div class="nav-section-label">Website</div>
+    <a href="/index.html" target="_blank" class="nav-item" style="text-decoration:none;"><i data-lucide="external-link"></i> View Public Site</a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="logout-btn auth-logout-btn"><i data-lucide="log-out" style="width:15px;height:15px;"></i> Sign Out</button>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div>
+      <div id="page-title" style="font-size:18px;font-weight:900;color:#0f172a;">Operations Overview</div>
+      <div id="page-subtitle" style="font-size:12px;color:#94a3b8;margin-top:2px;">Manage BMCCI chamber activities and content</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="btn btn-sm" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;">
+        <i data-lucide="bell" style="width:14px;height:14px;"></i>
+        <span style="background:#dc2626;color:white;width:16px;height:16px;border-radius:50%;font-size:9px;display:inline-flex;align-items:center;justify-content:center;margin-left:-2px;">3</span>
+      </button>
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+        <img class="auth-user-avatar" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" />
+        <span class="auth-user-name" style="font-size:12px;font-weight:700;color:#0f172a;"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- OVERVIEW -->
+    <div id="panel-overview" class="panel active">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px;">
+        <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:#dbeafe;display:flex;align-items:center;justify-content:center;"><i data-lucide="inbox" style="width:22px;height:22px;color:#1d4ed8;"></i></div>
+          <div><div style="font-size:24px;font-weight:900;color:#0f172a;">12</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Pending Inquiries</div></div>
+        </div>
+        <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;"><i data-lucide="user-check" style="width:22px;height:22px;color:#006a4e;"></i></div>
+          <div><div style="font-size:24px;font-weight:900;color:#0f172a;">4</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">New Applications</div></div>
+        </div>
+        <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:#fef9c3;display:flex;align-items:center;justify-content:center;"><i data-lucide="calendar" style="width:22px;height:22px;color:#d97706;"></i></div>
+          <div><div style="font-size:24px;font-weight:900;color:#0f172a;">3</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Upcoming Events</div></div>
+        </div>
+        <div class="stat-card" style="display:flex;align-items:center;gap:16px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;"><i data-lucide="eye" style="width:22px;height:22px;color:#9333ea;"></i></div>
+          <div><div style="font-size:24px;font-weight:900;color:#0f172a;">1.2K</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Site Visits Today</div></div>
+        </div>
+      </div>
+
+      <!-- Recent Inquiries + Quick Events -->
+      <div style="display:grid;grid-template-columns:3fr 2fr;gap:20px;">
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+          <div style="padding:18px 20px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:14px;font-weight:800;color:#0f172a;">Recent Inquiries</div>
+            <button class="btn btn-sm btn-secondary" onclick="switchPanel('inquiries', null)">View All</button>
+          </div>
+          <table class="data-table">
+            <thead><tr><th>Contact</th><th>Type</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Arif Rahman</div><div style="font-size:11px;color:#94a3b8;">arif@logistics.com</div></td><td><span class="badge badge-amber">Trade Match</span></td><td><span class="badge badge-amber">Pending</span></td></tr>
+              <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Sarah Lim</div><div style="font-size:11px;color:#94a3b8;">sarah@my-tech.my</div></td><td><span class="badge badge-blue">Event</span></td><td><span class="badge badge-green">Responded</span></td></tr>
+              <tr><td><div style="font-weight:700;color:#0f172a;font-size:13px;">Nasrin Ahmed</div><div style="font-size:11px;color:#94a3b8;">nasrin@bdtextile.com</div></td><td><span class="badge badge-green">Membership</span></td><td><span class="badge badge-purple">Processing</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+          <div style="padding:18px 20px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:14px;font-weight:800;color:#0f172a;">Upcoming Events</div>
+            <button class="btn btn-sm btn-secondary" onclick="switchPanel('events', null)">Manage</button>
+          </div>
+          <div style="padding:8px 16px;" id="overview-events-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INQUIRIES -->
+    <div id="panel-inquiries" class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:800;color:#0f172a;">Business Inquiry Management</div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-sm btn-secondary"><i data-lucide="download" style="width:13px;height:13px;"></i> Export</button>
+        </div>
+      </div>
+      <!-- Filter Tabs -->
+      <div style="background:#f1f5f9;border-radius:10px;padding:4px;display:inline-flex;gap:2px;margin-bottom:16px;">
+        <button class="tab-btn active" onclick="filterInquiries('all', this)">All (12)</button>
+        <button class="tab-btn" onclick="filterInquiries('pending', this)">Pending (7)</button>
+        <button class="tab-btn" onclick="filterInquiries('responded', this)">Responded (4)</button>
+        <button class="tab-btn" onclick="filterInquiries('closed', this)">Closed (1)</button>
+      </div>
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead><tr><th>Contact</th><th>Inquiry Type</th><th>Message</th><th>Date</th><th>Status</th><th style="text-align:right;">Action</th></tr></thead>
+            <tbody id="inquiries-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENTS -->
+    <div id="panel-events" class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:800;color:#0f172a;">Event Management</div>
+        <button class="btn btn-green" onclick="openEventModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Create Event</button>
+      </div>
+      <div style="display:grid;gap:16px;" id="events-grid"></div>
+    </div>
+
+    <!-- NEWS -->
+    <div id="panel-news" class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:800;color:#0f172a;">News & Publications</div>
+        <button class="btn btn-primary" onclick="openNewsModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Add Article</button>
+      </div>
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead><tr><th>Article</th><th>Category</th><th>Date</th><th>Status</th><th style="text-align:right;">Actions</th></tr></thead>
+            <tbody id="news-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPLICATIONS -->
+    <div id="panel-applications" class="panel">
+      <div style="margin-bottom:20px;font-size:14px;font-weight:800;color:#0f172a;">Membership Applications</div>
+      <div style="display:grid;gap:16px;" id="applications-grid"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Event Modal -->
+<div class="modal-overlay" id="event-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('event-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;" id="event-modal-title">Create Event</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:24px;">Fill in the event details</div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Event Title</label><input type="text" id="ev-title" class="form-input" placeholder="e.g. BD-MY Trade Summit 2026" /></div>
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Category</label>
+        <select id="ev-cat" class="form-select"><option>Trade Mission</option><option>Summit</option><option>Delegation</option><option>Webinar</option><option>Gala</option></select>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Date</label><input type="date" id="ev-date" class="form-input" /></div>
+        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Location</label><input type="text" id="ev-location" class="form-input" placeholder="e.g. Dhaka, Bangladesh" /></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Description</label><textarea id="ev-desc" class="form-textarea" rows="3" placeholder="Brief description..."></textarea></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn btn-secondary" onclick="closeModal('event-modal')">Cancel</button>
+        <button class="btn btn-green" onclick="saveEvent()"><i data-lucide="save" style="width:13px;height:13px;"></i> Save Event</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- News Modal -->
+<div class="modal-overlay" id="news-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('news-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;">Add News Article</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:24px;">Publish a new update or article</div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Headline</label><input type="text" id="news-title" class="form-input" placeholder="Article headline..." /></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Category</label><select id="news-cat" class="form-select"><option>Trade News</option><option>Announcements</option><option>Economy</option><option>Member News</option></select></div>
+        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Status</label><select id="news-status" class="form-select"><option value="published">Published</option><option value="draft">Draft</option></select></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Summary</label><textarea id="news-summary" class="form-textarea" rows="3" placeholder="Brief summary of the article..."></textarea></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn btn-secondary" onclick="closeModal('news-modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveNews()"><i data-lucide="send" style="width:13px;height:13px;"></i> Publish Article</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+lucide.createIcons();
+authService.populateUserInfo();
+
+const INQUIRIES = [
+  { id:1, name:'Arif Rahman', email:'arif@logistics.com', type:'Trade Match', msg:'Seeking textile import opportunities...', date:'Jul 19, 2026', status:'pending' },
+  { id:2, name:'Sarah Lim', email:'sarah@my-tech.my', type:'Event', msg:'Interested in Trade Summit delegate pass...', date:'Jul 18, 2026', status:'responded' },
+  { id:3, name:'Nasrin Ahmed', email:'nasrin@bdtextile.com', type:'Membership', msg:'Would like to apply for Corporate membership...', date:'Jul 18, 2026', status:'pending' },
+  { id:4, name:'David Tan', email:'david@penangbiz.my', type:'Trade Match', msg:'Looking for garment factory partners in BD...', date:'Jul 17, 2026', status:'pending' },
+  { id:5, name:'Rahim Chowdhury', email:'rahim@dhakaventures.com', type:'General', msg:'Inquiry about bilateral investment process...', date:'Jul 16, 2026', status:'responded' },
+  { id:6, name:'Wei Leng Ooi', email:'wlooi@klcorp.my', type:'Trade Match', msg:'Need visa recommendation letter for Dhaka visit...', date:'Jul 15, 2026', status:'closed' },
+];
+
+let localEvents = [
+  { id:1, title:'BD-MY Economic Summit 2026', cat:'Summit', date:'2026-08-15', location:'Dhaka, Bangladesh', desc:'Annual bilateral economic summit.', status:'upcoming' },
+  { id:2, title:'Penang Industrial Zone Delegation', cat:'Trade Mission', date:'2026-09-08', location:'Penang, Malaysia', desc:'Factory visit delegation to Penang Free Trade Zone.', status:'upcoming' },
+  { id:3, title:'Bilateral Webinar: Green Energy Investment', cat:'Webinar', date:'2026-10-01', location:'Virtual', desc:'Online forum on green energy partnerships.', status:'upcoming' },
+];
+
+let localNews = [
+  { id:1, title:'Mirsarai SEZ Allots 500 Acres for Solar Cell Assembly', cat:'Trade News', date:'Jul 18, 2026', status:'published' },
+  { id:2, title:'Double Taxation Protocol Ratified Between BD & MY', cat:'Announcements', date:'Jul 15, 2026', status:'published' },
+  { id:3, title:'Q2 2026 Bilateral Trade Volume Report', cat:'Economy', date:'Jul 10, 2026', status:'published' },
+  { id:4, title:'BMCCI Welcomes 12 New Corporate Members', cat:'Member News', date:'Jul 5, 2026', status:'draft' },
+];
+
+const APPLICATIONS = [
+  { name:'Farid Exports Ltd.', email:'farid@exports.com', type:'Corporate', date:'Jul 19, 2026', status:'pending' },
+  { name:'Siti Noor Consulting', email:'siti@consulting.my', type:'Associate', date:'Jul 18, 2026', status:'pending' },
+  { name:'Karim Industries', email:'karim@industries.com', type:'Patron', date:'Jul 17, 2026', status:'reviewing' },
+  { name:'Tech Nexus Malaysia', email:'info@technexus.my', type:'Associate', date:'Jul 16, 2026', status:'approved' },
+];
+
+function switchPanel(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  const titles = { overview:['Operations Overview','Manage BMCCI activities'], inquiries:['Inquiry Management','Review and respond to external queries'], events:['Event Management','Plan and manage chamber events'], news:['News & Publications','Manage content and articles'], applications:['Membership Applications','Review and approve membership requests'] };
+  if (titles[id]) { document.getElementById('page-title').textContent = titles[id][0]; document.getElementById('page-subtitle').textContent = titles[id][1]; }
+  if (id==='inquiries') renderInquiries();
+  if (id==='events') renderEvents();
+  if (id==='news') renderNews();
+  if (id==='applications') renderApplications();
+  if (id==='overview') renderOverviewEvents();
+  lucide.createIcons();
+}
+
+const statusBadge = (s) => ({ pending:'badge-amber', responded:'badge-green', closed:'badge-gray', upcoming:'badge-blue', draft:'badge-amber', published:'badge-green', reviewing:'badge-purple', approved:'badge-green' }[s] || 'badge-gray');
+
+function renderInquiries(list = INQUIRIES) {
+  const tbody = document.getElementById('inquiries-tbody');
+  tbody.innerHTML = list.map(q => `
+    <tr>
+      <td><div style="font-weight:700;color:#0f172a;">${q.name}</div><div style="font-size:11px;color:#94a3b8;">${q.email}</div></td>
+      <td><span class="badge badge-blue">${q.type}</span></td>
+      <td style="max-width:200px;font-size:12px;color:#64748b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${q.msg}</td>
+      <td style="font-size:12px;color:#94a3b8;">${q.date}</td>
+      <td><span class="badge ${statusBadge(q.status)}">${q.status.charAt(0).toUpperCase()+q.status.slice(1)}</span></td>
+      <td style="text-align:right;"><div style="display:flex;gap:6px;justify-content:flex-end;">
+        <button class="btn btn-secondary btn-sm">View</button>
+        ${q.status==='pending'?'<button class="btn btn-green btn-sm" onclick="updateInquiryStatus('+q.id+',\'responded\')">Respond</button>':''}
+      </div></td>
+    </tr>`).join('');
+  lucide.createIcons();
+}
+
+function filterInquiries(filter, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const filtered = filter === 'all' ? INQUIRIES : INQUIRIES.filter(i => i.status === filter);
+  renderInquiries(filtered);
+}
+
+function updateInquiryStatus(id, status) {
+  const item = INQUIRIES.find(i => i.id === id);
+  if (item) item.status = status;
+  renderInquiries();
+}
+
+function renderEvents() {
+  const grid = document.getElementById('events-grid');
+  const catColors = { Summit:'badge-blue', 'Trade Mission':'badge-green', Delegation:'badge-amber', Webinar:'badge-gray', Gala:'badge-purple' };
+  grid.innerHTML = localEvents.map(ev => `
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+      <div style="display:flex;align-items:center;gap:16px;flex:1;">
+        <div style="width:56px;height:56px;border-radius:14px;background:#f0fdf9;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="font-size:18px;font-weight:900;color:#006a4e;">${new Date(ev.date).getDate()}</div>
+          <div style="font-size:9px;font-weight:800;color:#94a3b8;text-transform:uppercase;">${new Date(ev.date).toLocaleDateString('en',{month:'short'})}</div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#0f172a;">${ev.title}</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+            <span class="badge ${catColors[ev.cat]||'badge-gray'}">${ev.cat}</span>
+            <span style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:4px;"><i data-lucide="map-pin" style="width:12px;height:12px;"></i>${ev.location}</span>
+          </div>
+          <div style="font-size:11px;color:#64748b;margin-top:4px;">${ev.desc}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-shrink:0;">
+        <button class="btn btn-secondary btn-sm">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteEvent(${ev.id})"><i data-lucide="trash-2" style="width:13px;height:13px;"></i></button>
+      </div>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+function renderOverviewEvents() {
+  const el = document.getElementById('overview-events-list');
+  if (!el) return;
+  el.innerHTML = localEvents.slice(0,3).map(ev => `
+    <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f1f5f9;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#f0fdf9;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+        <div style="font-size:13px;font-weight:900;color:#006a4e;">${new Date(ev.date).getDate()}</div>
+        <div style="font-size:8px;font-weight:800;color:#94a3b8;text-transform:uppercase;">${new Date(ev.date).toLocaleDateString('en',{month:'short'})}</div>
+      </div>
+      <div style="flex:1;overflow:hidden;">
+        <div style="font-size:12px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${ev.title}</div>
+        <div style="font-size:11px;color:#94a3b8;">${ev.location}</div>
+      </div>
+    </div>`).join('');
+}
+
+function openEventModal(id) {
+  document.getElementById('event-modal-title').textContent = id ? 'Edit Event' : 'Create Event';
+  document.getElementById('ev-title').value = ''; document.getElementById('ev-date').value = '';
+  document.getElementById('ev-location').value = ''; document.getElementById('ev-desc').value = '';
+  document.getElementById('event-modal').classList.add('open');
+  lucide.createIcons();
+}
+
+function saveEvent() {
+  const title = document.getElementById('ev-title').value;
+  if (!title) return alert('Please enter an event title.');
+  localEvents.push({ id: Date.now(), title, cat: document.getElementById('ev-cat').value, date: document.getElementById('ev-date').value || '2026-12-01', location: document.getElementById('ev-location').value || 'TBD', desc: document.getElementById('ev-desc').value, status: 'upcoming' });
+  closeModal('event-modal');
+  renderEvents();
+}
+
+function deleteEvent(id) {
+  if (!confirm('Delete this event?')) return;
+  localEvents = localEvents.filter(e => e.id !== id);
+  renderEvents();
+}
+
+function renderNews() {
+  const tbody = document.getElementById('news-tbody');
+  tbody.innerHTML = localNews.map(n => `
+    <tr>
+      <td style="font-weight:700;color:#0f172a;">${n.title}</td>
+      <td><span class="badge badge-blue">${n.cat}</span></td>
+      <td style="font-size:12px;color:#94a3b8;">${n.date}</td>
+      <td><span class="badge ${statusBadge(n.status)}">${n.status.charAt(0).toUpperCase()+n.status.slice(1)}</span></td>
+      <td style="text-align:right;">
+        <div style="display:flex;justify-content:flex-end;gap:6px;">
+          <button class="btn btn-secondary btn-sm">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteNews(${n.id})"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+        </div>
+      </td>
+    </tr>`).join('');
+  lucide.createIcons();
+}
+
+function openNewsModal() { document.getElementById('news-modal').classList.add('open'); lucide.createIcons(); }
+
+function saveNews() {
+  const title = document.getElementById('news-title').value;
+  if (!title) return alert('Please enter a headline.');
+  localNews.unshift({ id: Date.now(), title, cat: document.getElementById('news-cat').value, date: new Date().toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}), status: document.getElementById('news-status').value });
+  closeModal('news-modal');
+  renderNews();
+}
+
+function deleteNews(id) {
+  if (!confirm('Delete this article?')) return;
+  localNews = localNews.filter(n => n.id !== id);
+  renderNews();
+}
+
+function renderApplications() {
+  const grid = document.getElementById('applications-grid');
+  const typeColors = { Corporate:'badge-blue', Patron:'badge-green', Associate:'badge-amber' };
+  grid.innerHTML = APPLICATIONS.map(a => `
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:48px;height:48px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-size:18px;">🏢</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#0f172a;">${a.name}</div>
+          <div style="font-size:12px;color:#94a3b8;">${a.email} • Applied ${a.date}</div>
+          <span class="badge ${typeColors[a.type]||'badge-gray'}" style="margin-top:6px;">${a.type} Membership</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;">
+        <span class="badge ${statusBadge(a.status)}">${a.status.charAt(0).toUpperCase()+a.status.slice(1)}</span>
+        ${a.status==='pending'||a.status==='reviewing'?`
+        <button class="btn btn-green btn-sm">Approve</button>
+        <button class="btn btn-danger btn-sm">Reject</button>`:''}
+      </div>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); }));
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderOverviewEvents();
+  lucide.createIcons();
+});
+</script>
+</body>
+</html>

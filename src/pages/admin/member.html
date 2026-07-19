@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Portal | BMCCI</title>
+  <link rel="icon" type="image/png" href="https://bmcci.org.bd/public/storage/upload/conf/250128092904-7229favicon (1).png">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    const currentUser = authService.guardPortalRoute('member');
+    if (!currentUser) throw new Error('Unauthorized');
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f1f5f9; color: #334155; overflow: hidden; height: 100vh; display: flex; }
+    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    .sidebar { width: 260px; height: 100vh; background: #1a1a2e; display: flex; flex-direction: column; flex-shrink: 0; }
+    .sidebar-brand { height: 72px; display: flex; align-items: center; padding: 0 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .sidebar-brand img { height: 38px; filter: brightness(0) invert(1); }
+    .sidebar-user { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .sidebar-user-card { display: flex; align-items: center; gap: 12px; }
+    .sidebar-user img { width: 48px; height: 48px; border-radius: 50%; border: 2px solid #d4af37; object-fit: cover; }
+    .membership-badge { display: inline-flex; align-items: center; gap: 4px; background: linear-gradient(135deg,#d4af37,#f0c040); color: #0f172a; font-size: 9px; font-weight: 900; padding: 3px 8px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
+    .nav-section-label { font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; padding: 20px 20px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 11px 20px; margin: 2px 10px; border-radius: 10px; color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; text-decoration: none; border: none; background: none; width: calc(100% - 20px); text-align: left; }
+    .nav-item:hover { background: rgba(255,255,255,0.06); color: white; }
+    .nav-item.active { background: rgba(212,175,55,0.2); color: #f0c040; }
+    .nav-item i { width: 16px; height: 16px; flex-shrink: 0; }
+    .nav-badge { margin-left: auto; background: #dc2626; color: white; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 50px; }
+    .sidebar-footer { margin-top: auto; padding: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; border-radius: 10px; background: rgba(220,38,38,0.1); color: #f87171; font-size: 12px; font-weight: 700; cursor: pointer; border: 1px solid rgba(220,38,38,0.2); transition: all 0.15s; }
+    .logout-btn:hover { background: #dc2626; color: white; border-color: #dc2626; }
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar { height: 72px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; flex-shrink: 0; }
+    .content-area { flex: 1; overflow-y: auto; padding: 32px; }
+    .panel { display: none; }
+    .panel.active { display: block; animation: fadeUp 0.3s ease; }
+    @keyframes fadeUp { from { opacity:0;transform:translateY(10px); } to { opacity:1;transform:translateY(0); } }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 16px; }
+    .badge { display: inline-flex; padding: 3px 10px; border-radius: 50px; font-size: 10px; font-weight: 800; }
+    .badge-green { background: #dcfce7; color: #15803d; } .badge-blue { background: #dbeafe; color: #1d4ed8; }
+    .badge-gold { background: #fef9c3; color: #92400e; } .badge-gray { background: #f1f5f9; color: #475569; }
+    .badge-amber { background: #fef3c7; color: #d97706; } .badge-red { background: #fee2e2; color: #dc2626; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; transition: all 0.15s; font-family: inherit; }
+    .btn-primary { background: #006a4e; color: white; } .btn-primary:hover { background: #004d38; }
+    .btn-secondary { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; } .btn-secondary:hover { background: #e2e8f0; }
+    .btn-gold { background: linear-gradient(135deg,#d4af37,#f0c040); color: #0f172a; } .btn-gold:hover { opacity: 0.9; }
+    .btn-sm { padding: 7px 14px; font-size: 12px; border-radius: 8px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .data-table thead th { padding: 12px 16px; text-align: left; font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.08em; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+    .data-table tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.12s; }
+    .data-table tbody tr:hover { background: #f8fafc; }
+    .data-table tbody td { padding: 14px 16px; }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: white; border-radius: 20px; padding: 32px; width: 90%; max-width: 480px; position: relative; animation: fadeUp 0.25s ease; }
+    .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; }
+    .form-input { height: 42px; padding: 0 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; background: #f8fafc; font-family: inherit; width: 100%; }
+    .form-input:focus { border-color: #006a4e; background: white; }
+    .form-textarea { padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; background: #f8fafc; font-family: inherit; width: 100%; resize: vertical; }
+    .network-card { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; transition: all 0.2s; cursor: pointer; }
+    .network-card:hover { border-color: #006a4e; box-shadow: 0 4px 16px rgba(0,106,78,0.1); transform: translateY(-2px); }
+    .progress-bar { height: 6px; background: #e2e8f0; border-radius: 50px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg,#006a4e,#4ade80); border-radius: 50px; transition: width 0.6s ease; }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <img src="https://bmcci.org.bd/public/images/logo.png" alt="BMCCI" />
+  </div>
+  <div class="sidebar-user">
+    <div class="sidebar-user-card">
+      <img src="" alt="Avatar" class="auth-user-avatar" />
+      <div>
+        <div style="font-size:13px;font-weight:700;color:white;" class="auth-user-name">...</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);" class="auth-user-email">...</div>
+      </div>
+    </div>
+    <div class="membership-badge"><i data-lucide="award" style="width:9px;height:9px;"></i> Patron Member</div>
+  </div>
+  <nav style="flex:1;overflow-y:auto;padding:8px 0;">
+    <div class="nav-section-label">My Portal</div>
+    <button class="nav-item active" onclick="switchPanel('dashboard', this)"><i data-lucide="layout-dashboard"></i> Dashboard</button>
+    <button class="nav-item" onclick="switchPanel('events', this)"><i data-lucide="calendar"></i> Exclusive Events</button>
+    <button class="nav-item" onclick="switchPanel('network', this)"><i data-lucide="users"></i> B2B Network <span class="nav-badge" style="background:#006a4e;">3</span></button>
+    <button class="nav-item" onclick="switchPanel('resources', this)"><i data-lucide="file-text"></i> Trade Resources</button>
+    <div class="nav-section-label">Account</div>
+    <button class="nav-item" onclick="switchPanel('profile', this)"><i data-lucide="user-circle"></i> My Profile</button>
+    <button class="nav-item" onclick="switchPanel('membership', this)"><i data-lucide="credit-card"></i> Membership</button>
+    <div class="nav-section-label">Website</div>
+    <a href="/index.html" target="_blank" class="nav-item" style="text-decoration:none;"><i data-lucide="external-link"></i> View Public Site</a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="logout-btn auth-logout-btn"><i data-lucide="log-out" style="width:15px;height:15px;"></i> Sign Out</button>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div>
+      <div id="page-title" style="font-size:18px;font-weight:900;color:#0f172a;">Member Dashboard</div>
+      <div id="page-subtitle" style="font-size:12px;color:#94a3b8;margin-top:2px;">Welcome back, <span class="auth-user-name"></span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="btn btn-secondary btn-sm">
+        <i data-lucide="bell" style="width:14px;height:14px;"></i>
+        <span style="background:#dc2626;color:white;width:16px;height:16px;border-radius:50%;font-size:9px;display:inline-flex;align-items:center;justify-content:center;margin-left:-2px;">2</span>
+      </button>
+      <button class="btn btn-gold btn-sm">
+        <i data-lucide="award" style="width:13px;height:13px;"></i> Patron Member
+      </button>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- DASHBOARD -->
+    <div id="panel-dashboard" class="panel active">
+      <!-- Welcome Banner -->
+      <div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#003d2e 100%);border-radius:20px;padding:32px;color:white;margin-bottom:24px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-20px;right:-20px;width:180px;height:180px;background:rgba(212,175,55,0.08);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-40px;right:60px;width:120px;height:120px;background:rgba(0,106,78,0.1);border-radius:50%;"></div>
+        <div style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Welcome Back</div>
+        <h2 class="auth-user-name" style="font-size:26px;font-weight:900;margin-bottom:8px;">Corporate Member</h2>
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);max-width:480px;line-height:1.7;">You have <strong style="color:#f0c040;">3 new B2B connection requests</strong> and <strong style="color:#60a5fa;">2 upcoming exclusive events</strong> this month.</p>
+        <div style="display:flex;gap:12px;margin-top:20px;">
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.15);" onclick="switchPanel('network', null)">
+            <i data-lucide="users" style="width:13px;height:13px;"></i> View Connections
+          </button>
+          <button class="btn btn-sm" style="background:#d4af37;color:#0f172a;font-weight:800;" onclick="switchPanel('events', null)">
+            <i data-lucide="calendar" style="width:13px;height:13px;"></i> See Events
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:24px;">
+        <div class="card" style="padding:20px;display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:#fef9c3;display:flex;align-items:center;justify-content:center;"><i data-lucide="award" style="width:20px;height:20px;color:#d97706;"></i></div>
+          <div><div style="font-size:22px;font-weight:900;color:#0f172a;">Patron</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Membership Tier</div></div>
+        </div>
+        <div class="card" style="padding:20px;display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:#dcfce7;display:flex;align-items:center;justify-content:center;"><i data-lucide="handshake" style="width:20px;height:20px;color:#006a4e;"></i></div>
+          <div><div style="font-size:22px;font-weight:900;color:#0f172a;">3</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">B2B Requests</div></div>
+        </div>
+        <div class="card" style="padding:20px;display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:#dbeafe;display:flex;align-items:center;justify-content:center;"><i data-lucide="calendar-check" style="width:20px;height:20px;color:#1d4ed8;"></i></div>
+          <div><div style="font-size:22px;font-weight:900;color:#0f172a;">2</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Upcoming Events</div></div>
+        </div>
+        <div class="card" style="padding:20px;display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;"><i data-lucide="file-text" style="width:20px;height:20px;color:#9333ea;"></i></div>
+          <div><div style="font-size:22px;font-weight:900;color:#0f172a;">8</div><div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">Trade Reports</div></div>
+        </div>
+      </div>
+
+      <!-- B2B Requests + Events Side-by-Side -->
+      <div style="display:grid;grid-template-columns:3fr 2fr;gap:20px;">
+        <div class="card" style="overflow:hidden;">
+          <div style="padding:18px 20px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:14px;font-weight:800;color:#0f172a;">Pending B2B Requests</div>
+            <button class="btn btn-secondary btn-sm" onclick="switchPanel('network', null)">View All</button>
+          </div>
+          <div style="padding:8px 16px;" id="dash-b2b-list"></div>
+        </div>
+        <div class="card" style="padding:22px;">
+          <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:16px;">Membership Renewal</div>
+          <div style="font-size:12px;color:#94a3b8;margin-bottom:8px;">Days Until Renewal</div>
+          <div style="font-size:32px;font-weight:900;color:#0f172a;margin-bottom:12px;">138 <span style="font-size:14px;font-weight:600;color:#94a3b8;">days</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:62%;"></div></div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:6px;margin-bottom:20px;">Expires November 30, 2026</div>
+          <button class="btn btn-gold btn-sm" style="width:100%;justify-content:center;">
+            <i data-lucide="credit-card" style="width:13px;height:13px;"></i> Renew Membership
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXCLUSIVE EVENTS -->
+    <div id="panel-events" class="panel">
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:800;color:#0f172a;">Exclusive Member Events</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:2px;">Events reserved for BMCCI Patron and Corporate members</div>
+      </div>
+      <div style="display:grid;gap:16px;" id="member-events-list"></div>
+    </div>
+
+    <!-- B2B NETWORK -->
+    <div id="panel-network" class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#0f172a;">B2B Network Hub</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:2px;">Connect with bilateral trade partners</div>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="document.getElementById('b2b-modal').classList.add('open');lucide.createIcons();">
+          <i data-lucide="user-plus" style="width:13px;height:13px;"></i> Send Request
+        </button>
+      </div>
+      
+      <!-- Incoming Requests -->
+      <div style="font-size:13px;font-weight:800;color:#0f172a;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+        <span>Incoming Connection Requests</span>
+        <span class="badge badge-red">3 New</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:28px;" id="b2b-incoming"></div>
+
+      <!-- Active Connections -->
+      <div style="font-size:13px;font-weight:800;color:#0f172a;margin-bottom:12px;">Your Active Connections</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;" id="b2b-active"></div>
+    </div>
+
+    <!-- TRADE RESOURCES -->
+    <div id="panel-resources" class="panel">
+      <div style="margin-bottom:20px;font-size:14px;font-weight:800;color:#0f172a;">Exclusive Trade Resources</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;" id="resources-grid"></div>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="panel-profile" class="panel">
+      <div style="max-width:640px;">
+        <div style="margin-bottom:20px;font-size:14px;font-weight:800;color:#0f172a;">My Profile</div>
+        <div class="card" style="padding:28px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid #f1f5f9;">
+            <img class="auth-user-avatar" style="width:72px;height:72px;border-radius:50%;border:3px solid #d4af37;object-fit:cover;" />
+            <div>
+              <div style="font-size:20px;font-weight:900;color:#0f172a;" class="auth-user-name">...</div>
+              <div style="font-size:13px;color:#94a3b8;margin-top:2px;" class="auth-user-title">...</div>
+              <div class="membership-badge" style="margin-top:8px;"><i data-lucide="award" style="width:9px;height:9px;"></i> Patron Member</div>
+            </div>
+          </div>
+          <div style="display:grid;gap:16px;">
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Full Name</label>
+              <input type="text" class="form-input auth-user-name-input" placeholder="Your full name" id="profile-name" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Email Address</label>
+              <input type="email" class="form-input" id="profile-email" placeholder="Your email" />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Company</label>
+                <input type="text" class="form-input" placeholder="Company name" value="BD Corp International" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Industry</label>
+                <input type="text" class="form-input" placeholder="Industry sector" value="Textile & Garments" />
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Bio</label>
+              <textarea class="form-textarea" rows="3" placeholder="Brief professional bio...">Corporate executive with 15+ years in Bangladesh-Malaysia bilateral trade, specializing in textile exports and digital infrastructure partnerships.</textarea>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <button class="btn btn-primary" onclick="saveProfile()"><i data-lucide="save" style="width:13px;height:13px;"></i> Save Profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMBERSHIP -->
+    <div id="panel-membership" class="panel">
+      <div style="max-width:640px;">
+        <div style="margin-bottom:20px;font-size:14px;font-weight:800;color:#0f172a;">Membership Status</div>
+        <div class="card" style="padding:28px;background:linear-gradient(135deg,#0f172a,#1a2e1a);color:white;margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <div style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">BMCCI Membership</div>
+              <div style="font-size:28px;font-weight:900;color:#f0c040;">Patron Member</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px;">Member ID: BMCCI-2026-1003</div>
+            </div>
+            <div style="width:56px;height:56px;border-radius:14px;background:rgba(212,175,55,0.2);border:1px solid rgba(212,175,55,0.3);display:flex;align-items:center;justify-content:center;">
+              <i data-lucide="award" style="width:28px;height:28px;color:#d4af37;"></i>
+            </div>
+          </div>
+          <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div><div style="font-size:10px;color:rgba(255,255,255,0.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;">Member Since</div><div style="font-size:13px;font-weight:700;">January 2026</div></div>
+            <div><div style="font-size:10px;color:rgba(255,255,255,0.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;">Renewal Date</div><div style="font-size:13px;font-weight:700;color:#f0c040;">Nov 30, 2026</div></div>
+          </div>
+        </div>
+
+        <!-- Membership Benefits -->
+        <div class="card" style="padding:24px;">
+          <div style="font-size:13px;font-weight:800;color:#0f172a;margin-bottom:16px;">Your Patron Benefits</div>
+          <div style="display:grid;gap:12px;">
+            <div style="display:flex;align-items:center;gap:10px;"><i data-lucide="check-circle" style="width:16px;height:16px;color:#006a4e;flex-shrink:0;"></i><span style="font-size:13px;color:#334155;">Priority invitation to all bilateral trade missions</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><i data-lucide="check-circle" style="width:16px;height:16px;color:#006a4e;flex-shrink:0;"></i><span style="font-size:13px;color:#334155;">Visa recommendation letters for Malaysia business visits</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><i data-lucide="check-circle" style="width:16px;height:16px;color:#006a4e;flex-shrink:0;"></i><span style="font-size:13px;color:#334155;">Access to quarterly economic intelligence briefs</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><i data-lucide="check-circle" style="width:16px;height:16px;color:#006a4e;flex-shrink:0;"></i><span style="font-size:13px;color:#334155;">Exclusive B2B trade matchmaking network</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><i data-lucide="check-circle" style="width:16px;height:16px;color:#006a4e;flex-shrink:0;"></i><span style="font-size:13px;color:#334155;">Chamber business directory premium listing</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><i data-lucide="check-circle" style="width:16px;height:16px;color:#006a4e;flex-shrink:0;"></i><span style="font-size:13px;color:#334155;">Annual gala dinner & networking event access</span></div>
+          </div>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid #f1f5f9;">
+            <button class="btn btn-gold" style="width:100%;justify-content:center;">
+              <i data-lucide="refresh-cw" style="width:14px;height:14px;"></i> Renew for 2027
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- B2B Request Modal -->
+<div class="modal-overlay" id="b2b-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('b2b-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;">Send B2B Connection Request</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:24px;">Connect with a trade partner in the BMCCI network</div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#0f172a;">Contact Name</label><input type="text" class="form-input" id="b2b-name" placeholder="Partner's full name" /></div>
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#0f172a;">Company</label><input type="text" class="form-input" id="b2b-company" placeholder="Their company name" /></div>
+      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#0f172a;">Message</label><textarea class="form-textarea" id="b2b-msg" rows="3" placeholder="Brief introduction and purpose of connection..."></textarea></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn btn-secondary" onclick="closeModal('b2b-modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="sendB2BRequest()"><i data-lucide="send" style="width:13px;height:13px;"></i> Send Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+lucide.createIcons();
+authService.populateUserInfo();
+
+const INCOMING_REQUESTS = [
+  { id:1, name:'Ahmad Fauzi', company:'MY Logistics Sdn Bhd', country:'🇲🇾', role:'CEO', sector:'Logistics & Supply Chain', time:'2 hours ago' },
+  { id:2, name:'Sumaia Begum', company:'Dhaka Export House', country:'🇧🇩', role:'Director', sector:'Textile & RMG', time:'Yesterday' },
+  { id:3, name:'Chen Wei', company:'Penang Tech Hub', country:'🇲🇾', role:'Co-Founder', sector:'Technology', time:'2 days ago' },
+];
+
+const ACTIVE_CONNECTIONS = [
+  { id:1, name:'Karim Rahman', company:'BD Agro Corp', country:'🇧🇩', role:'MD', sector:'Agriculture', connected:'Jun 2026' },
+  { id:2, name:'Lim Poh Sim', company:'KL Trade Partners', country:'🇲🇾', role:'GM', sector:'Trading', connected:'May 2026' },
+  { id:3, name:'Rahena Khan', company:'Chittagong Port Exports', country:'🇧🇩', role:'Manager', sector:'Shipping', connected:'Apr 2026' },
+  { id:4, name:'Anuar Rashid', company:'Cyberjaya Digital', country:'🇲🇾', role:'CTO', sector:'Technology', connected:'Mar 2026' },
+];
+
+const MEMBER_EVENTS = [
+  { title:'BD-MY Annual Gala Dinner 2026', date:'Aug 23, 2026', location:'Dhaka Sheraton', type:'Gala', seats:'Limited', exclusive: true },
+  { title:'Patron Member Roundtable: Green Energy', date:'Sep 5, 2026', location:'Virtual', type:'Roundtable', seats:'Available', exclusive: true },
+  { title:'Penang SEZ Factory Visit Delegation', date:'Sep 20, 2026', location:'Penang, Malaysia', type:'Trade Mission', seats:'Available', exclusive: false },
+];
+
+const RESOURCES = [
+  { title:'Q2 2026 BD-MY Trade Intelligence Brief', type:'Report', size:'2.4 MB', date:'Jul 10, 2026', icon:'bar-chart-2' },
+  { title:'Visa Recommendation Letter Template', type:'Template', size:'0.1 MB', date:'Jun 1, 2026', icon:'file-text' },
+  { title:'Mirsarai SEZ Investment Guide', type:'Guide', size:'5.1 MB', date:'May 15, 2026', icon:'map' },
+  { title:'Double Taxation Protocol Summary', type:'Legal', size:'0.8 MB', date:'May 2, 2026', icon:'shield-check' },
+  { title:'BMCCI Member Code of Ethics 2026', type:'Policy', size:'0.3 MB', date:'Jan 1, 2026', icon:'book-open' },
+  { title:'Bilateral Trade Statistics 2025 Annual', type:'Report', size:'3.9 MB', date:'Mar 15, 2026', icon:'pie-chart' },
+  { title:'ASEAN Market Entry Checklist', type:'Guide', size:'1.2 MB', date:'Feb 10, 2026', icon:'check-square' },
+  { title:'Corporate Delegation Itinerary Template', type:'Template', size:'0.2 MB', date:'Apr 5, 2026', icon:'clipboard' },
+];
+
+function switchPanel(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  const titles = {
+    dashboard: ['Member Dashboard', 'Your BMCCI executive overview'],
+    events: ['Exclusive Events', 'Member-only events and delegations'],
+    network: ['B2B Network Hub', 'Connect with bilateral trade partners'],
+    resources: ['Trade Resources', 'Exclusive reports and documents'],
+    profile: ['My Profile', 'Manage your account information'],
+    membership: ['Membership Status', 'View and manage your membership'],
+  };
+  if (titles[id]) { document.getElementById('page-title').textContent = titles[id][0]; document.getElementById('page-subtitle').innerHTML = titles[id][1]; }
+  if (id==='events') renderMemberEvents();
+  if (id==='network') renderB2B();
+  if (id==='resources') renderResources();
+  if (id==='dashboard') renderDashB2B();
+  if (id==='profile') {
+    const u = authService.getCurrentUser();
+    if (u) { document.getElementById('profile-name').value = u.name; document.getElementById('profile-email').value = u.email; }
+  }
+  lucide.createIcons();
+}
+
+function renderDashB2B() {
+  const el = document.getElementById('dash-b2b-list');
+  if (!el) return;
+  el.innerHTML = INCOMING_REQUESTS.map(r => `
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 4px;border-bottom:1px solid #f1f5f9;">
+      <div style="font-size:22px;flex-shrink:0;">${r.country}</div>
+      <div style="flex:1;overflow:hidden;">
+        <div style="font-size:12px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.name}</div>
+        <div style="font-size:11px;color:#94a3b8;">${r.company} • ${r.time}</div>
+      </div>
+      <div style="display:flex;gap:4px;">
+        <button class="btn btn-sm" style="background:#dcfce7;color:#006a4e;padding:4px 10px;font-size:11px;">Accept</button>
+      </div>
+    </div>`).join('');
+}
+
+function renderB2B() {
+  const incoming = document.getElementById('b2b-incoming');
+  const active = document.getElementById('b2b-active');
+  incoming.innerHTML = INCOMING_REQUESTS.map(r => `
+    <div class="network-card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#f0fdf9;border:1.5px solid #bbf7d0;display:flex;align-items:center;justify-content:center;font-size:18px;">${r.country}</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#0f172a;">${r.name}</div>
+          <div style="font-size:11px;color:#94a3b8;">${r.role} • ${r.company}</div>
+        </div>
+      </div>
+      <span class="badge badge-blue" style="margin-bottom:10px;">${r.sector}</span>
+      <div style="font-size:11px;color:#94a3b8;margin-bottom:12px;">${r.time}</div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Accept</button>
+        <button class="btn btn-secondary btn-sm">Decline</button>
+      </div>
+    </div>`).join('');
+  active.innerHTML = ACTIVE_CONNECTIONS.map(r => `
+    <div class="network-card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#f0fdf9;border:1.5px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-size:18px;">${r.country}</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#0f172a;">${r.name}</div>
+          <div style="font-size:11px;color:#94a3b8;">${r.role} • ${r.company}</div>
+        </div>
+        <span class="badge badge-green" style="margin-left:auto;">Connected</span>
+      </div>
+      <span class="badge badge-gray">${r.sector}</span>
+      <div style="font-size:11px;color:#94a3b8;margin-top:8px;">Since ${r.connected}</div>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+function renderMemberEvents() {
+  const el = document.getElementById('member-events-list');
+  const typeColors = { Gala:'badge-gold', Roundtable:'badge-blue', 'Trade Mission':'badge-green', Webinar:'badge-gray' };
+  el.innerHTML = MEMBER_EVENTS.map(ev => `
+    <div class="card" style="padding:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+      <div style="display:flex;align-items:center;gap:16px;flex:1;">
+        <div style="width:60px;height:60px;border-radius:16px;background:${ev.exclusive?'linear-gradient(135deg,#1a1a2e,#003d2e)':'#f8fafc'};border:1px solid ${ev.exclusive?'rgba(212,175,55,0.3)':'#e2e8f0'};display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <i data-lucide="calendar" style="width:22px;height:22px;color:${ev.exclusive?'#d4af37':'#94a3b8'};"></i>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            ${ev.exclusive?'<span class="badge badge-gold" style="font-size:9px;"><i data-lucide="star" style="width:9px;height:9px;"></i> Members Only</span>':''}
+            <span class="badge ${typeColors[ev.type]||'badge-gray'}">${ev.type}</span>
+          </div>
+          <div style="font-size:14px;font-weight:800;color:#0f172a;">${ev.title}</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:3px;display:flex;align-items:center;gap:12px;">
+            <span style="display:flex;align-items:center;gap:4px;"><i data-lucide="calendar" style="width:12px;height:12px;"></i>${ev.date}</span>
+            <span style="display:flex;align-items:center;gap:4px;"><i data-lucide="map-pin" style="width:12px;height:12px;"></i>${ev.location}</span>
+          </div>
+        </div>
+      </div>
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:10px;">
+        <span style="font-size:11px;font-weight:700;color:${ev.seats==='Limited'?'#dc2626':'#22c55e'};">${ev.seats === 'Limited' ? '⚡ Limited Seats':'✓ '+ev.seats}</span>
+        <button class="btn btn-gold btn-sm">RSVP Now</button>
+      </div>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+function renderResources() {
+  const grid = document.getElementById('resources-grid');
+  const typeColors = { Report:'badge-blue', Template:'badge-green', Guide:'badge-amber', Legal:'badge-red', Policy:'badge-gray' };
+  const iconBg = { Report:'#dbeafe', Template:'#dcfce7', Guide:'#fef9c3', Legal:'#fee2e2', Policy:'#f1f5f9' };
+  const iconColor = { Report:'#1d4ed8', Template:'#006a4e', Guide:'#d97706', Legal:'#dc2626', Policy:'#475569' };
+  grid.innerHTML = RESOURCES.map(r => `
+    <div class="card" style="padding:20px;display:flex;flex-direction:column;gap:12px;transition:all 0.2s;cursor:pointer;" onmouseenter="this.style.borderColor='#006a4e';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='#e2e8f0';this.style.transform=''">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div style="width:40px;height:40px;border-radius:10px;background:${iconBg[r.type]||'#f1f5f9'};display:flex;align-items:center;justify-content:center;">
+          <i data-lucide="${r.icon}" style="width:18px;height:18px;color:${iconColor[r.type]||'#475569'};"></i>
+        </div>
+        <span class="badge ${typeColors[r.type]||'badge-gray'}">${r.type}</span>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0f172a;line-height:1.4;">${r.title}</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:4px;">${r.size} • ${r.date}</div>
+      </div>
+      <button class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">
+        <i data-lucide="download" style="width:13px;height:13px;"></i> Download
+      </button>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+function saveProfile() {
+  const name = document.getElementById('profile-name').value;
+  if (!name) return;
+  const token = JSON.parse(localStorage.getItem('bmcci_auth_token') || '{}');
+  token.name = name;
+  localStorage.setItem('bmcci_auth_token', JSON.stringify(token));
+  document.querySelectorAll('.auth-user-name').forEach(el => el.textContent = name);
+  alert('Profile updated successfully!');
+}
+
+function sendB2BRequest() {
+  const name = document.getElementById('b2b-name').value;
+  if (!name) return alert('Please enter contact name.');
+  closeModal('b2b-modal');
+  alert('Connection request sent to ' + name + '!');
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); }));
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDashB2B();
+  lucide.createIcons();
+});
+</script>
+</body>
+</html>
