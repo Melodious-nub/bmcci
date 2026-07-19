@@ -8,15 +8,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://bmcci.org.bd/public/storage/upload/conf/250128092904-7229favicon (1).png">
   
   <!-- Primary SEO Meta Tags -->
-  <meta name="description" content="Read bilateral trade announcements, policy briefs, tax amendments, and executive updates.">
+  <meta name="description" content="Read bilateral trade announcements, policy briefs, tax amendments, and executive updates from Bangladesh and Malaysia.">
   
   <!-- Style Sheets Links -->
   <link rel="stylesheet" href="/css/tailwind.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-neutral-bg font-sans antialiased text-text-body"
-      data-page-title="Knowledge Hub"
-      data-page-subtitle="Stay informed with business insights, trade updates, and economic developments from Bangladesh and Malaysia.">
+<body class="bg-neutral-bg font-sans antialiased text-text-body overflow-x-hidden"
+      data-page-title="News & Bilateral Insights"
+      data-page-subtitle="Stay informed with commercial updates, policy briefs, press releases, and economic intelligence from Bangladesh and Malaysia.">
 
   <!-- Global Loader Overlay -->
   <!-- include components/loader.html -->
@@ -34,131 +34,425 @@
     <!-- include components/ui/page-header.html -->
 
     <!-- ==========================================================================
-         SECTION 02 â€” CONTENT SEARCH BAR
+         SECTION 03 — MULTIPLE FEATURED INSIGHTS GRID
          ========================================================================== -->
-    <section class="section-compact bg-white border-b border-neutral-border" id="search-section">
-      <div class="container-shell max-w-4xl py-6">
-        <!-- Reusable Search bar and filters include -->
-        <div class="flex flex-col gap-4">
-          <!-- include components/ui/search-bar.html -->
-          <!-- include components/ui/filter-bar.html -->
+    <section class="section-large bg-white divider-subtle relative overflow-hidden" id="featured-story-sec">
+      <div class="container-shell">
+        
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-12 text-center flex flex-col items-center gap-3" data-scroll-reveal="true">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Executive Briefings</span>
+          <h2 class="section-title text-text-dark">Featured Bilateral Headlines</h2>
+          <p class="text-text-body text-sm leading-relaxed">
+            Top strategic announcements shaping commerce, tariffs, and cross-border investments.
+          </p>
         </div>
+
+        <!-- 3 Columns Featured Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 text-left">
+          
+          <!-- Primary Main Hero Card (Span 7) -->
+          <div class="lg:col-span-7 bg-neutral-bgSecondary border border-neutral-border rounded-2xl overflow-hidden shadow-floating flex flex-col justify-between group hover-glow-green relative" data-scroll-reveal="true">
+            <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue"></div>
+            
+            <div class="relative w-full aspect-[16/9] overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop" 
+                   alt="Bilateral Double Taxation Exemption Treaty Signing Ceremony" 
+                   class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="px-3.5 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card backdrop-blur-md">Featured Treaty</span>
+                <span class="px-3.5 py-1 bg-white/20 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Bilateral</span>
+              </div>
+              <div class="absolute bottom-4 left-4 right-4 text-white text-xs font-bold flex justify-between items-center">
+                <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> July 18, 2026</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i> Kuala Lumpur Secretariat</span>
+              </div>
+            </div>
+
+            <div class="p-8 flex flex-col justify-between gap-6 flex-1">
+              <div class="flex flex-col gap-3">
+                <h3 class="text-text-dark font-extrabold text-2xl group-hover:text-brand-green transition-fast leading-snug">
+                  Bilateral Double Taxation Exemption Treaty Formally Ratified in KL
+                </h3>
+                <p class="text-text-body text-xs md:text-sm leading-relaxed">
+                  Ministers of commerce from Bangladesh and Malaysia signed landmark tax exemption agreements, eliminating withholding levies on cross-border software JVs, logistics franchises, and industrial dividends.
+                </p>
+              </div>
+
+              <button class="w-full py-3 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs uppercase rounded-full shadow-card hover:translate-y-[-2px] transition-premium flex items-center justify-center gap-2 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Accord Briefing</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Secondary Stack Cards (Span 5) -->
+          <div class="lg:col-span-5 flex flex-col gap-8">
+            
+            <!-- Featured 2: Malaysia Semiconductor -->
+            <div class="bg-neutral-bgSecondary border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-blue flex flex-col justify-between gap-4 group relative overflow-hidden" data-scroll-reveal="true" data-reveal-delay="0.1">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase rounded-full border border-brand-blue/20">Malaysia Tech</span>
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-blue"></i> July 15, 2026</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-lg group-hover:text-brand-blue transition-fast leading-snug">
+                Penang Silicon Island Wafer Fab Expansion Receives $4.2B FDI
+              </h3>
+              <p class="text-text-body text-xs leading-relaxed line-clamp-2">
+                Bayan Lepas high-tech hub secures multi-billion FDI expansion for microchip packaging &amp; IC design labs partnering with ASEAN engineers.
+              </p>
+              <button class="text-left font-bold text-xs text-brand-blue flex items-center gap-1.5 group-hover:translate-x-1 transition-transform pt-2 border-t border-neutral-border/60" data-modal-open="news-detail-modal">
+                <span>Explore Tech Report</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Featured 3: Bangladesh Deep Port -->
+            <div class="bg-neutral-bgSecondary border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-green flex flex-col justify-between gap-4 group relative overflow-hidden" data-scroll-reveal="true" data-reveal-delay="0.2">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 bg-brand-green/10 text-brand-green text-[10px] font-extrabold uppercase rounded-full border border-brand-green/20">Bangladesh Shipping</span>
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> July 10, 2026</span>
+              </div>
+              <h3 class="text-text-dark font-extrabold text-lg group-hover:text-brand-green transition-fast leading-snug">
+                Chittagong Deep-Water Terminal Greenlit for Direct Cargo Express
+              </h3>
+              <p class="text-text-body text-xs leading-relaxed line-clamp-2">
+                Ministry of Shipping approves priority docking rights for Port Klang container ocean lines, reducing transit times to 4 days.
+              </p>
+              <button class="text-left font-bold text-xs text-brand-green flex items-center gap-1.5 group-hover:translate-x-1 transition-transform pt-2 border-t border-neutral-border/60" data-modal-open="news-detail-modal">
+                <span>Explore Logistics Brief</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECTION 03 â€” FEATURED STORY (60/40 Split card)
+         SECTION 04 — LATEST NEWS & INSIGHTS GRID (Integrated Filter & Cards)
          ========================================================================== -->
-    <section class="section-large bg-white divider-subtle" id="featured-story-sec">
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="latest-news-sec">
       <div class="container-shell">
         
-        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg overflow-hidden shadow-floating grid grid-cols-1 lg:grid-cols-12 text-left relative group">
-          <!-- Top Border Accent -->
-          <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue"></div>
-          
-          <!-- Banner Image (Span 7) -->
-          <div class="lg:col-span-7 relative min-h-[280px] lg:min-h-full overflow-hidden">
-            <img src="/assets/images/events/investment-conclave.jpg" alt="Bilateral Investment Conclave showcase panel scene" 
-                 class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" />
-            <span class="absolute top-6 left-6 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full shadow-card z-10">
-              Featured Insight
-            </span>
-          </div>
+        <!-- Section Header & Integrated Filter Pills -->
+        <div class="max-w-3xl mx-auto mb-12 text-center flex flex-col items-center gap-4" data-scroll-reveal="true">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Knowledge Directory</span>
+          <h2 class="section-title text-text-dark">Latest News &amp; Executive Insights</h2>
+          <p class="text-text-body text-sm leading-relaxed max-w-xl">
+            Browse verified trade developments, macroeconomic reports, and bilateral press announcements.
+          </p>
 
-          <!-- Content Details (Span 5) -->
-          <div class="lg:col-span-5 p-8 md:p-10 flex flex-col justify-between gap-6">
-            <div class="flex flex-col gap-4">
-              <!-- Date & Author -->
-              <div class="flex items-center gap-3 text-xs font-semibold text-text-muted">
-                <span>July 12, 2026</span>
-                <span class="h-3 w-px bg-neutral-border"></span>
-                <span>By Secretariats Board</span>
-              </div>
-              
-              <h3 class="text-text-dark font-extrabold text-xl md:text-2xl group-hover:text-brand-green transition-fast">
-                Bilateral Trade Treaty Agreement Ratified by Ministers
-              </h3>
-              
-              <p class="text-text-body text-xs md:text-sm leading-relaxed">
-                State ministries in charge of trade policy have ratified the double taxation exemption treaties, paving channels for high-value logistics concessions.
-              </p>
-            </div>
+          <!-- Responsive Filter Pills Container (Full Width, No X-Axis Scroll) -->
+          <div class="w-full flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-bold mt-2">
+            <button class="px-4 sm:px-5 py-2.5 bg-brand-green text-white rounded-full shadow-card transition-all duration-300 flex items-center gap-2" data-news-tab="all">
+              <span>All Content</span>
+              <span class="px-2 py-0.5 bg-white/25 text-white rounded-full text-[10px] font-bold">12</span>
+            </button>
 
-            <!-- Read Action Button -->
-            <button class="w-full py-3 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card hover:translate-y-[-2px] transition-premium flex items-center justify-center gap-1.5 mt-2" 
-                    data-modal-open="news-detail-modal">
-              <span>Read Full Article</span>
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <button class="px-4 sm:px-5 py-2.5 bg-white border border-neutral-border text-text-dark hover:border-brand-green rounded-full hover:text-brand-green transition-all duration-300 flex items-center gap-2 shadow-sm" data-news-tab="bd">
+              <span class="w-2 h-2 rounded-full bg-brand-green"></span>
+              <span>Bangladesh News</span>
+              <span class="px-2 py-0.5 bg-neutral-bgSecondary text-text-dark rounded-full text-[10px] font-bold">6</span>
+            </button>
+
+            <button class="px-4 sm:px-5 py-2.5 bg-white border border-neutral-border text-text-dark hover:border-brand-blue rounded-full hover:text-brand-blue transition-all duration-300 flex items-center gap-2 shadow-sm" data-news-tab="my">
+              <span class="w-2 h-2 rounded-full bg-brand-blue"></span>
+              <span>Malaysia News</span>
+              <span class="px-2 py-0.5 bg-neutral-bgSecondary text-text-dark rounded-full text-[10px] font-bold">6</span>
+            </button>
+
+            <button class="px-4 sm:px-5 py-2.5 bg-white border border-neutral-border text-text-dark hover:border-brand-green rounded-full hover:text-brand-green transition-all duration-300 flex items-center gap-2 shadow-sm" data-news-tab="press">
+              <span>Press Releases</span>
+              <span class="px-2 py-0.5 bg-neutral-bgSecondary text-text-dark rounded-full text-[10px] font-bold">3</span>
+            </button>
+
+            <button class="px-4 sm:px-5 py-2.5 bg-white border border-neutral-border text-text-dark hover:border-brand-green rounded-full hover:text-brand-green transition-all duration-300 flex items-center gap-2 shadow-sm" data-news-tab="insights">
+              <span>Executive Insights</span>
+              <span class="px-2 py-0.5 bg-neutral-bgSecondary text-text-dark rounded-full text-[10px] font-bold">4</span>
             </button>
           </div>
-
         </div>
 
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 05 â€” CATEGORY NAVIGATION (Tabs)
-         ========================================================================== -->
-    <section class="section-compact bg-neutral-bgSecondary border-b border-neutral-border" id="category-tabs-sec">
-      <div class="container-shell py-4 flex items-center justify-center overflow-x-auto">
-        <div class="flex items-center gap-6 text-xs font-bold text-text-muted shrink-0">
-          <button class="text-brand-green border-b-2 border-brand-green pb-1" data-news-tab="all">All Content</button>
-          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="news">Chamber News</button>
-          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="press">Press Releases</button>
-          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="reports">Reports</button>
-          <button class="hover:text-brand-green pb-1 transition-fast" data-news-tab="insights">Insights</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 04 â€” LATEST NEWS (Grid)
-         ========================================================================== -->
-    <section class="section-large bg-white divider-subtle" id="latest-news-grid">
-      <div class="container-shell">
-        
-        <!-- Grid list of cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Grid list of 12 news cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="news-grid">
           
-          <!-- Card 1 -->
-          <!-- include components/ui/news-card.html -->
-
-          <!-- Card 2 -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left" data-news-item="press">
+          <!-- Card 1 (BD / Insights) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-green overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="bd insights">
             <div class="relative w-full aspect-video overflow-hidden shrink-0">
-              <img src="/assets/images/events/investment-conclave.jpg" alt="Press release details banner" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Press Release</span>
+              <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=800&auto=format&fit=crop" alt="Dhaka FinTech Conclave" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Bangladesh</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">FinTech</span>
+              </div>
             </div>
             <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
               <div class="flex flex-col gap-2.5">
-                <span class="text-[10px] text-text-muted font-semibold">June 24, 2026</span>
-                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Chittagong Deep-Water Berths MoU Approved</h3>
-                <p class="text-text-body text-xs leading-relaxed line-clamp-2">The ministries of shipping have cleared MoU plans allowing Malaysian logistics groups prioritized docking rights.</p>
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> June 28, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Dhaka FinTech Conclave Unveils Cross-Border QR Payment Line</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Bangladesh Bank and Bank Negara Malaysia initiate real-time digital QR currency clearing to facilitate B2B trade transactions.</p>
               </div>
-              <button class="w-full text-center py-2.5 bg-white border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-2" 
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
                       data-modal-open="news-detail-modal">
-                <span>Read More</span>
+                <span>Read Full Article</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
               </button>
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left" data-news-item="insights">
+          <!-- Card 2 (MY / Press) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-blue overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="my press">
             <div class="relative w-full aspect-video overflow-hidden shrink-0">
-              <img src="/assets/images/events/networking-dinner.jpg" alt="Trade delegation meeting" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-              <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-gold text-text-dark text-[10px] font-bold uppercase rounded-full shadow-card">Insight</span>
+              <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="KL Halal Certification Board" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Malaysia</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Press Release</span>
+              </div>
             </div>
             <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
               <div class="flex flex-col gap-2.5">
-                <span class="text-[10px] text-text-muted font-semibold">May 18, 2026</span>
-                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Malaysian Tech Delegation Arrives in Dhaka</h3>
-                <p class="text-text-body text-xs leading-relaxed line-clamp-2">A high-tech semiconductor testing delegation meets local chamber delegates to evaluate software JV setups.</p>
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-blue"></i> June 20, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-blue transition-fast">KL Halal Authority Signs Accord with Bangladesh Standards Institute</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">JAKIM certifies 45 Bangladeshi agro-processors for expedited duty-free import into ASEAN supermarket supply chains.</p>
               </div>
-              <button class="w-full text-center py-2.5 bg-white border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5 mt-2" 
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-blue hover:text-brand-blue text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
                       data-modal-open="news-detail-modal">
-                <span>Read More</span>
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3 (BD / News) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-green overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="bd news">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop" alt="Mirsarai SEZ Solar Plant" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Bangladesh</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Clean Tech</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> June 14, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Mirsarai SEZ Allots 500 Acres for Solar Cell Assembly Plants</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Malaysian renewable energy firm partners with BEZA to establish a $350M photovoltaic wafer manufacturing park.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4 (MY / News) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-blue overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="my news">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=800&auto=format&fit=crop" alt="Port Klang Throughput" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Malaysia</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Maritime</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-blue"></i> June 05, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-blue transition-fast">Port Klang Container Cargo Hits Record 14M TEUs</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Surge in South Asian garment transshipments and palm oil exports boosts Port Klang ocean throughput to historic highs.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-blue hover:text-brand-blue text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5 (BD / Insights) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-green overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="bd insights">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Sylhet Bangabandhu Hi-Tech City" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Bangladesh</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Software</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> May 29, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Sylhet Hi-Tech Park Inks Offshore IT Outsourcing Deal</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">A consortium of Malaysian software houses establishes R&amp;D outsourcing centers in Sylhet, employing 1,200 Bangladeshi engineers.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 6 (MY / Reports) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-blue overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="my reports">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop" alt="Sarawak Renewable Energy" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Malaysia</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Report</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-blue"></i> May 22, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-blue transition-fast">Sarawak Energy Hydro Council Inks Bilateral Green Deal</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Borneo clean hydro energy report outlines green hydrogen export pipelines supplying South Asian eco-textile hubs.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-blue hover:text-brand-blue text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 7 (BD / News) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-green overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="bd news">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop" alt="Cox's Bazar International Airport Expansion" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Bangladesh</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Aviation</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> May 15, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Cox's Bazar Airport Opens Maritime Runway for Direct KL Flights</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Civil Aviation Authority inaugurates extended coastal runway enabling wide-body direct passenger flights to Kuala Lumpur.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 8 (MY / Insights) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-blue overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="my insights">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="Johor Iskandar Data Center" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Malaysia</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Cloud Infra</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-blue"></i> May 08, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-blue transition-fast">Johor Iskandar Cloud Park Secures $1.2B Investment Consortium</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Green data center park near Singapore border attracts hyper-scale cloud operators serving South Asian enterprise clients.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-blue hover:text-brand-blue text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 9 (BD / Press) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-green overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="bd press">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop" alt="LEED RMG Factory Gazipur" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Bangladesh</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Apparel</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> April 30, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">LEED Platinum Apparel Parks Reach $50B Annual Export Target</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Gazipur and Narayanganj green factories lead global eco-textile compliance rankings with zero-carbon washing plants.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 10 (MY / News) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-blue overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="my news">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop" alt="Penang Wafer Fab Cleanroom" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Malaysia</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Microchips</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-blue"></i> April 21, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-blue transition-fast">Penang IC Design Lab Establishes Joint Talent Fellowship with BUET</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Microchip assembly leaders fund postgraduate semiconductor R&amp;D grants for Bangladeshi electrical engineering scholars.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-blue hover:text-brand-blue text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 11 (BD / Reports) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-green overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="bd reports">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=800&auto=format&fit=crop" alt="Bagerhat Heritage Corridor" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Bangladesh</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Tourism</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-green"></i> April 14, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-green transition-fast">Bagerhat UNESCO Eco-Heritage Corridor Cleared for Private Lodges</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Tourism ministry approves sustainable boutique eco-resort concessions near Shat Gombuj precinct for international visitors.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green hover:text-brand-green text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 12 (MY / Insights) -->
+          <div class="bg-white border border-neutral-border rounded-2xl shadow-card hover-glow-blue overflow-hidden flex flex-col justify-between group text-left animate-reveal" data-news-item="my insights">
+            <div class="relative w-full aspect-video overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=800&auto=format&fit=crop" alt="TRX Financial District Sukuk" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+              <div class="absolute top-4 left-4 flex gap-2">
+                <span class="inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Malaysia</span>
+                <span class="inline-flex px-3 py-1 bg-white/80 backdrop-blur-md text-text-dark text-[10px] font-extrabold uppercase rounded-full">Sukuk Finance</span>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between">
+              <div class="flex flex-col gap-2.5">
+                <span class="text-[11px] text-text-muted font-bold flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-blue"></i> April 05, 2026</span>
+                <h3 class="text-text-dark font-extrabold text-base leading-snug group-hover:text-brand-blue transition-fast">Tun Razak Exchange Sukuk Bond Issuance Over-Subscribed by 300%</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3">KL Islamic Banking Council reports record participation from South Asian institutional investors in green infrastructure bonds.</p>
+              </div>
+              <button class="w-full text-center py-2.5 bg-neutral-bgSecondary border border-neutral-border hover:border-brand-blue hover:text-brand-blue text-text-dark font-bold text-xs rounded-full shadow-sm transition-fast flex items-center justify-center gap-1.5 mt-2" 
+                      data-modal-open="news-detail-modal">
+                <span>Read Full Article</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -170,18 +464,18 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 08 â€” PUBLICATIONS & REPORTS
+         SECTION 08 — OFFICIAL PUBLICATIONS & REPORTS LIBRARY
          ========================================================================== -->
-    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="publications-reports-sec">
+    <section class="section-large bg-white divider-subtle" id="publications-reports-sec">
       <div class="container-shell text-center">
         
         <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3 animate-reveal">
-          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Official Library</span>
-          <h2 class="section-title text-text-dark">Official Publications & Reports</h2>
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3 animate-reveal" data-scroll-reveal="true">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Official Library</span>
+          <h2 class="section-title text-text-dark">Publications &amp; Policy Handbooks</h2>
           <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
           <p class="text-text-body text-sm leading-relaxed">
-            Download PDF copies of economic outlook reports and investment guides.
+            Download PDF copies of verified macroeconomic reports, customs guides, and investment directories.
           </p>
         </div>
 
@@ -189,48 +483,48 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
           
           <!-- Report 1 -->
-          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-green flex flex-col justify-between gap-5 group" data-scroll-reveal="true">
             <div class="flex flex-col gap-3">
               <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
-                <span class="font-bold text-brand-green uppercase tracking-wider">Annual Outlook</span>
-                <span>4.8 MB</span>
+                <span class="font-extrabold text-brand-green uppercase tracking-wider">Annual Outlook</span>
+                <span class="font-bold">4.8 MB</span>
               </div>
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bilateral Economic Report 2026</h3>
               <p class="text-text-body text-xs leading-relaxed font-medium">A macro study outlining trade expansion metrics, GDP trends, and FDI sectors analysis.</p>
             </div>
-            <a href="/src/assets/files/dummy.pdf" download="Bilateral_Economic_Report_2026.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Bilateral_Economic_Report_2026.pdf" class="w-full text-center py-3 bg-white hover:bg-brand-green hover:text-white border border-neutral-border text-text-dark font-bold text-xs uppercase rounded-full shadow-sm transition-premium flex items-center justify-center gap-2">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download PDF</span>
             </a>
           </div>
 
           <!-- Report 2 -->
-          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-blue flex flex-col justify-between gap-5 group" data-scroll-reveal="true" data-reveal-delay="0.1">
             <div class="flex flex-col gap-3">
               <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
-                <span class="font-bold text-brand-blue uppercase tracking-wider">Compliance Guide</span>
-                <span>2.4 MB</span>
+                <span class="font-extrabold text-brand-blue uppercase tracking-wider">Compliance Guide</span>
+                <span class="font-bold">2.4 MB</span>
               </div>
-              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Customs Compliance Handbook</h3>
+              <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-blue transition-fast">Customs Compliance Handbook</h3>
               <p class="text-text-body text-xs leading-relaxed font-medium">Clear guide detailing import-export HS codes, shipping registries, and port customs clearance rules.</p>
             </div>
-            <a href="/src/assets/files/dummy.pdf" download="Customs_Compliance_Handbook.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="Customs_Compliance_Handbook.pdf" class="w-full text-center py-3 bg-white hover:bg-brand-blue hover:text-white border border-neutral-border text-text-dark font-bold text-xs uppercase rounded-full shadow-sm transition-premium flex items-center justify-center gap-2">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download PDF</span>
             </a>
           </div>
 
           <!-- Report 3 -->
-          <div class="bg-white border border-neutral-border rounded-md p-6 shadow-card hover-lift flex flex-col justify-between gap-5 group">
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-green flex flex-col justify-between gap-5 group" data-scroll-reveal="true" data-reveal-delay="0.2">
             <div class="flex flex-col gap-3">
               <div class="flex items-center justify-between text-xs text-text-muted border-b border-neutral-border pb-3">
-                <span class="font-bold text-brand-gold uppercase tracking-wider">FDI Booklet</span>
-                <span>1.8 MB</span>
+                <span class="font-extrabold text-brand-gold uppercase tracking-wider">FDI Directory</span>
+                <span class="font-bold">1.8 MB</span>
               </div>
               <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Special Economic Zones Directory</h3>
               <p class="text-text-body text-xs leading-relaxed font-medium">Lists geographical sites, tax holiday durations, and zoning permissions for foreign investors.</p>
             </div>
-            <a href="/src/assets/files/dummy.pdf" download="SEZs_Directory.pdf" class="w-full text-center py-2.5 bg-neutral-bgSecondary hover:bg-brand-green hover:text-white text-text-dark font-bold text-xs rounded-btn transition-premium flex items-center justify-center gap-1.5">
+            <a href="/src/assets/files/dummy.pdf" download="SEZs_Directory.pdf" class="w-full text-center py-3 bg-white hover:bg-brand-green hover:text-white border border-neutral-border text-text-dark font-bold text-xs uppercase rounded-full shadow-sm transition-premium flex items-center justify-center gap-2">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Download PDF</span>
             </a>
@@ -242,17 +536,17 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 09 â€” ECONOMIC INSIGHTS (ECharts mini graphs)
+         SECTION 09 — ECONOMIC INSIGHTS (ECharts mini graphs)
          ========================================================================== -->
-    <section class="section-large bg-white divider-subtle" id="economic-insights-sec">
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="economic-insights-sec">
       <div class="container-shell text-center">
         
         <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Bilateral curves</span>
+        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3" data-scroll-reveal="true">
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/10 px-4 py-1.5 rounded-full border border-brand-blue/20">Bilateral Curves</span>
           <h2 class="section-title text-text-dark">Bilateral Economic Indicators Insights</h2>
           <p class="text-text-body text-sm leading-relaxed">
-            Market statistics summaries tracked inside ECharts widgets.
+            Market statistics summaries tracked inside interactive ECharts widgets.
           </p>
         </div>
 
@@ -260,7 +554,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           <!-- Insight 1: Market Trends -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+          <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-green flex flex-col gap-4 text-left" data-scroll-reveal="true">
             <span class="text-xs font-bold text-text-dark uppercase tracking-widest border-b border-neutral-border pb-3 block">Bilateral Market Index Trends</span>
             <div id="trends-mini-chart" class="h-[220px] w-full"></div>
             <h4 class="font-extrabold text-sm text-text-dark">Expanding Industrial Operations</h4>
@@ -268,7 +562,7 @@
           </div>
 
           <!-- Insight 2: Inflation Forecasts -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+          <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-blue flex flex-col gap-4 text-left" data-scroll-reveal="true" data-reveal-delay="0.1">
             <span class="text-xs font-bold text-text-dark uppercase tracking-widest border-b border-neutral-border pb-3 block">Average Inflation Index Comparisons</span>
             <div id="inflation-mini-chart" class="h-[220px] w-full"></div>
             <h4 class="font-extrabold text-sm text-text-dark">Stable Consumer Tariffs</h4>
@@ -276,7 +570,7 @@
           </div>
 
           <!-- Insight 3: Trade Balance -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-6 shadow-card flex flex-col gap-4 text-left">
+          <div class="bg-white border border-neutral-border rounded-2xl p-6 shadow-card hover-glow-green flex flex-col gap-4 text-left" data-scroll-reveal="true" data-reveal-delay="0.2">
             <span class="text-xs font-bold text-text-dark uppercase tracking-widest border-b border-neutral-border pb-3 block">Net Bilateral Trade Volume ($ Billion)</span>
             <div id="balance-mini-chart" class="h-[220px] w-full"></div>
             <h4 class="font-extrabold text-sm text-text-dark">Consolidated FDI Channels Growth</h4>
@@ -289,46 +583,231 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 10 â€” MEDIA GALLERY
+         SECTION 10 — BILATERAL MEDIA COVERAGE GALLERY (12+ Working Online Photos)
          ========================================================================== -->
-    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="gallery-sec">
+    <section class="section-large bg-white divider-subtle" id="gallery-sec">
       <div class="container-shell text-center">
         
-        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Press Coverage</span>
+        <!-- Header -->
+        <div class="max-w-2xl mx-auto mb-14 flex flex-col items-center gap-3" data-scroll-reveal="true">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Press Gallery</span>
           <h2 class="section-title text-text-dark">Bilateral Media Coverage Gallery</h2>
           <p class="text-text-body text-sm leading-relaxed">
-            Browse through official press meet pictures and conference setups.
+            Browse through official press meet pictures, ministerial signing ceremonies, and trade delegation forums.
           </p>
         </div>
 
-        <!-- Reusable photo grid include -->
-        <!-- include components/ui/gallery.html -->
+        <!-- Full Bleed Grid of 12 Working Online Unsplash Images -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto" id="media-gallery-grid">
+          
+          <!-- Photo 1 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800&auto=format&fit=crop" alt="Ministerial Signing Ceremony" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Summit</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Treaty Signing Ceremony</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kuala Lumpur, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 2 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop" alt="Bilateral Press Briefing" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Press Briefing</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Secretariat Press Briefing</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Dhaka, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 3 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Trade Delegation Forum" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Delegation</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Trade Delegation B2B Forum</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Penang, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 4 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="Bilateral Summit Keynote" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Keynote</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Chamber Keynote Speech</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Dhaka, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 5 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=800&auto=format&fit=crop" alt="Industrial Expo Ribbon Cutting" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Expo</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Industrial Expo Opening</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kuala Lumpur, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 6 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=800&auto=format&fit=crop" alt="Port Logistics MoU Signing" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">MoU Signing</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Port Logistics Accord</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Chattogram, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 7 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop" alt="Executive Roundtable" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Roundtable</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Executive Policy Roundtable</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kuala Lumpur, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 8 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" alt="Halal Trade Delegation" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Trade Meeting</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Halal Commerce Council</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Dhaka, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 9 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="IT Talent Summit" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">IT Forum</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Bilateral Software Summit</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Sylhet, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 10 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Green Energy EPZ Briefing" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">SEZ Forum</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Clean Energy EPZ Meet</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Mirsarai, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 11 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=800&auto=format&fit=crop" alt="KL Trade Summit Reception" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Reception</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Merdeka Square Gala Evening</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kuala Lumpur, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 12 -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="press">
+            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=800&auto=format&fit=crop" alt="Heritage Cultural Dinner" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cultural Meet</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Chamber Heritage Reception</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Sonargaon, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECTION 11 â€” NEWSLETTER SIGNUP
+         SECTION 11 — NEWSLETTER SIGNUP
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="newsletter-sec">
       <div class="container-shell max-w-2xl">
-        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-lg p-8 md:p-10 shadow-card text-center flex flex-col gap-5 items-center">
-          <div class="w-12 h-12 rounded-full bg-brand-green/5 border border-brand-green/10 flex items-center justify-center text-brand-green"><i data-lucide="mail" class="w-6 h-6"></i></div>
-          <div class="flex flex-col gap-1.5">
-            <h3 class="text-text-dark font-extrabold text-lg md:text-xl">Stay Connected With BMCCI</h3>
-            <p class="text-text-body text-xs md:text-sm">Receive updates on bilateral trade concessions, policy briefs, and upcoming summits.</p>
+        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-2xl p-8 md:p-12 shadow-card text-center flex flex-col gap-6 items-center hover-glow-green">
+          <div class="w-14 h-14 rounded-2xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center text-brand-green">
+            <i data-lucide="mail" class="w-7 h-7"></i>
           </div>
-          <form class="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-2">
-            <input type="email" placeholder="enter your email address..." required class="w-full h-11 px-4 border border-neutral-border rounded text-xs outline-none focus:border-brand-green transition-fast" />
-            <button type="submit" class="h-11 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card shrink-0 transition-fast">Subscribe</button>
+          <div class="flex flex-col gap-2">
+            <h3 class="text-text-dark font-extrabold text-xl md:text-2xl">Subscribe to BMCCI News Briefings</h3>
+            <p class="text-text-body text-xs md:text-sm leading-relaxed">Receive instant updates on bilateral tariffs, trade concessions, policy briefs, and upcoming summits.</p>
+          </div>
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-2">
+            <input type="email" placeholder="Enter your business email..." required class="w-full h-12 px-5 border border-neutral-border rounded-full text-xs outline-none focus:border-brand-green transition-fast bg-white shadow-inner" />
+            <button type="submit" class="h-12 px-8 bg-brand-green hover:bg-brand-darkGreen text-white font-extrabold text-xs uppercase rounded-full shadow-card shrink-0 transition-premium">Subscribe</button>
           </form>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECTION 12 â€” CALL TO ACTION (Reusable Include)
+         SECTION 12 — CALL TO ACTION (Reusable Include)
          ========================================================================== -->
     <section class="section-large bg-neutral-bgSecondary">
       <div class="container-shell">
@@ -342,27 +821,27 @@
   <!-- ==========================================================================
        ARTICLE DETAIL MODAL (Details View)
        ========================================================================== -->
-  <div id="news-detail-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-2xl w-full max-h-[85vh] overflow-y-auto relative text-left" data-modal-content>
+  <div id="news-detail-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-start justify-center p-4 md:p-6 overflow-y-auto py-10 md:py-16" data-lenis-prevent>
+    <div class="bg-white rounded-2xl border border-neutral-border shadow-2xl max-w-2xl w-full relative text-left overflow-hidden my-auto" data-modal-content data-lenis-prevent>
       <!-- Close button -->
-      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast z-10" data-modal-close>
+      <button class="absolute top-4 right-4 text-white/80 hover:text-white p-2 rounded-full bg-black/40 hover:bg-black/60 transition-all z-20" data-modal-close>
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
       <!-- Banner -->
-      <div class="relative w-full h-[220px] overflow-hidden">
-        <img src="/assets/images/events/investment-conclave.jpg" alt="Investment Conclave scene details" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-gradient-to-t from-text-dark/60 to-transparent"></div>
-        <h3 id="modal-news-title" class="absolute bottom-6 left-6 text-white font-extrabold text-lg md:text-xl tracking-tight leading-tight pr-8">
-          Bilateral Trade Treaty Agreement Ratified by Ministers
+      <div class="relative w-full h-[240px] overflow-hidden">
+        <img id="modal-news-img" src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800&auto=format&fit=crop" alt="News article details" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+        <h3 id="modal-news-title" class="absolute bottom-6 left-6 right-12 text-white font-extrabold text-lg md:text-xl tracking-tight leading-tight">
+          Bilateral Double Taxation Exemption Treaty Formally Ratified in KL
         </h3>
       </div>
 
       <!-- Content -->
       <div class="p-6 md:p-8 flex flex-col gap-6">
         <div class="grid grid-cols-2 gap-4 text-xs font-semibold text-text-body border-b border-neutral-border pb-4">
-          <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-brand-green"></i><span>July 12, 2026</span></span>
-          <span class="flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4 text-brand-green"></i><span>Published by Secretariats</span></span>
+          <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-brand-green"></i><span id="modal-news-date">July 18, 2026</span></span>
+          <span class="flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4 text-brand-green"></i><span>Published by BMCCI Secretariat</span></span>
         </div>
 
         <div class="flex flex-col gap-3">
@@ -383,13 +862,69 @@
 
         <!-- Actions -->
         <div class="border-t border-neutral-border pt-6 mt-2 flex items-center justify-end gap-3">
-          <button class="px-5 py-2.5 border border-neutral-border rounded-btn text-xs font-semibold hover:border-brand-green transition-fast" data-modal-close>Close</button>
-          <a href="/src/assets/files/dummy.pdf" download="Press_Release_Brief.pdf" class="px-5 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5">
+          <button class="px-6 py-2.5 border border-neutral-border rounded-full text-xs font-bold hover:border-brand-green transition-fast" data-modal-close>Close</button>
+          <a href="/src/assets/files/dummy.pdf" download="Press_Release_Brief.pdf" class="px-6 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-extrabold text-xs uppercase rounded-full shadow-card transition-fast flex items-center justify-center gap-2">
             <i data-lucide="download" class="w-4 h-4"></i>
             <span>Download Brief PDF</span>
           </a>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Enriched Premium Image Lightbox Modal for Gallery -->
+  <div id="gallery-lightbox-modal" class="fixed inset-0 z-[9999] bg-black/92 backdrop-blur-xl hidden items-center justify-center p-4 md:p-8 transition-all duration-300 overflow-y-auto" data-lenis-prevent>
+    <div class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center gap-4 text-white animate-reveal" data-lenis-prevent>
+      
+      <!-- Top Header Bar -->
+      <div class="w-full flex items-center justify-between px-2 text-xs font-bold">
+        <div class="flex items-center gap-3">
+          <span id="lightbox-category" class="px-3.5 py-1 bg-brand-green/90 text-white rounded-full text-[10px] font-extrabold uppercase tracking-widest backdrop-blur-md border border-white/20">Media Gallery</span>
+          <span id="lightbox-counter" class="px-3 py-1 bg-white/10 text-white/90 rounded-full border border-white/10">Photo 1 of 12</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btn-close-lightbox" class="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all border border-white/15 flex items-center justify-center gap-1.5 group" title="Close Lightbox (Esc)">
+            <span class="text-[11px] font-bold hidden sm:inline">Close</span>
+            <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Preview Stage -->
+      <div class="relative w-full max-h-[72vh] rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-black/60 border border-white/10 group">
+        
+        <!-- Prev Button -->
+        <button id="btn-prev-lightbox" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 hover:bg-white text-white hover:text-text-dark backdrop-blur-md flex items-center justify-center transition-all shadow-lg border border-white/20 hover:scale-110 z-20 group" aria-label="Previous image">
+          <i data-lucide="chevron-left" class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform"></i>
+        </button>
+
+        <!-- Image Container -->
+        <img id="lightbox-img" src="" alt="Full preview" class="w-full h-full object-contain max-h-[72vh] transition-all duration-300" />
+
+        <!-- Next Button -->
+        <button id="btn-next-lightbox" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 hover:bg-white text-white hover:text-text-dark backdrop-blur-md flex items-center justify-center transition-all shadow-lg border border-white/20 hover:scale-110 z-20 group" aria-label="Next image">
+          <i data-lucide="chevron-right" class="w-6 h-6 group-hover:translate-x-0.5 transition-transform"></i>
+        </button>
+
+      </div>
+
+      <!-- Bottom Info Bar -->
+      <div class="w-full max-w-2xl bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div class="flex flex-col gap-0.5">
+          <h3 id="lightbox-title" class="font-extrabold text-base md:text-lg text-white"></h3>
+          <p id="lightbox-location" class="text-xs text-white/80 flex items-center justify-center sm:justify-start gap-1.5 font-semibold">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green shrink-0"></i>
+            <span></span>
+          </p>
+        </div>
+        <div class="flex items-center gap-2 text-[11px] font-bold text-white/70">
+          <span class="px-3 py-1 bg-white/10 rounded-lg border border-white/10 flex items-center gap-1.5">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span>Use Arrow Keys &amp; Esc to navigate</span>
+          </span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -405,4 +940,3 @@
   <script type="module" src="/js/app.js"></script>
 </body>
 </html>
-
