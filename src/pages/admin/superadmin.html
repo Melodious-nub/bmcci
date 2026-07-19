@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Admin | BMCCI Control Center</title>
+  <link rel="icon" type="image/png" href="https://bmcci.org.bd/public/storage/upload/conf/250128092904-7229favicon (1).png">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    const currentUser = authService.guardPortalRoute('superadmin');
+    if (!currentUser) throw new Error('Unauthorized');
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f1f5f9; color: #334155; overflow: hidden; height: 100vh; display: flex; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+    /* SIDEBAR */
+    .sidebar { width: 260px; height: 100vh; background: #0f172a; display: flex; flex-direction: column; flex-shrink: 0; position: relative; z-index: 20; }
+    .sidebar-brand { height: 72px; display: flex; align-items: center; padding: 0 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .sidebar-brand img { height: 38px; filter: brightness(0) invert(1); }
+    .sidebar-user { padding: 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; }
+    .sidebar-user img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #006a4e; object-fit: cover; }
+    .nav-section-label { font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; padding: 20px 20px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 11px 20px; margin: 2px 10px; border-radius: 10px; color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; text-decoration: none; border: none; background: none; width: calc(100% - 20px); text-align: left; }
+    .nav-item:hover { background: rgba(255,255,255,0.06); color: white; }
+    .nav-item.active { background: rgba(0,106,78,0.3); color: #4ade80; }
+    .nav-item i { width: 16px; height: 16px; flex-shrink: 0; }
+    .nav-badge { margin-left: auto; background: #dc2626; color: white; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 50px; }
+    .sidebar-footer { margin-top: auto; padding: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; border-radius: 10px; background: rgba(220,38,38,0.1); color: #f87171; font-size: 12px; font-weight: 700; cursor: pointer; border: 1px solid rgba(220,38,38,0.2); transition: all 0.15s; }
+    .logout-btn:hover { background: #dc2626; color: white; border-color: #dc2626; }
+
+    /* MAIN */
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar { height: 72px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; flex-shrink: 0; }
+    .content-area { flex: 1; overflow-y: auto; padding: 32px; }
+    .panel { display: none; }
+    .panel.active { display: block; animation: fadeUp 0.35s ease; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+    /* CARDS */
+    .stat-card { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .stat-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .stat-value { font-size: 30px; font-weight: 900; color: #0f172a; }
+    .stat-label { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* TABLE */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .data-table thead th { padding: 12px 16px; text-align: left; font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.08em; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+    .data-table tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.12s; }
+    .data-table tbody tr:hover { background: #f8fafc; }
+    .data-table tbody td { padding: 14px 16px; }
+    .badge { display: inline-flex; padding: 3px 10px; border-radius: 50px; font-size: 10px; font-weight: 800; }
+    .badge-green { background: #dcfce7; color: #15803d; }
+    .badge-blue { background: #dbeafe; color: #1d4ed8; }
+    .badge-red { background: #fee2e2; color: #dc2626; }
+    .badge-gold { background: #fef9c3; color: #92400e; }
+    .badge-gray { background: #f1f5f9; color: #475569; }
+    
+    /* MODAL */
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:100; display:none; align-items:center; justify-content:center; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:white; border-radius:20px; padding:32px; width:90%; max-width:480px; max-height:90vh; overflow-y:auto; position:relative; animation:fadeUp 0.25s ease; }
+    .modal-close { position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; border:1px solid #e2e8f0; background:white; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#64748b; }
+    .form-group { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+    .form-label { font-size:11px; font-weight:800; color:#0f172a; text-transform:uppercase; letter-spacing:0.06em; }
+    .form-input { height:42px; padding:0 14px; border:1.5px solid #e2e8f0; border-radius:10px; font-size:13px; color:#0f172a; outline:none; transition:border-color 0.15s; background:#f8fafc; font-family:inherit; }
+    .form-input:focus { border-color:#006a4e; background:white; }
+    .form-select { height:42px; padding:0 14px; border:1.5px solid #e2e8f0; border-radius:10px; font-size:13px; color:#0f172a; outline:none; background:#f8fafc; font-family:inherit; width:100%; }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:10px; font-size:13px; font-weight:700; cursor:pointer; border:none; transition:all 0.15s; }
+    .btn-primary { background:#006a4e; color:white; } .btn-primary:hover { background:#004d38; }
+    .btn-secondary { background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; } .btn-secondary:hover { background:#e2e8f0; }
+    .btn-danger { background:#fee2e2; color:#dc2626; } .btn-danger:hover { background:#dc2626; color:white; }
+    .btn-sm { padding:6px 12px; font-size:12px; border-radius:8px; }
+
+    /* SETTINGS TOGGLE */
+    .toggle { position:relative; width:48px; height:26px; background:#e2e8f0; border-radius:50px; cursor:pointer; transition:background 0.2s; }
+    .toggle.on { background:#006a4e; }
+    .toggle::after { content:''; position:absolute; top:3px; left:3px; width:20px; height:20px; background:white; border-radius:50%; transition:transform 0.2s; box-shadow:0 1px 4px rgba(0,0,0,0.2); }
+    .toggle.on::after { transform:translateX(22px); }
+
+    /* LOG ITEM */
+    .log-item { display:flex; align-items:flex-start; gap:14px; padding:14px 0; border-bottom:1px solid #f1f5f9; }
+    .log-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+    
+    .mini-chart { display:flex; align-items:flex-end; gap:3px; height:40px; }
+    .mini-bar { flex:1; background:#006a4e; border-radius:3px 3px 0 0; opacity:0.7; min-width:8px; }
+    .mini-bar:last-child { opacity:1; }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <img src="https://bmcci.org.bd/public/images/logo.png" alt="BMCCI" />
+  </div>
+  <div class="sidebar-user">
+    <img src="" alt="Avatar" class="auth-user-avatar" />
+    <div>
+      <div style="font-size:13px;font-weight:700;color:white;" class="auth-user-name">...</div>
+      <div style="font-size:10px;font-weight:800;color:#4ade80;text-transform:uppercase;letter-spacing:0.08em;">Root Access</div>
+    </div>
+  </div>
+  <nav style="flex:1;overflow-y:auto;padding:8px 0;">
+    <div class="nav-section-label">Control Center</div>
+    <button class="nav-item active" onclick="switchPanel('dashboard', this)">
+      <i data-lucide="layout-dashboard"></i> Dashboard
+    </button>
+    <button class="nav-item" onclick="switchPanel('users', this)">
+      <i data-lucide="users-2"></i> User Management
+    </button>
+    <button class="nav-item" onclick="switchPanel('roles', this)">
+      <i data-lucide="shield-check"></i> Roles & Permissions
+    </button>
+    <div class="nav-section-label">Analytics</div>
+    <button class="nav-item" onclick="switchPanel('logs', this)">
+      <i data-lucide="activity"></i> Audit Logs <span class="nav-badge">12</span>
+    </button>
+    <button class="nav-item" onclick="switchPanel('settings', this)">
+      <i data-lucide="settings"></i> Global Settings
+    </button>
+    <div class="nav-section-label">Website</div>
+    <a href="/index.html" target="_blank" class="nav-item" style="text-decoration:none;">
+      <i data-lucide="external-link"></i> View Public Site
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="logout-btn auth-logout-btn">
+      <i data-lucide="log-out" style="width:15px;height:15px;"></i> Sign Out
+    </button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div>
+      <div id="page-title" style="font-size:18px;font-weight:900;color:#0f172a;">System Dashboard</div>
+      <div id="page-subtitle" style="font-size:12px;color:#94a3b8;font-weight:500;margin-top:2px;">Platform overview and performance metrics</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span style="font-size:11px;color:#94a3b8;font-weight:600;background:#f1f5f9;padding:4px 10px;border-radius:50px;">🟢 All Systems Operational</span>
+      <div style="width:36px;height:36px;border-radius:50%;background:#e2e8f0;overflow:hidden;border:2px solid #e2e8f0;">
+        <img class="auth-user-avatar" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- ===== PANEL: DASHBOARD ===== -->
+    <div id="panel-dashboard" class="panel active">
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:24px;">
+        <div class="stat-card">
+          <div style="display:flex;justify-content:space-between;">
+            <div>
+              <div class="stat-label">Total Users</div>
+              <div class="stat-value">3</div>
+            </div>
+            <div class="stat-icon" style="background:#dcfce7;color:#006a4e;"><i data-lucide="users" style="width:20px;height:20px;"></i></div>
+          </div>
+          <div class="mini-chart">
+            <div class="mini-bar" style="height:40%;"></div>
+            <div class="mini-bar" style="height:60%;"></div>
+            <div class="mini-bar" style="height:45%;"></div>
+            <div class="mini-bar" style="height:80%;"></div>
+            <div class="mini-bar" style="height:100%;"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div style="display:flex;justify-content:space-between;">
+            <div>
+              <div class="stat-label">Active Sessions</div>
+              <div class="stat-value">1</div>
+            </div>
+            <div class="stat-icon" style="background:#dbeafe;color:#1d4ed8;"><i data-lucide="activity" style="width:20px;height:20px;"></i></div>
+          </div>
+          <div style="font-size:11px;color:#22c55e;font-weight:700;display:flex;align-items:center;gap:4px;">
+            <span style="width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite;"></span>
+            Live — You are online
+          </div>
+        </div>
+        <div class="stat-card">
+          <div style="display:flex;justify-content:space-between;">
+            <div>
+              <div class="stat-label">Security Alerts</div>
+              <div class="stat-value">0</div>
+            </div>
+            <div class="stat-icon" style="background:#fef9c3;color:#d97706;"><i data-lucide="shield-alert" style="width:20px;height:20px;"></i></div>
+          </div>
+          <div style="font-size:11px;color:#22c55e;font-weight:700;">✓ No threats detected</div>
+        </div>
+        <div class="stat-card">
+          <div style="display:flex;justify-content:space-between;">
+            <div>
+              <div class="stat-label">Uptime</div>
+              <div class="stat-value">99.9%</div>
+            </div>
+            <div class="stat-icon" style="background:#f3e8ff;color:#9333ea;"><i data-lucide="server" style="width:20px;height:20px;"></i></div>
+          </div>
+          <div style="font-size:11px;color:#94a3b8;font-weight:700;">Last 30 days</div>
+        </div>
+      </div>
+
+      <!-- Quick Actions + Recent Activity -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;">
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+          <div style="padding:20px 24px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div style="font-size:15px;font-weight:800;color:#0f172a;">User Directory</div>
+              <div style="font-size:12px;color:#94a3b8;margin-top:2px;">All registered portal accounts</div>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="switchPanel('users', document.querySelector('[onclick=\'switchPanel(\\\'users\\\', this)\']'))">
+              <i data-lucide="arrow-right" style="width:13px;height:13px;"></i> Manage
+            </button>
+          </div>
+          <table class="data-table">
+            <thead><tr><th>User</th><th>Role</th><th>Status</th></tr></thead>
+            <tbody id="dashboard-users-preview"></tbody>
+          </table>
+        </div>
+        <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:16px;padding:24px;color:white;display:flex;flex-direction:column;gap:16px;">
+          <div style="font-size:14px;font-weight:800;">Quick Actions</div>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.1);" onclick="openAddUserModal()">
+            <i data-lucide="user-plus" style="width:14px;height:14px;"></i> Add New User
+          </button>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.1);" onclick="switchPanel('settings', null)">
+            <i data-lucide="settings" style="width:14px;height:14px;"></i> System Settings
+          </button>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.1);" onclick="switchPanel('logs', null)">
+            <i data-lucide="file-text" style="width:14px;height:14px;"></i> View Audit Logs
+          </button>
+          <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Logged in as</div>
+            <div style="font-size:13px;font-weight:700;" class="auth-user-name">...</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);" class="auth-user-email">...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: USER MANAGEMENT ===== -->
+    <div id="panel-users" class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#0f172a;">Access Control Directory</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:2px;">Create, modify and revoke portal user access</div>
+        </div>
+        <button class="btn btn-primary" onclick="openAddUserModal()">
+          <i data-lucide="user-plus" style="width:15px;height:15px;"></i> Add User
+        </button>
+      </div>
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+        <div style="padding:16px 20px;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:12px;">
+          <div style="position:relative;flex:1;max-width:320px;">
+            <i data-lucide="search" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:#94a3b8;"></i>
+            <input type="text" id="user-search" placeholder="Search by name or email..." oninput="filterUsers()" style="width:100%;height:36px;padding:0 14px 0 34px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:12px;outline:none;background:white;font-family:inherit;color:#0f172a;" />
+          </div>
+          <select id="role-filter" onchange="filterUsers()" style="height:36px;padding:0 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:12px;color:#475569;outline:none;background:white;font-family:inherit;">
+            <option value="">All Roles</option>
+            <option value="superadmin">Super Admin</option>
+            <option value="admin">Admin</option>
+            <option value="member">Member</option>
+          </select>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User Details</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Last Active</th>
+                <th style="text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: ROLES & PERMISSIONS ===== -->
+    <div id="panel-roles" class="panel">
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:800;color:#0f172a;">Role & Permission Matrix</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:2px;">Define what each role can access across the portal</div>
+      </div>
+      <div style="display:grid;gap:16px;">
+        <!-- SuperAdmin Role Card -->
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;border-radius:10px;background:#dcfce7;display:flex;align-items:center;justify-content:center;">
+                <i data-lucide="shield" style="width:20px;height:20px;color:#006a4e;"></i>
+              </div>
+              <div>
+                <div style="font-size:14px;font-weight:800;color:#0f172a;">Super Administrator</div>
+                <div style="font-size:12px;color:#94a3b8;">Full root access — no restrictions</div>
+              </div>
+            </div>
+            <span class="badge badge-green">1 User</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> Manage All Users
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> System Configuration
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> View Audit Logs
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> All Admin Permissions
+            </div>
+          </div>
+        </div>
+        <!-- Admin Role Card -->
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;border-radius:10px;background:#dbeafe;display:flex;align-items:center;justify-content:center;">
+                <i data-lucide="user-cog" style="width:20px;height:20px;color:#1d4ed8;"></i>
+              </div>
+              <div>
+                <div style="font-size:14px;font-weight:800;color:#0f172a;">Administrator</div>
+                <div style="font-size:12px;color:#94a3b8;">Content and operations management</div>
+              </div>
+            </div>
+            <span class="badge badge-blue">1 User</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> Manage Events
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> Handle Inquiries
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> Approve Members
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="x-circle" style="width:14px;height:14px;color:#dc2626;"></i> System Config
+            </div>
+          </div>
+        </div>
+        <!-- Member Role Card -->
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;border-radius:10px;background:#fef9c3;display:flex;align-items:center;justify-content:center;">
+                <i data-lucide="briefcase" style="width:20px;height:20px;color:#d97706;"></i>
+              </div>
+              <div>
+                <div style="font-size:14px;font-weight:800;color:#0f172a;">Corporate Member</div>
+                <div style="font-size:12px;color:#94a3b8;">Member-only exclusive resources</div>
+              </div>
+            </div>
+            <span class="badge badge-gold">1 User</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> View Exclusive Events
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="check-circle" style="width:14px;height:14px;color:#16a34a;"></i> B2B Network Access
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="x-circle" style="width:14px;height:14px;color:#dc2626;"></i> Admin Functions
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;">
+              <i data-lucide="x-circle" style="width:14px;height:14px;color:#dc2626;"></i> User Management
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: AUDIT LOGS ===== -->
+    <div id="panel-logs" class="panel">
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:800;color:#0f172a;">Audit Trail</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:2px;">All system access and modification events</div>
+      </div>
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+        <div style="padding:16px 20px;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:12px;">
+          <span class="badge badge-gray">Today</span>
+          <span class="badge badge-gray">This Week</span>
+          <span class="badge badge-gray">All Time</span>
+          <div style="margin-left:auto;">
+            <button class="btn btn-secondary btn-sm">
+              <i data-lucide="download" style="width:13px;height:13px;"></i> Export CSV
+            </button>
+          </div>
+        </div>
+        <div style="padding:8px 24px;" id="audit-log-list"></div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: SETTINGS ===== -->
+    <div id="panel-settings" class="panel">
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:800;color:#0f172a;">Platform Configuration</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:2px;">Manage global settings for the BMCCI portal</div>
+      </div>
+      <div style="display:grid;gap:16px;">
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;">
+          <div style="font-size:13px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #f1f5f9;">Security Settings</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0f172a;">Session Timeout</div>
+                <div style="font-size:12px;color:#94a3b8;">Auto-logout after 24 hours of inactivity</div>
+              </div>
+              <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0f172a;">Login Notifications</div>
+                <div style="font-size:12px;color:#94a3b8;">Notify super admin on new user logins</div>
+              </div>
+              <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0f172a;">Two-Factor Authentication</div>
+                <div style="font-size:12px;color:#94a3b8;">Require 2FA for admin accounts (when backend integrated)</div>
+              </div>
+              <div class="toggle" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;">
+          <div style="font-size:13px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #f1f5f9;">Portal Appearance</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0f172a;">Dark Mode</div>
+                <div style="font-size:12px;color:#94a3b8;">Enable dark theme for all portal users</div>
+              </div>
+              <div class="toggle" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0f172a;">Compact Mode</div>
+                <div style="font-size:12px;color:#94a3b8;">Reduce padding and density for power users</div>
+              </div>
+              <div class="toggle" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button class="btn btn-primary"><i data-lucide="save" style="width:14px;height:14px;"></i> Save Settings</button>
+          <button class="btn btn-secondary">Reset Defaults</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content-area -->
+</div><!-- /main -->
+
+<!-- Add/Edit User Modal -->
+<div class="modal-overlay" id="user-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('user-modal')">
+      <i data-lucide="x" style="width:15px;height:15px;"></i>
+    </button>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:6px;" id="modal-title">Add New User</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:24px;">Fill in the user details below</div>
+    
+    <div class="form-group">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-input" id="modal-name" placeholder="e.g. Rahman Ahmed" style="width:100%;" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input type="email" class="form-input" id="modal-email" placeholder="user@example.com" style="width:100%;" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-input" id="modal-password" placeholder="Min. 8 characters" style="width:100%;" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Role</label>
+      <select class="form-select" id="modal-role">
+        <option value="admin">Admin</option>
+        <option value="member">Member</option>
+        <option value="superadmin">Super Admin</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
+      <button class="btn btn-secondary" onclick="closeModal('user-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveUser()">
+        <i data-lucide="save" style="width:14px;height:14px;"></i> Save User
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+  authService.populateUserInfo();
+
+  // Mock local user store (extends MOCK_USERS for UI demonstration)
+  let localUsers = MOCK_USERS.map(u => ({...u, status: 'active', lastActive: 'Just now'}));
+  let editingUserId = null;
+
+  const AUDIT_LOGS = [
+    { type: 'auth', color: '#22c55e', user: 'superadmin@gmail.com', action: 'Logged into Super Admin portal', time: '2 mins ago' },
+    { type: 'user', color: '#3b82f6', user: 'admin@gmail.com', action: 'Admin account password updated', time: '1 hour ago' },
+    { type: 'user', color: '#d97706', user: 'member@gmail.com', action: 'New member account created', time: '3 hours ago' },
+    { type: 'auth', color: '#22c55e', user: 'admin@gmail.com', action: 'Logged into Admin portal', time: '5 hours ago' },
+    { type: 'security', color: '#dc2626', user: 'unknown@test.com', action: 'Failed login attempt — invalid password', time: 'Yesterday, 11:42 PM' },
+    { type: 'system', color: '#9333ea', user: 'System', action: 'Session tokens refreshed for all users', time: 'Yesterday, 12:00 AM' },
+    { type: 'user', color: '#3b82f6', user: 'superadmin@gmail.com', action: 'User permission role updated: member@gmail.com → Patron Member', time: '2 days ago' },
+    { type: 'auth', color: '#22c55e', user: 'member@gmail.com', action: 'First login to Member portal', time: '3 days ago' },
+  ];
+
+  function switchPanel(id, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    if (btn) btn.classList.add('active');
+    const titles = {
+      dashboard: ['System Dashboard', 'Platform overview and performance metrics'],
+      users: ['User Management', 'Create, modify and revoke portal access'],
+      roles: ['Roles & Permissions', 'Define access control matrix'],
+      logs: ['Audit Logs', 'All system access and modification events'],
+      settings: ['Global Settings', 'Configure portal-wide preferences'],
+    };
+    if (titles[id]) {
+      document.getElementById('page-title').textContent = titles[id][0];
+      document.getElementById('page-subtitle').textContent = titles[id][1];
+    }
+    if (id === 'users') renderUsersTable();
+    if (id === 'logs') renderLogs();
+    lucide.createIcons();
+  }
+
+  function renderUsersTable(list = localUsers) {
+    const tbody = document.getElementById('users-table-body');
+    if (!tbody) return;
+    const roleBadges = { superadmin: 'badge-green', admin: 'badge-blue', member: 'badge-gold' };
+    const roleLabels = { superadmin: 'Super Admin', admin: 'Admin', member: 'Member' };
+    tbody.innerHTML = list.map(u => `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img src="${u.avatar}" style="width:34px;height:34px;border-radius:50%;border:1px solid #e2e8f0;"/>
+            <div>
+              <div style="font-weight:700;color:#0f172a;font-size:13px;">${u.name}</div>
+              <div style="font-size:11px;color:#94a3b8;">${u.email}</div>
+            </div>
+          </div>
+        </td>
+        <td><span class="badge ${roleBadges[u.role]}">${roleLabels[u.role]}</span></td>
+        <td>
+          <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16a34a;">
+            <span style="width:6px;height:6px;background:#22c55e;border-radius:50%;"></span> Active
+          </span>
+        </td>
+        <td style="font-size:12px;color:#94a3b8;">${u.lastActive || '—'}</td>
+        <td>
+          <div style="display:flex;justify-content:flex-end;gap:6px;">
+            <button class="btn btn-secondary btn-sm" onclick="openEditUserModal('${u.id}')">
+              <i data-lucide="edit-2" style="width:13px;height:13px;"></i> Edit
+            </button>
+            <button class="btn btn-danger btn-sm" onclick="deleteUser('${u.id}')">
+              <i data-lucide="trash-2" style="width:13px;height:13px;"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+    // Preview for dashboard
+    const preview = document.getElementById('dashboard-users-preview');
+    if (preview) {
+      preview.innerHTML = localUsers.map(u => `
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <img src="${u.avatar}" style="width:28px;height:28px;border-radius:50%;"/>
+              <span style="font-weight:700;color:#0f172a;font-size:12px;">${u.name}</span>
+            </div>
+          </td>
+          <td><span class="badge ${roleBadges[u.role]}" style="font-size:10px;">${roleLabels[u.role]}</span></td>
+          <td><span style="font-size:11px;color:#22c55e;font-weight:700;">Active</span></td>
+        </tr>
+      `).join('');
+    }
+    lucide.createIcons();
+  }
+
+  function filterUsers() {
+    const q = document.getElementById('user-search').value.toLowerCase();
+    const r = document.getElementById('role-filter').value;
+    const filtered = localUsers.filter(u =>
+      (u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q)) &&
+      (!r || u.role === r)
+    );
+    renderUsersTable(filtered);
+  }
+
+  function openAddUserModal() {
+    editingUserId = null;
+    document.getElementById('modal-title').textContent = 'Add New User';
+    document.getElementById('modal-name').value = '';
+    document.getElementById('modal-email').value = '';
+    document.getElementById('modal-password').value = '';
+    document.getElementById('modal-role').value = 'member';
+    document.getElementById('user-modal').classList.add('open');
+    lucide.createIcons();
+  }
+
+  function openEditUserModal(id) {
+    const user = localUsers.find(u => u.id === id);
+    if (!user) return;
+    editingUserId = id;
+    document.getElementById('modal-title').textContent = 'Edit User';
+    document.getElementById('modal-name').value = user.name;
+    document.getElementById('modal-email').value = user.email;
+    document.getElementById('modal-password').value = user.password;
+    document.getElementById('modal-role').value = user.role;
+    document.getElementById('user-modal').classList.add('open');
+    lucide.createIcons();
+  }
+
+  function saveUser() {
+    const name = document.getElementById('modal-name').value;
+    const email = document.getElementById('modal-email').value;
+    const password = document.getElementById('modal-password').value;
+    const role = document.getElementById('modal-role').value;
+    if (!name || !email || !password) return alert('Please fill all fields.');
+
+    if (editingUserId) {
+      const idx = localUsers.findIndex(u => u.id === editingUserId);
+      if (idx > -1) {
+        localUsers[idx] = { ...localUsers[idx], name, email, password, role,
+          avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=006a4e&color=fff&bold=true`
+        };
+      }
+    } else {
+      localUsers.push({
+        id: 'usr_' + Date.now(), name, email, password, role,
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=006a4e&color=fff&bold=true`,
+        status: 'active', lastActive: 'Never'
+      });
+    }
+    closeModal('user-modal');
+    renderUsersTable();
+  }
+
+  function deleteUser(id) {
+    if (!confirm('Revoke access for this user?')) return;
+    localUsers = localUsers.filter(u => u.id !== id);
+    renderUsersTable();
+  }
+
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+  function renderLogs() {
+    const list = document.getElementById('audit-log-list');
+    const icons = { auth: 'log-in', user: 'user', security: 'shield-alert', system: 'settings' };
+    list.innerHTML = AUDIT_LOGS.map(log => `
+      <div class="log-item">
+        <div class="log-dot" style="background:${log.color};"></div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:600;color:#0f172a;">${log.action}</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:3px;display:flex;gap:12px;">
+            <span style="display:flex;align-items:center;gap:4px;"><i data-lucide="user" style="width:11px;height:11px;"></i>${log.user}</span>
+            <span>${log.time}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    lucide.createIcons();
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    renderUsersTable();
+    renderLogs();
+    lucide.createIcons();
+  });
+
+  document.getElementById('user-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal('user-modal');
+  });
+</script>
+<style>@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }</style>
+</body>
+</html>
