@@ -386,3 +386,48 @@ html.lenis, html.lenis body {
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s infinite ease-in-out;
 }
+
+/* Modern Glowing Glassmorphism & Micro-animations */
+.hover-glow-green {
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow-green:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 40px -12px rgba(0, 106, 78, 0.22), 0 0 20px rgba(0, 106, 78, 0.1);
+  border-color: rgba(0, 106, 78, 0.4) !important;
+}
+
+.hover-glow-blue {
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow-blue:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 40px -12px rgba(0, 51, 160, 0.22), 0 0 20px rgba(0, 51, 160, 0.1);
+  border-color: rgba(0, 51, 160, 0.4) !important;
+}
+
+.glass-card-interactive {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-interactive:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: var(--brand-green);
+  box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08);
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.05); }
+}
+
+.animate-float-orb {
+  animation: floatOrb 8s ease-in-out infinite;
+}
+

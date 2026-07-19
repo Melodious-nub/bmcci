@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,14 +34,72 @@
     <!-- include components/ui/page-header.html -->
 
     <!-- ==========================================================================
-         SECTION 02 â€” SMART SEARCH SYSTEM
+         SECTION 02 — GLOBAL NETWORK HIGHLIGHT
          ========================================================================== -->
-    <section class="section-compact bg-white border-b border-neutral-border" id="search-section">
-      <div class="container-shell max-w-4xl py-6">
-        <!-- Reusable Search bar and filters include -->
-        <div class="flex flex-col gap-4">
-          <!-- include components/ui/search-bar.html -->
-          <!-- include components/ui/filter-bar.html -->
+    <section class="relative py-16 bg-neutral-bg overflow-hidden" id="network-highlight-sec">
+      <!-- Background elements with Modern Animated Lines -->
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center opacity-5"></div>
+      
+      <!-- Modern Animated Grid Line Background -->
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      
+      <!-- Sweeping Vertical Light Lines -->
+      <div class="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-brand-green to-transparent opacity-30" style="animation: sweepDown 4s linear infinite;"></div>
+      <div class="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-brand-blue to-transparent opacity-30" style="animation: sweepDown 6s linear infinite; animation-delay: 2s;"></div>
+      
+      <!-- Ambient Glows -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-brand-green/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+      
+      <div class="container-shell relative z-10">
+        <div class="bg-white/70 backdrop-blur-md border border-white/50 rounded-2xl p-8 md:p-12 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] flex flex-col md:flex-row items-center justify-between gap-8 animate-reveal relative overflow-hidden">
+          
+          <!-- Modern Animated Laser Edge Top -->
+          <div class="absolute top-0 left-0 w-full h-[4px] bg-neutral-border/40">
+            <div class="h-full bg-gradient-to-r from-transparent via-brand-green to-transparent w-1/2" style="animation: sweepRight 3s ease-in-out infinite;"></div>
+          </div>
+          
+          <!-- Keyframes for Modern Lines -->
+          <style>
+            @keyframes sweepRight {
+              0% { transform: translateX(-100%); opacity: 0; }
+              50% { opacity: 1; }
+              100% { transform: translateX(200%); opacity: 0; }
+            }
+            @keyframes sweepDown {
+              0% { transform: translateY(-100%); }
+              100% { transform: translateY(100%); }
+            }
+          </style>
+          
+          <div class="flex flex-col gap-3 max-w-xl text-left">
+            <span class="text-xs font-bold text-brand-green uppercase tracking-widest flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span> Network Active
+            </span>
+            <h2 class="font-extrabold text-3xl md:text-4xl text-text-dark leading-tight tracking-tight">Connect with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-blue">650+</span> Industry Leaders</h2>
+            <p class="text-text-body text-sm md:text-base leading-relaxed mt-2">
+              Our verified corporate directory bridges high-value business matching between Bangladesh and Malaysia. Search directly or use the smart filters below.
+            </p>
+          </div>
+          <div class="w-full md:w-auto shrink-0 flex flex-col gap-4">
+            <div class="relative group" id="hero-search-container">
+              <input type="text" id="directory-hero-search" placeholder="Search companies, members..." autocomplete="off" class="w-full md:w-80 h-14 pl-12 pr-4 bg-white/90 border border-neutral-border rounded-xl shadow-sm outline-none focus:border-brand-green focus:ring-4 focus:ring-brand-green/10 transition-all font-medium text-sm text-text-dark placeholder-text-muted">
+              <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted group-focus-within:text-brand-green transition-colors"></i>
+              
+              <!-- Search Results Dropdown -->
+              <div id="hero-search-dropdown" class="absolute top-[calc(100%+8px)] left-0 w-full md:w-[400px] bg-white border border-neutral-border rounded-xl shadow-floating z-50 hidden flex-col max-h-[350px] overflow-y-auto">
+                <div id="hero-search-results" class="flex flex-col"></div>
+                <div id="hero-search-empty" class="p-6 text-center text-xs text-text-muted hidden flex-col items-center gap-2">
+                  <i data-lucide="search-x" class="w-6 h-6 text-text-muted/50"></i>
+                  <span>No matching members found</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-bold text-text-dark">
+              <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-brand-green"></i> Verified Profiles</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="building-2" class="w-4 h-4 text-brand-blue"></i> 12 Sectors</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -62,68 +120,155 @@
         </div>
 
         <!-- Cards Row -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
           
           <!-- Card 1 -->
-          <!-- include components/ui/directory-card.html -->
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-scroll-reveal="true" data-reveal-delay="0.1">
+            <div class="h-36 w-full relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" alt="Logistics">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span class="absolute bottom-4 left-5 inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Bangladesh</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+              <div class="absolute -top-10 right-6 w-16 h-16 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                <img src="https://ui-avatars.com/api/?name=AC&background=00A550&color=fff&font-size=0.4" class="w-full h-full object-contain rounded-lg" alt="Logo">
+              </div>
+              <div class="flex flex-col gap-2 pt-2">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Logistics & Cargo</span>
+                <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Apex Cargo & Logistics Ltd.</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3 mt-1">Premier clearing agency and logistics provider specializing in container shipping cargo solutions connecting Chittagong seaport with Port Klang channels.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2012</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
 
           <!-- Card 2 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-            <div class="flex flex-col gap-3.5">
-              <div class="flex items-start justify-between gap-4">
-                <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">
-                  AX
-                </div>
-                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">
-                  Malaysia
-                </span>
-              </div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Telecommunications</span>
-                <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">
-                  Axiata Group Berhad
-                </h3>
-              </div>
-              <p class="text-text-body text-xs leading-relaxed line-clamp-3">
-                Regional telecommunications powerhouse providing core mobile infrastructure solutions and digital services in Southeast Asia and Bangladesh.
-              </p>
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-scroll-reveal="true" data-reveal-delay="0.2">
+            <div class="h-36 w-full relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" alt="Telecom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span class="absolute bottom-4 left-5 inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Malaysia</span>
             </div>
-            <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
-              <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2008</span>
-              <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
-                <span>View Profile</span>
-                <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
-              </button>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+              <div class="absolute -top-10 right-6 w-16 h-16 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                <img src="https://ui-avatars.com/api/?name=AG&background=0066B3&color=fff&font-size=0.4" class="w-full h-full object-contain rounded-lg" alt="Logo">
+              </div>
+              <div class="flex flex-col gap-2 pt-2">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Telecommunications</span>
+                <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Axiata Group Berhad</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3 mt-1">Regional telecommunications powerhouse providing core mobile infrastructure solutions and digital services in Southeast Asia and Bangladesh.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2008</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Card 3 -->
-          <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-            <div class="flex flex-col gap-3.5">
-              <div class="flex items-start justify-between gap-4">
-                <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">
-                  BS
-                </div>
-                <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">
-                  Bangladesh
-                </span>
-              </div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Manufacturing</span>
-                <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">
-                  Bakar Spinners Consortium Ltd.
-                </h3>
-              </div>
-              <p class="text-text-body text-xs leading-relaxed line-clamp-3">
-                Leading raw textile exporter producing premium combed and carded cotton yarns for regional apparel manufacturers.
-              </p>
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-scroll-reveal="true" data-reveal-delay="0.3">
+            <div class="h-36 w-full relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" alt="Manufacturing">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span class="absolute bottom-4 left-5 inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Bangladesh</span>
             </div>
-            <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
-              <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2015</span>
-              <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
-                <span>View Profile</span>
-                <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
-              </button>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+              <div class="absolute -top-10 right-6 w-16 h-16 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                <img src="https://ui-avatars.com/api/?name=BS&background=B38B36&color=fff&font-size=0.4" class="w-full h-full object-contain rounded-lg" alt="Logo">
+              </div>
+              <div class="flex flex-col gap-2 pt-2">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Manufacturing</span>
+                <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Bakar Spinners Consortium</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3 mt-1">Leading raw textile exporter producing premium combed and carded cotton yarns for regional apparel manufacturers.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2015</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-scroll-reveal="true" data-reveal-delay="0.1">
+            <div class="h-36 w-full relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" alt="Finance">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span class="absolute bottom-4 left-5 inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Malaysia</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+              <div class="absolute -top-10 right-6 w-16 h-16 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                <img src="https://ui-avatars.com/api/?name=MB&background=00A550&color=fff&font-size=0.4" class="w-full h-full object-contain rounded-lg" alt="Logo">
+              </div>
+              <div class="flex flex-col gap-2 pt-2">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Financial Services</span>
+                <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Maybank Group Corporate</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3 mt-1">Providing robust banking, corporate financing, and investment advisory services across the ASEAN region.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2010</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-scroll-reveal="true" data-reveal-delay="0.2">
+            <div class="h-36 w-full relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" alt="Energy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span class="absolute bottom-4 left-5 inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Bangladesh</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+              <div class="absolute -top-10 right-6 w-16 h-16 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                <img src="https://ui-avatars.com/api/?name=GE&background=0066B3&color=fff&font-size=0.4" class="w-full h-full object-contain rounded-lg" alt="Logo">
+              </div>
+              <div class="flex flex-col gap-2 pt-2">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Renewable Energy</span>
+                <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Green Edge Power Ltd.</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3 mt-1">Pioneers in solar micro-grid developments and sustainable wind energy infrastructure in the Bengal delta region.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2018</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-scroll-reveal="true" data-reveal-delay="0.3">
+            <div class="h-36 w-full relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" alt="Technology">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <span class="absolute bottom-4 left-5 inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Malaysia</span>
+            </div>
+            <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+              <div class="absolute -top-10 right-6 w-16 h-16 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                <img src="https://ui-avatars.com/api/?name=NS&background=B38B36&color=fff&font-size=0.4" class="w-full h-full object-contain rounded-lg" alt="Logo">
+              </div>
+              <div class="flex flex-col gap-2 pt-2">
+                <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Technology & Software</span>
+                <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Nusantara Systems Bhd.</h3>
+                <p class="text-text-body text-xs leading-relaxed line-clamp-3 mt-1">Enterprise software integration and regional IT supply chain management systems supporting cross-border trade.</p>
+              </div>
+              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2014</span>
+                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -149,42 +294,108 @@
         </div>
 
         <!-- Grid layout -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto text-left">
           
-          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
-            <i data-lucide="check" class="w-5 h-5 text-brand-green shrink-0"></i>
-            <span class="block">Manufacturing</span>
-            <span class="text-[10px] text-text-muted font-semibold">120 Companies</span>
+          <button class="relative h-56 rounded-xl overflow-hidden group shadow-card hover-lift" data-scroll-reveal="true" data-reveal-delay="0.1">
+            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-premium duration-700 group-hover:scale-110" alt="Manufacturing">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-brand-green/90 transition-colors duration-500"></div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end z-10">
+              <div class="flex items-center gap-4 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shrink-0">
+                  <i data-lucide="package" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="text-white font-extrabold text-xl tracking-tight leading-none">Manufacturing</h3>
+                  <span class="text-white/70 text-[11px] font-semibold mt-1">Textiles & Garments</span>
+                </div>
+              </div>
+              <span class="text-brand-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">Explore 120 Companies <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
           </button>
 
-          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
-            <i data-lucide="globe" class="w-5 h-5 text-brand-blue shrink-0"></i>
-            <span class="block">Technology</span>
-            <span class="text-[10px] text-text-muted font-semibold">84 Companies</span>
+          <button class="relative h-56 rounded-xl overflow-hidden group shadow-card hover-lift" data-scroll-reveal="true" data-reveal-delay="0.2">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-premium duration-700 group-hover:scale-110" alt="Technology">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-brand-blue/90 transition-colors duration-500"></div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end z-10">
+              <div class="flex items-center gap-4 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shrink-0">
+                  <i data-lucide="cpu" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="text-white font-extrabold text-xl tracking-tight leading-none">Technology</h3>
+                  <span class="text-white/70 text-[11px] font-semibold mt-1">Software & IT</span>
+                </div>
+              </div>
+              <span class="text-brand-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">Explore 84 Companies <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
           </button>
 
-          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
-            <i data-lucide="check" class="w-5 h-5 text-brand-green shrink-0"></i>
-            <span class="block">Textile RMG</span>
-            <span class="text-[10px] text-text-muted font-semibold">150 Companies</span>
+          <button class="relative h-56 rounded-xl overflow-hidden group shadow-card hover-lift" data-scroll-reveal="true" data-reveal-delay="0.3">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-premium duration-700 group-hover:scale-110" alt="Logistics">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-brand-green/90 transition-colors duration-500"></div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end z-10">
+              <div class="flex items-center gap-4 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shrink-0">
+                  <i data-lucide="globe" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="text-white font-extrabold text-xl tracking-tight leading-none">Logistics</h3>
+                  <span class="text-white/70 text-[11px] font-semibold mt-1">Cargo & Supply Chain</span>
+                </div>
+              </div>
+              <span class="text-brand-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">Explore 45 Companies <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
           </button>
 
-          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
-            <i data-lucide="users" class="w-5 h-5 text-brand-gold shrink-0"></i>
-            <span class="block">Logistics Cargo</span>
-            <span class="text-[10px] text-text-muted font-semibold">45 Companies</span>
+          <button class="relative h-56 rounded-xl overflow-hidden group shadow-card hover-lift" data-scroll-reveal="true" data-reveal-delay="0.1">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-premium duration-700 group-hover:scale-110" alt="Energy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-brand-blue/90 transition-colors duration-500"></div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end z-10">
+              <div class="flex items-center gap-4 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shrink-0">
+                  <i data-lucide="building-2" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="text-white font-extrabold text-xl tracking-tight leading-none">Energy</h3>
+                  <span class="text-white/70 text-[11px] font-semibold mt-1">Renewables & JV</span>
+                </div>
+              </div>
+              <span class="text-brand-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">Explore 32 Companies <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
+          </button>
+          
+          <button class="relative h-56 rounded-xl overflow-hidden group shadow-card hover-lift" data-scroll-reveal="true" data-reveal-delay="0.2">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-premium duration-700 group-hover:scale-110" alt="Finance">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-brand-green/90 transition-colors duration-500"></div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end z-10">
+              <div class="flex items-center gap-4 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shrink-0">
+                  <i data-lucide="briefcase" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="text-white font-extrabold text-xl tracking-tight leading-none">Financial</h3>
+                  <span class="text-white/70 text-[11px] font-semibold mt-1">Banking & Advisory</span>
+                </div>
+              </div>
+              <span class="text-brand-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">Explore 78 Companies <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
           </button>
 
-          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
-            <i data-lucide="building-2" class="w-5 h-5 text-brand-green shrink-0"></i>
-            <span class="block">Energy & JV</span>
-            <span class="text-[10px] text-text-muted font-semibold">32 Companies</span>
-          </button>
-
-          <button class="bg-neutral-bgSecondary border border-neutral-border hover:border-brand-green rounded-md p-5 flex flex-col gap-3 group transition-fast text-text-dark font-bold text-sm">
-            <i data-lucide="file-text" class="w-5 h-5 text-brand-blue shrink-0"></i>
-            <span class="block">Consultancy</span>
-            <span class="text-[10px] text-text-muted font-semibold">64 Companies</span>
+          <button class="relative h-56 rounded-xl overflow-hidden group shadow-card hover-lift" data-scroll-reveal="true" data-reveal-delay="0.3">
+            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-premium duration-700 group-hover:scale-110" alt="Consultancy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-brand-blue/90 transition-colors duration-500"></div>
+            <div class="absolute inset-0 p-6 flex flex-col justify-end z-10">
+              <div class="flex items-center gap-4 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shrink-0">
+                  <i data-lucide="file-text" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="text-white font-extrabold text-xl tracking-tight leading-none">Consultancy</h3>
+                  <span class="text-white/70 text-[11px] font-semibold mt-1">Legal & Corporate</span>
+                </div>
+              </div>
+              <span class="text-brand-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">Explore 64 Companies <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+            </div>
           </button>
 
         </div>
@@ -206,19 +417,20 @@
             <!-- Industry filter selects -->
             <div class="flex flex-col gap-1.5">
               <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Business Division</label>
-              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
-                <option value="">All Divisions</option>
-                <option value="textiles">Textiles & Manufacturing</option>
+              <select id="filter-division" class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
+                <option value="all">All Divisions</option>
+                <option value="manufacturing">Manufacturing</option>
                 <option value="logistics">Logistics & Supply Chain</option>
                 <option value="telecom">Telecommunications & IT</option>
+                <option value="finance">Financial Services</option>
               </select>
             </div>
 
             <!-- Country Origin filter selects -->
             <div class="flex flex-col gap-1.5">
               <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Country Origin</label>
-              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
-                <option value="">All Countries</option>
+              <select id="filter-country" class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
+                <option value="all">All Countries</option>
                 <option value="bd">Bangladesh</option>
                 <option value="my">Malaysia</option>
               </select>
@@ -227,8 +439,8 @@
             <!-- Membership tier filter selects -->
             <div class="flex flex-col gap-1.5">
               <label class="text-[10px] font-bold text-text-dark uppercase tracking-wider">Membership Level</label>
-              <select class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
-                <option value="">All Levels</option>
+              <select id="filter-level" class="w-full h-10 px-3 border border-neutral-border rounded text-xs text-text-dark bg-white outline-none focus:border-brand-green transition-fast">
+                <option value="all">All Levels</option>
                 <option value="patron">Patron Tiers</option>
                 <option value="general">General Members</option>
                 <option value="associate">Associate Tiers</option>
@@ -236,106 +448,386 @@
             </div>
 
             <!-- Action buttons -->
-            <button class="w-full h-11 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast mt-2">
-              Apply Filters
+            <button id="apply-filters" class="w-full h-11 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast mt-2 flex items-center justify-center gap-2">
+              <i data-lucide="filter" class="w-3.5 h-3.5"></i> Apply Filters
             </button>
-            <button class="w-full text-center text-xs text-text-body font-semibold hover:text-brand-green transition-fast" onclick="window.location.reload();">
+            <button id="reset-filters" class="w-full text-center text-xs text-text-body font-semibold hover:text-brand-green transition-fast">
               Reset Filters
             </button>
           </div>
 
           <!-- Directory Cards Grid (Span 9) -->
-          <div class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="lg:col-span-9 flex flex-col gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="directory-grid">
             
             <!-- Company Card 1 -->
-            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-              <div class="flex flex-col gap-3.5">
-                <div class="flex items-start justify-between gap-4">
-                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">AP</div>
-                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">Bangladesh</span>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Logistics & Cargo</span>
-                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Apex Cargo & Logistics Ltd.</h3>
-                </div>
-                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Premier clearing agency and logistics provider specializing in container shipping cargo solutions connecting Chittagong seaport with Port Klang channels.</p>
+            <div class="directory-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-division="energy" data-country="bd" data-level="general">
+              <div class="h-32 w-full relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-700 group-hover:scale-105" alt="Energy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 inline-flex items-center px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Bangladesh</span>
               </div>
-              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
-                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2012</span>
-                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
-                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
-                </button>
+              <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                  <img src="https://ui-avatars.com/api/?name=GT&background=00A550&color=fff" class="w-full h-full object-contain rounded-lg" alt="Logo">
+                </div>
+                <div class="flex flex-col gap-1 pt-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Energy & Renewables</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">GreenTech Energy Solutions</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-2 mt-1">Pioneering sustainable solar and wind energy infrastructure development across South Asia.</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                  <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">General Since 2019</span>
+                  <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                    <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                  </button>
+                </div>
               </div>
             </div>
 
             <!-- Company Card 2 -->
-            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-              <div class="flex flex-col gap-3.5">
-                <div class="flex items-start justify-between gap-4">
-                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">AX</div>
-                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">Malaysia</span>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Telecommunications</span>
-                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Axiata Group Berhad</h3>
-                </div>
-                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Regional telecommunications powerhouse providing core mobile infrastructure solutions and digital services in Southeast Asia and Bangladesh.</p>
+            <div class="directory-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-division="manufacturing" data-country="my" data-level="patron">
+              <div class="h-32 w-full relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-700 group-hover:scale-105" alt="Manufacturing">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 inline-flex items-center px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Malaysia</span>
               </div>
-              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
-                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2008</span>
-                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
-                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
-                </button>
+              <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                  <img src="https://ui-avatars.com/api/?name=PM&background=0066B3&color=fff" class="w-full h-full object-contain rounded-lg" alt="Logo">
+                </div>
+                <div class="flex flex-col gap-1 pt-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Manufacturing</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Prime Manufacturing Group</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-2 mt-1">Advanced industrial manufacturing facility producing precision components for aerospace and automotive sectors.</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                  <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2011</span>
+                  <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                    <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                  </button>
+                </div>
               </div>
             </div>
 
             <!-- Company Card 3 -->
-            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-              <div class="flex flex-col gap-3.5">
-                <div class="flex items-start justify-between gap-4">
-                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">BS</div>
-                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-green/10 text-brand-green text-[10px] font-bold rounded-full border border-brand-green/15">Bangladesh</span>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Manufacturing</span>
-                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bakar Spinners Consortium Ltd.</h3>
-                </div>
-                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Leading raw textile exporter producing premium combed and carded cotton yarns for regional apparel manufacturers.</p>
+            <div class="directory-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-division="manufacturing" data-country="bd" data-level="general">
+              <div class="h-32 w-full relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-700 group-hover:scale-105" alt="Manufacturing">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 inline-flex items-center px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Bangladesh</span>
               </div>
-              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
-                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2015</span>
-                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
-                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
-                </button>
+              <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                  <img src="https://ui-avatars.com/api/?name=BS&background=B38B36&color=fff" class="w-full h-full object-contain rounded-lg" alt="Logo">
+                </div>
+                <div class="flex flex-col gap-1 pt-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Manufacturing</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Bakar Spinners Consortium</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-2 mt-1">Leading raw textile exporter producing premium combed and carded cotton yarns.</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                  <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">General Since 2015</span>
+                  <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                    <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                  </button>
+                </div>
               </div>
             </div>
 
             <!-- Company Card 4 -->
-            <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift p-6 flex flex-col gap-5 justify-between relative overflow-hidden group text-left">
-              <div class="flex flex-col gap-3.5">
-                <div class="flex items-start justify-between gap-4">
-                  <div class="w-12 h-12 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-sm tracking-wider shrink-0 uppercase">KL</div>
-                  <span class="inline-flex items-center px-2.5 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-bold rounded-full border border-brand-blue/15">Malaysia</span>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Logistics & Supply</span>
-                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Klang Port Infrastructure Berhad</h3>
-                </div>
-                <p class="text-text-body text-xs leading-relaxed line-clamp-3">Managing deep-water terminal ports facilities and logistics distribution chains connecting trade routes.</p>
+            <div class="directory-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-division="logistics" data-country="my" data-level="associate">
+              <div class="h-32 w-full relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-700 group-hover:scale-105" alt="Port">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 inline-flex items-center px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Malaysia</span>
               </div>
-              <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
-                <span class="text-[10px] text-text-muted font-medium uppercase tracking-wider">Member Since 2011</span>
-                <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
-                  <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
-                </button>
+              <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                  <img src="https://ui-avatars.com/api/?name=KP&background=00A550&color=fff" class="w-full h-full object-contain rounded-lg" alt="Logo">
+                </div>
+                <div class="flex flex-col gap-1 pt-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Logistics & Supply</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Klang Port Infrastructure</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-2 mt-1">Managing deep-water terminal ports facilities and logistics distribution chains.</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                  <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Associate Since 2011</span>
+                  <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                    <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                  </button>
+                </div>
               </div>
             </div>
 
+            <!-- Company Card 5 -->
+            <div class="directory-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-division="finance" data-country="my" data-level="patron">
+              <div class="h-32 w-full relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-700 group-hover:scale-105" alt="Finance">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 inline-flex items-center px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Malaysia</span>
+              </div>
+              <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                  <img src="https://ui-avatars.com/api/?name=MB&background=00A550&color=fff" class="w-full h-full object-contain rounded-lg" alt="Logo">
+                </div>
+                <div class="flex flex-col gap-1 pt-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Financial Services</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">Maybank Group Corporate</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-2 mt-1">Providing robust banking, corporate financing, and investment advisory services across the ASEAN region.</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                  <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">Patron Since 2010</span>
+                  <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                    <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Company Card 6 -->
+            <div class="directory-item bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden group flex flex-col" data-division="telecom" data-country="bd" data-level="general">
+              <div class="h-32 w-full relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-premium duration-700 group-hover:scale-105" alt="IT Solutions">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 inline-flex items-center px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/30">Bangladesh</span>
+              </div>
+              <div class="p-6 flex flex-col gap-4 flex-1 justify-between relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+                  <img src="https://ui-avatars.com/api/?name=TS&background=0066B3&color=fff" class="w-full h-full object-contain rounded-lg" alt="Logo">
+                </div>
+                <div class="flex flex-col gap-1 pt-1">
+                  <span class="text-[10px] font-bold text-brand-blue uppercase tracking-widest">Telecommunications & IT</span>
+                  <h3 class="text-text-dark font-extrabold text-base leading-tight group-hover:text-brand-green transition-fast">TechServe Solutions Ltd.</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-2 mt-1">Enterprise software development and digital infrastructure deployment for multinational corporations.</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-neutral-border pt-4 mt-2">
+                  <span class="text-[10px] text-text-muted font-bold uppercase tracking-wider">General Since 2018</span>
+                  <button class="text-xs text-brand-green font-bold flex items-center gap-1 hover:underline group/dir-cta" data-modal-open="member-detail-modal">
+                    <span>View Profile</span><i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover/dir-cta:translate-x-0.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- No Results Message -->
+          <div id="no-results-msg" class="hidden flex-col items-center justify-center py-12 text-center bg-white border border-neutral-border rounded-xl border-dashed">
+            <div class="w-16 h-16 rounded-full bg-neutral-bg flex items-center justify-center mb-4">
+              <i data-lucide="search-x" class="w-8 h-8 text-text-muted"></i>
+            </div>
+            <h4 class="text-text-dark font-extrabold text-lg">No members found</h4>
+            <p class="text-text-body text-sm mt-1 max-w-md">We couldn't find any directory listings matching your filters. Try adjusting your search criteria.</p>
+            <button onclick="document.getElementById('reset-filters').click()" class="mt-4 px-6 py-2 bg-brand-green text-white font-bold text-xs rounded-full shadow hover:bg-brand-darkGreen transition-fast">Clear Filters</button>
+          </div>
+
+          <!-- Load More Section -->
+          <div class="flex justify-center mt-4">
+            <button id="load-more-btn" class="px-8 py-3 bg-white border border-neutral-border hover:border-brand-green text-text-dark font-bold text-xs rounded-full shadow-sm transition-all flex items-center gap-2 group hover:text-brand-green">
+              <span>Load More Members</span>
+              <i data-lucide="refresh-cw" class="w-4 h-4 group-hover:rotate-180 transition-transform duration-500"></i>
+            </button>
+          </div>
+          
+          <!-- Skeleton Grid (Hidden by default) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 hidden mt-6" id="skeleton-grid">
+            <div class="bg-white border border-neutral-border rounded-xl shadow-card h-[380px] flex flex-col overflow-hidden animate-pulse">
+              <div class="h-32 bg-neutral-border w-full"></div>
+              <div class="p-6 flex flex-col gap-4 relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-neutral-bgSecondary border border-neutral-border"></div>
+                <div class="w-24 h-3 bg-neutral-bgSecondary rounded mt-2"></div>
+                <div class="w-3/4 h-5 bg-neutral-bgSecondary rounded mt-1"></div>
+                <div class="w-full h-3 bg-neutral-bgSecondary rounded mt-2"></div>
+                <div class="w-2/3 h-3 bg-neutral-bgSecondary rounded"></div>
+              </div>
+            </div>
+            <div class="bg-white border border-neutral-border rounded-xl shadow-card h-[380px] flex flex-col overflow-hidden animate-pulse hidden sm:flex">
+              <div class="h-32 bg-neutral-border w-full"></div>
+              <div class="p-6 flex flex-col gap-4 relative">
+                <div class="absolute -top-8 right-6 w-14 h-14 rounded-xl bg-neutral-bgSecondary border border-neutral-border"></div>
+                <div class="w-24 h-3 bg-neutral-bgSecondary rounded mt-2"></div>
+                <div class="w-3/4 h-5 bg-neutral-bgSecondary rounded mt-1"></div>
+                <div class="w-full h-3 bg-neutral-bgSecondary rounded mt-2"></div>
+                <div class="w-2/3 h-3 bg-neutral-bgSecondary rounded"></div>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
+
+    <!-- Filter & Load More Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const divisionFilter = document.getElementById('filter-division');
+        const countryFilter = document.getElementById('filter-country');
+        const levelFilter = document.getElementById('filter-level');
+        const applyBtn = document.getElementById('apply-filters');
+        const resetBtn = document.getElementById('reset-filters');
+        const heroSearch = document.getElementById('directory-hero-search');
+        
+        const items = document.querySelectorAll('.directory-item');
+        const noResults = document.getElementById('no-results-msg');
+        const grid = document.getElementById('directory-grid');
+
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const skeletonGrid = document.getElementById('skeleton-grid');
+
+        // Filter Logic (Sidebar Only)
+        const filterDirectory = () => {
+          const divVal = divisionFilter.value;
+          const countVal = countryFilter.value;
+          const lvlVal = levelFilter.value;
+          
+          let visibleCount = 0;
+          
+          items.forEach(item => {
+            const matchDiv = divVal === 'all' || item.dataset.division === divVal;
+            const matchCount = countVal === 'all' || item.dataset.country === countVal;
+            const matchLvl = lvlVal === 'all' || item.dataset.level === lvlVal;
+            
+            if (matchDiv && matchCount && matchLvl) {
+              item.style.display = 'flex';
+              visibleCount++;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+          
+          if (visibleCount === 0) {
+            grid.classList.add('hidden');
+            noResults.classList.remove('hidden');
+            noResults.style.display = 'flex';
+          } else {
+            grid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+            noResults.style.display = 'none';
+          }
+        };
+
+        // Hero Search Autocomplete Logic
+        const heroDropdown = document.getElementById('hero-search-dropdown');
+        const heroResults = document.getElementById('hero-search-results');
+        const heroEmpty = document.getElementById('hero-search-empty');
+
+        if (heroSearch && heroDropdown) {
+          heroSearch.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query.length < 2) {
+              heroDropdown.classList.add('hidden');
+              heroDropdown.classList.remove('flex');
+              return;
+            }
+            
+            heroDropdown.classList.remove('hidden');
+            heroDropdown.classList.add('flex');
+            
+            let html = '';
+            let matchCount = 0;
+            
+            // Gather all member cards (Featured + Grid)
+            const allSearchCards = Array.from(document.querySelectorAll('[data-modal-open="member-detail-modal"]')).map(btn => btn.closest('.group'));
+            allSearchCards.forEach(card => { if(card) card.classList.add('searchable-card-index'); });
+            
+            allSearchCards.forEach((item, index) => {
+              if (!item) return;
+              const textContent = item.textContent.toLowerCase();
+              if (textContent.includes(query)) {
+                matchCount++;
+                const titleEl = item.querySelector('h3');
+                const title = titleEl ? titleEl.textContent : 'Unknown';
+                const descEl = item.querySelector('p');
+                const desc = descEl ? descEl.textContent : '';
+                const indEl = item.querySelector('.text-brand-blue');
+                const industry = indEl ? indEl.textContent : '';
+                let logoSrc = 'https://ui-avatars.com/api/?name=CO&background=00A550&color=fff';
+                const logoImg = item.querySelector('img[alt="Logo"]');
+                if (logoImg) {
+                  logoSrc = logoImg.src;
+                } else {
+                  const imgs = item.querySelectorAll('img');
+                  if (imgs.length > 1) logoSrc = imgs[1].src;
+                }
+                
+                html += `
+                  <div class="flex items-center gap-3 p-4 border-b border-neutral-border hover:bg-neutral-bgSecondary cursor-pointer transition-colors" onclick="document.querySelectorAll('.searchable-card-index')[${index}].querySelector('[data-modal-open=member-detail-modal]').click();">
+                    <div class="w-10 h-10 rounded bg-white shadow-sm border border-neutral-border flex items-center justify-center shrink-0 p-1">
+                      <img src="${logoSrc}" class="w-full h-full object-contain rounded" alt="Logo">
+                    </div>
+                    <div class="flex flex-col gap-0.5 text-left">
+                      <span class="font-extrabold text-sm text-text-dark">${title}</span>
+                      <span class="text-[10px] font-bold text-text-muted uppercase tracking-wider">${industry}</span>
+                      <span class="text-[11px] text-text-body line-clamp-1 mt-0.5">${desc}</span>
+                    </div>
+                  </div>
+                `;
+              }
+            });
+            
+            if (matchCount === 0) {
+              heroResults.innerHTML = '';
+              heroEmpty.classList.remove('hidden');
+              heroEmpty.classList.add('flex');
+            } else {
+              heroResults.innerHTML = html;
+              heroEmpty.classList.add('hidden');
+              heroEmpty.classList.remove('flex');
+              // Re-initialize lucide icons for new elements
+              if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+          });
+          
+          // Hide dropdown when clicking outside
+          document.addEventListener('click', (e) => {
+            if (!heroSearch.contains(e.target) && !heroDropdown.contains(e.target)) {
+              heroDropdown.classList.add('hidden');
+              heroDropdown.classList.remove('flex');
+            }
+          });
+        }
+
+        applyBtn.addEventListener('click', () => {
+          // Add a tiny skeleton pulse on grid to simulate loading filter results
+          grid.style.opacity = '0.5';
+          setTimeout(() => {
+            filterDirectory();
+            grid.style.opacity = '1';
+          }, 300);
+        });
+
+        resetBtn.addEventListener('click', () => {
+          divisionFilter.value = 'all';
+          countryFilter.value = 'all';
+          levelFilter.value = 'all';
+          if (heroSearch) heroSearch.value = '';
+          filterDirectory();
+        });
+
+        // Load More Logic (Simulated)
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener('click', () => {
+            loadMoreBtn.classList.add('hidden');
+            skeletonGrid.classList.remove('hidden');
+            
+            setTimeout(() => {
+              skeletonGrid.classList.add('hidden');
+              // Here we would normally append new items. For UI demo, we clone existing ones.
+              if (items.length > 0) {
+                const clone1 = items[0].cloneNode(true);
+                const clone2 = items[1].cloneNode(true);
+                clone1.style.display = 'flex';
+                clone2.style.display = 'flex';
+                grid.appendChild(clone1);
+                grid.appendChild(clone2);
+              }
+              // Don't show load more again for this demo
+            }, 1500);
+          });
+        }
+      });
+    </script>
 
     <!-- ==========================================================================
          SECTION 09 â€” BUSINESS MATCHING FEATURE (Request Match)
@@ -423,38 +915,42 @@
        COMPANY DETAILS MODAL (Details View)
        ========================================================================== -->
   <div id="member-detail-modal" class="modal-backdrop fixed inset-0 z-[999] bg-text-dark/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg border border-neutral-border shadow-floating max-w-xl w-full max-h-[85vh] overflow-y-auto relative text-left" data-modal-content>
-      <!-- Close button -->
-      <button class="absolute top-4 right-4 text-text-muted hover:text-text-dark transition-fast z-10" data-modal-close>
-        <i data-lucide="x" class="w-5 h-5"></i>
+    <div class="bg-white rounded-2xl border border-neutral-border shadow-floating max-w-2xl w-full max-h-[90vh] overflow-y-auto relative text-left" data-modal-content data-lenis-prevent>
+      
+      <!-- Close button fixed to the modal -->
+      <button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-black transition-colors z-50 border border-white/30" data-modal-close>
+        <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="p-6 md:p-8 flex flex-col gap-6">
-        
+      <!-- Banner -->
+      <div class="h-40 sm:h-48 w-full relative shrink-0">
+        <img id="custom-modal-banner" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Company Banner">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+        <!-- Logo overlapping the banner at bottom-left -->
+        <div class="absolute -bottom-10 left-6 md:left-8 w-20 h-20 rounded-xl bg-white shadow-lg border border-neutral-border flex items-center justify-center p-2 z-10 overflow-hidden">
+          <img id="custom-modal-logo" src="https://ui-avatars.com/api/?name=CO&background=00A550&color=fff" class="w-full h-full object-contain rounded-lg" alt="Logo">
+        </div>
+      </div>
+
+      <div class="px-6 pb-6 pt-14 md:px-8 md:pb-8 md:pt-16 flex flex-col gap-6 bg-white relative">
         <!-- Header Profile information -->
-        <div class="flex items-start gap-4 border-b border-neutral-border pb-5">
-          <!-- Company Logo Box -->
-          <div id="modal-company-logo" class="w-14 h-14 rounded border border-neutral-border bg-neutral-bgSecondary flex items-center justify-center text-text-dark font-extrabold text-base tracking-wider shrink-0 uppercase">
-            CO
+        <div class="flex flex-col gap-2 border-b border-neutral-border pb-5">
+          <div class="flex items-center gap-2">
+            <h3 id="modal-company-title" class="text-text-dark font-extrabold text-2xl leading-none">Apex Cargo & Logistics Ltd.</h3>
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-green/10 text-brand-green text-[10px] font-bold" title="Verified Member">&#10003;</span>
           </div>
-          <div class="flex flex-col gap-1.5 text-left">
-            <div class="flex items-center gap-2">
-              <h3 id="modal-company-title" class="text-text-dark font-extrabold text-lg leading-none">Apex Cargo & Logistics Ltd.</h3>
-              <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-brand-green/10 text-brand-green text-[8px] font-bold" title="Verified Member">&#10003;</span>
-            </div>
-            <div class="flex items-center gap-2.5 text-xs text-text-body font-semibold">
-              <span id="modal-company-industry" class="text-brand-blue uppercase tracking-wider">Logistics & Supply</span>
-              <span class="h-3 w-px bg-neutral-border"></span>
-              <span id="modal-company-country" class="text-brand-green">Bangladesh</span>
-            </div>
+          <div class="flex items-center gap-2.5 text-sm text-text-body font-semibold">
+            <span id="modal-company-industry" class="text-brand-blue uppercase tracking-wider text-xs">Logistics & Supply</span>
+            <span class="h-3 w-px bg-neutral-border"></span>
+            <span id="modal-company-country" class="text-brand-green text-xs font-bold">Bangladesh</span>
           </div>
         </div>
 
         <!-- About Description -->
         <div class="flex flex-col gap-2">
           <h4 class="font-bold text-xs uppercase tracking-wider text-brand-green">Corporate Brief</h4>
-          <p id="modal-company-desc" class="text-text-body text-xs leading-relaxed">
-            Details outlining operational scopes, export capacities, import requirements, and verified chamber statistics will load dynamically.
+          <p id="custom-modal-desc" class="text-text-body text-sm leading-relaxed">
+            Premier clearing agency and logistics provider specializing in container shipping cargo solutions. Details outlining operational scopes, export capacities, import requirements, and verified chamber statistics are currently being verified for this member.
           </p>
         </div>
 
@@ -462,7 +958,7 @@
         <div class="grid grid-cols-2 gap-4 py-4 border-y border-neutral-border text-xs text-text-body font-medium">
           <div class="flex flex-col gap-0.5">
             <span class="text-text-muted font-semibold">Membership Tier</span>
-            <span class="text-text-dark font-extrabold">Patron Member</span>
+            <span class="text-text-dark font-extrabold" id="custom-modal-tier">Patron Member</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-text-muted font-semibold">Business Classification</span>
@@ -479,14 +975,13 @@
         </div>
 
         <!-- Actions -->
-        <div class="flex items-center justify-end gap-3 pt-2">
-          <button class="px-5 py-2.5 border border-neutral-border rounded-btn text-xs font-semibold hover:border-brand-green transition-fast" data-modal-close>Close</button>
-          <a href="/pages/contact.html#inquire" class="px-5 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5">
+        <div class="flex flex-wrap items-center justify-end gap-3 pt-2">
+          <button class="px-5 py-2.5 border border-neutral-border rounded-btn text-sm font-semibold hover:border-brand-green transition-fast" data-modal-close>Close</button>
+          <a href="/pages/contact.html#inquire" class="px-5 py-2.5 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-sm rounded-btn shadow-card transition-fast flex items-center justify-center gap-1.5">
             <i data-lucide="mail" class="w-4 h-4"></i>
             <span>Send Bilateral Inquiry</span>
           </a>
         </div>
-
       </div>
     </div>
   </div>
@@ -501,6 +996,55 @@
 
   <!-- Global Javascript Core Bundle -->
   <script type="module" src="/js/app.js"></script>
+
+  <!-- Premium Image & Content Populator -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modalBanner = document.getElementById('custom-modal-banner');
+      const modalLogo = document.getElementById('custom-modal-logo');
+      const modalDesc = document.getElementById('custom-modal-desc');
+      const modalTier = document.getElementById('custom-modal-tier');
+
+      document.body.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-modal-open="member-detail-modal"]');
+        if (!trigger) return;
+        
+        const card = trigger.closest('.group');
+        if (card) {
+          const descEl = card.querySelector('p');
+          
+          let logoSrc = 'https://ui-avatars.com/api/?name=CO&background=00A550&color=fff';
+          const logoImg = card.querySelector('img[alt="Logo"]');
+          if (logoImg) logoSrc = logoImg.src;
+          else {
+            const imgs = card.querySelectorAll('img');
+            if (imgs.length > 1) logoSrc = imgs[1].src;
+          }
+          
+          let bannerSrc = 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop';
+          const bannerImg = card.querySelector('img');
+          if (bannerImg && bannerImg !== logoImg) bannerSrc = bannerImg.src;
+          
+          let tier = 'Member';
+          
+          if (card.classList.contains('directory-item')) {
+            tier = card.dataset.level.charAt(0).toUpperCase() + card.dataset.level.slice(1) + ' Member';
+          } else {
+            const tierSpan = card.querySelector('.text-text-muted.uppercase');
+            if (tierSpan) {
+              const text = tierSpan.textContent.trim();
+              if (text.toLowerCase().includes('patron')) tier = 'Patron Member';
+            }
+          }
+          
+          if (descEl && modalDesc) modalDesc.textContent = descEl.textContent + ' Verified details and operational scopes are available for authenticated members.';
+          if (modalBanner) modalBanner.src = bannerSrc;
+          if (modalLogo) modalLogo.src = logoSrc;
+          if (modalTier) modalTier.textContent = tier;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
 

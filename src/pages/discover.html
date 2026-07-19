@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,13 +8,13 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://bmcci.org.bd/public/storage/upload/conf/250128092904-7229favicon (1).png">
   
   <!-- Primary SEO Meta Tags -->
-  <meta name="description" content="Explore commercial ports, high-tech industrial zones, heritage centers, and business travel advice.">
+  <meta name="description" content="Explore commercial ports, high-tech industrial zones, heritage landmarks, and business travel advice connecting Bangladesh and Malaysia.">
   
   <!-- Style Sheets Links -->
   <link rel="stylesheet" href="/css/tailwind.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-neutral-bg font-sans antialiased text-text-body"
+<body class="bg-neutral-bg font-sans antialiased text-text-body overflow-x-hidden"
       data-page-title="Discover Bangladesh & Malaysia"
       data-page-subtitle="Explore two nations connected by culture, heritage, and thriving bilateral trade opportunities.">
 
@@ -34,18 +34,23 @@
     <!-- include components/ui/page-header.html -->
 
     <!-- ==========================================================================
-         SECTION 02 â€” COUNTRY SELECTION SWITCHER (Interactive Switches)
+         SECTION 02 — COUNTRY SELECTION SWITCHER (Interactive Animated Pills)
          ========================================================================== -->
-    <section class="section-compact bg-white border-b border-neutral-border" id="country-switcher-sec">
-      <div class="container-shell max-w-xl py-6 flex items-center justify-center gap-4">
+    <section class="section-compact bg-white border-b border-neutral-border relative z-20" id="country-switcher-sec">
+      <div class="container-shell max-w-3xl py-6 flex flex-col sm:flex-row items-center justify-center gap-4">
         
-        <button id="btn-switch-bd" class="px-6 py-2.5 bg-brand-green text-white text-xs font-bold uppercase rounded-btn shadow-sm hover:bg-brand-darkGreen transition-premium flex items-center gap-2">
-          <span>Bangladesh Focus</span>
-        </button>
+        <!-- Modern Pill Switcher Container -->
+        <div class="inline-flex p-1.5 bg-neutral-bgSecondary border border-neutral-border rounded-full shadow-inner gap-2">
+          <button id="btn-switch-bd" class="px-6 py-2.5 bg-brand-green text-white text-xs font-extrabold uppercase rounded-full shadow-card hover:bg-brand-darkGreen transition-all duration-300 flex items-center gap-2.5 group">
+            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span>Bangladesh Focus</span>
+          </button>
 
-        <button id="btn-switch-my" class="px-6 py-2.5 bg-neutral-bgSecondary border border-neutral-border text-text-dark text-xs font-bold uppercase rounded-btn hover:border-brand-blue hover:text-brand-blue transition-premium flex items-center gap-2">
-          <span>Malaysia Focus</span>
-        </button>
+          <button id="btn-switch-my" class="px-6 py-2.5 bg-transparent text-text-dark text-xs font-extrabold uppercase rounded-full hover:bg-white hover:text-brand-blue transition-all duration-300 flex items-center gap-2.5 group">
+            <span class="w-2 h-2 rounded-full bg-neutral-border group-hover:bg-brand-blue"></span>
+            <span>Malaysia Focus</span>
+          </button>
+        </div>
 
       </div>
     </section>
@@ -58,33 +63,63 @@
       <!-- ==========================================================================
            PANEL A: BANGLADESH DISCOVERY
            ========================================================================== -->
-      <div id="panel-discover-bd" class="block">
+      <div id="panel-discover-bd" class="block transition-all duration-500">
         
         <!-- Bangladesh Overview (Section 03) -->
-        <section class="section-large bg-white divider-subtle" id="bd-overview">
+        <section class="section-large bg-white divider-subtle relative overflow-hidden" id="bd-overview">
           <div class="container-shell">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               
               <!-- Left: Content (Span 7) -->
               <div class="lg:col-span-7 flex flex-col gap-6 text-left animate-reveal">
-                <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10 self-start">South Asian Corridor</span>
-                <h2 class="section-title text-text-dark">Explore Bangladesh</h2>
-                <p class="text-text-body text-sm leading-relaxed">
-                  Bangladesh combines ancient river delta heritage with rapid industrial expansions. Hosting Cox's Bazar, the longest sandy beach globally, and the Sunderbans mangrove delta, it is a hub of green beauty and B2B growth.
+                <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 self-start flex items-center gap-2">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                  <span>South Asian Economic Powerhouse</span>
+                </span>
+                <h2 class="section-title text-text-dark text-3xl md:text-4xl">Explore Bangladesh</h2>
+                <p class="text-text-body text-sm md:text-base leading-relaxed">
+                  Bangladesh seamlessly merges ancient river delta heritage with rapid industrial transformation. Home to Cox's Bazar—the longest natural unbroken sandy beach in the world—and the UNESCO-listed Sundarbans mangrove reserve, the nation stands as a green powerhouse of B2B manufacturing, textiles, green energy, and technology.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium text-text-body mt-2">
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Sundarbans Delta Nature Reserve</span></span>
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Cox's Bazar Sandy Beachscapes</span></span>
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Accredited Textiles & Apparels SEZs</span></span>
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-green shrink-0"></i><span>Ancient Buddhist Ruins (Paharpur)</span></span>
+
+                <!-- Key Metrics Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-green">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-green" data-counter-target="47" data-counter-prefix="$" data-counter-suffix="B+">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">RMG Exports</span>
+                  </div>
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-green">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-green" data-counter-target="120" data-counter-suffix=" km">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">Sandy Coastline</span>
+                  </div>
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-green">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-green" data-counter-target="100" data-counter-suffix="+">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">Economic Zones</span>
+                  </div>
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-green">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-green" data-counter-target="6.8" data-counter-decimals="1" data-counter-suffix="%">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">Avg GDP Growth</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-semibold text-text-body mt-1">
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-green shrink-0"></i><span>Sundarbans Royal Tiger Nature Reserve</span></span>
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-green shrink-0"></i><span>Cox's Bazar International Beachscapes</span></span>
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-green shrink-0"></i><span>LEED-Certified Textiles & Apparel Parks</span></span>
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-green shrink-0"></i><span>Ancient Paharpur Somapura Vihara</span></span>
                 </div>
               </div>
 
-              <!-- Right: Image (Span 5) -->
+              <!-- Right: Hero Visual (Span 5) -->
               <div class="lg:col-span-5 relative w-full flex items-center justify-center animate-reveal">
-                <div class="relative w-full aspect-[4/3] rounded-hero overflow-hidden shadow-floating image-reveal-wrapper">
-                  <img src="/assets/images/tourism/dhaka-center.jpg" alt="Dhaka Motijheel Financial skyline center" 
-                       class="w-full h-full object-cover transition-premium duration-[1.6s] hover:scale-105" loading="lazy" />
+                <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-floating group">
+                  <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop" 
+                       alt="Dhaka Motijheel Financial skyline center" 
+                       class="w-full h-full object-cover transition-premium duration-[1.6s] group-hover:scale-105" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-bold">
+                    <span class="px-3 py-1 bg-brand-green/90 backdrop-blur-md rounded-full">Dhaka Commercial District</span>
+                    <span class="flex items-center gap-1"><i data-lucide="camera" class="w-3.5 h-3.5"></i> Bangladesh</span>
+                  </div>
                 </div>
               </div>
 
@@ -96,53 +131,147 @@
         <section class="section-large bg-neutral-bgSecondary divider-subtle" id="bd-history">
           <div class="container-shell text-center">
             
-            <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-              <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Bilateral Heritage</span>
+            <div class="max-w-2xl mx-auto mb-14 flex flex-col items-center gap-3">
+              <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Bilateral Heritage</span>
               <h2 class="section-title text-text-dark">Historical Landmarks of Bangladesh</h2>
               <p class="text-text-body text-sm leading-relaxed">
-                Explore UNESCO-recognized archaeological monuments and landmarks.
+                Explore UNESCO-recognized archaeological monuments, medieval mosques, and royal fortresses.
               </p>
             </div>
 
             <!-- Historical Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left" id="bd-landmarks-grid">
               
               <!-- Card 1 -->
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left">
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
                 <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/trade-showcase.jpg" alt="Shat Gombuj Mosque architectural arches details" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full shadow-card">UNESCO Heritage</span>
+                  <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=800&auto=format&fit=crop" alt="Shat Gombuj Mosque Bagerhat" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">UNESCO Heritage</span>
                 </div>
-                <div class="p-6 flex flex-col gap-4">
-                  <h3 class="text-text-dark font-extrabold text-base">Shat Gombuj Mosque</h3>
-                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A 15th-century terracotta dome structure located inside Bagerhat, highlighting Islamic architectural heritage.</p>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-green transition-fast">Shat Gombuj Mosque (Bagerhat)</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A magnificent 15th-century terracotta dome structure built by Khan Jahan Ali, representing Islamic brick architecture.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i> Bagerhat, Khulna</span>
+                    <span class="text-brand-green font-bold">1459 AD</span>
+                  </div>
                 </div>
               </div>
 
               <!-- Card 2 -->
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left">
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
                 <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/investment-conclave.jpg" alt="Lalbagh Fort gardens layout" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full shadow-card">Mughal Fort</span>
+                  <img src="https://images.unsplash.com/photo-1608958435020-e8a7109ba809?q=80&w=800&auto=format&fit=crop" alt="Lalbagh Fort Fortification" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Mughal Fort</span>
                 </div>
-                <div class="p-6 flex flex-col gap-4">
-                  <h3 class="text-text-dark font-extrabold text-base">Lalbagh Fort</h3>
-                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">An unfinished 17th-century Mughal fort complex in Dhaka, featuring marble gateways and tomb chambers.</p>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-green transition-fast">Lalbagh Fort Complex</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">An iconic 17th-century Mughal fort complex in Old Dhaka, featuring Pari Bibi's tomb, audience hall, and manicured lawns.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i> Old Dhaka</span>
+                    <span class="text-brand-green font-bold">1678 AD</span>
+                  </div>
                 </div>
               </div>
 
               <!-- Card 3 -->
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left">
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
                 <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/networking-dinner.jpg" alt="Mahasthangarh archaeological excavations views" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-bold uppercase rounded-full shadow-card">Ancient Ruins</span>
+                  <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800&auto=format&fit=crop" alt="Mahasthangarh Bogura excavations" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Ancient Citadel</span>
                 </div>
-                <div class="p-6 flex flex-col gap-4">
-                  <h3 class="text-text-dark font-extrabold text-base">Mahasthangarh Bogura</h3>
-                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">One of the earliest urban archaeological structures in Bangladesh, dating back to the 3rd century BCE.</p>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-green transition-fast">Mahasthangarh (Pundranagara)</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">One of the earliest urban archaeological ruins in Bengal, dating back to the Maurya dynasty in 3rd Century BCE.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i> Bogura</span>
+                    <span class="text-brand-green font-bold">3rd Century BCE</span>
+                  </div>
                 </div>
               </div>
 
+              <!-- Card 4 -->
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+                <div class="relative w-full aspect-video overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=800&auto=format&fit=crop" alt="Ahsan Manzil Pink Palace" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Royal Palace</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-green transition-fast">Ahsan Manzil (Pink Palace)</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">The grand official residence of the Nawabs of Dhaka on the banks of Buriganga River, famous for Indo-Saracenic revival architecture.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i> Sadarghat, Dhaka</span>
+                    <span class="text-brand-green font-bold">1872 AD</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 5 -->
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+                <div class="relative w-full aspect-video overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1608958435020-e8a7109ba809?q=80&w=800&auto=format&fit=crop" alt="Sonargaon Panam City" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Historic Capital</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-green transition-fast">Sonargaon & Panam Nagar</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">The ancient capital of Isa Khan's Baro-Bhuyan confederacy, featuring intact 19th-century merchant mansions in Panam City.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i> Narayanganj</span>
+                    <span class="text-brand-green font-bold">13th Century</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 6 -->
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+                <div class="relative w-full aspect-video overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop" alt="Somapura Mahavihara Paharpur" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-green text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">UNESCO Sanctuary</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-green transition-fast">Somapura Mahavihara (Paharpur)</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">One of the largest Buddhist viharas south of the Himalayas, commissioned during the Pala Empire reign.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green"></i> Naogaon, Rajshahi</span>
+                    <span class="text-brand-green font-bold">8th Century AD</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- View More Button Container -->
+            <div class="mt-12 flex flex-col items-center gap-4">
+              <button id="btn-load-more-bd-landmarks" class="px-8 py-3 bg-white border border-neutral-border text-text-dark font-bold text-xs uppercase rounded-full shadow-sm hover:border-brand-green hover:text-brand-green transition-all flex items-center gap-2 group">
+                <span>View More Bangladesh Landmarks</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+              </button>
+            </div>
+
+        <!-- Bangladesh Visual Discovery Showcase -->
+        <section class="section-large bg-neutral-bgSecondary divider-subtle overflow-hidden" id="bd-video-sec">
+          <div class="container-shell text-center">
+            
+            <div class="max-w-2xl mx-auto mb-10 flex flex-col items-center gap-3">
+              <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Media Showcase</span>
+              <h2 class="section-title text-text-dark">Visual Discovery: Bangladesh</h2>
+              <p class="text-text-body text-sm leading-relaxed">
+                Experience natural river deltas, historic monuments, and modern economic landscapes in 4K resolution.
+              </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white border border-neutral-border rounded-2xl overflow-hidden shadow-floating flex flex-col group hover-lift">
+              <div class="relative w-full aspect-video bg-black overflow-hidden">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/Cn4G2lZ_g2I" title="Bangladesh In 4K - Land of Natural Beauty | Scenic Relaxation Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="p-6 text-left flex flex-col gap-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-extrabold text-brand-green uppercase tracking-wider bg-brand-green/10 px-3.5 py-1 rounded-full">Bangladesh Tourism & Nature</span>
+                  <span class="text-xs text-text-muted font-bold flex items-center gap-1.5"><i data-lucide="video" class="w-4 h-4 text-brand-green"></i> 4K Ultra HD Showcase</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-xl group-hover:text-brand-green transition-fast">Land of Rivers, Delta Reserves & Endless Coastlines</h3>
+                <p class="text-text-body text-xs md:text-sm leading-relaxed">A cinematic journey across Cox's Bazar sea beaches, tea gardens of Srimangal, ancient archaeological ruins, and the roaring Sundarbans delta.</p>
+              </div>
             </div>
 
           </div>
@@ -153,33 +282,63 @@
       <!-- ==========================================================================
            PANEL B: MALAYSIA DISCOVERY
            ========================================================================== -->
-      <div id="panel-discover-my" class="hidden">
+      <div id="panel-discover-my" class="hidden transition-all duration-500">
         
         <!-- Malaysia Overview (Section 04) -->
-        <section class="section-large bg-white divider-subtle" id="my-overview">
+        <section class="section-large bg-white divider-subtle relative overflow-hidden" id="my-overview">
           <div class="container-shell">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               
-              <!-- Left: Image (Span 5) -->
+              <!-- Left: Visual (Span 5) -->
               <div class="lg:col-span-5 relative w-full flex items-center justify-center animate-reveal">
-                <div class="relative w-full aspect-[4/3] rounded-hero overflow-hidden shadow-floating image-reveal-wrapper">
-                  <img src="/assets/images/tourism/kl-district.jpg" alt="Kuala Lumpur financial skyline Petronas Towers" 
-                       class="w-full h-full object-cover transition-premium duration-[1.6s] hover:scale-105" loading="lazy" />
+                <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-floating group">
+                  <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=800&auto=format&fit=crop" 
+                       alt="Kuala Lumpur financial skyline Petronas Towers" 
+                       class="w-full h-full object-cover transition-premium duration-[1.6s] group-hover:scale-105" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-bold">
+                    <span class="px-3 py-1 bg-brand-blue/90 backdrop-blur-md rounded-full">Kuala Lumpur TRX Hub</span>
+                    <span class="flex items-center gap-1"><i data-lucide="camera" class="w-3.5 h-3.5"></i> Malaysia</span>
+                  </div>
                 </div>
               </div>
 
               <!-- Right: Content (Span 7) -->
               <div class="lg:col-span-7 flex flex-col gap-6 text-left animate-reveal">
-                <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10 self-start">ASEAN Commercial Hub</span>
-                <h2 class="section-title text-text-dark">Explore Malaysia</h2>
-                <p class="text-text-body text-sm leading-relaxed">
-                  Malaysia blends modern industrial efficiency with rich cultural roots. From Petronas Twin Towers in KL to the heritage lanes of George Town, Malaysia is a leading global technology and maritime portal.
+                <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/10 px-4 py-1.5 rounded-full border border-brand-blue/20 self-start flex items-center gap-2">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                  <span>ASEAN Tech & Maritime Commercial Center</span>
+                </span>
+                <h2 class="section-title text-text-dark text-3xl md:text-4xl">Explore Malaysia</h2>
+                <p class="text-text-body text-sm md:text-base leading-relaxed">
+                  Malaysia blends modern industrial efficiency with rich multicultural traditions. From the soaring Petronas Twin Towers in KL to the UNESCO heritage lanes of George Town and Penang's Silicon Island semiconductor fabrication hubs, Malaysia serves as ASEAN's premier commercial and technological portal.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium text-text-body mt-2">
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>George Town Penang Heritage Lanes</span></span>
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>Langkawi Duty-Free Archipelago Resorts</span></span>
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>Penang Silicon Island Microchip Fabs</span></span>
-                  <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0"></i><span>Taman Negara Equatorial Rainforests</span></span>
+
+                <!-- Key Metrics Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-blue">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-blue" data-counter-target="380" data-counter-prefix="$" data-counter-suffix="B+">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">Trade Volume</span>
+                  </div>
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-blue">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-blue" data-counter-target="60" data-counter-suffix="%">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">Global Chip Backend</span>
+                  </div>
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-blue">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-blue" data-counter-target="1" data-counter-prefix="#">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">Islamic Finance Hub</span>
+                  </div>
+                  <div class="p-4 bg-neutral-bgSecondary/80 backdrop-blur-md border border-neutral-border rounded-xl flex flex-col gap-1 shadow-sm hover-glow-blue">
+                    <span class="text-xl md:text-2xl font-extrabold text-brand-blue" data-counter-target="130" data-counter-suffix="M Yrs">0</span>
+                    <span class="text-[10px] uppercase font-bold text-text-muted">Taman Negara Forest</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-semibold text-text-body mt-1">
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-blue shrink-0"></i><span>George Town Penang UNESCO Heritage Lanes</span></span>
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-blue shrink-0"></i><span>Langkawi Duty-Free Archipelago Geopark</span></span>
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-blue shrink-0"></i><span>Penang Silicon Island Wafer Fabs</span></span>
+                  <span class="flex items-center gap-2.5 p-2 bg-neutral-bgSecondary/60 rounded-lg border border-neutral-border/60"><i data-lucide="check-circle" class="w-4 h-4 text-brand-blue shrink-0"></i><span>Tun Razak Exchange (TRX) Financial HQ</span></span>
                 </div>
               </div>
 
@@ -191,53 +350,147 @@
         <section class="section-large bg-neutral-bgSecondary divider-subtle" id="my-history">
           <div class="container-shell text-center">
             
-            <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-              <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Bilateral Heritage</span>
+            <div class="max-w-2xl mx-auto mb-14 flex flex-col items-center gap-3">
+              <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/10 px-4 py-1.5 rounded-full border border-brand-blue/20">Bilateral Heritage</span>
               <h2 class="section-title text-text-dark">Historical Landmarks of Malaysia</h2>
               <p class="text-text-body text-sm leading-relaxed">
-                Explore UNESCO heritage cities, colonial architectures, and natural landmarks.
+                Explore UNESCO heritage cities, colonial ports, sacred shrines, and Royal Malaysian architecture.
               </p>
             </div>
 
             <!-- Historical Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left" id="my-landmarks-grid">
               
               <!-- Card 1 -->
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left">
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
                 <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/trade-showcase.jpg" alt="George Town heritage shop houses Penang" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">UNESCO Heritage</span>
+                  <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=800&auto=format&fit=crop" alt="George Town Heritage Penang" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">UNESCO Heritage</span>
                 </div>
-                <div class="p-6 flex flex-col gap-4">
-                  <h3 class="text-text-dark font-extrabold text-base">George Town, Penang</h3>
-                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A historic seaport town featuring intact colonial-era shop houses, clan jetties, and vibrant street murals.</p>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-blue transition-fast">George Town (Penang Island)</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A vibrant historic seaport town known for intact colonial shophouses, street art murals, and clan jetties.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue"></i> Penang</span>
+                    <span class="text-brand-blue font-bold">1786 AD</span>
+                  </div>
                 </div>
               </div>
 
               <!-- Card 2 -->
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left">
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
                 <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/investment-conclave.jpg" alt="Stadhuyes square colonial buildings Melaka" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Colonial Port</span>
+                  <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=800&auto=format&fit=crop" alt="Melaka Red Square Stadthuys" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Colonial Port</span>
                 </div>
-                <div class="p-6 flex flex-col gap-4">
-                  <h3 class="text-text-dark font-extrabold text-base">Historic Melaka City</h3>
-                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">Famous Portuguese forts, Dutch Stadthuys town halls, and Jonker street markets tracking Malacca straits trading.</p>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-blue transition-fast">Historic Melaka City</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">Famous Dutch Stadthuys town hall, Portuguese A Famosa fort, and Jonker street trading quarter on the Malacca Straits.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue"></i> Melaka</span>
+                    <span class="text-brand-blue font-bold">1400 AD</span>
+                  </div>
                 </div>
               </div>
 
               <!-- Card 3 -->
-              <div class="bg-white border border-neutral-border rounded-md shadow-card hover-lift overflow-hidden flex flex-col justify-between group text-left">
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
                 <div class="relative w-full aspect-video overflow-hidden shrink-0">
-                  <img src="/assets/images/events/networking-dinner.jpg" alt="Batu Caves golden statue Murugan Selangor" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
-                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-bold uppercase rounded-full shadow-card">Cultural Landmark</span>
+                  <img src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop" alt="Batu Caves Rainbow Steps" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Sacred Shrine</span>
                 </div>
-                <div class="p-6 flex flex-col gap-4">
-                  <h3 class="text-text-dark font-extrabold text-base">Batu Caves, Selangor</h3>
-                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A massive limestone hill cave hosting centuries-old Hindu temple shrines, accessed via 272 rainbow steps.</p>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-blue transition-fast">Batu Caves & Murugan Temple</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A 400-million-year-old limestone hill hosting Hindu temple caves accessed via 272 vibrant rainbow steps.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue"></i> Gombak, Selangor</span>
+                    <span class="text-brand-blue font-bold">1890 AD</span>
+                  </div>
                 </div>
               </div>
 
+              <!-- Card 4 -->
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+                <div class="relative w-full aspect-video overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=800&auto=format&fit=crop" alt="Sultan Abdul Samad Building" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Moorish Landmark</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-blue transition-fast">Sultan Abdul Samad Building</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A grand late 19th-century Moorish-style administrative edifice overlooking Merdeka Square in central Kuala Lumpur.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue"></i> Merdeka Square, KL</span>
+                    <span class="text-brand-blue font-bold">1897 AD</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 5 -->
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+                <div class="relative w-full aspect-video overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop" alt="Langkawi Geopark" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">UNESCO Geopark</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-blue transition-fast">Langkawi Archipelago Geopark</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">A duty-free 99-island archipelago in Kedah featuring ancient rainforest peaks, mangrove rivers, and sky bridges.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue"></i> Kedah</span>
+                    <span class="text-brand-blue font-bold">Nature Reserve</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 6 -->
+              <div class="bg-white border border-neutral-border rounded-xl shadow-card hover-lift overflow-hidden flex flex-col justify-between group">
+                <div class="relative w-full aspect-video overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800&auto=format&fit=crop" alt="Cameron Highlands Tea Estate" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" loading="lazy" />
+                  <span class="absolute top-4 left-4 inline-flex px-3 py-1 bg-brand-blue text-white text-[10px] font-extrabold uppercase rounded-full shadow-card">Hill Station</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                  <h3 class="text-text-dark font-extrabold text-base group-hover:text-brand-blue transition-fast">Cameron Highlands Tea Sanctuaries</h3>
+                  <p class="text-text-body text-xs leading-relaxed line-clamp-3">Cool-climate tea estates established during British colonial times, featuring emerald plantation terraces and mossy forests.</p>
+                  <div class="pt-2 border-t border-neutral-border flex items-center justify-between text-[11px] font-semibold text-text-muted">
+                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-blue"></i> Pahang</span>
+                    <span class="text-brand-blue font-bold">1925 AD</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- View More Button Container -->
+            <div class="mt-12 flex flex-col items-center gap-4">
+              <button id="btn-load-more-my-landmarks" class="px-8 py-3 bg-white border border-neutral-border text-text-dark font-bold text-xs uppercase rounded-full shadow-sm hover:border-brand-blue hover:text-brand-blue transition-all flex items-center gap-2 group">
+                <span>View More Malaysia Landmarks</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+              </button>
+            </div>
+
+        <!-- Malaysia Visual Discovery Showcase -->
+        <section class="section-large bg-neutral-bgSecondary divider-subtle overflow-hidden" id="my-video-sec">
+          <div class="container-shell text-center">
+            
+            <div class="max-w-2xl mx-auto mb-10 flex flex-col items-center gap-3">
+              <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/10 px-4 py-1.5 rounded-full border border-brand-blue/20">Media Showcase</span>
+              <h2 class="section-title text-text-dark">Visual Discovery: Malaysia</h2>
+              <p class="text-text-body text-sm leading-relaxed">
+                Discover Malaysia's landmark towers, tropical rainforests, and high-tech wafer fabrication hubs in 4K resolution.
+              </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white border border-neutral-border rounded-2xl overflow-hidden shadow-floating flex flex-col group hover-lift">
+              <div class="relative w-full aspect-video bg-black overflow-hidden">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/U49HdsYu4qo" title="Malaysia In 4k - The Land Of Beautiful Topical Rainforest | Scenic Relaxation Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="p-6 text-left flex flex-col gap-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-extrabold text-brand-blue uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1 rounded-full">Malaysia Tourism & Heritage</span>
+                  <span class="text-xs text-text-muted font-bold flex items-center gap-1.5"><i data-lucide="video" class="w-4 h-4 text-brand-blue"></i> 4K Ultra HD Showcase</span>
+                </div>
+                <h3 class="text-text-dark font-extrabold text-xl group-hover:text-brand-blue transition-fast">Truly Asia: Heritage, High-Tech Cities & Islands</h3>
+                <p class="text-text-body text-xs md:text-sm leading-relaxed">Discover Malaysia's world-famous landmark towers, multicultural food heritage in Penang, Batu Caves, and pristine Langkawi geopark resorts.</p>
+              </div>
             </div>
 
           </div>
@@ -248,153 +501,556 @@
     </div>
 
     <!-- ==========================================================================
-         SECTION 06 â€” BUSINESS DESTINATIONS (Cities cards)
+         SECTION 06 — BUSINESS DESTINATIONS (Strategic Hubs Cards)
          ========================================================================== -->
     <section class="section-large bg-white divider-subtle" id="business-destinations-sec">
       <div class="container-shell text-center">
         
         <!-- Header -->
-        <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Bilateral nodes</span>
+        <div class="max-w-2xl mx-auto mb-14 flex flex-col items-center gap-3">
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Bilateral Nodes</span>
           <h2 class="section-title text-text-dark">Strategic Business Hubs</h2>
           <p class="text-text-body text-sm leading-relaxed">
-            Key urban centers shaping investments and logistics corridors.
+            Key urban hubs, maritime ports, and high-tech industrial zones shaping investments and logistics corridors.
           </p>
         </div>
 
-        <!-- 3 Columns City Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 3 Columns City Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left" id="business-hubs-grid">
           
           <!-- Dhaka -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
-            <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Bangladesh Capital</span>
-            <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Dhaka Division</h3>
-            <p class="text-text-body text-xs leading-relaxed">The commercial and financial core of Bangladesh. Leading regional center for textiles exporters, tech consultancies, and consumer markets.</p>
-            <div class="flex flex-wrap gap-2 mt-1">
-              <span class="px-2 py-0.5 bg-white border border-neutral-border rounded text-[9px] font-semibold text-text-body">Apparel Hub</span>
-              <span class="px-2 py-0.5 bg-white border border-neutral-border rounded text-[9px] font-semibold text-text-body">IT Services</span>
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-xl p-6 flex flex-col gap-4 hover-lift group relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-brand-green uppercase tracking-wider bg-brand-green/10 px-2.5 py-1 rounded-full">Bangladesh Financial Capital</span>
+              <i data-lucide="building-2" class="w-5 h-5 text-brand-green"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-xl leading-tight group-hover:text-brand-green transition-fast">Dhaka Commercial District</h3>
+            <p class="text-text-body text-xs leading-relaxed">The commercial engine of Bangladesh encompassing Motijheel, Gulshan, and Tejgaon. Leading hub for RMG conglomerates, fintech banks, and corporate headquarters.</p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-neutral-border/60">
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Apparel HQ</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Fintech & Banking</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Chamber Secretariat</span>
             </div>
           </div>
 
-          <!-- Kuala Lumpur -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
-            <span class="text-[10px] font-bold text-brand-blue uppercase tracking-wider">Malaysia Capital</span>
-            <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Kuala Lumpur (TRX)</h3>
-            <p class="text-text-body text-xs leading-relaxed">ASEAN regional financial headquarters. Home to Tun Razak Exchange (TRX), Islamic finance councils, and global corporate centers.</p>
-            <div class="flex flex-wrap gap-2 mt-1">
-              <span class="px-2 py-0.5 bg-white border border-neutral-border rounded text-[9px] font-semibold text-text-body">Islamic Finance</span>
-              <span class="px-2 py-0.5 bg-white border border-neutral-border rounded text-[9px] font-semibold text-text-body">Global HQ</span>
+          <!-- Kuala Lumpur TRX -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-xl p-6 flex flex-col gap-4 hover-lift group relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-brand-blue uppercase tracking-wider bg-brand-blue/10 px-2.5 py-1 rounded-full">Malaysia Capital</span>
+              <i data-lucide="building-2" class="w-5 h-5 text-brand-blue"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-xl leading-tight group-hover:text-brand-blue transition-fast">Kuala Lumpur TRX (Tun Razak Exchange)</h3>
+            <p class="text-text-body text-xs leading-relaxed">ASEAN regional financial headquarters. Home to the Exchange 106 tower, Islamic banking councils, global MNC headquarters, and fintech centers.</p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-neutral-border/60">
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Islamic Finance</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Global MNCs</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Sukuk Markets</span>
             </div>
           </div>
 
-          <!-- Penang -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-md p-6 flex flex-col gap-4 text-left hover-lift group">
-            <span class="text-[10px] font-bold text-brand-blue uppercase tracking-wider">Malaysia Silicon Hub</span>
-            <h3 class="text-text-dark font-extrabold text-lg leading-tight group-hover:text-brand-green transition-fast">Penang Island</h3>
-            <p class="text-text-body text-xs leading-relaxed">The Silicon Valley of the East. Leading global node for wafer fabrications, assembly testing packaging, and logistics portals.</p>
-            <div class="flex flex-wrap gap-2 mt-1">
-              <span class="px-2 py-0.5 bg-white border border-neutral-border rounded text-[9px] font-semibold text-text-body">Semiconductors</span>
-              <span class="px-2 py-0.5 bg-white border border-neutral-border rounded text-[9px] font-semibold text-text-body">Cargo Ports</span>
+          <!-- Chittagong Port -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-xl p-6 flex flex-col gap-4 hover-lift group relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-brand-green uppercase tracking-wider bg-brand-green/10 px-2.5 py-1 rounded-full">Port City & Maritime Hub</span>
+              <i data-lucide="anchor" class="w-5 h-5 text-brand-green"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-xl leading-tight group-hover:text-brand-green transition-fast">Chattogram Port & Mirsarai SEZ</h3>
+            <p class="text-text-body text-xs leading-relaxed">The primary ocean port handling 92% of Bangladesh's international maritime cargo trade. Home to Bangabandhu Sheikh Mujib Shilpa Nagar (BSMSN).</p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-neutral-border/60">
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Deep Sea Terminal</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">30,000-Acre SEZ</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Heavy Engineering</span>
             </div>
           </div>
 
+          <!-- Penang Silicon Island -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-xl p-6 flex flex-col gap-4 hover-lift group relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-brand-blue uppercase tracking-wider bg-brand-blue/10 px-2.5 py-1 rounded-full">Malaysia Silicon Hub</span>
+              <i data-lucide="cpu" class="w-5 h-5 text-brand-blue"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-xl leading-tight group-hover:text-brand-blue transition-fast">Penang Silicon Island (Bayan Lepas)</h3>
+            <p class="text-text-body text-xs leading-relaxed">Known as the Silicon Valley of the East. A world leader in semiconductor assembly, testing, packaging (ATP), and advanced IC design labs.</p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-neutral-border/60">
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Semiconductors</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Microchip Fabs</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Air Cargo Hub</span>
+            </div>
+          </div>
+
+          <!-- Sylhet High-Tech & Green Corridor -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-xl p-6 flex flex-col gap-4 hover-lift group relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-brand-green uppercase tracking-wider bg-brand-green/10 px-2.5 py-1 rounded-full">Tech & Agro Corridor</span>
+              <i data-lucide="sprout" class="w-5 h-5 text-brand-green"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-xl leading-tight group-hover:text-brand-green transition-fast">Sylhet Bangabandhu Hi-Tech City</h3>
+            <p class="text-text-body text-xs leading-relaxed">A specialized technology park and tea export hub leveraging NRI investments, software outsourcing, and organic agriculture exports.</p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-neutral-border/60">
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">IT Services</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Tea Processing</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Eco-Tourism</span>
+            </div>
+          </div>
+
+          <!-- Port Klang Logistics -->
+          <div class="bg-neutral-bgSecondary border border-neutral-border rounded-xl p-6 flex flex-col gap-4 hover-lift group relative overflow-hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-extrabold text-brand-blue uppercase tracking-wider bg-brand-blue/10 px-2.5 py-1 rounded-full">ASEAN Maritime Terminal</span>
+              <i data-lucide="package" class="w-5 h-5 text-brand-blue"></i>
+            </div>
+            <h3 class="text-text-dark font-extrabold text-xl leading-tight group-hover:text-brand-blue transition-fast">Port Klang & Selangor Freight Zone</h3>
+            <p class="text-text-body text-xs leading-relaxed">One of the world's busiest container seaports linking Malacca Straits transshipment routes directly with Chittagong and Bay of Bengal ports.</p>
+            <div class="flex flex-wrap gap-2 mt-auto pt-2 border-t border-neutral-border/60">
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Transshipment</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Free Commercial Zone</span>
+              <span class="px-2.5 py-1 bg-white border border-neutral-border rounded-md text-[10px] font-bold text-text-dark">Cold Chain</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Load More Hubs Trigger -->
+        <div class="mt-12 flex flex-col items-center">
+          <button id="btn-load-more-hubs" class="px-8 py-3 bg-white border border-neutral-border text-text-dark font-bold text-xs uppercase rounded-full shadow-sm hover:border-brand-green hover:text-brand-green transition-all flex items-center gap-2 group">
+            <span>View More Business Hubs</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+          </button>
         </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECTION 07 & 10 â€” PHOTO GALLERY (Filtering gallery)
+         SECTION 08 — PHOTO GALLERY (Filtering Minimalist Grid)
          ========================================================================== -->
-    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="gallery-sec">
+    <section class="section-large bg-white divider-subtle" id="gallery-sec">
       <div class="container-shell text-center">
         
         <!-- Header -->
         <div class="max-w-2xl mx-auto mb-12 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Photo Albums</span>
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Bilateral Albums</span>
           <h2 class="section-title text-text-dark">Bilateral Photo Gallery</h2>
           <p class="text-text-body text-sm leading-relaxed">
-            Filter and browse photographs of cultural landmarks, cities, and nature reserves.
+            Filter and explore high-definition photographs of nature reserves, commercial cities, heritage monuments, and trade ports.
           </p>
         </div>
 
-        <!-- Filter buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-3.5 mb-10 text-xs font-bold">
-          <button class="px-4 py-2 bg-brand-green text-white rounded shadow-sm transition-fast" data-gallery-filter="all">All Photos</button>
-          <button class="px-4 py-2 bg-white border border-neutral-border hover:border-brand-green rounded text-text-body hover:text-brand-green transition-fast" data-gallery-filter="nature">Nature</button>
-          <button class="px-4 py-2 bg-white border border-neutral-border hover:border-brand-green rounded text-text-body hover:text-brand-green transition-fast" data-gallery-filter="cities">Cities</button>
-          <button class="px-4 py-2 bg-white border border-neutral-border hover:border-brand-green rounded text-text-body hover:text-brand-green transition-fast" data-gallery-filter="cultural">Cultural</button>
+        <!-- Filter Pills with Counters -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-12 text-xs font-bold">
+          <button class="px-5 py-2.5 bg-brand-green text-white rounded-full shadow-card transition-all duration-300 flex items-center gap-2" data-gallery-filter="all">
+            <span>All Photos</span>
+            <span class="px-2 py-0.5 bg-white/20 rounded-full text-[10px]">20</span>
+          </button>
+          <button class="px-5 py-2.5 bg-neutral-bgSecondary border border-neutral-border text-text-dark hover:border-brand-green rounded-full hover:text-brand-green transition-all duration-300 flex items-center gap-2" data-gallery-filter="nature">
+            <span>Nature</span>
+            <span class="px-2 py-0.5 bg-neutral-border/60 rounded-full text-[10px]">5</span>
+          </button>
+          <button class="px-5 py-2.5 bg-neutral-bgSecondary border border-neutral-border text-text-dark hover:border-brand-green rounded-full hover:text-brand-green transition-all duration-300 flex items-center gap-2" data-gallery-filter="cities">
+            <span>Cities</span>
+            <span class="px-2 py-0.5 bg-neutral-border/60 rounded-full text-[10px]">5</span>
+          </button>
+          <button class="px-5 py-2.5 bg-neutral-bgSecondary border border-neutral-border text-text-dark hover:border-brand-green rounded-full hover:text-brand-green transition-all duration-300 flex items-center gap-2" data-gallery-filter="cultural">
+            <span>Cultural</span>
+            <span class="px-2 py-0.5 bg-neutral-border/60 rounded-full text-[10px]">5</span>
+          </button>
+          <button class="px-5 py-2.5 bg-neutral-bgSecondary border border-neutral-border text-text-dark hover:border-brand-green rounded-full hover:text-brand-green transition-all duration-300 flex items-center gap-2" data-gallery-filter="trade">
+            <span>Trade & Ports</span>
+            <span class="px-2 py-0.5 bg-neutral-border/60 rounded-full text-[10px]">5</span>
+          </button>
         </div>
 
-        <!-- Masonry Grid (All images have categories tag) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- Clean Full-Bleed Minimalist Image Grid (No Card Borders) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto" id="gallery-grid">
           
-          <!-- Img 1 (Cities) -->
-          <div class="bg-white border border-neutral-border rounded overflow-hidden shadow-card group transition-all duration-300" data-gallery-item="cities">
-            <div class="relative w-full aspect-video overflow-hidden">
-              <img src="/assets/images/tourism/dhaka-center.jpg" alt="Dhaka Financial center Motijheel area" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" />
+          <!-- ITEM 1: Nature 1 (Sundarbans) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="nature">
+            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop" alt="Sundarbans Mangrove Delta Reserve" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Nature</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Sundarbans Mangrove Delta</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Khulna, Bangladesh</span></p>
+              </div>
             </div>
-            <div class="p-4 text-left"><span class="text-[10px] font-bold text-brand-green uppercase">Cities</span><h4 class="font-bold text-xs text-text-dark mt-1">Dhaka Motijheel Skyline</h4></div>
           </div>
 
-          <!-- Img 2 (Cities) -->
-          <div class="bg-white border border-neutral-border rounded overflow-hidden shadow-card group transition-all duration-300" data-gallery-item="cities">
-            <div class="relative w-full aspect-video overflow-hidden">
-              <img src="/assets/images/tourism/kl-district.jpg" alt="Kuala Lumpur financial district Petronas Towers" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" />
+          <!-- ITEM 2: Cities 1 (Dhaka Skyline) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cities">
+            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop" alt="Dhaka Motijheel Financial District" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cities</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Dhaka Motijheel Skyline</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Dhaka, Bangladesh</span></p>
+              </div>
             </div>
-            <div class="p-4 text-left"><span class="text-[10px] font-bold text-brand-blue uppercase">Cities</span><h4 class="font-bold text-xs text-text-dark mt-1">KL CC Financial Towers</h4></div>
           </div>
 
-          <!-- Img 3 (Nature) -->
-          <div class="bg-white border border-neutral-border rounded overflow-hidden shadow-card group transition-all duration-300" data-gallery-item="nature">
-            <div class="relative w-full aspect-video overflow-hidden">
-              <img src="/assets/images/hero/skyline-composite.jpg" alt="Scenic green mountains ranges" class="w-full h-full object-cover transition-premium duration-[1s] group-hover:scale-105" />
+          <!-- ITEM 3: Cities 2 (Petronas Towers) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cities">
+            <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=800&auto=format&fit=crop" alt="Kuala Lumpur Petronas Towers Night" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cities</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Petronas Towers & KLCC</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kuala Lumpur, Malaysia</span></p>
+              </div>
             </div>
-            <div class="p-4 text-left"><span class="text-[10px] font-bold text-brand-gold uppercase">Nature</span><h4 class="font-bold text-xs text-text-dark mt-1">Bilateral Green landscapes</h4></div>
           </div>
 
+          <!-- ITEM 4: Cultural 1 (Batu Caves) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cultural">
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop" alt="Batu Caves Rainbow Stairs Murugan" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cultural</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Batu Caves Murugan Shrine</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Selangor, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 5: Nature 2 (Srimangal Tea) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="nature">
+            <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?q=80&w=800&auto=format&fit=crop" alt="Srimangal Tea Gardens Valley" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Nature</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Srimangal Tea Sanctuaries</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Moulvibazar, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 6: Trade 1 (Port Klang Container Seaport) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="trade">
+            <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=800&auto=format&fit=crop" alt="Port Klang Container Cargo Terminal" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Trade & Ports</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Port Klang Container Terminal</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Selangor, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 7: Cultural 2 (Shat Gombuj Arches) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cultural">
+            <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=800&auto=format&fit=crop" alt="Shat Gombuj Terracotta Arches" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cultural</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Shat Gombuj Terracotta Arches</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Bagerhat, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 8: Nature 3 (Langkawi Geopark) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="nature">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop" alt="Langkawi Geopark Sky Bridge" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Nature</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Langkawi Island Geopark</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kedah, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 9: Trade 2 (Chittagong Port Seaport) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="trade">
+            <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop" alt="Chittagong Maritime Dry Dock" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Trade & Ports</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Chattogram Ocean Terminal</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Chattogram, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 10: Cultural 3 (George Town Street Murals) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cultural">
+            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=800&auto=format&fit=crop" alt="George Town Shophouses Heritage Penang" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cultural</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">George Town Heritage Lanes</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Penang, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 11: Cities 3 (Penang Silicon Island) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cities">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Penang Bayan Lepas Technology Hub" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cities</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Penang Technology Island</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Bayan Lepas, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 12: Trade 3 (Readymade Garments Eco Factory) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="trade">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Green Apparels Manufacturing EPZ" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Trade & Ports</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Eco Textiles & EPZ Parks</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Gazipur, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 13: Nature 4 (Bandarban Nilgiri) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="nature">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Bandarban Nilgiri Hill Peaks" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Nature</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Bandarban Nilgiri Hill Peaks</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Bandarban, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 14: Nature 5 (Cameron Highlands Fog Terraces) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="nature">
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800&auto=format&fit=crop" alt="Cameron Highlands Fog Terraces" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Nature</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Cameron Highlands Valleys</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Pahang, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 15: Cities 4 (Chattogram Agrabad CBD) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cities">
+            <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop" alt="Chattogram Agrabad Commercial Hub" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cities</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Agrabad Commercial Center</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Chattogram, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 16: Cities 5 (KL TRX Financial Towers) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cities">
+            <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=800&auto=format&fit=crop" alt="KL TRX Financial Skyscrapers" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cities</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Tun Razak Financial District</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kuala Lumpur, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 17: Cultural 4 (Lalbagh Fort Pari Bibi) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cultural">
+            <img src="https://images.unsplash.com/photo-1608958435020-e8a7109ba809?q=80&w=800&auto=format&fit=crop" alt="Lalbagh Fort Pari Bibi Tomb" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cultural</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Lalbagh Fort & Pari Bibi Tomb</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Old Dhaka, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 18: Cultural 5 (Sultan Abdul Samad Clock Tower) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="cultural">
+            <img src="https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=800&auto=format&fit=crop" alt="Sultan Abdul Samad Clock Tower" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Cultural</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Sultan Abdul Samad Landmark</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Kuala Lumpur, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 19: Trade 4 (Semiconductor Cleanroom Wafer Fab) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="trade">
+            <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop" alt="Semiconductor Cleanroom Wafer Fabs" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-blue/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Trade & Ports</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">Semiconductor Wafer Fabs</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Penang, Malaysia</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 20: Trade 5 (Mirsarai Mega EPZ Industrial Port) -->
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden group shadow-card cursor-pointer transition-all duration-500" data-gallery-item="trade">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Mirsarai Mega EPZ Industrial Port" class="w-full h-full object-cover transition-premium duration-[1.2s] group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between text-left text-white">
+              <div class="flex justify-between items-center">
+                <span class="px-3 py-1 bg-brand-green/90 text-white text-[10px] font-extrabold uppercase rounded-full backdrop-blur-md">Trade & Ports</span>
+                <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i data-lucide="maximize-2" class="w-4 h-4"></i></div>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-base text-white leading-tight">BSMSN Mirsarai Mega SEZ</h4>
+                <p class="text-xs font-semibold text-white mt-1.5 flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-white"></i> <span>Chattogram, Bangladesh</span></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Load More Gallery Photos Button -->
+        <div class="mt-14 flex flex-col items-center">
+          <button id="btn-load-more-gallery" class="px-8 py-3 bg-white border border-neutral-border text-text-dark font-bold text-xs uppercase rounded-full shadow-sm hover:border-brand-green hover:text-brand-green transition-all flex items-center gap-2 group">
+            <span>View More Gallery Photos</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+          </button>
         </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         SECTION 08 â€” TRAVEL INFORMATION GUIDE
+         SECTION 09 — TRAVEL & VISITOR RESOURCES (Interactive Route Chaining Corridor)
          ========================================================================== -->
-    <section class="section-large bg-white divider-subtle" id="travel-guide-sec">
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="travel-guide-sec">
       <div class="container-shell text-center">
         
         <!-- Header -->
         <div class="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-3">
-          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/5 px-4 py-1.5 rounded-full border border-brand-blue/10">Visitor Desk</span>
-          <h2 class="section-title text-text-dark">Visitor Travel Resources</h2>
+          <span class="text-xs font-bold text-brand-blue uppercase tracking-widest bg-brand-blue/10 px-4 py-1.5 rounded-full border border-brand-blue/20">Visitor Corridor</span>
+          <h2 class="section-title text-text-dark">Interactive Visitor Journey Guide</h2>
           <p class="text-text-body text-sm leading-relaxed">
-            Essential directives managing visas files, cargo shipping flights, and hotels bookings.
+            Follow the 4-step bilateral business route from visa clearances to MoUs and local transport logistics.
           </p>
         </div>
 
-        <!-- 3 Columns Travel Guides -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-left">
+        <!-- Connected Route Chaining Steps Grid -->
+        <div class="relative max-w-5xl mx-auto">
           
-          <!-- Visa Guide -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-6 flex flex-col gap-4 hover-lift">
-            <div class="w-10 h-10 rounded-full bg-brand-green/5 border border-brand-green/10 flex items-center justify-center text-brand-green"><i data-lucide="file-text" class="w-5 h-5"></i></div>
-            <h4 class="font-bold text-sm text-text-dark">Visa Regulations</h4>
-            <p class="text-text-body text-xs leading-relaxed">Accredited chamber members receive priority invitations recommendations code to secure commercial visas clearances in 3 days.</p>
-          </div>
+          <!-- Connecting Line Bar (Hidden on Mobile) -->
+          <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue -translate-y-12 z-0 rounded-full"></div>
 
-          <!-- Transport Guide -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-6 flex flex-col gap-4 hover-lift">
-            <div class="w-10 h-10 rounded-full bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center text-brand-blue"><i data-lucide="globe" class="w-5 h-5"></i></div>
-            <h4 class="font-bold text-sm text-text-dark">Bilateral Flight Routes</h4>
-            <p class="text-text-body text-xs leading-relaxed">Direct daily commercial passenger flights and cargo freights routes link Dhaka International Seaport with Port Klang terminals.</p>
-          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10 text-left">
+            
+            <!-- Step 1: Visa Clearance -->
+            <div class="bg-white border border-neutral-border rounded-2xl p-6 flex flex-col gap-4 shadow-card hover-lift group relative overflow-hidden">
+              <div class="w-12 h-12 rounded-2xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center text-brand-green font-extrabold text-base group-hover:bg-brand-green group-hover:text-white transition-all">
+                01
+              </div>
+              <h4 class="font-extrabold text-base text-text-dark group-hover:text-brand-green transition-fast">Commercial Visas</h4>
+              <p class="text-text-body text-xs leading-relaxed">BMCCI member credentials provide fast-track recommendation codes to expedite 3 to 5 day business clearances.</p>
+              <div class="pt-3 border-t border-neutral-border flex items-center gap-2 text-[11px] font-bold text-brand-green mt-auto">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                <span>Fast-Track Letters</span>
+              </div>
+            </div>
 
-          <!-- Business Tips Guide -->
-          <div class="bg-neutral-bgSecondary border border-neutral-border rounded p-6 flex flex-col gap-4 hover-lift">
-            <div class="w-10 h-10 rounded-full bg-brand-gold/5 border border-brand-gold/10 flex items-center justify-center text-brand-gold"><i data-lucide="check" class="w-5 h-5"></i></div>
-            <h4 class="font-bold text-sm text-text-dark">Business Etiquettes</h4>
-            <p class="text-text-body text-xs leading-relaxed">Business dealings in both nations are conducted in English, with high importance placed on structural hierarchies and MoU signatures.</p>
+            <!-- Step 2: Flight & Freight -->
+            <div class="bg-white border border-neutral-border rounded-2xl p-6 flex flex-col gap-4 shadow-card hover-lift group relative overflow-hidden">
+              <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue font-extrabold text-base group-hover:bg-brand-blue group-hover:text-white transition-all">
+                02
+              </div>
+              <h4 class="font-extrabold text-base text-text-dark group-hover:text-brand-blue transition-fast">Flight & Sea Freight</h4>
+              <p class="text-text-body text-xs leading-relaxed">Direct daily commercial passenger flights (Dhaka &lt;-&gt; KL) &amp; container sea routes connecting Chittagong &amp; Port Klang.</p>
+              <div class="pt-3 border-t border-neutral-border flex items-center gap-2 text-[11px] font-bold text-brand-blue mt-auto">
+                <i data-lucide="plane" class="w-3.5 h-3.5"></i>
+                <span>Direct Air &amp; Sea Lines</span>
+              </div>
+            </div>
+
+            <!-- Step 3: Hotel & Mobility -->
+            <div class="bg-white border border-neutral-border rounded-2xl p-6 flex flex-col gap-4 shadow-card hover-lift group relative overflow-hidden">
+              <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold font-extrabold text-base group-hover:bg-brand-gold group-hover:text-white transition-all">
+                03
+              </div>
+              <h4 class="font-extrabold text-base text-text-dark group-hover:text-brand-gold transition-fast">Hotels &amp; Transport</h4>
+              <p class="text-text-body text-xs leading-relaxed">Partner rates across 5-star hotels in Dhaka &amp; KL, VIP airport chauffeur transfers, and local SIM passes.</p>
+              <div class="pt-3 border-t border-neutral-border flex items-center gap-2 text-[11px] font-bold text-brand-gold mt-auto">
+                <i data-lucide="hotel" class="w-3.5 h-3.5"></i>
+                <span>Chamber Concierge</span>
+              </div>
+            </div>
+
+            <!-- Step 4: MoU & Etiquette -->
+            <div class="bg-white border border-neutral-border rounded-2xl p-6 flex flex-col gap-4 shadow-card hover-lift group relative overflow-hidden">
+              <div class="w-12 h-12 rounded-2xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center text-brand-green font-extrabold text-base group-hover:bg-brand-green group-hover:text-white transition-all">
+                04
+              </div>
+              <h4 class="font-extrabold text-base text-text-dark group-hover:text-brand-green transition-fast">Business Protocols</h4>
+              <p class="text-text-body text-xs leading-relaxed">English is universally utilized in commerce. Secretariats assist with MoU signing ceremonies and legal counsel.</p>
+              <div class="pt-3 border-t border-neutral-border flex items-center gap-2 text-[11px] font-bold text-brand-green mt-auto">
+                <i data-lucide="file-check" class="w-3.5 h-3.5"></i>
+                <span>Legal &amp; MoU Drafting</span>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -403,25 +1059,25 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 09 â€” INVESTMENT CONNECTION (Callout)
+         SECTION 10 — INVESTMENT CONNECTION (Callout)
          ========================================================================== -->
-    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="connect-sec">
+    <section class="section-large bg-white divider-subtle" id="connect-sec">
       <div class="container-shell">
-        <div class="bg-white border border-neutral-border rounded-lg p-8 md:p-12 shadow-floating text-left flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+        <div class="bg-neutral-bgSecondary border border-neutral-border rounded-2xl p-8 md:p-12 shadow-floating text-left flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden group">
           <div class="absolute inset-0 bg-gradient-to-r from-brand-green/5 via-transparent to-brand-blue/5 opacity-55 pointer-events-none"></div>
           <div class="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-brand-green via-brand-gold to-brand-blue"></div>
 
           <!-- Left content -->
           <div class="flex flex-col gap-3 relative z-10 max-w-xl">
             <span class="text-xs font-bold text-brand-green uppercase tracking-widest">Opportunities beyond borders</span>
-            <h3 class="text-text-dark font-extrabold text-2xl tracking-tight leading-tight">Explore Bilateral Investment Channels</h3>
+            <h3 class="text-text-dark font-extrabold text-2xl md:text-3xl tracking-tight leading-tight">Explore Bilateral Investment Channels</h3>
             <p class="text-text-body text-xs md:text-sm leading-relaxed">
               Expedite company incorporation filings, SEZs land allotments, and double taxation legal exemptions by joining BMCCI councils.
             </p>
           </div>
 
           <!-- Action CTA Link -->
-          <a href="/pages/membership.html" class="w-full lg:w-auto inline-flex items-center justify-center h-12 px-6 bg-brand-green hover:bg-brand-darkGreen text-white font-semibold text-xs rounded-btn shadow-card hover:translate-y-[-2px] transition-premium gap-2 shrink-0 relative z-10">
+          <a href="/pages/membership.html" class="w-full lg:w-auto inline-flex items-center justify-center h-12 px-8 bg-brand-green hover:bg-brand-darkGreen text-white font-bold text-xs rounded-full shadow-card hover:translate-y-[-2px] transition-premium gap-2 shrink-0 relative z-10">
             <span>Explore Investment Portal</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
@@ -430,14 +1086,14 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 11 â€” DISCOVER CONNECTION TIMELINE (Bilateral nodes)
+         SECTION 11 — DISCOVER CONNECTION TIMELINE (Bilateral nodes)
          ========================================================================== -->
-    <section class="section-large bg-white divider-subtle" id="timeline-sec">
+    <section class="section-large bg-neutral-bgSecondary divider-subtle" id="timeline-sec">
       <div class="container-shell">
         
         <!-- Header -->
         <div class="max-w-2xl mx-auto mb-16 text-center flex flex-col items-center gap-3 animate-reveal">
-          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/5 px-4 py-1.5 rounded-full border border-brand-green/10">Bilateral Legacy</span>
+          <span class="text-xs font-bold text-brand-green uppercase tracking-widest bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">Bilateral Legacy</span>
           <h2 class="section-title text-text-dark">Chronological Connection Milestones</h2>
           <div class="w-12 h-0.5 bg-brand-gold rounded-full my-1"></div>
           <p class="text-text-body text-sm leading-relaxed">
@@ -452,9 +1108,9 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 12 â€” CALL TO ACTION (Reusable Include)
+         SECTION 12 — CALL TO ACTION (Reusable Include)
          ========================================================================== -->
-    <section class="section-large bg-neutral-bgSecondary">
+    <section class="section-large bg-white">
       <div class="container-shell">
         <!-- Inject Reusable CTA Banner component -->
         <!-- include components/ui/cta-banner.html -->
@@ -462,6 +1118,62 @@
     </section>
 
   </main>
+
+  <!-- Enriched Premium Image Lightbox Modal for Gallery -->
+  <div id="gallery-lightbox-modal" class="fixed inset-0 z-[9999] bg-black/92 backdrop-blur-xl hidden items-center justify-center p-4 md:p-8 transition-all duration-300">
+    <div class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center gap-4 text-white animate-reveal">
+      
+      <!-- Top Header Bar with Counter, Category & Controls -->
+      <div class="w-full flex items-center justify-between px-2 text-xs font-bold">
+        <div class="flex items-center gap-3">
+          <span id="lightbox-category" class="px-3.5 py-1 bg-brand-green/90 text-white rounded-full text-[10px] font-extrabold uppercase tracking-widest backdrop-blur-md border border-white/20">Album Photo</span>
+          <span id="lightbox-counter" class="px-3 py-1 bg-white/10 text-white/90 rounded-full border border-white/10">Photo 1 of 20</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btn-close-lightbox" class="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all border border-white/15 flex items-center justify-center gap-1.5 group" title="Close Lightbox (Esc)">
+            <span class="text-[11px] font-bold hidden sm:inline">Close</span>
+            <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Preview Stage with Navigation Controls -->
+      <div class="relative w-full max-h-[72vh] rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-black/60 border border-white/10 group">
+        
+        <!-- Prev Button -->
+        <button id="btn-prev-lightbox" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 hover:bg-white text-white hover:text-text-dark backdrop-blur-md flex items-center justify-center transition-all shadow-lg border border-white/20 hover:scale-110 z-20 group" aria-label="Previous image">
+          <i data-lucide="chevron-left" class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform"></i>
+        </button>
+
+        <!-- Image Container -->
+        <img id="lightbox-img" src="" alt="Full preview" class="w-full h-full object-contain max-h-[72vh] transition-all duration-300" />
+
+        <!-- Next Button -->
+        <button id="btn-next-lightbox" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 hover:bg-white text-white hover:text-text-dark backdrop-blur-md flex items-center justify-center transition-all shadow-lg border border-white/20 hover:scale-110 z-20 group" aria-label="Next image">
+          <i data-lucide="chevron-right" class="w-6 h-6 group-hover:translate-x-0.5 transition-transform"></i>
+        </button>
+
+      </div>
+
+      <!-- Bottom Info Bar -->
+      <div class="w-full max-w-2xl bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div class="flex flex-col gap-0.5">
+          <h3 id="lightbox-title" class="font-extrabold text-base md:text-lg text-white"></h3>
+          <p id="lightbox-location" class="text-xs text-white/80 flex items-center justify-center sm:justify-start gap-1.5 font-semibold">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green shrink-0"></i>
+            <span></span>
+          </p>
+        </div>
+        <div class="flex items-center gap-2 text-[11px] font-bold text-white/70">
+          <span class="px-3 py-1 bg-white/10 rounded-lg border border-white/10 flex items-center gap-1.5">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span>Use Arrow Keys &amp; Esc to navigate</span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- Build-Time Footer Injection -->
   <!-- include components/footer.html -->
@@ -475,4 +1187,3 @@
   <script type="module" src="/js/app.js"></script>
 </body>
 </html>
-
