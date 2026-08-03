@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" href="https://bmcci.org.bd/public/storage/upload/conf/250128092904-7229favicon (1).png">
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="/js/auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
   <script>
     const currentUser = authService.guardPortalRoute('admin');
     if (!currentUser) throw new Error('Unauthorized');
@@ -52,17 +53,22 @@
     .btn-secondary { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; } .btn-secondary:hover { background: #e2e8f0; }
     .btn-danger { background: #fee2e2; color: #dc2626; } .btn-danger:hover { background: #dc2626; color: white; }
     .btn-sm { padding: 7px 14px; font-size: 12px; border-radius: 8px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-label { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #0f172a; letter-spacing: 0.04em; }
     .form-input { height: 42px; padding: 0 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; transition: border-color 0.15s; background: #f8fafc; font-family: inherit; width: 100%; }
-    .form-input:focus { border-color: #1d4ed8; background: white; }
+    .form-input:focus { border-color: #1d4ed8; background: white; box-shadow: 0 0 0 3px rgba(29,78,216,0.1); }
     .form-select { height: 42px; padding: 0 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; background: #f8fafc; font-family: inherit; width: 100%; }
+    .form-select:focus { border-color: #1d4ed8; background: white; }
     .form-textarea { padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 13px; color: #0f172a; outline: none; background: #f8fafc; font-family: inherit; width: 100%; resize: vertical; }
-    .form-textarea:focus { border-color: #1d4ed8; background: white; }
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; }
+    .form-textarea:focus { border-color: #1d4ed8; background: white; box-shadow: 0 0 0 3px rgba(29,78,216,0.1); }
+    
+    /* Executive Modal Overlay */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(8px); z-index: 100; display: none; align-items: center; justify-content: center; }
     .modal-overlay.open { display: flex; }
-    .modal-box { background: white; border-radius: 20px; padding: 32px; width: 90%; max-width: 540px; max-height: 90vh; overflow-y: auto; position: relative; animation: fadeUp 0.25s ease; }
-    .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; }
-    .tab-btn { padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; background: transparent; color: #94a3b8; transition: all 0.15s; font-family: inherit; }
-    .tab-btn.active { background: white; color: #0f172a; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .modal-box { background: white; border-radius: 20px; padding: 28px; width: 92%; max-width: 580px; max-height: 90vh; overflow-y: auto; position: relative; animation: fadeUp 0.25s cubic-bezier(0.16,1,0.3,1); border: 1px solid #e2e8f0; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; margin-bottom: 20px; }
+    .modal-close { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; transition: all 0.15s; }
+    .modal-close:hover { background: #f8fafc; color: #0f172a; }
 
     /* Dropdown CSS */
     .dropdown-panel { position: absolute; top: calc(100% + 12px); right: 0; width: 320px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.5) inset; z-index: 50; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s cubic-bezier(0.16,1,0.3,1); }
@@ -78,6 +84,12 @@
 
     .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
+    /* SETTINGS TOGGLE */
+    .toggle { position:relative; width:48px; height:26px; background:#e2e8f0; border-radius:50px; cursor:pointer; transition:background 0.2s; }
+    .toggle.on { background:#1d4ed8; }
+    .toggle::after { content:''; position:absolute; top:3px; left:3px; width:20px; height:20px; background:white; border-radius:50%; transition:transform 0.2s; box-shadow:0 1px 4px rgba(0,0,0,0.2); }
+    .toggle.on::after { transform:translateX(22px); }
+
     @media (max-width: 1024px) {
       .sidebar { position: fixed; top: 0; left: 0; transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
       .sidebar.open { transform: translateX(0); }
@@ -88,8 +100,6 @@
     }
 
     @media (max-width: 640px) {
-      #page-title { font-size: 15px !important; }
-      #page-subtitle { display: none; }
       .dropdown-panel { right: -40px; width: 280px; }
       .modal-box { padding: 20px; width: 95%; }
     }
@@ -110,7 +120,7 @@
     <img src="" alt="Avatar" class="auth-user-avatar" />
     <div>
       <div style="font-size:13px;font-weight:700;color:white;" class="auth-user-name">...</div>
-      <div style="font-size:10px;font-weight:800;color:#60a5fa;text-transform:uppercase;letter-spacing:0.08em;">Admin</div>
+      <div style="font-size:10px;font-weight:800;color:#60a5fa;text-transform:uppercase;letter-spacing:0.08em;">Admin Officer</div>
     </div>
   </div>
   <nav style="flex:1;overflow-y:auto;padding:8px 0;">
@@ -122,28 +132,24 @@
     <button class="nav-item" onclick="switchPanel('news', this)"><i data-lucide="newspaper"></i> News & Articles</button>
     <div class="nav-section-label">Members</div>
     <button class="nav-item" onclick="switchPanel('applications', this)"><i data-lucide="user-check"></i> Applications <span class="nav-badge" style="background:#006a4e;color:white;" id="badge-apps">4</span></button>
+    <div class="nav-section-label">Account</div>
+    <button class="nav-item" onclick="switchPanel('profile', this)"><i data-lucide="user"></i> My Profile</button>
+    <button class="nav-item" onclick="switchPanel('settings', this)"><i data-lucide="settings"></i> Account Settings</button>
     <div class="nav-section-label">Website</div>
     <a href="/index.html" target="_blank" class="nav-item" style="text-decoration:none;"><i data-lucide="external-link"></i> View Public Site</a>
   </nav>
   <div class="sidebar-footer">
-    <button class="logout-btn auth-logout-btn"><i data-lucide="log-out" style="width:15px;height:15px;"></i> Sign Out</button>
+    <button class="logout-btn auth-logout-btn" onclick="authService.logout()"><i data-lucide="log-out" style="width:15px;height:15px;"></i> Sign Out</button>
   </div>
 </aside>
 
 <div class="main">
   <div class="topbar">
-    <div style="display:flex;align-items:center;gap:12px;">
-      <button class="mobile-menu-btn" id="btn-mobile-toggle" aria-label="Toggle Navigation">
-        <i data-lucide="menu" style="width:18px;height:18px;"></i>
-      </button>
-      <div>
-        <div id="page-title" style="font-size:18px;font-weight:900;color:#0f172a;">Operations Overview</div>
-        <div id="page-subtitle" style="font-size:12px;color:#94a3b8;margin-top:2px;">Manage BMCCI chamber activities and content</div>
-      </div>
-    </div>
+    <button class="mobile-menu-btn" id="btn-mobile-toggle" aria-label="Toggle Navigation">
+      <i data-lucide="menu" style="width:18px;height:18px;"></i>
+    </button>
 
-    <div style="display:flex;align-items:center;gap:16px;">
-      
+    <div style="display:flex;align-items:center;gap:16px;margin-left:auto;">
       <!-- Notifications -->
       <div style="position:relative;">
         <button id="btn-notifications" class="btn btn-sm" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:8px;border-radius:10px;position:relative;">
@@ -183,22 +189,22 @@
           <img class="auth-user-avatar" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid #e2e8f0;" />
           <div style="text-align:left;">
             <div class="auth-user-name" style="font-size:12px;font-weight:700;color:#0f172a;"></div>
-            <div style="font-size:10px;color:#64748b;font-weight:600;margin-top:2px;" class="auth-user-role"></div>
+            <div style="font-size:10px;color:#64748b;font-weight:600;margin-top:2px;" class="auth-user-role">Admin Officer</div>
           </div>
           <i data-lucide="chevron-down" style="width:14px;height:14px;color:#94a3b8;margin-left:4px;"></i>
         </button>
         <!-- Dropdown Panel -->
         <div id="dropdown-profile" class="dropdown-panel" style="width:220px;padding:8px;">
-          <button class="dropdown-item" style="border-radius:10px;padding:10px 12px;align-items:center;" onclick="showToast('Opening Admin Profile settings...')">
+          <button class="dropdown-item" style="border-radius:10px;padding:10px 12px;align-items:center;" onclick="switchPanel('profile', null)">
             <i data-lucide="user" style="width:16px;height:16px;color:#64748b;"></i>
             <span style="font-size:12px;font-weight:600;color:#334155;">My Profile</span>
           </button>
-          <button class="dropdown-item" style="border-radius:10px;padding:10px 12px;align-items:center;" onclick="showToast('Navigating to system settings...')">
+          <button class="dropdown-item" style="border-radius:10px;padding:10px 12px;align-items:center;" onclick="switchPanel('settings', null)">
             <i data-lucide="settings" style="width:16px;height:16px;color:#64748b;"></i>
             <span style="font-size:12px;font-weight:600;color:#334155;">Account Settings</span>
           </button>
           <div style="height:1px;background:#e2e8f0;margin:4px 0;"></div>
-          <button class="dropdown-item auth-logout-btn" style="border-radius:10px;padding:10px 12px;align-items:center;color:#ef4444;">
+          <button class="dropdown-item auth-logout-btn" onclick="authService.logout()" style="border-radius:10px;padding:10px 12px;align-items:center;color:#ef4444;">
             <i data-lucide="log-out" style="width:16px;height:16px;"></i>
             <span style="font-size:12px;font-weight:600;">Sign Out</span>
           </button>
@@ -231,6 +237,21 @@
         </div>
       </div>
 
+      <!-- ECharts Chart Panel for Admin Officer -->
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:#0f172a;">Trade Inquiries & Member Registrations</div>
+            <div style="font-size:12px;color:#94a3b8;margin-top:2px;">Monthly trend breakdown across chamber activities</div>
+          </div>
+          <select class="form-select" style="max-width:140px;height:34px;font-size:11px;">
+            <option>Year 2026</option>
+            <option>Last 6 Months</option>
+          </select>
+        </div>
+        <div id="overview-chart" style="width:100%;height:280px;"></div>
+      </div>
+
       <!-- Recent Inquiries + Quick Events -->
       <div class="overview-grid" style="display:grid;grid-template-columns:3fr 2fr;gap:20px;">
         <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
@@ -249,150 +270,467 @@
             </table>
           </div>
         </div>
-        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
-          <div style="padding:18px 20px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
-            <div style="font-size:14px;font-weight:800;color:#0f172a;">Upcoming Events</div>
-            <button class="btn btn-sm btn-secondary" onclick="switchPanel('events', null)">Manage</button>
-          </div>
-          <div style="padding:8px 16px;" id="overview-events-list"></div>
+
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:20px;">
+          <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:12px;">Upcoming Events</div>
+          <div id="overview-events-list"></div>
         </div>
       </div>
     </div>
 
-    <!-- INQUIRIES -->
+    <!-- INQUIRIES LIST -->
     <div id="panel-inquiries" class="panel">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
-        <div style="font-size:14px;font-weight:800;color:#0f172a;">Business Inquiry Management</div>
-        <div style="display:flex;gap:8px;width:100%;max-width:320px;">
-          <input type="text" id="inquiry-search" class="form-input" placeholder="Search contact or message..." onkeyup="filterInquiriesSearch()" style="height:36px;font-size:12px;" />
-          <button class="btn btn-sm btn-secondary" onclick="showToast('Exported 6 inquiries to CSV')"><i data-lucide="download" style="width:13px;height:13px;"></i></button>
+        <div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;">Received Public & Member Inquiries</div>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">Review trade leads, B2B match requests, and general helpdesk tickets</div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <input type="text" id="inquiry-search" class="form-input" placeholder="Search contact or subject..." onkeyup="renderInquiries()" style="max-width:240px;" />
+          <select id="inquiry-filter" class="form-select" onchange="renderInquiries()" style="max-width:160px;">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="responded">Responded</option>
+          </select>
         </div>
       </div>
-      <!-- Filter Tabs -->
-      <div style="background:#f1f5f9;border-radius:10px;padding:4px;display:inline-flex;gap:2px;margin-bottom:16px;flex-wrap:wrap;">
-        <button class="tab-btn active" onclick="filterInquiries('all', this)">All</button>
-        <button class="tab-btn" onclick="filterInquiries('pending', this)">Pending</button>
-        <button class="tab-btn" onclick="filterInquiries('responded', this)">Responded</button>
-        <button class="tab-btn" onclick="filterInquiries('closed', this)">Closed</button>
-      </div>
+
       <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
         <div class="table-container">
           <table class="data-table">
-            <thead><tr><th>Contact</th><th>Inquiry Type</th><th>Message</th><th>Date</th><th>Status</th><th style="text-align:right;">Action</th></tr></thead>
+            <thead>
+              <tr><th>Sender / Contact</th><th>Category</th><th>Message Content</th><th>Date</th><th>Status</th><th style="text-align:right;">Actions</th></tr>
+            </thead>
             <tbody id="inquiries-tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- EVENTS -->
-    <div id="panel-events" class="panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
-        <div style="font-size:14px;font-weight:800;color:#0f172a;">Event Management</div>
-        <button class="btn btn-green btn-sm" onclick="openEventModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Create Event</button>
+    <!-- INQUIRY DETAIL VIEW (In-Page View & Respond Option) -->
+    <div id="panel-inquiry-detail" class="panel">
+      <button class="btn btn-secondary btn-sm" onclick="switchPanel('inquiries', null)" style="margin-bottom:20px;">
+        <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Back to Inquiries List
+      </button>
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:20px;padding:32px;" id="inquiry-detail-content">
+        <!-- Dynamically rendered -->
       </div>
-      <div style="display:grid;gap:16px;" id="events-grid"></div>
     </div>
 
-    <!-- NEWS -->
+    <!-- EVENTS LIST -->
+    <div id="panel-events" class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;">Chamber Events & Trade Missions</div>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">Publish and manage upcoming bilateral expos and summits</div>
+        </div>
+        <button class="btn btn-green" onclick="openEventModal()"><i data-lucide="plus" style="width:15px;height:15px;"></i> Create New Event</button>
+      </div>
+      <div id="events-grid" style="display:flex;flex-direction:column;gap:16px;"></div>
+    </div>
+
+    <!-- EVENT DETAIL VIEW (Same Page with Back Button & Edit Option) -->
+    <div id="panel-event-detail" class="panel">
+      <button class="btn btn-secondary btn-sm" onclick="switchPanel('events', null)" style="margin-bottom:20px;">
+        <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Back to Events List
+      </button>
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:20px;padding:32px;" id="event-detail-content">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+
+    <!-- NEWS & ARTICLES LIST -->
     <div id="panel-news" class="panel">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
-        <div style="font-size:14px;font-weight:800;color:#0f172a;">News & Publications</div>
-        <button class="btn btn-primary btn-sm" onclick="openNewsModal()"><i data-lucide="plus" style="width:14px;height:14px;"></i> Add Article</button>
+        <div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;">Press Releases & Trade News</div>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">Manage official announcements, trade policy updates, and articles</div>
+        </div>
+        <button class="btn btn-primary" onclick="openNewsModal()"><i data-lucide="plus" style="width:15px;height:15px;"></i> Write Article</button>
       </div>
       <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
         <div class="table-container">
           <table class="data-table">
-            <thead><tr><th>Article</th><th>Category</th><th>Date</th><th>Status</th><th style="text-align:right;">Actions</th></tr></thead>
+            <thead>
+              <tr><th>Headline / Title</th><th>Category</th><th>Published Date</th><th>Status</th><th style="text-align:right;">Actions</th></tr>
+            </thead>
             <tbody id="news-tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
+    <!-- ARTICLE DETAIL VIEW (Same Page with Back Button & Edit Option) -->
+    <div id="panel-news-detail" class="panel">
+      <button class="btn btn-secondary btn-sm" onclick="switchPanel('news', null)" style="margin-bottom:20px;">
+        <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Back to Articles List
+      </button>
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:20px;padding:32px;" id="news-detail-content">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+
     <!-- APPLICATIONS -->
     <div id="panel-applications" class="panel">
-      <div style="margin-bottom:20px;font-size:14px;font-weight:800;color:#0f172a;">Membership Applications</div>
-      <div style="display:grid;gap:16px;" id="applications-grid"></div>
+      <div style="margin-bottom:20px;">
+        <div style="font-size:16px;font-weight:900;color:#0f172a;">Corporate Membership Applications</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;">Verify legal trade incorporation documents and approve membership tiers</div>
+      </div>
+      <div id="applications-grid" style="display:flex;flex-direction:column;gap:16px;"></div>
     </div>
 
-  </div>
-</div>
+    <!-- ===== PANEL: MY PROFILE ===== -->
+    <div id="panel-profile" class="panel">
+      <!-- ===== VIEW MODE ===== -->
+      <div id="profile-view-mode">
+        <!-- Hero Header -->
+        <div style="background:linear-gradient(135deg, #1e293b 0%, #1d4ed8 100%);border-radius:20px;padding:32px;color:white;margin-bottom:24px;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(29,78,216,0.15);">
+          <div style="position:absolute;right:-40px;top:-40px;width:200px;height:200px;background:rgba(255,255,255,0.05);border-radius:50%;pointer-events:none;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;position:relative;z-index:2;">
+            <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+              <img class="auth-user-avatar" style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.2);box-shadow:0 8px 24px rgba(0,0,0,0.3);" />
+              <div>
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                  <h1 style="font-size:26px;font-weight:900;margin:0;" class="auth-user-name">Admin Officer</h1>
+                  <span style="background:rgba(96,165,250,0.25);color:#93c5fd;border:1px solid rgba(96,165,250,0.4);font-size:11px;font-weight:800;padding:3px 12px;border-radius:50px;text-transform:uppercase;letter-spacing:0.08em;">Operations Desk</span>
+                </div>
+                <div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:6px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+                  <span><i data-lucide="mail" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> <span>admin@bmcci.org.bd</span></span>
+                  <span><i data-lucide="briefcase" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> Operations Specialist</span>
+                  <span><i data-lucide="map-pin" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> Dhaka HQ</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="toggleProfileMode('edit')" style="background:white;color:#0f172a;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-size:13px;">
+              <i data-lucide="edit-3" style="width:15px;height:15px;"></i> Edit Profile
+            </button>
+          </div>
+        </div>
 
-<!-- Inquiry Reply Modal -->
+        <!-- Info Grid -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
+          <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:800;color:#0f172a;padding-bottom:12px;border-bottom:1px solid #f1f5f9;">
+              <i data-lucide="user-check" style="width:18px;height:18px;color:#1d4ed8;"></i> Operational Details
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Full Name</div>
+                <div style="font-size:14px;font-weight:700;color:#0f172a;margin-top:2px;" class="auth-user-name">Admin Officer</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Official Email</div>
+                <div style="font-size:14px;font-weight:700;color:#0f172a;margin-top:2px;">admin@bmcci.org.bd</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Department</div>
+                <div style="font-size:14px;font-weight:700;color:#0f172a;margin-top:2px;">Trade & Membership</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Direct Desk Extension</div>
+                <div style="font-size:14px;font-weight:700;color:#0f172a;margin-top:2px;">+880 2-9884512 Ext. 104</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:800;color:#0f172a;padding-bottom:12px;border-bottom:1px solid #f1f5f9;">
+              <i data-lucide="shield" style="width:18px;height:18px;color:#006a4e;"></i> Officer Scope & Authorities
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f8fafc;border-radius:10px;">
+                <span style="font-size:13px;font-weight:700;color:#0f172a;">Membership Verification</span>
+                <span class="badge badge-green">Authorized</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f8fafc;border-radius:10px;">
+                <span style="font-size:13px;font-weight:700;color:#0f172a;">Event & Expo Publishing</span>
+                <span class="badge badge-green">Authorized</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f8fafc;border-radius:10px;">
+                <span style="font-size:13px;font-weight:700;color:#0f172a;">Inquiry Dispatch & Response</span>
+                <span class="badge badge-green">Authorized</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== EDIT MODE ===== -->
+      <div id="profile-edit-mode" style="display:none;animation:fadeUp 0.3s ease;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #e2e8f0;">
+          <div>
+            <h2 style="font-size:20px;font-weight:900;color:#0f172a;margin:0;">Edit Admin Officer Profile</h2>
+            <div style="font-size:12px;color:#64748b;margin-top:2px;">Update operational profile info and password</div>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <button class="btn btn-secondary" onclick="toggleProfileMode('view')">Cancel</button>
+            <button class="btn btn-primary" onclick="saveProfileChanges()"><i data-lucide="save" style="width:14px;height:14px;"></i> Save Changes</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
+          <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:20px;">
+            <div style="font-size:14px;font-weight:800;color:#0f172a;padding-bottom:12px;border-bottom:1px solid #f1f5f9;">Personal Details</div>
+            
+            <div style="display:flex;align-items:center;gap:16px;">
+              <img class="auth-user-avatar" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #1d4ed8;" />
+              <div>
+                <button class="btn btn-secondary btn-sm" style="margin-bottom:6px;">Upload New Avatar</button>
+                <div style="font-size:11px;color:#94a3b8;">PNG/JPG up to 2MB</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" id="edit-admin-name" value="Admin Officer" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address (Read Only)</label>
+              <input type="email" class="form-input" value="admin@bmcci.org.bd" readonly style="background:#f1f5f9;color:#94a3b8;cursor:not-allowed;" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Desk Extension / Phone</label>
+              <input type="text" class="form-input" value="+880 2-9884512 Ext. 104" />
+            </div>
+          </div>
+
+          <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:20px;">
+            <div style="font-size:14px;font-weight:800;color:#0f172a;padding-bottom:12px;border-bottom:1px solid #f1f5f9;">Account Security</div>
+
+            <div class="form-group">
+              <label class="form-label">Current Password</label>
+              <input type="password" class="form-input" placeholder="••••••••" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">New Password</label>
+              <input type="password" class="form-input" placeholder="••••••••" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Confirm Password</label>
+              <input type="password" class="form-input" placeholder="••••••••" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: ACCOUNT SETTINGS ===== -->
+    <div id="panel-settings" class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #e2e8f0;">
+        <div>
+          <h2 style="font-size:20px;font-weight:900;color:#0f172a;margin:0;">Officer Account Preferences</h2>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">Customize notification triggers, inquiry response signatures, and operational defaults</div>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button class="btn btn-secondary" onclick="showToast('Settings reset.')">Reset</button>
+          <button class="btn btn-primary" onclick="showToast('Account preferences saved!')"><i data-lucide="save" style="width:14px;height:14px;"></i> Save Preferences</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:24px;">
+        <!-- Notification Triggers -->
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;color:#0f172a;padding-bottom:14px;border-bottom:1px solid #f1f5f9;">
+            <div style="width:34px;height:34px;border-radius:10px;background:#dbeafe;color:#1d4ed8;display:flex;align-items:center;justify-content:center;"><i data-lucide="bell" style="width:18px;height:18px;"></i></div>
+            Operations Alert Preferences
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#f8fafc;border-radius:12px;border:1px solid #f1f5f9;">
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#0f172a;">New Application Email Alerts</div>
+              <div style="font-size:11px;color:#64748b;margin-top:2px;">Instant notification when a corporate member applies</div>
+            </div>
+            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#f8fafc;border-radius:12px;border:1px solid #f1f5f9;">
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#0f172a;">Inquiry Escalation Summary</div>
+              <div style="font-size:11px;color:#64748b;margin-top:2px;">Receive daily digest of unresolved inquiries</div>
+            </div>
+            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          </div>
+        </div>
+
+        <!-- Operational Signatures -->
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;color:#0f172a;padding-bottom:14px;border-bottom:1px solid #f1f5f9;">
+            <div style="width:34px;height:34px;border-radius:10px;background:#dcfce7;color:#006a4e;display:flex;align-items:center;justify-content:center;"><i data-lucide="mail" style="width:18px;height:18px;"></i></div>
+            Default Email Response Template
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Automatic Email Signature</label>
+            <textarea class="form-input" style="height:110px;padding-top:10px;resize:none;">Warm Regards,
+BMCCI Operational Helpdesk
+Bangladesh-Malaysia Chamber of Commerce & Industry
+Email: admin@bmcci.org.bd | Web: www.bmcci.org.bd</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content-area -->
+</div><!-- /main -->
+
+<!-- MODALS -->
+
+<!-- 1. Inquiry Respond Modal (Ultra Premium) -->
 <div class="modal-overlay" id="inquiry-modal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('inquiry-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
-    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;" id="inquiry-modal-title">Inquiry Details</div>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:16px;" id="inquiry-modal-subtitle">From: Sender</div>
-    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;color:#334155;line-height:1.6;" id="inquiry-modal-body">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:#dbeafe;color:#1d4ed8;display:flex;align-items:center;justify-content:center;"><i data-lucide="inbox" style="width:20px;height:20px;"></i></div>
+        <div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;" id="inquiry-modal-title">Inquiry Response</div>
+          <div style="font-size:11px;color:#94a3b8;" id="inquiry-modal-subtitle">Official Dispatch</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('inquiry-modal')"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
     </div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
-      <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Official Response</label>
-      <textarea id="inquiry-response-text" class="form-textarea" rows="3" placeholder="Type your response to the sender..."></textarea>
+
+    <div style="background:#f8fafc;padding:16px;border-radius:12px;font-size:13px;color:#334155;margin-bottom:20px;border:1px solid #e2e8f0;line-height:1.6;" id="inquiry-modal-body"></div>
+
+    <div class="form-group">
+      <label class="form-label">Dispatch Reply Message</label>
+      <textarea class="form-textarea" id="inquiry-response-text" rows="4" placeholder="Write official chamber response..."></textarea>
     </div>
-    <div style="display:flex;gap:10px;justify-content:flex-end;">
-      <button class="btn btn-secondary btn-sm" onclick="closeModal('inquiry-modal')">Close</button>
-      <button class="btn btn-green btn-sm" onclick="sendInquiryReply()"><i data-lucide="send" style="width:13px;height:13px;"></i> Send Reply & Mark Responded</button>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
+      <button class="btn btn-secondary" onclick="closeModal('inquiry-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="sendInquiryReply()"><i data-lucide="send" style="width:14px;height:14px;"></i> Send Reply</button>
     </div>
   </div>
 </div>
 
-<!-- Application Detail Modal -->
-<div class="modal-overlay" id="app-modal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('app-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
-    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;" id="app-modal-title">Application Review</div>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:16px;" id="app-modal-sub">Company Registration Overview</div>
-    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;" id="app-modal-content"></div>
-    <div style="display:flex;gap:10px;justify-content:flex-end;">
-      <button class="btn btn-danger btn-sm" id="btn-app-reject">Reject</button>
-      <button class="btn btn-green btn-sm" id="btn-app-approve">Approve Membership</button>
-    </div>
-  </div>
-</div>
-
-<!-- Event Modal -->
+<!-- 2. Event Create/Edit Modal (Ultra Premium) -->
 <div class="modal-overlay" id="event-modal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('event-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
-    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;" id="event-modal-title">Create Event</div>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:24px;">Fill in the event details</div>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Event Title</label><input type="text" id="ev-title" class="form-input" placeholder="e.g. BD-MY Trade Summit 2026" /></div>
-      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Category</label>
-        <select id="ev-cat" class="form-select"><option>Trade Mission</option><option>Summit</option><option>Delegation</option><option>Webinar</option><option>Gala</option></select>
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:#dcfce7;color:#006a4e;display:flex;align-items:center;justify-content:center;"><i data-lucide="calendar" style="width:20px;height:20px;"></i></div>
+        <div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;" id="event-modal-title">Create Chamber Event</div>
+          <div style="font-size:11px;color:#94a3b8;">Publish or edit bilateral trade expo</div>
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Date</label><input type="date" id="ev-date" class="form-input" /></div>
-        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Location</label><input type="text" id="ev-location" class="form-input" placeholder="e.g. Dhaka, Bangladesh" /></div>
+      <button class="modal-close" onclick="closeModal('event-modal')"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
+    </div>
+
+    <input type="hidden" id="ev-edit-id" />
+
+    <div class="form-group">
+      <label class="form-label">Event Title</label>
+      <input type="text" class="form-input" id="ev-title" placeholder="e.g. 10th ShowCase Malaysia Expo 2026" />
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="ev-cat">
+          <option>Summit</option><option>Trade Mission</option><option>Delegation</option><option>Webinar</option><option>Gala</option>
+        </select>
       </div>
-      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Description</label><textarea id="ev-desc" class="form-textarea" rows="3" placeholder="Brief description..."></textarea></div>
-      <div style="display:flex;gap:10px;justify-content:flex-end;">
-        <button class="btn btn-secondary" onclick="closeModal('event-modal')">Cancel</button>
-        <button class="btn btn-green" onclick="saveEvent()"><i data-lucide="save" style="width:13px;height:13px;"></i> Save Event</button>
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-input" id="ev-date" />
       </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Location / Venue</label>
+      <input type="text" class="form-input" id="ev-location" placeholder="e.g. Pan Pacific Sonargaon, Dhaka" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Keynote Speaker(s)</label>
+      <input type="text" class="form-input" id="ev-speaker" placeholder="e.g. Commerce Ministers & Industry Chiefs" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Event Description</label>
+      <textarea class="form-textarea" id="ev-desc" rows="3" placeholder="Brief summary of agenda, topics, and bilateral scope..."></textarea>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
+      <button class="btn btn-secondary" onclick="closeModal('event-modal')">Cancel</button>
+      <button class="btn btn-green" onclick="saveEvent()"><i data-lucide="save" style="width:14px;height:14px;"></i> Save Event</button>
     </div>
   </div>
 </div>
 
-<!-- News Modal -->
+<!-- 3. News Write/Edit Modal (Ultra Premium) -->
 <div class="modal-overlay" id="news-modal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('news-modal')"><i data-lucide="x" style="width:15px;height:15px;"></i></button>
-    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px;">Add News Article</div>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:24px;">Publish a new update or article</div>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Headline</label><input type="text" id="news-title" class="form-input" placeholder="Article headline..." /></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Category</label><select id="news-cat" class="form-select"><option>Trade News</option><option>Announcements</option><option>Economy</option><option>Member News</option></select></div>
-        <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Status</label><select id="news-status" class="form-select"><option value="published">Published</option><option value="draft">Draft</option></select></div>
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:#dbeafe;color:#1d4ed8;display:flex;align-items:center;justify-content:center;"><i data-lucide="newspaper" style="width:20px;height:20px;"></i></div>
+        <div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;" id="news-modal-title">Write Press Release</div>
+          <div style="font-size:11px;color:#94a3b8;">Publish news article for public portal</div>
+        </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-size:11px;font-weight:800;text-transform:uppercase;color:#0f172a;letter-spacing:0.06em;">Summary</label><textarea id="news-summary" class="form-textarea" rows="3" placeholder="Brief summary of the article..."></textarea></div>
-      <div style="display:flex;gap:10px;justify-content:flex-end;">
-        <button class="btn btn-secondary" onclick="closeModal('news-modal')">Cancel</button>
-        <button class="btn btn-primary" onclick="saveNews()"><i data-lucide="send" style="width:13px;height:13px;"></i> Publish Article</button>
+      <button class="modal-close" onclick="closeModal('news-modal')"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
+    </div>
+
+    <input type="hidden" id="news-edit-id" />
+
+    <div class="form-group">
+      <label class="form-label">Headline / Title</label>
+      <input type="text" class="form-input" id="news-title" placeholder="e.g. BMCCI Signs Bilateral Trade MOU with MATRADE" />
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="news-cat">
+          <option>Trade Policy</option><option>B2B Network</option><option>Press Release</option><option>Exhibition</option>
+        </select>
       </div>
+      <div class="form-group">
+        <label class="form-label">Publish Status</label>
+        <select class="form-select" id="news-status">
+          <option value="published">Published Immediately</option><option value="draft">Save as Draft</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Article Body Content</label>
+      <textarea class="form-textarea" id="news-content" rows="5" placeholder="Write press release body text..."></textarea>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;">
+      <button class="btn btn-secondary" onclick="closeModal('news-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveNews()"><i data-lucide="send" style="width:14px;height:14px;"></i> Save Article</button>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Application Review Modal (Ultra Premium) -->
+<div class="modal-overlay" id="app-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:#dcfce7;color:#15803d;display:flex;align-items:center;justify-content:center;"><i data-lucide="user-check" style="width:20px;height:20px;"></i></div>
+        <div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;" id="app-modal-title">Application Verification</div>
+          <div style="font-size:11px;color:#94a3b8;" id="app-modal-sub">Corporate Membership Review</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('app-modal')"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
+    </div>
+
+    <div style="background:#f8fafc;padding:20px;border-radius:14px;margin-bottom:20px;border:1px solid #e2e8f0;" id="app-modal-content"></div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn btn-secondary" onclick="closeModal('app-modal')">Close</button>
+      <button class="btn btn-danger" id="btn-app-reject">Reject Application</button>
+      <button class="btn btn-green" id="btn-app-approve"><i data-lucide="check" style="width:14px;height:14px;"></i> Approve Membership</button>
     </div>
   </div>
 </div>
@@ -401,344 +739,565 @@
 <div class="toast-container" id="toast-container"></div>
 
 <script>
-let activeInquiryId = null;
-
-function showToast(msg, icon = 'check-circle') {
-  const container = document.getElementById('toast-container');
-  if (!container) return;
-  const toast = document.createElement('div');
-  toast.className = 'toast-msg';
-  toast.innerHTML = `<i data-lucide="${icon}" style="width:16px;height:16px;color:#4ade80;"></i><span>${msg}</span>`;
-  container.appendChild(toast);
-  lucide.createIcons();
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
-}
-
-const INQUIRIES = [
-  { id:1, name:'Arif Rahman', email:'arif@logistics.com', type:'Trade Match', msg:'Seeking textile import opportunities and customs facilitation details in Chittagong.', date:'Jul 19, 2026', status:'pending' },
-  { id:2, name:'Sarah Lim', email:'sarah@my-tech.my', type:'Event', msg:'Interested in Trade Summit delegate pass and B2B roundtable seat.', date:'Jul 18, 2026', status:'responded' },
-  { id:3, name:'Nasrin Ahmed', email:'nasrin@bdtextile.com', type:'Membership', msg:'Would like to apply for Corporate membership tier for our apparel group.', date:'Jul 18, 2026', status:'pending' },
-  { id:4, name:'David Tan', email:'david@penangbiz.my', type:'Trade Match', msg:'Looking for garment factory partners in BD for OEM manufacturing contracts.', date:'Jul 17, 2026', status:'pending' },
-  { id:5, name:'Rahim Chowdhury', email:'rahim@dhakaventures.com', type:'General', msg:'Inquiry about bilateral investment tax treaty guidelines.', date:'Jul 16, 2026', status:'responded' },
-  { id:6, name:'Wei Leng Ooi', email:'wlooi@klcorp.my', type:'Trade Match', msg:'Need visa recommendation letter backing for Dhaka high commission visit.', date:'Jul 15, 2026', status:'closed' },
-];
-
-let localEvents = [
-  { id:1, title:'BD-MY Economic Summit 2026', cat:'Summit', date:'2026-08-15', location:'Dhaka, Bangladesh', desc:'Annual bilateral economic summit featuring key ministers.', status:'upcoming' },
-  { id:2, title:'Penang Industrial Zone Delegation', cat:'Trade Mission', date:'2026-09-08', location:'Penang, Malaysia', desc:'Factory visit delegation to Penang Free Trade Zone.', status:'upcoming' },
-  { id:3, title:'Bilateral Webinar: Green Energy Investment', cat:'Webinar', date:'2026-10-01', location:'Virtual', desc:'Online forum on renewable energy partnerships.', status:'upcoming' },
-];
-
-let localNews = [
-  { id:1, title:'Mirsarai SEZ Allots 500 Acres for Solar Cell Assembly', cat:'Trade News', date:'Jul 18, 2026', status:'published' },
-  { id:2, title:'Double Taxation Protocol Ratified Between BD & MY', cat:'Announcements', date:'Jul 15, 2026', status:'published' },
-  { id:3, title:'Q2 2026 Bilateral Trade Volume Report', cat:'Economy', date:'Jul 10, 2026', status:'published' },
-  { id:4, title:'BMCCI Welcomes 12 New Corporate Members', cat:'Member News', date:'Jul 5, 2026', status:'draft' },
-];
-
-let APPLICATIONS = [
-  { id:1, name:'Farid Exports Ltd.', email:'farid@exports.com', type:'Corporate', reg:'BD-REG-99120', date:'Jul 19, 2026', status:'pending' },
-  { id:2, name:'Siti Noor Consulting', email:'siti@consulting.my', type:'Associate', reg:'MY-SSM-88219', date:'Jul 18, 2026', status:'pending' },
-  { id:3, name:'Karim Industries', email:'karim@industries.com', type:'Patron', reg:'BD-REG-10492', date:'Jul 17, 2026', status:'reviewing' },
-  { id:4, name:'Tech Nexus Malaysia', email:'info@technexus.my', type:'Associate', reg:'MY-SSM-55102', date:'Jul 16, 2026', status:'approved' },
-];
-
-function switchPanel(id, btn) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('panel-' + id).classList.add('active');
-  if (btn) btn.classList.add('active');
-  const titles = { overview:['Operations Overview','Manage BMCCI chamber activities and content'], inquiries:['Inquiry Management','Review and respond to external queries'], events:['Event Management','Plan and manage chamber events'], news:['News & Publications','Manage content and articles'], applications:['Membership Applications','Review and approve membership requests'] };
-  if (titles[id]) { document.getElementById('page-title').textContent = titles[id][0]; document.getElementById('page-subtitle').textContent = titles[id][1]; }
-  if (id==='inquiries') renderInquiries();
-  if (id==='events') renderEvents();
-  if (id==='news') renderNews();
-  if (id==='applications') renderApplications();
-  if (id==='overview') renderOverviewEvents();
-  lucide.createIcons();
-}
-
-const statusBadge = (s) => ({ pending:'badge-amber', responded:'badge-green', closed:'badge-gray', upcoming:'badge-blue', draft:'badge-amber', published:'badge-green', reviewing:'badge-purple', approved:'badge-green' }[s] || 'badge-gray');
-
-function renderInquiries(list = INQUIRIES) {
-  const tbody = document.getElementById('inquiries-tbody');
-  tbody.innerHTML = list.map(q => `
-    <tr>
-      <td><div style="font-weight:700;color:#0f172a;">${q.name}</div><div style="font-size:11px;color:#94a3b8;">${q.email}</div></td>
-      <td><span class="badge badge-blue">${q.type}</span></td>
-      <td style="max-width:200px;font-size:12px;color:#64748b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${q.msg}</td>
-      <td style="font-size:12px;color:#94a3b8;">${q.date}</td>
-      <td><span class="badge ${statusBadge(q.status)}">${q.status.charAt(0).toUpperCase()+q.status.slice(1)}</span></td>
-      <td style="text-align:right;"><div style="display:flex;gap:6px;justify-content:flex-end;">
-        <button class="btn btn-secondary btn-sm" onclick="viewInquiry(${q.id})">View</button>
-        ${q.status==='pending'?'<button class="btn btn-green btn-sm" onclick="viewInquiry('+q.id+')">Respond</button>':''}
-      </div></td>
-    </tr>`).join('');
-  lucide.createIcons();
-}
-
-function filterInquiries(filter, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  const filtered = filter === 'all' ? INQUIRIES : INQUIRIES.filter(i => i.status === filter);
-  renderInquiries(filtered);
-}
-
-function filterInquiriesSearch() {
-  const query = document.getElementById('inquiry-search').value.toLowerCase();
-  const filtered = INQUIRIES.filter(i => i.name.toLowerCase().includes(query) || i.msg.toLowerCase().includes(query) || i.email.toLowerCase().includes(query));
-  renderInquiries(filtered);
-}
-
-function viewInquiry(id) {
-  const q = INQUIRIES.find(i => i.id === id);
-  if (!q) return;
-  activeInquiryId = id;
-  document.getElementById('inquiry-modal-title').textContent = q.type + ' Inquiry';
-  document.getElementById('inquiry-modal-subtitle').textContent = `From: ${q.name} (${q.email}) • Received ${q.date}`;
-  document.getElementById('inquiry-modal-body').textContent = `"${q.msg}"`;
-  document.getElementById('inquiry-response-text').value = q.status === 'responded' ? 'Previous Response: Sent official guidelines package via email.' : '';
-  document.getElementById('inquiry-modal').classList.add('open');
-  lucide.createIcons();
-}
-
-function sendInquiryReply() {
-  const text = document.getElementById('inquiry-response-text').value;
-  if (!text) return alert('Please enter a response message.');
-  const q = INQUIRIES.find(i => i.id === activeInquiryId);
-  if (q) q.status = 'responded';
-  closeModal('inquiry-modal');
-  renderInquiries();
-  showToast('Reply dispatched & status updated to Responded!');
-}
-
-function renderEvents() {
-  const grid = document.getElementById('events-grid');
-  const catColors = { Summit:'badge-blue', 'Trade Mission':'badge-green', Delegation:'badge-amber', Webinar:'badge-gray', Gala:'badge-purple' };
-  grid.innerHTML = localEvents.map(ev => `
-    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:240px;">
-        <div style="width:56px;height:56px;border-radius:14px;background:#f0fdf9;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-          <div style="font-size:18px;font-weight:900;color:#006a4e;">${new Date(ev.date).getDate()}</div>
-          <div style="font-size:9px;font-weight:800;color:#94a3b8;text-transform:uppercase;">${new Date(ev.date).toLocaleDateString('en',{month:'short'})}</div>
-        </div>
-        <div>
-          <div style="font-size:14px;font-weight:800;color:#0f172a;">${ev.title}</div>
-          <div style="display:flex;align-items:center;gap:10px;margin-top:4px;flex-wrap:wrap;">
-            <span class="badge ${catColors[ev.cat]||'badge-gray'}">${ev.cat}</span>
-            <span style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:4px;"><i data-lucide="map-pin" style="width:12px;height:12px;"></i>${ev.location}</span>
-          </div>
-          <div style="font-size:11px;color:#64748b;margin-top:4px;">${ev.desc}</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;flex-shrink:0;">
-        <button class="btn btn-secondary btn-sm" onclick="showToast('Editing event: ${ev.title}')">Edit</button>
-        <button class="btn btn-danger btn-sm" onclick="deleteEvent(${ev.id})"><i data-lucide="trash-2" style="width:13px;height:13px;"></i></button>
-      </div>
-    </div>`).join('');
-  document.getElementById('stat-events-count').textContent = localEvents.length;
-  lucide.createIcons();
-}
-
-function renderOverviewEvents() {
-  const el = document.getElementById('overview-events-list');
-  if (!el) return;
-  el.innerHTML = localEvents.slice(0,3).map(ev => `
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f1f5f9;">
-      <div style="width:36px;height:36px;border-radius:10px;background:#f0fdf9;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-        <div style="font-size:13px;font-weight:900;color:#006a4e;">${new Date(ev.date).getDate()}</div>
-        <div style="font-size:8px;font-weight:800;color:#94a3b8;text-transform:uppercase;">${new Date(ev.date).toLocaleDateString('en',{month:'short'})}</div>
-      </div>
-      <div style="flex:1;overflow:hidden;">
-        <div style="font-size:12px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${ev.title}</div>
-        <div style="font-size:11px;color:#94a3b8;">${ev.location}</div>
-      </div>
-    </div>`).join('');
-}
-
-function openEventModal(id) {
-  document.getElementById('event-modal-title').textContent = id ? 'Edit Event' : 'Create Event';
-  document.getElementById('ev-title').value = ''; document.getElementById('ev-date').value = '';
-  document.getElementById('ev-location').value = ''; document.getElementById('ev-desc').value = '';
-  document.getElementById('event-modal').classList.add('open');
-  lucide.createIcons();
-}
-
-function saveEvent() {
-  const title = document.getElementById('ev-title').value;
-  if (!title) return alert('Please enter an event title.');
-  localEvents.push({ id: Date.now(), title, cat: document.getElementById('ev-cat').value, date: document.getElementById('ev-date').value || '2026-12-01', location: document.getElementById('ev-location').value || 'TBD', desc: document.getElementById('ev-desc').value, status: 'upcoming' });
-  closeModal('event-modal');
-  renderEvents();
-  showToast('New Chamber Event created!');
-}
-
-function deleteEvent(id) {
-  if (!confirm('Delete this event?')) return;
-  localEvents = localEvents.filter(e => e.id !== id);
-  renderEvents();
-  showToast('Event removed.', 'trash-2');
-}
-
-function renderNews() {
-  const tbody = document.getElementById('news-tbody');
-  tbody.innerHTML = localNews.map(n => `
-    <tr>
-      <td style="font-weight:700;color:#0f172a;">${n.title}</td>
-      <td><span class="badge badge-blue">${n.cat}</span></td>
-      <td style="font-size:12px;color:#94a3b8;">${n.date}</td>
-      <td><span class="badge ${statusBadge(n.status)}">${n.status.charAt(0).toUpperCase()+n.status.slice(1)}</span></td>
-      <td style="text-align:right;">
-        <div style="display:flex;justify-content:flex-end;gap:6px;">
-          <button class="btn btn-secondary btn-sm" onclick="toggleNewsStatus(${n.id})">${n.status==='published'?'Unpublish':'Publish'}</button>
-          <button class="btn btn-danger btn-sm" onclick="deleteNews(${n.id})"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
-        </div>
-      </td>
-    </tr>`).join('');
-  lucide.createIcons();
-}
-
-function toggleNewsStatus(id) {
-  const n = localNews.find(item => item.id === id);
-  if (n) {
-    n.status = n.status === 'published' ? 'draft' : 'published';
-    renderNews();
-    showToast(`Article status updated to ${n.status}`);
-  }
-}
-
-function openNewsModal() { document.getElementById('news-modal').classList.add('open'); lucide.createIcons(); }
-
-function saveNews() {
-  const title = document.getElementById('news-title').value;
-  if (!title) return alert('Please enter a headline.');
-  localNews.unshift({ id: Date.now(), title, cat: document.getElementById('news-cat').value, date: new Date().toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}), status: document.getElementById('news-status').value });
-  closeModal('news-modal');
-  renderNews();
-  showToast('Article published to news feed!');
-}
-
-function deleteNews(id) {
-  if (!confirm('Delete this article?')) return;
-  localNews = localNews.filter(n => n.id !== id);
-  renderNews();
-  showToast('Article deleted', 'trash-2');
-}
-
-function renderApplications() {
-  const grid = document.getElementById('applications-grid');
-  const typeColors = { Corporate:'badge-blue', Patron:'badge-green', Associate:'badge-amber' };
-  grid.innerHTML = APPLICATIONS.map(a => `
-    <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:48px;height:48px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-size:18px;">🏢</div>
-        <div>
-          <div style="font-size:14px;font-weight:800;color:#0f172a;">${a.name}</div>
-          <div style="font-size:12px;color:#94a3b8;">${a.email} • Reg: ${a.reg}</div>
-          <span class="badge ${typeColors[a.type]||'badge-gray'}" style="margin-top:6px;">${a.type} Membership</span>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;flex-wrap:wrap;">
-        <span class="badge ${statusBadge(a.status)}">${a.status.charAt(0).toUpperCase()+a.status.slice(1)}</span>
-        <button class="btn btn-secondary btn-sm" onclick="reviewApplication(${a.id})">Review</button>
-        ${a.status==='pending'||a.status==='reviewing'?`
-        <button class="btn btn-green btn-sm" onclick="updateAppStatus(${a.id},'approved')">Approve</button>
-        <button class="btn btn-danger btn-sm" onclick="updateAppStatus(${a.id},'closed')">Reject</button>`:''}
-      </div>
-    </div>`).join('');
-  document.getElementById('stat-apps-count').textContent = APPLICATIONS.filter(a => a.status === 'pending' || a.status === 'reviewing').length;
-  lucide.createIcons();
-}
-
-function reviewApplication(id) {
-  const a = APPLICATIONS.find(item => item.id === id);
-  if (!a) return;
-  document.getElementById('app-modal-title').textContent = a.name;
-  document.getElementById('app-modal-sub').textContent = `Applied on ${a.date} for ${a.type} Membership`;
-  document.getElementById('app-modal-content').innerHTML = `
-    <div style="font-size:13px;color:#334155;line-height:1.6;">
-      <strong>Registration Number:</strong> ${a.reg}<br/>
-      <strong>Primary Contact Email:</strong> ${a.email}<br/>
-      <strong>Uploaded Verification Documents:</strong> Incorporation Cert, Tax Identification, Board Resolution (Verified).
-    </div>
-  `;
-  document.getElementById('btn-app-approve').onclick = () => { updateAppStatus(id, 'approved'); closeModal('app-modal'); };
-  document.getElementById('btn-app-reject').onclick = () => { updateAppStatus(id, 'closed'); closeModal('app-modal'); };
-  document.getElementById('app-modal').classList.add('open');
-  lucide.createIcons();
-}
-
-function updateAppStatus(id, status) {
-  const a = APPLICATIONS.find(item => item.id === id);
-  if (a) {
-    a.status = status;
-    renderApplications();
-    showToast(`Application for ${a.name} marked as ${status.toUpperCase()}!`);
-  }
-}
-
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); }));
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderOverviewEvents();
-  authService.populateUserInfo();
-  lucide.createIcons();
-
-  // Mobile Drawer Setup
-  const sidebar = document.querySelector('.sidebar');
-  const backdrop = document.getElementById('sidebar-backdrop');
-  const mobileBtn = document.getElementById('btn-mobile-toggle');
-
-  if (mobileBtn && sidebar && backdrop) {
-    mobileBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      backdrop.classList.toggle('show');
-    });
-    backdrop.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      backdrop.classList.remove('show');
-    });
-    document.querySelectorAll('.nav-item').forEach(item => {
-      item.addEventListener('click', () => {
-        if (window.innerWidth <= 1024) {
-          sidebar.classList.remove('open');
-          backdrop.classList.remove('show');
-        }
-      });
-    });
+  function showToast(msg, icon = 'check-circle') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast-msg';
+    toast.innerHTML = `<i data-lucide="${icon}" style="width:16px;height:16px;color:#60a5fa;"></i><span>${msg}</span>`;
+    container.appendChild(toast);
+    lucide.createIcons();
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(10px)';
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
   }
 
-  // Populate Role
-  const userObj = authService.getCurrentUser();
-  if(userObj) {
-    document.querySelectorAll('.auth-user-role').forEach(el => {
-      el.textContent = userObj.role.charAt(0).toUpperCase() + userObj.role.slice(1) + ' Portal';
-    });
+  let localEvents = [
+    { id: 1, title: "ShowCase Malaysia 2026 - Trade Expo", cat: "Summit", date: "2026-10-15", location: "ICC BASHUNDHARA, DHAKA", desc: "Flagship bilateral trade showcase featuring 120+ Malaysian exhibitors and B2B match-making.", speaker: "Commerce Ministers of BD & Malaysia", status: "upcoming" },
+    { id: 2, title: "Malaysia-BD Business Forum", cat: "Trade Mission", date: "2026-11-20", location: "KUALA LUMPUR, MALAYSIA", desc: "High-level delegatory summit focusing on Joint Venture tech and renewable energy investments.", speaker: "MATRADE Board Directors", status: "upcoming" },
+    { id: 3, title: "BMCCI Annual General Assembly", cat: "Gala", date: "2026-12-10", location: "RADISSON BLU, DHAKA", desc: "Executive networking dinner and annual bilateral trade excellence award distribution.", speaker: "BMCCI President & Board", status: "upcoming" }
+  ];
+
+  let localNews = [
+    { id: 1, title: "BMCCI Delegation Meets Malaysian Trade Minister in KL", cat: "Trade Policy", date: "Jul 28, 2026", status: "published", content: "A high-level executive delegation led by BMCCI President met with the Malaysian Minister of Investment, Trade and Industry in Kuala Lumpur to finalize fast-track tariff concessions." },
+    { id: 2, title: "Bilateral Trade Crosses USD $3.8 Billion Threshold", cat: "Press Release", date: "Jul 14, 2026", status: "published", content: "Bilateral trade volume between Bangladesh and Malaysia reached a historic benchmark of $3.8 Billion driven by increased garment exports and palm oil imports." },
+    { id: 3, title: "New Tax Incentives Announced for Joint Venture Tech Ventures", cat: "B2B Network", date: "Jun 30, 2026", status: "draft", content: "National Board of Revenue (NBR) in collaboration with Malaysian Investment Development Authority (MIDA) announced tax holidays for joint venture tech incubators." }
+  ];
+
+  const INQUIRIES = [
+    { id: 1, name: "Arif Rahman", email: "arif@logistics.com", phone: "+880 1711-223344", type: "Trade Match", msg: "We require verified contacts for palm oil exporters in Johor Bahru for long-term contract distribution.", date: "Today, 10:24 AM", status: "pending" },
+    { id: 2, name: "Sarah Lim", email: "sarah@my-tech.my", phone: "+60 3-8940 1200", type: "Event", msg: "Inquiring about stall booth pricing, sponsorship packages, and VIP passes for ShowCase Malaysia 2026.", date: "Yesterday", status: "responded" },
+    { id: 3, name: "Nasrin Ahmed", email: "nasrin@bdtextile.com", phone: "+880 1819-556677", type: "Membership", msg: "How can our textile firm upgrade our corporate membership to Patron level with voting rights?", date: "Jul 29", status: "pending" }
+  ];
+
+  const APPLICATIONS = [
+    { id: 1, name: "Farid Exports Ltd.", email: "contact@faridexports.com", reg: "BD-884920", type: "Corporate", date: "Jul 31, 2026", status: "pending" },
+    { id: 2, name: "Nexus Synergy Malaysia Sdn Bhd", email: "info@nexussynergy.my", reg: "MY-104928", type: "Patron", date: "Jul 29, 2026", status: "reviewing" }
+  ];
+
+  let activeInquiryId = null;
+
+  function statusBadge(st) {
+    const map = { pending:'badge-amber', responded:'badge-green', approved:'badge-green', closed:'badge-red', reviewing:'badge-blue', published:'badge-green', draft:'badge-gray' };
+    return map[st] || 'badge-gray';
   }
 
-  // Dropdown Logic
-  function setupDropdown(btnId, dropId) {
-    const btn = document.getElementById(btnId);
-    const drop = document.getElementById(dropId);
-    if(!btn || !drop) return;
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      document.querySelectorAll('.dropdown-panel').forEach(p => { if(p !== drop) p.classList.remove('show'); });
-      drop.classList.toggle('show');
-    });
-    drop.addEventListener('click', (e) => e.stopPropagation());
+  function toggleProfileMode(mode) {
+    const viewMode = document.getElementById('profile-view-mode');
+    const editMode = document.getElementById('profile-edit-mode');
+    if(!viewMode || !editMode) return;
+    if(mode === 'edit') {
+      viewMode.style.display = 'none';
+      editMode.style.display = 'block';
+    } else {
+      viewMode.style.display = 'block';
+      editMode.style.display = 'none';
+    }
+    lucide.createIcons();
   }
-  setupDropdown('btn-notifications', 'dropdown-notifications');
-  setupDropdown('btn-profile', 'dropdown-profile');
-  document.addEventListener('click', () => {
+
+  function saveProfileChanges() {
+    const newName = document.getElementById('edit-admin-name')?.value;
+    if(newName) {
+      document.querySelectorAll('.auth-user-name').forEach(el => el.textContent = newName);
+    }
+    showToast('Admin Officer profile updated!');
+    toggleProfileMode('view');
+  }
+
+  function switchPanel(id, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const target = document.getElementById('panel-' + id);
+    if (target) target.classList.add('active');
+    if (btn) btn.classList.add('active');
+    
+    // Close dropdowns
     document.querySelectorAll('.dropdown-panel').forEach(p => p.classList.remove('show'));
+    
+    if (id === 'overview') initOverviewChart();
+    if (id === 'inquiries') renderInquiries();
+    if (id === 'events') renderEvents();
+    if (id === 'news') renderNews();
+    if (id === 'applications') renderApplications();
+    lucide.createIcons();
+  }
+
+  function initOverviewChart() {
+    const chartDom = document.getElementById('overview-chart');
+    if (!chartDom || typeof echarts === 'undefined') return;
+    let myChart = echarts.getInstanceByDom(chartDom);
+    if (!myChart) {
+      myChart = echarts.init(chartDom);
+    }
+    const option = {
+      color: ['#1d4ed8', '#006a4e'],
+      tooltip: { trigger: 'axis', backgroundColor: '#0f172a', textStyle: { color: '#fff', fontSize: 11 }, borderWidth: 0, padding: 10 },
+      legend: { data: ['Trade Inquiries', 'Membership Applications'], bottom: 0, icon: 'circle', textStyle: { fontSize: 11, color: '#64748b' } },
+      grid: { left: '3%', right: '4%', bottom: '15%', top: '5%', containLabel: true },
+      xAxis: { type: 'category', boundaryGap: false, data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], axisLine: { lineStyle: { color: '#e2e8f0' } }, axisLabel: { color: '#64748b', fontSize: 10 } },
+      yAxis: { type: 'value', axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { color: '#f1f5f9', type: 'dashed' } }, axisLabel: { color: '#64748b', fontSize: 10 } },
+      series: [
+        { name: 'Trade Inquiries', type: 'line', smooth: true, data: [24, 38, 31, 45, 52, 48, 62], symbol: 'none', areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(29,78,216,0.25)'}, {offset: 1, color: 'rgba(29,78,216,0)'}]) } },
+        { name: 'Membership Applications', type: 'line', smooth: true, data: [12, 19, 15, 22, 28, 24, 35], symbol: 'none', areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(0,106,78,0.25)'}, {offset: 1, color: 'rgba(0,106,78,0)'}]) } }
+      ]
+    };
+    myChart.setOption(option);
+    setTimeout(() => myChart.resize(), 100);
+    window.addEventListener('resize', () => myChart.resize());
+  }
+
+  /* INQUIRIES FUNCTIONS */
+  function renderInquiries() {
+    const tbody = document.getElementById('inquiries-tbody');
+    if (!tbody) return;
+    const q = document.getElementById('inquiry-search')?.value.toLowerCase() || '';
+    const st = document.getElementById('inquiry-filter')?.value || '';
+    const filtered = INQUIRIES.filter(i => (i.name.toLowerCase().includes(q) || i.email.toLowerCase().includes(q) || i.msg.toLowerCase().includes(q)) && (!st || i.status === st));
+    tbody.innerHTML = filtered.map(i => `
+      <tr>
+        <td><div style="font-weight:700;color:#0f172a;">${i.name}</div><div style="font-size:11px;color:#94a3b8;">${i.email}</div></td>
+        <td><span class="badge badge-blue">${i.type}</span></td>
+        <td style="color:#475569;font-weight:500;max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${i.msg}</td>
+        <td style="font-size:12px;color:#94a3b8;">${i.date}</td>
+        <td><span class="badge ${statusBadge(i.status)}">${i.status.charAt(0).toUpperCase()+i.status.slice(1)}</span></td>
+        <td style="text-align:right;">
+          <div style="display:flex;gap:6px;justify-content:flex-end;">
+            <button class="btn btn-secondary btn-sm" onclick="openInquiryDetail(${i.id})">View Detail</button>
+            <button class="btn btn-primary btn-sm" onclick="openInquiryModal(${i.id})">Respond</button>
+          </div>
+        </td>
+      </tr>`).join('');
+    document.getElementById('stat-inquiries-count').textContent = INQUIRIES.filter(i => i.status === 'pending').length;
+    lucide.createIcons();
+  }
+
+  function openInquiryDetail(id) {
+    const q = INQUIRIES.find(i => i.id === id);
+    if (!q) return;
+    const contentEl = document.getElementById('inquiry-detail-content');
+    contentEl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
+        <div>
+          <span class="badge badge-blue" style="margin-bottom:8px;">${q.type} Inquiry</span>
+          <h1 style="font-size:24px;font-weight:900;color:#0f172a;margin:0;">Inquiry from ${q.name}</h1>
+          <div style="font-size:13px;color:#64748b;margin-top:4px;">Received ${q.date}</div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <span class="badge ${statusBadge(q.status)}" style="font-size:12px;padding:6px 14px;">Status: ${q.status.toUpperCase()}</span>
+          <button class="btn btn-primary btn-sm" onclick="openInquiryModal(${q.id})"><i data-lucide="send" style="width:14px;height:14px;"></i> Dispatch Reply</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:20px;margin-bottom:24px;">
+        <div style="background:#f8fafc;padding:20px;border-radius:14px;border:1px solid #e2e8f0;">
+          <div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:8px;">Contact Credentials</div>
+          <div style="font-size:14px;font-weight:700;color:#0f172a;">${q.name}</div>
+          <div style="font-size:13px;color:#334155;margin-top:4px;">Email: ${q.email}</div>
+          <div style="font-size:13px;color:#334155;margin-top:2px;">Phone: ${q.phone || '+880 N/A'}</div>
+        </div>
+
+        <div style="background:#f8fafc;padding:20px;border-radius:14px;border:1px solid #e2e8f0;">
+          <div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:8px;">Chamber Classification</div>
+          <div style="font-size:14px;font-weight:700;color:#1d4ed8;">${q.type} Helpdesk Ticket</div>
+          <div style="font-size:12px;color:#64748b;margin-top:4px;">Assigned to: Admin Officer Desk</div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin-bottom:24px;">
+        <div style="font-size:12px;font-weight:800;color:#0f172a;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;">Message Payload</div>
+        <p style="font-size:14px;color:#334155;line-height:1.7;margin:0;font-style:italic;">"${q.msg}"</p>
+      </div>
+    `;
+    switchPanel('inquiry-detail', null);
+  }
+
+  function openInquiryModal(id) {
+    const q = INQUIRIES.find(i => i.id === id);
+    if (!q) return;
+    activeInquiryId = id;
+    document.getElementById('inquiry-modal-title').textContent = q.type + ' Response';
+    document.getElementById('inquiry-modal-subtitle').textContent = `To: ${q.name} (${q.email})`;
+    document.getElementById('inquiry-modal-body').textContent = `"${q.msg}"`;
+    document.getElementById('inquiry-response-text').value = q.status === 'responded' ? 'Sent official chamber documentation and response packet via email.' : '';
+    document.getElementById('inquiry-modal').classList.add('open');
+    lucide.createIcons();
+  }
+
+  function sendInquiryReply() {
+    const text = document.getElementById('inquiry-response-text').value;
+    if (!text) return alert('Please enter a response message.');
+    const q = INQUIRIES.find(i => i.id === activeInquiryId);
+    if (q) q.status = 'responded';
+    closeModal('inquiry-modal');
+    renderInquiries();
+    showToast('Official response dispatched to contact!');
+  }
+
+  /* EVENTS FUNCTIONS (With In-Page Detail View & Edit) */
+  function renderEvents() {
+    const grid = document.getElementById('events-grid');
+    if (!grid) return;
+    const catColors = { Summit:'badge-blue', 'Trade Mission':'badge-green', Delegation:'badge-amber', Webinar:'badge-gray', Gala:'badge-purple' };
+    grid.innerHTML = localEvents.map(ev => `
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:16px;flex:1;min-width:240px;">
+          <div style="width:56px;height:56px;border-radius:14px;background:#f0fdf9;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="font-size:18px;font-weight:900;color:#006a4e;">${new Date(ev.date).getDate()}</div>
+            <div style="font-size:9px;font-weight:800;color:#94a3b8;text-transform:uppercase;">${new Date(ev.date).toLocaleDateString('en',{month:'short'})}</div>
+          </div>
+          <div>
+            <div style="font-size:15px;font-weight:800;color:#0f172a;cursor:pointer;" onclick="openEventDetail(${ev.id})">${ev.title}</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:4px;flex-wrap:wrap;">
+              <span class="badge ${catColors[ev.cat]||'badge-gray'}">${ev.cat}</span>
+              <span style="font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:4px;"><i data-lucide="map-pin" style="width:12px;height:12px;"></i>${ev.location}</span>
+            </div>
+            <div style="font-size:11px;color:#64748b;margin-top:4px;">${ev.desc}</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-shrink:0;">
+          <button class="btn btn-secondary btn-sm" onclick="openEventDetail(${ev.id})">View Detail</button>
+          <button class="btn btn-secondary btn-sm" onclick="openEventModal(${ev.id})">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteEvent(${ev.id})"><i data-lucide="trash-2" style="width:13px;height:13px;"></i></button>
+        </div>
+      </div>`).join('');
+    document.getElementById('stat-events-count').textContent = localEvents.length;
+    lucide.createIcons();
+  }
+
+  function openEventDetail(id) {
+    const ev = localEvents.find(e => e.id === id);
+    if (!ev) return;
+    const contentEl = document.getElementById('event-detail-content');
+    contentEl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
+        <div>
+          <span class="badge badge-green" style="margin-bottom:8px;">${ev.cat}</span>
+          <h1 style="font-size:24px;font-weight:900;color:#0f172a;margin:0;">${ev.title}</h1>
+          <div style="font-size:13px;color:#006a4e;font-weight:700;margin-top:4px;"><i data-lucide="map-pin" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> ${ev.location}</div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn btn-primary btn-sm" onclick="openEventModal(${ev.id})"><i data-lucide="edit-3" style="width:14px;height:14px;"></i> Edit Event</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteEvent(${ev.id})"><i data-lucide="trash-2" style="width:14px;height:14px;"></i> Remove</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:20px;margin-bottom:24px;">
+        <div style="background:#f8fafc;padding:20px;border-radius:14px;border:1px solid #e2e8f0;">
+          <div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Event Date & Time</div>
+          <div style="font-size:16px;font-weight:900;color:#0f172a;">${ev.date}</div>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">Doors open 09:00 AM AST</div>
+        </div>
+
+        <div style="background:#f8fafc;padding:20px;border-radius:14px;border:1px solid #e2e8f0;">
+          <div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:6px;">Keynote Speaker Roster</div>
+          <div style="font-size:14px;font-weight:700;color:#0f172a;">${ev.speaker || 'Board Delegates'}</div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;">
+        <div style="font-size:12px;font-weight:800;color:#0f172a;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;">Event Scope & Description</div>
+        <p style="font-size:14px;color:#334155;line-height:1.7;margin:0;">${ev.desc}</p>
+      </div>
+    `;
+    switchPanel('event-detail', null);
+  }
+
+  function renderOverviewEvents() {
+    const el = document.getElementById('overview-events-list');
+    if (!el) return;
+    el.innerHTML = localEvents.slice(0,3).map(ev => `
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f1f5f9;">
+        <div style="width:36px;height:36px;border-radius:10px;background:#f0fdf9;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="font-size:13px;font-weight:900;color:#006a4e;">${new Date(ev.date).getDate()}</div>
+          <div style="font-size:8px;font-weight:800;color:#94a3b8;text-transform:uppercase;">${new Date(ev.date).toLocaleDateString('en',{month:'short'})}</div>
+        </div>
+        <div style="flex:1;overflow:hidden;">
+          <div style="font-size:12px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${ev.title}</div>
+          <div style="font-size:11px;color:#94a3b8;">${ev.location}</div>
+        </div>
+      </div>`).join('');
+  }
+
+  function openEventModal(id = null) {
+    document.getElementById('ev-edit-id').value = id || '';
+    if (id) {
+      const ev = localEvents.find(e => e.id === id);
+      if (ev) {
+        document.getElementById('event-modal-title').textContent = 'Edit Chamber Event';
+        document.getElementById('ev-title').value = ev.title;
+        document.getElementById('ev-cat').value = ev.cat;
+        document.getElementById('ev-date').value = ev.date;
+        document.getElementById('ev-location').value = ev.location;
+        document.getElementById('ev-speaker').value = ev.speaker || '';
+        document.getElementById('ev-desc').value = ev.desc;
+      }
+    } else {
+      document.getElementById('event-modal-title').textContent = 'Create Chamber Event';
+      document.getElementById('ev-title').value = '';
+      document.getElementById('ev-date').value = '';
+      document.getElementById('ev-location').value = '';
+      document.getElementById('ev-speaker').value = '';
+      document.getElementById('ev-desc').value = '';
+    }
+    document.getElementById('event-modal').classList.add('open');
+    lucide.createIcons();
+  }
+
+  function saveEvent() {
+    const title = document.getElementById('ev-title').value;
+    if (!title) return alert('Please enter an event title.');
+    const editId = document.getElementById('ev-edit-id').value;
+    if (editId) {
+      const ev = localEvents.find(e => e.id === parseInt(editId));
+      if (ev) {
+        ev.title = title;
+        ev.cat = document.getElementById('ev-cat').value;
+        ev.date = document.getElementById('ev-date').value;
+        ev.location = document.getElementById('ev-location').value;
+        ev.speaker = document.getElementById('ev-speaker').value;
+        ev.desc = document.getElementById('ev-desc').value;
+      }
+      showToast('Chamber Event details updated!');
+    } else {
+      localEvents.push({ id: Date.now(), title, cat: document.getElementById('ev-cat').value, date: document.getElementById('ev-date').value || '2026-12-01', location: document.getElementById('ev-location').value || 'TBD', speaker: document.getElementById('ev-speaker').value, desc: document.getElementById('ev-desc').value, status: 'upcoming' });
+      showToast('New Chamber Event created!');
+    }
+    closeModal('event-modal');
+    renderEvents();
+  }
+
+  function deleteEvent(id) {
+    if (!confirm('Delete this event?')) return;
+    localEvents = localEvents.filter(e => e.id !== id);
+    renderEvents();
+    switchPanel('events', null);
+    showToast('Event removed.', 'trash-2');
+  }
+
+  /* NEWS & ARTICLES FUNCTIONS (With In-Page Detail View & Edit) */
+  function renderNews() {
+    const tbody = document.getElementById('news-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = localNews.map(n => `
+      <tr>
+        <td style="font-weight:700;color:#0f172a;cursor:pointer;" onclick="openNewsDetail(${n.id})">${n.title}</td>
+        <td><span class="badge badge-blue">${n.cat}</span></td>
+        <td style="font-size:12px;color:#94a3b8;">${n.date}</td>
+        <td><span class="badge ${statusBadge(n.status)}">${n.status.charAt(0).toUpperCase()+n.status.slice(1)}</span></td>
+        <td style="text-align:right;">
+          <div style="display:flex;justify-content:flex-end;gap:6px;">
+            <button class="btn btn-secondary btn-sm" onclick="openNewsDetail(${n.id})">Read Article</button>
+            <button class="btn btn-secondary btn-sm" onclick="openNewsModal(${n.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteNews(${n.id})"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+          </div>
+        </td>
+      </tr>`).join('');
+    lucide.createIcons();
+  }
+
+  function openNewsDetail(id) {
+    const n = localNews.find(item => item.id === id);
+    if (!n) return;
+    const contentEl = document.getElementById('news-detail-content');
+    contentEl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
+        <div>
+          <span class="badge badge-blue" style="margin-bottom:8px;">${n.cat}</span>
+          <h1 style="font-size:24px;font-weight:900;color:#0f172a;margin:0;">${n.title}</h1>
+          <div style="font-size:12px;color:#94a3b8;margin-top:4px;">Published ${n.date} • By BMCCI Press Desk</div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn btn-secondary btn-sm" onclick="toggleNewsStatus(${n.id});openNewsDetail(${n.id});">${n.status==='published'?'Unpublish':'Publish'}</button>
+          <button class="btn btn-primary btn-sm" onclick="openNewsModal(${n.id})"><i data-lucide="edit-3" style="width:14px;height:14px;"></i> Edit Article</button>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc;padding:24px;border-radius:14px;border:1px solid #e2e8f0;line-height:1.8;font-size:14px;color:#334155;">
+        ${n.content || 'Official press release content published for chamber members and public site viewers.'}
+      </div>
+    `;
+    switchPanel('news-detail', null);
+  }
+
+  function toggleNewsStatus(id) {
+    const n = localNews.find(item => item.id === id);
+    if (n) {
+      n.status = n.status === 'published' ? 'draft' : 'published';
+      renderNews();
+      showToast(`Article status updated to ${n.status}`);
+    }
+  }
+
+  function openNewsModal(id = null) {
+    document.getElementById('news-edit-id').value = id || '';
+    if (id) {
+      const n = localNews.find(item => item.id === id);
+      if (n) {
+        document.getElementById('news-modal-title').textContent = 'Edit Press Release';
+        document.getElementById('news-title').value = n.title;
+        document.getElementById('news-cat').value = n.cat;
+        document.getElementById('news-status').value = n.status;
+        document.getElementById('news-content').value = n.content || '';
+      }
+    } else {
+      document.getElementById('news-modal-title').textContent = 'Write Press Release';
+      document.getElementById('news-title').value = '';
+      document.getElementById('news-content').value = '';
+    }
+    document.getElementById('news-modal').classList.add('open');
+    lucide.createIcons();
+  }
+
+  function saveNews() {
+    const title = document.getElementById('news-title').value;
+    if (!title) return alert('Please enter a headline.');
+    const editId = document.getElementById('news-edit-id').value;
+    if (editId) {
+      const n = localNews.find(item => item.id === parseInt(editId));
+      if (n) {
+        n.title = title;
+        n.cat = document.getElementById('news-cat').value;
+        n.status = document.getElementById('news-status').value;
+        n.content = document.getElementById('news-content').value;
+      }
+      showToast('Article content updated!');
+    } else {
+      localNews.unshift({ id: Date.now(), title, cat: document.getElementById('news-cat').value, date: new Date().toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}), status: document.getElementById('news-status').value, content: document.getElementById('news-content').value });
+      showToast('Article published to news feed!');
+    }
+    closeModal('news-modal');
+    renderNews();
+  }
+
+  function deleteNews(id) {
+    if (!confirm('Delete this article?')) return;
+    localNews = localNews.filter(n => n.id !== id);
+    renderNews();
+    switchPanel('news', null);
+    showToast('Article deleted', 'trash-2');
+  }
+
+  /* APPLICATIONS FUNCTIONS */
+  function renderApplications() {
+    const grid = document.getElementById('applications-grid');
+    if (!grid) return;
+    const typeColors = { Corporate:'badge-blue', Patron:'badge-green', Associate:'badge-amber' };
+    grid.innerHTML = APPLICATIONS.map(a => `
+      <div style="background:white;border:1px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:#f8fafc;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;font-size:18px;">🏢</div>
+          <div>
+            <div style="font-size:14px;font-weight:800;color:#0f172a;">${a.name}</div>
+            <div style="font-size:12px;color:#94a3b8;">${a.email} • Reg: ${a.reg}</div>
+            <span class="badge ${typeColors[a.type]||'badge-gray'}" style="margin-top:6px;">${a.type} Membership</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;flex-wrap:wrap;">
+          <span class="badge ${statusBadge(a.status)}">${a.status.charAt(0).toUpperCase()+a.status.slice(1)}</span>
+          <button class="btn btn-secondary btn-sm" onclick="reviewApplication(${a.id})">Review Verification</button>
+          ${a.status==='pending'||a.status==='reviewing'?`
+          <button class="btn btn-green btn-sm" onclick="updateAppStatus(${a.id},'approved')">Approve</button>
+          <button class="btn btn-danger btn-sm" onclick="updateAppStatus(${a.id},'closed')">Reject</button>`:''}
+        </div>
+      </div>`).join('');
+    document.getElementById('stat-apps-count').textContent = APPLICATIONS.filter(a => a.status === 'pending' || a.status === 'reviewing').length;
+    lucide.createIcons();
+  }
+
+  function reviewApplication(id) {
+    const a = APPLICATIONS.find(item => item.id === id);
+    if (!a) return;
+    document.getElementById('app-modal-title').textContent = a.name;
+    document.getElementById('app-modal-sub').textContent = `Applied on ${a.date} for ${a.type} Membership Tier`;
+    document.getElementById('app-modal-content').innerHTML = `
+      <div style="font-size:13px;color:#334155;line-height:1.8;">
+        <strong>Legal Registration No:</strong> ${a.reg}<br/>
+        <strong>Primary Contact Email:</strong> ${a.email}<br/>
+        <strong>Verification Documents Uploaded:</strong>
+        <ul style="margin-top:6px;padding-left:18px;color:#006a4e;font-weight:600;">
+          <li>✓ Trade License Incorporation Certificate (PDF)</li>
+          <li>✓ National Tax Identification Number (TIN)</li>
+          <li>✓ Board Resolution Authorization Letter</li>
+        </ul>
+      </div>
+    `;
+    document.getElementById('btn-app-approve').onclick = () => { updateAppStatus(id, 'approved'); closeModal('app-modal'); };
+    document.getElementById('btn-app-reject').onclick = () => { updateAppStatus(id, 'closed'); closeModal('app-modal'); };
+    document.getElementById('app-modal').classList.add('open');
+    lucide.createIcons();
+  }
+
+  function updateAppStatus(id, status) {
+    const a = APPLICATIONS.find(item => item.id === id);
+    if (a) {
+      a.status = status;
+      renderApplications();
+      showToast(`Application for ${a.name} marked as ${status.toUpperCase()}!`);
+    }
+  }
+
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+  document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); }));
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initOverviewChart();
+    renderOverviewEvents();
+    authService.populateUserInfo();
+    lucide.createIcons();
+
+    // Mobile Drawer Setup
+    const sidebar = document.querySelector('.sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const mobileBtn = document.getElementById('btn-mobile-toggle');
+
+    if (mobileBtn && sidebar && backdrop) {
+      mobileBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        backdrop.classList.toggle('show');
+      });
+      backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('show');
+      });
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', () => {
+          if (window.innerWidth <= 1024) {
+            sidebar.classList.remove('open');
+            backdrop.classList.remove('show');
+          }
+        });
+      });
+    }
+
+    // Populate Role
+    const userObj = authService.getCurrentUser();
+    if(userObj) {
+      document.querySelectorAll('.auth-user-role').forEach(el => {
+        el.textContent = 'Admin Officer';
+      });
+    }
+
+    // Dropdown Logic
+    function setupDropdown(btnId, dropId) {
+      const btn = document.getElementById(btnId);
+      const drop = document.getElementById(dropId);
+      if(!btn || !drop) return;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.dropdown-panel').forEach(p => { if(p !== drop) p.classList.remove('show'); });
+        drop.classList.toggle('show');
+      });
+      drop.addEventListener('click', (e) => e.stopPropagation());
+    }
+    setupDropdown('btn-notifications', 'dropdown-notifications');
+    setupDropdown('btn-profile', 'dropdown-profile');
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-panel').forEach(p => p.classList.remove('show'));
+    });
   });
-});
 </script>
 </body>
 </html>
