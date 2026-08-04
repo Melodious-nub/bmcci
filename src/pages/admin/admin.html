@@ -807,12 +807,30 @@ Email: admin@bmcci.org.bd | Web: www.bmcci.org.bd</textarea>
     toggleProfileMode('view');
   }
 
+  const parentMap = {
+    'inquiry-detail': 'inquiries',
+    'event-detail': 'events',
+    'news-detail': 'news',
+    'network-detail': 'network'
+  };
+
   function switchPanel(id, btn) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    
     const target = document.getElementById('panel-' + id);
     if (target) target.classList.add('active');
-    if (btn) btn.classList.add('active');
+
+    const activeNavId = parentMap[id] || id;
+    let navItem = btn;
+    if (!navItem) {
+      const allNavs = Array.from(document.querySelectorAll('.nav-item'));
+      navItem = allNavs.find(n => {
+        const onclickAttr = n.getAttribute('onclick') || '';
+        return onclickAttr.includes(`'${activeNavId}'`) || onclickAttr.includes(`"${activeNavId}"`);
+      });
+    }
+    if (navItem) navItem.classList.add('active');
     
     // Close dropdowns
     document.querySelectorAll('.dropdown-panel').forEach(p => p.classList.remove('show'));
